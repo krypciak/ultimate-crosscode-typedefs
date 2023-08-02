@@ -96,6 +96,7 @@ declare global {
         includeEquip?: boolean | null,
       ): boolean;
       getAction(this: this, action: sc.PLAYER_ACTION): sc.PlayerAction;
+      setLevel(this: this, level: number, dontResetSkillTree?: boolean): void;
       addCredit(this: this, amount: number): void;
       removeCredit(this: this, amount: number): void;
     }
