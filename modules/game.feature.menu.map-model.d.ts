@@ -45,8 +45,8 @@ declare global {
 
       namespace MapEntity {
         interface Settings {
-          mapId?: number,
-          name?: string,
+          mapId: number,
+          name: string,
         }
       }
       
