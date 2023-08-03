@@ -42,13 +42,20 @@ declare global {
         entities: MapModel.MapEntity[],
         layer: MapModel.MapLayer[];
       }
+
+      namespace MapEntity {
+        interface Settings {
+          mapId?: number,
+          name?: string,
+        }
+      }
       
       interface MapEntity {
         type: string,
         x: number,
         y: number,
         level: number,
-        settings: ig.Entity.Settings
+        settings: MapModel.MapEntity.Settings,
       }
 
       interface MapAttributes {
