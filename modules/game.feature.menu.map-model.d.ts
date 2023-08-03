@@ -62,28 +62,29 @@ declare global {
 
       namespace MapEntity {
         interface Settings {
-          mapId: number,
-          name: string,
+          mapId: number;
+          name: string;
+          spawnCondition?: string;
         }
       }
       
       interface MapEntity {
-        type: string,
-        x: number,
-        y: number,
-        level: number,
-        settings: MapModel.MapEntity.Settings,
+        type: string;
+        x: number;
+        y: number;
+        level: number;
+        settings: MapModel.MapEntity.Settings;
       }
 
       interface MapAttributes {
-        saveMode: 'ENABLED' | 'DISABLED' | ''
-        bgm: string
-        cameraInBounds: boolean
-        'map-sounds': string
-        mapStyle: string
-        weather: string
-        area: string
-        npcRunners: string
+        saveMode: 'ENABLED' | 'DISABLED' | '';
+        bgm: string;
+        cameraInBounds: boolean;
+        'map-sounds': string;
+        mapStyle: string;
+        weather: string;
+        area: string;
+        npcRunners: string;
       }
 
       type MapLayerType = 'Background' | 'Collision' | 'Navigation' | 'Light' | 'object1' | 'object2' | 'object3';
