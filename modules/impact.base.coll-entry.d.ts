@@ -16,6 +16,13 @@ declare global {
       FENCE = 10,
       NPFENCE = 11
     }
+    enum COLL_HEIGHT_SHAPE {
+      NONE = 0,
+      NORTH_UP = 1,
+      EAST_UP = 2,
+      WEST_UP = 3,
+      SOUTH_UP = 4
+    }
     enum COLL_SHADOW_TYPE {
       DEFAULT = 0,
       STATIC_SIZE = 1,
