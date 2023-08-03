@@ -13,13 +13,17 @@ declare global {
         this: this,
         destVec: Vec2,
         lastRelativeVel: number,
-        ignoreLastDir?: number | null,
+        ignoreLastDir?: Optional<number>,
       ): number;
       autoThrown(this: this): boolean;
       menuScrollUp(this: this): boolean;
       menuScrollDown(this: this): boolean;
       getMouseX(this: this): number;
       getMouseY(this: this): number;
+      menuHotkeyHelp(this: this): boolean;
+      menuHotkeyHelp2(this: this): boolean;
+      menuHotkeyHelp3(this: this): boolean;
+      menuBack(this: this): boolean;
     }
     interface ControlConstructor extends ImpactClass<Control> {
       new (): Control;

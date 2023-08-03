@@ -42,14 +42,16 @@ declare global {
       interface Type {
         alignXPadding?: number;
         highlight?: Highlight | null;
+        height: number;
       }
     }
     interface ButtonGui extends ig.FocusGui {
       text: sc.TextLike;
       buttonType: sc.ButtonGui.Type;
       textChild: sc.TextGui;
+      bgGui: sc.ButtonBgGui;
       data?: unknown;
-      submitSound: ig.Sound;
+      submitSound?: ig.Sound;
 
       setWidth(this: this, width: number): void;
       setText(this: this, text: sc.TextLike, ignoreWidth?: boolean): void;
@@ -68,8 +70,12 @@ declare global {
     }
     var ButtonGui: ButtonGuiConstructor;
 
-    interface CheckboxGui extends sc.ButtonGui {}
-    interface CheckboxGuiConstructor extends ImpactClass<CheckboxGui> {}
+    interface CheckboxGui extends sc.ButtonGui {
+      hookGui: ig.ImageGui;
+    }
+    interface CheckboxGuiConstructor extends ImpactClass<CheckboxGui> {
+      new (initValue: boolean, width?: number, active?: boolean): sc.CheckboxGui
+    }
     var CheckboxGui: CheckboxGuiConstructor;
 
     var BUTTON_TYPE: { [type: string]: ButtonGui.Type };
