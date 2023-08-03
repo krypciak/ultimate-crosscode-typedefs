@@ -14,6 +14,9 @@ declare global {
           fastMode?: boolean;
         }
       }
+      namespace AntiCompressor {
+        interface Settings extends sc.MapModel.MapEntity.Settings { }
+      }
     }
   }
 }
