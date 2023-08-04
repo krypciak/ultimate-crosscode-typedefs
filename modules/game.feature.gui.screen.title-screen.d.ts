@@ -24,6 +24,7 @@ declare global {
     var TitleScreenGui: TitleScreenGuiConstructor;
 
     interface TitleScreenButtonGui extends ig.GuiElementBase {
+      buttonInteract: ig.ButtonInteractEntry;
       buttonGroup: sc.ButtonGroup;
       buttons: sc.ButtonGui[];
       changelogButton: sc.ButtonGui;
@@ -33,6 +34,7 @@ declare global {
 
       show(this: this): void;
       hide(this: this, skipTransition: boolean): void;
+      _createButton(this: this, name: string, y: number, buttonGroup: number, onButtonPress: () => void): number
     }
     interface TitleScreenButtonGuiConstructor extends ImpactClass<TitleScreenButtonGui> {
       new (): TitleScreenButtonGui;
