@@ -25,7 +25,7 @@ declare global {
           changerType: {
             type: sc.BALL_CHANGER_TYPE;
             options: {
-              dir?: ig.ActorEntity.FACE8; // for use when CHANGE_DIR
+              dir?: keyof typeof ig.ActorEntity.FACE8; // for use when CHANGE_DIR
               factor?: number; // for use when CHANGE_SPEED
               element?: sc.ELEMENT; // for use when CHANGE_ELEMENT
             }
