@@ -11,6 +11,7 @@ declare global {
       STORY = 0,
       GRINDING = 1,
       PUZZLE = 2,
+      NEW_GAME_PLUS = 3,
     }
 
     interface CrossCode extends ig.Game {
