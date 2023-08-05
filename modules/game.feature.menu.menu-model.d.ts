@@ -175,6 +175,7 @@ declare global {
       statusDiff: boolean;
       previousMenu: sc.MENU_SUBMENU;
 
+      addMapStamp(area: string, type: string, x: number, y: number, level: number): number;
       pushBackCallback(this: this, callback: sc.MenuModel.BackCallback): void;
       popBackCallback(this: this): void;
       addHotkey(this: this, callback: sc.MenuModel.HotkeyCallback, commit?: Optional<boolean>): void;
