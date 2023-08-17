@@ -32,7 +32,7 @@ declare global {
           startCondition?: string;
           triggerType?: keyof typeof ig.EVENT_TRIGGER_TYPE;
           loadCondition?: string;
-          event?: ig.Event.Settings;
+          event?: any[];
         }
       }
     }
