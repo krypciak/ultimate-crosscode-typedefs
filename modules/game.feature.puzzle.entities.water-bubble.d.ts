@@ -13,4 +13,9 @@ declare global {
       }
     }
   }
+    namespace ig.ENTITY {
+        interface WaterBubblePanel extends ig.AnimatedEntity {}
+        interface WaterBubblePanelConstructor extends ImpactClass<WaterBubblePanel> {}
+        let WaterBubblePanel: WaterBubblePanelConstructor;
+    }
 }

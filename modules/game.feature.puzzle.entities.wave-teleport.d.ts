@@ -5,11 +5,16 @@
 export {};
 
 declare global {
-  namespace ig {
-    namespace ENTITY {
-      namespace WaveTeleport {
-        interface Settings extends ig.Entity.Settings {}
-      }
+    namespace ig.ENTITY {
+        namespace WaveTeleport {
+            interface Teleportable {
+                doTeleport(this: this, portal: ig.ENTITY.WaveTeleport): void;
+            }
+            interface Settings extends ig.Entity.Settings {}
+        }
+        interface WaveTeleport extends ig.AnimatedEntity {}
+        interface WaveTeleportConstructor extends ImpactClass<WaveTeleport> {}
+
+        let WaveTeleport: WaveTeleportConstructor;
     }
-  }
 }
