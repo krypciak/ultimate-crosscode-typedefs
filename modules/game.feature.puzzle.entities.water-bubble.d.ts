@@ -7,10 +7,17 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace WaterBubblePanel {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
-          coalCoolTime?: number;
-        }
       }
     }
   }
+}
+    namespace ig.ENTITY {
+        interface WaterBubblePanel extends ig.AnimatedEntity {
+            interface Settings extends ig.Entity.Settings {
+              coalCoolTime?: number;
+            }
+        }
+        interface WaterBubblePanelConstructor extends ImpactClass<WaterBubblePanel> {}
+        let WaterBubblePanel: WaterBubblePanelConstructor;
+    }
 }

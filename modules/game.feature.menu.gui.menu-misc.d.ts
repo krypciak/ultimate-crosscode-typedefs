@@ -191,6 +191,7 @@ declare global {
         timeFunction?: Optional<KeySpline>,
       ): void;
       recalculateScrollBars(this: this, skipTransition?: boolean): void;
+      getScrollY(this: this): number;
     }
     interface ScrollPaneConstructor extends ImpactClass<ScrollPane> {
       new (scrollType: sc.ScrollType): sc.ScrollPane;
