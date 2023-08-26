@@ -5,7 +5,7 @@ export {};
 declare global {
   namespace ig.ENTITY {
     namespace GlowingLine {
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         size: Vec2;
         condition: string;
       }

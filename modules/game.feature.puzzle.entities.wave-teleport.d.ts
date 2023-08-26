@@ -8,7 +8,7 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace WaveTeleport {
-        interface Settings extends sc.MapModel.MapEntity.Settings {}
+        interface Settings extends ig.Entity.Settings {}
       }
     }
   }

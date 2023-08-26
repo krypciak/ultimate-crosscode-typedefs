@@ -22,7 +22,7 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace TeslaCoil {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
+        interface Settings extends ig.Entity.Settings {
           coilType?: keyof typeof sc.TESLA_COIL_TYPE;
           varOnCharge?: string;
           varOnDischarge?: string;

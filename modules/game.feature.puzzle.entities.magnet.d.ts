@@ -9,7 +9,7 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace Magnet {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
+        interface Settings extends ig.Entity.Settings {
           dir: keyof typeof ig.ActorEntity.FACE4
           altDirs?: string[]; // array of conditions
         }

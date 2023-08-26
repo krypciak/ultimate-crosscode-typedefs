@@ -12,7 +12,7 @@ declare global {
           ends: { west?: string; east?: string; north?: string; south?: string } | null;
         }
       }
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         size?: Vec2;
         patternOffset?: Vec2;
         timeOffset?: number;

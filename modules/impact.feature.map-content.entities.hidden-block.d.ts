@@ -9,7 +9,7 @@ declare global {
     var HiddenSkyBlock: HiddenSkyBlockConstructor;
 
     namespace HiddenBlock {
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         collType?: keyof typeof ig.COLLTYPE;
         size?: Vec2;
         shape?: keyof typeof ig.COLLSHAPE;

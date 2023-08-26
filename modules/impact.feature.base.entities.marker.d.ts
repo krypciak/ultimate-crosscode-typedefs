@@ -6,7 +6,7 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace Marker {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
+        interface Settings extends ig.Entity.Settings {
           dir: keyof typeof ig.ActorEntity.FACE8;
         }
       }

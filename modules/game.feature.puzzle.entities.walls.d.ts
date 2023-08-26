@@ -18,7 +18,7 @@ declare global {
   }
   namespace ig.ENTITY {
     namespace WallBase {
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         size?: Vec2;
         noNavMapBlock?: boolean;
         collType?: keyof typeof ig.COLLTYPE;

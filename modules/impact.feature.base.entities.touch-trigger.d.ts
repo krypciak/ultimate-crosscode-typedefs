@@ -12,7 +12,7 @@ declare global {
     }
     namespace ENTITY {
       namespace TouchTrigger {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
+        interface Settings extends ig.Entity.Settings {
           size: Vec2;
           variable: string;
           type?: keyof typeof ig.TOUCH_TRIGGER_TYPE;
