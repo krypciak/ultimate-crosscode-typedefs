@@ -12,7 +12,7 @@ declare global {
             interface Teleportable {
                 doTeleport(this: this, portal: ig.ENTITY.WaveTeleport): void;
             }
-            interface Settings extends sc.MapModel.MapEntity.Settings {}
+            interface Settings extends ig.Entity.Settings {}
         }
         interface WaveTeleport extends ig.AnimatedEntity {
 

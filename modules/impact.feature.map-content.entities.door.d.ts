@@ -9,7 +9,7 @@ export {};
 declare global {
   namespace ig.ENTITY {
     namespace Door {
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         doorType?: keyof typeof ig.DOOR_TYPE;
         transitionType?: "REGULAR" | "INTER_AREA";
         narrow?: boolean;

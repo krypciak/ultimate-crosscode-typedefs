@@ -10,7 +10,7 @@ declare global {
           info: sc.EnemyInfo;
           count: number;
         }
-        interface Settings extends sc.MapModel.MapEntity.Settings {
+        interface Settings extends ig.Entity.Settings {
           size?: Vec2;
           enemyTypes?: ig.ENTITY.EnemySpawner.Entry[];
           onActiveClear?: boolean;

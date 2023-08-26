@@ -18,7 +18,7 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace BallChanger {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
+        interface Settings extends ig.Entity.Settings {
           ballTime?: number;
           resetBounce?: boolean;
           condition?: string;

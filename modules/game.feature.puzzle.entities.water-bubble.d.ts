@@ -6,7 +6,7 @@ export {};
 declare global {
     namespace ig.ENTITY {
         namespace WaterBubblePanel {
-            interface Settings extends sc.MapModel.MapEntity.Settings {
+            interface Settings extends ig.Entity.Settings {
                 coalCoolTime?: number;
             }
         }

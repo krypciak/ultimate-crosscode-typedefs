@@ -27,7 +27,7 @@ declare global {
     }
     namespace ENTITY {
       namespace EventTrigger {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
+        interface Settings extends ig.Entity.Settings {
           eventType?: keyof typeof ig.EVENT_TYPE;
           startCondition?: string;
           triggerType?: keyof typeof ig.EVENT_TRIGGER_TYPE;

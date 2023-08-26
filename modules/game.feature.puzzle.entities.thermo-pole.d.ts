@@ -15,7 +15,7 @@ declare global {
 
   namespace ig.ENTITY {
     namespace ElementPole {
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         group: string;
         spawnCondition?: string;
         poleType?: keyof typeof sc.TERMO_POLE_TYPE;

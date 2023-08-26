@@ -13,7 +13,7 @@ declare global {
   }
   namespace ig.ENTITY {
     namespace FloorSwitch {
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         variable: string;
         switchType?: keyof typeof sc.FLOOR_SWITCH_TYPE;
         lockCondition?: string | null;

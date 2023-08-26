@@ -6,7 +6,7 @@ export {};
 declare global {
   namespace ig.ENTITY {
     namespace EnemyCounter {
-      interface Settings extends sc.MapModel.MapEntity.Settings {
+      interface Settings extends ig.Entity.Settings {
         enemyGroup: string;
         enemyCount: number;
         preVariable?: string;
