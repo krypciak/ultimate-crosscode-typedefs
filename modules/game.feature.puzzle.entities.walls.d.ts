@@ -24,20 +24,17 @@ declare global {
     namespace ig.ENTITY {
         namespace WallBase {
             interface Settings extends ig.Entity.Settings {
-
-        size?: Vec2;
-        noNavMapBlock?: boolean;
-        collType?: keyof typeof sc.WALL_COLL_TYPES;
-        wallZHeight?: number;
-        condition?: string;
-        skipRender?: boolean;
+                size?: Vec2;
+                noNavMapBlock?: boolean;
+                collType?: keyof typeof sc.WALL_COLL_TYPES;
+                wallZHeight?: number;
+                condition?: string;
+                skipRender?: boolean;
             }
         }
-        interface WallBase extends ig.Entity {
-
-        }
+        interface WallBase extends ig.Entity {}
         interface WallBaseConstructor extends ImpactClass<WallBase> {
-            new (x: number, y: number, z: number, settings: WallBase.Settings): WallBase
+            new (x: number, y: number, z: number, settings: WallBase.Settings): WallBase;
         }
         let WallBase: WallBaseConstructor;
 
@@ -47,11 +44,14 @@ declare global {
                 rightEnd: keyof typeof sc.WALL_HORIZONTAL_ENDS;
             }
         }
-        interface WallHorizontal extends ig.ENTITY.WallBase {
-
-        }
+        interface WallHorizontal extends ig.ENTITY.WallBase {}
         interface WallHorizontalConstructor extends ImpactClass<WallBase> {
-            new (x: number, y: number, z: number, settings: WallHorizontal.Settings): WallHorizontal
+            new (
+                x: number,
+                y: number,
+                z: number,
+                settings: WallHorizontal.Settings,
+            ): WallHorizontal;
         }
         let WallHorizontal: WallBaseConstructor;
 
@@ -61,11 +61,9 @@ declare global {
                 bottomEnd: keyof typeof sc.WALL_VERTICAL_ENDS;
             }
         }
-        interface WallVertical extends ig.ENTITY.WallBase {
-
-        }
+        interface WallVertical extends ig.ENTITY.WallBase {}
         interface WallVerticalConstructor extends ImpactClass<WallBase> {
-            new (x: number, y: number, z: number, settings: WallVertical.Settings): WallVertical
+            new (x: number, y: number, z: number, settings: WallVertical.Settings): WallVertical;
         }
         let WallVertical: WallBaseConstructor;
 

@@ -4,16 +4,12 @@
 export {};
 
 declare global {
-  namespace ig {
-    namespace ENTITY {
-      namespace WaterBubblePanel {
-        interface Settings extends ig.Entity.Settings {
-          coalCoolTime?: number;
-        }
-      }
-    }
-  }
     namespace ig.ENTITY {
+        namespace WaterBubblePanel {
+            interface Settings extends ig.Entity.Settings {
+                coalCoolTime?: number;
+            }
+        }
         interface WaterBubblePanel extends ig.AnimatedEntity {}
         interface WaterBubblePanelConstructor extends ImpactClass<WaterBubblePanel> {}
         let WaterBubblePanel: WaterBubblePanelConstructor;
