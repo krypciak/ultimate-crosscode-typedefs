@@ -21,14 +21,6 @@ declare global {
       FACE_BASE = 7,
     }
 
-    enum COLLSHAPE {
-      RECTANGLE = 1,
-      SLOPE_NE = 2,
-      SLOPE_SE = 3,
-      SLOPE_SW = 4,
-      SLOPE_NW = 5,
-    }
-
 
     namespace Entity {
       interface Settings {

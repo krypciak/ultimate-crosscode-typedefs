@@ -5,21 +5,20 @@
 export {};
 
 declare global {
-  namespace ig {
-    namespace ENTITY {
-      namespace Compressor {
-        interface Settings extends sc.MapModel.MapEntity.Settings {
-          followCamera: boolean;
-          basllSpeed?: number;
-          fastMode?: boolean;
+    namespace ig {
+        namespace ENTITY {
+            namespace Compressor {
+                interface Settings extends sc.MapModel.MapEntity.Settings {
+                    followCamera: boolean;
+                    basllSpeed?: number;
+                    fastMode?: boolean;
+                }
+            }
+            namespace AntiCompressor {
+                interface Settings extends sc.MapModel.MapEntity.Settings { }
+            }
         }
-      }
-      namespace AntiCompressor {
-        interface Settings extends sc.MapModel.MapEntity.Settings { }
-      }
     }
-  }
-}
     namespace sc {
         namespace CompressedBaseEntity {
             interface Settings extends ig.Entity.Settings {}

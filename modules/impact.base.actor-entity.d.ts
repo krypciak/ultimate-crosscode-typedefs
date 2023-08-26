@@ -21,7 +21,6 @@ declare global {
       SOUTH_WEST = 6,
       NORTH_WEST = 7
     }
-    } 
 
     namespace ActorEntity {
       interface WalkAnims {

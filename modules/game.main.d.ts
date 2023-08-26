@@ -19,8 +19,8 @@ declare global {
 
       onGameLoopStart(this: this): void;
       addTeleportMessage(this: this, message: string): void;
-      transitionEnded(this: this): void;
       start(this: this, startMode?: sc.START_MODE, transitionTime?: number): void;
+      transitionEnded(this: this): void;
     }
     interface CrossCodeConstructor extends ImpactClass<CrossCode> {}
     var CrossCode: CrossCodeConstructor;
