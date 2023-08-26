@@ -191,7 +191,7 @@ declare global {
       setBuffText(this: this, text: sc.TextLike, fade?: boolean, id?: sc.ItemID): void;
       setShopPage(this: this, page: number): void;
       updateCart(this: this, itemID: sc.ItemID, amount: number, price: number): void;
-      getTotalCost(this: this): number; q
+      getTotalCost(this: this): number;
       getItemQuantity(this: this, itemID: sc.ItemID, price: number): number;
       sortList(this: this, button: ig.FocusGui): void;
     }
