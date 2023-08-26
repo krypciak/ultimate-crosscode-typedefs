@@ -24,11 +24,12 @@ declare global {
     namespace ig.ENTITY {
         namespace WallBase {
             interface Settings extends ig.Entity.Settings {
+                size?: Vec2;
                 noNavMapBlock?: boolean;
                 collType?: keyof typeof sc.WALL_COLL_TYPES;
-                skipRender?: boolean;
-                condition?: string;
                 wallZHeight?: number;
+                condition?: string;
+                skipRender?: boolean;
             }
         }
         interface WallBase extends ig.Entity {}

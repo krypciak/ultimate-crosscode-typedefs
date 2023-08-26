@@ -4,8 +4,6 @@
 
 export {};
 
-export {};
-
 declare global {
     namespace ig.ENTITY {
         namespace WaveTeleport {
@@ -14,9 +12,7 @@ declare global {
             }
             interface Settings extends ig.Entity.Settings {}
         }
-        interface WaveTeleport extends ig.AnimatedEntity {
-
-        }
+        interface WaveTeleport extends ig.AnimatedEntity {}
         interface WaveTeleportConstructor extends ImpactClass<WaveTeleport> {}
 
         let WaveTeleport: WaveTeleportConstructor;

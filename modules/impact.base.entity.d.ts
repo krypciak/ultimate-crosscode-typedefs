@@ -21,7 +21,6 @@ declare global {
       FACE_BASE = 7,
     }
 
-
     namespace Entity {
       interface Settings {
         size?: Partial<Vec3>;
