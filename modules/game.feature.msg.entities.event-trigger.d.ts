@@ -35,6 +35,7 @@ declare global {
                 interface Settings extends ig.Entity.Settings {
                     eventType?: keyof typeof ig.EVENT_TYPE;
                     startCondition?: string;
+                    endCondition?: string
                     triggerType?: keyof typeof ig.EVENT_TRIGGER_TYPE;
                     loadCondition?: string;
                     event?: any[];
