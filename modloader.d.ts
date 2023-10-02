@@ -31,7 +31,7 @@ declare global {
       export import setModEnabled = modDataStorageM.setModEnabled;
     }
 
-    export import Mod = modM.Mod;
+    export type Mod = modM.Mod;
     namespace Mod {
       export import Dependency = modM.Dependency;
       export import LoadingStage = modM.LoadingStage;
