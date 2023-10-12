@@ -9,7 +9,7 @@ declare global {
       clips: { [path: string]: HTMLAudioElement };
       volume: number;
       format: ig.Sound.FORMAT;
-      context: AudioContext;
+      context: ig.WebAudio;
       buffers: { [path: string]: AudioBuffer };
 
       loadWebAudio(
