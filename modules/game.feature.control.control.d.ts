@@ -11,6 +11,7 @@ declare global {
 
       getMouseX(this: this): number;
       getMouseY(this: this): number;
+      thrown(this: this): boolean;
       autoThrown(this: this): boolean;
       moveDir(
         this: this,
