@@ -18,6 +18,7 @@ declare global {
         sampleRate: number
         version: string
         webAudio: boolean
+        [key: string]: unknown
     },
     gameInfo: { save: string },
   ): void;
