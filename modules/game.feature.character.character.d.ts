@@ -4,7 +4,12 @@ export {};
 
 declare global {
   namespace sc {
-    interface Character extends ig.JsonLoadable {}
+    interface Character extends ig.JsonLoadable {
+      cacheType: 'Character'
+      data: unknown
+      name: string
+      faceImage: ig.Image
+    }
     interface CharacterConstructor extends ImpactClass<Character> {}
     let Character: Character;
 
