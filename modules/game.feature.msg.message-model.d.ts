@@ -9,9 +9,10 @@ export {};
 declare global {
   namespace sc {
     interface MessageModel extends ig.GameAddon, sc.Model {
-      blocking: boolean
+      blocking: boolean;
 
       showMessage(this: this, personName: string, message: string, autoContinue: boolean): void;
+      clearAll(this: this): void;
       setExpression(this: this, personName: string, expression: sc.CharacterExpression): void;
     }
     interface MessageModelConstructor extends ImpactClass<MessageModel> {}
