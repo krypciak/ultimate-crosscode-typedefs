@@ -9,6 +9,15 @@ declare global {
   namespace sc {
     var KEY_BLACK_LIST: Record<ig.KEY, boolean>;
 
+    enum LANGUAGE {
+      ENGLISH = 0,
+      GERMAN = 1,
+      CHINESE = 2,
+      JAPANESE = 3,
+      KOREAN = 4,
+      CHINESE_TRAD = 5,
+    }
+
     enum OPTION_TYPES {
       BUTTON_GROUP = 0,
       ARRAY_SLIDER = 1,
