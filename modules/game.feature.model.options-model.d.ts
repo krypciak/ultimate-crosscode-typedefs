@@ -17,6 +17,14 @@ declare global {
       KOREAN = 4,
       CHINESE_TRAD = 5,
     }
+    var LANGUAGE_MAP: {
+      0: "en_US",
+      1: "de_DE",
+      2: "zh_CN",
+      3: "ja_JP",
+      4: "ko_KR",
+      5: "zh_TW",
+    }
 
     enum OPTION_TYPES {
       BUTTON_GROUP = 0,
