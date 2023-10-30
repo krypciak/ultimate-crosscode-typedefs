@@ -50,7 +50,12 @@ declare global {
     var OptionInfoBox: OptionInfoBoxConstructor;
 
     interface OptionRow extends ig.GuiElementBase {
+      row: number;
+      optionName: string;
       option: sc.OptionDefinition;
+      optionDes: string;
+      local: boolean;
+      divider: boolean;
       nameGui: sc.TextGui;
       typeGui:
         | sc.OPTION_GUIS_DEFS.BUTTON_GROUP
@@ -60,6 +65,7 @@ declare global {
         | sc.OPTION_GUIS_DEFS.CONTROLS
         | sc.OPTION_GUIS_DEFS.LANGUAGE;
       _hasEntered: boolean;
+      _rowGroup: sc.RowButtonGroup;
     }
     interface OptionRowConstructor extends ImpactClass<OptionRow> {
       new (
