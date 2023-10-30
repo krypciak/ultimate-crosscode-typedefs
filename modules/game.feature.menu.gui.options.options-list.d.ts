@@ -25,7 +25,9 @@ declare global {
     interface OptionsTabBox extends ig.GuiElementBase {
       tabs: OptionsTabBox.Tabs;
       tabArray: sc.ItemTabbedBox.TabButton[];
+      rows: (sc.OptionInfoBox | sc.OptionRow)[];
 
+      showMenu(this: this): void
       _rearrangeTabs(this: this): void;
       _createTabButton(
         this: this,
@@ -33,6 +35,7 @@ declare global {
         x: number,
         type: sc.OPTION_CATEGORY,
       ): sc.ItemTabbedBox.TabButton;
+      _createOptionList(this: this, tabIndex: number): void
     }
     interface OptionsTabBoxConstructor extends ImpactClass<OptionsTabBox> {
       new (isLocal: boolean): OptionsTabBox;
