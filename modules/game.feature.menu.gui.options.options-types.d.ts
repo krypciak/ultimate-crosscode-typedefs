@@ -35,6 +35,7 @@ declare global {
 
       interface CHECKBOX extends ig.GuiElementBase {
         button: sc.CheckboxGui;
+        onPressed(this: this, checkbox: sc.CheckboxGui): void
       }
       interface CHECKBOX_CONSTRUCTOR extends ImpactClass<CHECKBOX> {}
 
