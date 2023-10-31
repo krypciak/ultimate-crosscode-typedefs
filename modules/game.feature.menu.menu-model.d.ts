@@ -194,6 +194,16 @@ declare global {
       getTotalCost(this: this): number;
       getItemQuantity(this: this, itemID: sc.ItemID, price: number): number;
       sortList(this: this, button: ig.FocusGui): void;
+      isStart(this: this): boolean;
+      isSkills(this: this): boolean;
+      isEquipment(this: this): boolean;
+      isStatus(this: this): boolean;
+      isSynopsis(this: this): boolean;
+      isMap(this: this): boolean;
+      isSave(this: this): boolean;
+      isOptions(this: this): boolean;
+      isShop(this: this): boolean;
+      isButtonInteractActive(this: this): boolean;
     }
     interface MenuModelConstructor extends ImpactClass<MenuModel> {
       new (): MenuModel;
