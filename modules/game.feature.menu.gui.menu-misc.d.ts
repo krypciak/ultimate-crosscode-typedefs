@@ -199,6 +199,29 @@ declare global {
     }
     var ScrollPane: ScrollPaneConstructor;
 
+
+    namespace Slider {
+      interface Thumb extends ig.GuiElementBase {
+        updateDrawables(this: this, renderer: ig.GuiRenderer): void;
+      }
+    }
+    interface Slider extends ig.GuiElementBase {
+      offset: Vec2
+      inset: { top: number; right: number; bottom: number; left: number };
+      minValue: number;
+      maxValue: number;
+      value: number;
+      vertical: boolean;
+      scaleThumb: boolean;
+      prefWidth: number;
+      prefHeight: number;
+      thumb: sc.Slider.Thumb;
+    }
+    interface SliderConstructor extends ImpactClass<Slider> {
+      new (vertical?: boolean, thumb?: sc.Slider.Thumb, scaleThumb?: boolean): sc.Slider;
+    }
+    var Slider: SliderConstructor;
+
     interface TimeAndMoneyGUI extends sc.MenuPanel {
       gfx: ig.Image;
       timeGfx: ig.Image;
