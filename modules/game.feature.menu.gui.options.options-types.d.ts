@@ -14,7 +14,14 @@ declare global {
       interface BUTTON_GROUP extends ig.GuiElementBase {}
       interface BUTTON_GROUP_CONSTRUCTOR extends ImpactClass<BUTTON_GROUP> {}
 
-      interface ARRAY_SLIDER extends ig.GuiElementBase {}
+      interface ARRAY_SLIDER extends ig.GuiElementBase {
+        slider: sc.OptionFocusSlider
+        _lastVal: number
+        scale: number
+        stepSize: number
+
+        onLeftRight(this: this, direction: boolean): void
+      }
       interface ARRAY_SLIDER_CONSTRUCTOR extends ImpactClass<ARRAY_SLIDER> {}
 
       interface OBJECT_SLIDER extends ig.GuiElementBase {}
