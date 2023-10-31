@@ -24,7 +24,17 @@ declare global {
     }
     var KeyBinderGui: KeyBinderGuiConstructor;
 
+    interface OptionSlider extends sc.Slider {
+      fill: boolean
+      focus: boolean
+    }
+    interface OptionSliderConstructor extends ImpactClass<OptionSlider> {
+      new (a: unknown, b: unknown, c: unknown, d: unknown): OptionSlider
+    }
+    var OptionSlider: OptionSliderConstructor;
+
     interface OptionFocusSlider extends ig.FocusGui {
+      slider: sc.OptionSlider
       snap: boolean;
       clickSound: ig.Sound;
       _hasKeyboardFocus: boolean;
