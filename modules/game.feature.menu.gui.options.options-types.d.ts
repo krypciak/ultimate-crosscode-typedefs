@@ -24,8 +24,14 @@ declare global {
       }
       interface ARRAY_SLIDER_CONSTRUCTOR extends ImpactClass<ARRAY_SLIDER> {}
 
-      interface OBJECT_SLIDER extends ig.GuiElementBase {}
-      interface OBJECT_SLIDER_CONSTRUCTOR extends ImpactClass<OBJECT_SLIDER> {}
+      interface OBJECT_SLIDER extends ig.GuiElementBase {
+        slider: sc.OptionFocusSlider
+        _lastVal: number
+        currentNumber: sc.TextGui | sc.NumberGui
+
+        onLeftRight(this: this, direction: boolean): void
+      }
+      interface OBJECT_SLIDER_CONSTRUCTOR extends ImpactClass<OBJECT_SLIDER> { }
 
       interface CHECKBOX extends ig.GuiElementBase {
         button: sc.CheckboxGui;
