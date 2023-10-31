@@ -46,8 +46,11 @@ declare global {
       getCombatRankDropRate(this: this): number;
       isAssistMode(this: this): boolean;
       setMobilityBlock(this: this, mobilityBlock: keyof sc.GAME_MOBILITY_BLOCK): void;
+      enterTitle(this: this): void;
       enterCutscene(this: this, combatCutscene?: boolean): void;
       enterGame(this: this): void;
+      enterRunning(this: this): void;
+      enterReset(this: this): void;
       enterPrevSubState(this: this): void;
       enterMenu(this: this, force?: Optional<boolean>): void;
       isCutscene(this: this): boolean;

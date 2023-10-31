@@ -7,8 +7,20 @@ declare global {
   function SHOW_INDIEGOGO(): void;
   function GAME_ERROR_CALLBACK(
     error: Error,
-    info: Record<string, unknown>,
-    gameInfo: Record<string, unknown>,
+    info: {
+        '64bit': boolean
+        OS: string
+        browser: string
+        browserVersion: string
+        map: string | undefined
+        nwjsVersion: string
+        platform: string
+        sampleRate: number
+        version: string
+        webAudio: boolean
+        [key: string]: unknown
+    },
+    gameInfo: { save: string },
   ): void;
   function SHOW_SAVE_DIALOG(currentSaveData: string): void;
 
