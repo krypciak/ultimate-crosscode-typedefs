@@ -11,6 +11,7 @@ declare global {
     interface MessageModel extends ig.GameAddon, sc.Model {
       blocking: boolean;
 
+      clearBlocking(this: this): void
       showMessage(this: this, personName: string, message: string, autoContinue: boolean): void;
       clearAll(this: this): void;
       setExpression(this: this, personName: string, expression: sc.CharacterExpression): void;
