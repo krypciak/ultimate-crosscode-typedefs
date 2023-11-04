@@ -9,8 +9,15 @@ declare global {
     interface Control extends ig.Class {
       autoControl: sc.AutoControl;
 
+      _getAttackButton(this: this): ig.BUTTONS;
+      _getSpecialButton(this: this): ig.BUTTONS;
+      _getDashButton(this: this): ig.BUTTONS;
+      _getQuickMenuButton(this: this): ig.BUTTONS;
+      _getMeleeButton(this: this): ig.BUTTONS;
       getMouseX(this: this): number;
       getMouseY(this: this): number;
+      attacking(this: this): boolean;
+      fullScreenAttacking(this: this): boolean;
       thrown(this: this): boolean;
       autoThrown(this: this): boolean;
       moveDir(
