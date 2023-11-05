@@ -28,6 +28,8 @@ declare global {
     interface Physics extends ig.Class {
       cellSize: number;
       _updateCount: number;
+
+      initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
     }
     interface PhysicsConstructor extends ImpactClass<Physics> {
       new (): Physics;
