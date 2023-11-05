@@ -71,7 +71,7 @@ declare global {
       // below are functions not formally defined in ig.Entity,
       // but other relevant classes do check for them.
       varsChanged?(this: this): void;
-      isBallDestroyer?(this: this): boolean;
+      isBallDestroyer?(this: this, collPos: Vec3, collRes: { dir: Vec2 }, c?: boolean): boolean;
       isBallAdjust?(this: this): boolean;
       doBallAdjust?(this: this, pos: Vec3, dir: Vec2, size: Vec3, maxBounce: number): void;
       ballHit?(this: this, ball: ig.Entity): boolean | void;
