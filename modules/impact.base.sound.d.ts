@@ -71,6 +71,7 @@ declare global {
     }
     interface SoundHandleBaseConstructor extends ImpactClass<ig.SoundHandleBase> { new (): ig.SoundHandleBase }
     var SoundHandleBase: ig.SoundHandleBaseConstructor;
+
     interface SoundHandleWebAudio extends ig.SoundHandleBase {
       _buffer: null | AudioBufferSourceNode;
       _volume: number;
@@ -94,14 +95,29 @@ declare global {
     }
     interface SoundHandleWebAudioConstructor extends ImpactClass<ig.SoundHandleWebAudio> { new (): ig.SoundHandleWebAudio }
     var SoundHandleWebAudio: ig.SoundHandleWebAudioConstructor;
+
+    namespace SoundHelper {
+      function playAtEntity(
+        sound: ig.Sound, entity: ig.Entity, isLooped: boolean,
+        settings: SoundPlaySettings, range?: number, type?: ig.SOUND_RANGE_TYPE): void;
+    }
+    type SoundHandle = ig.SoundHandleWebAudio | ig.SoundHandleDefault
+
     namespace Sound {
       interface FORMAT {
         ext: string;
         mime: string;
       }
     }
+
+    interface SoundPlaySettings { /* not real */
+      fadeDuration?: number
+      offset?: number
+      startTime?: number
+      speed?: number
+    }
     interface SoundCommon {
-      play(this: this): void;
+      play(this: this, pos?: boolean, settings?: SoundPlaySettings): ig.SoundHandle
     }
 
     namespace Sound$FORMAT {
