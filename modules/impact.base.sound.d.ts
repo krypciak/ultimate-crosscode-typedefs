@@ -71,6 +71,29 @@ declare global {
     }
     interface SoundHandleBaseConstructor extends ImpactClass<ig.SoundHandleBase> { new (): ig.SoundHandleBase }
     var SoundHandleBase: ig.SoundHandleBaseConstructor;
+    interface SoundHandleWebAudio extends ig.SoundHandleBase {
+      _buffer: null | AudioBufferSourceNode;
+      _volume: number;
+      _speed: number;
+      _time: number;
+      _duration: number;
+      _offset: number;
+      _startTime: number;
+      _nodeSource: null | ig.WebAudioBufferGain;
+      _nodePosition: PannerNode;
+      _loop: boolean;
+      _playing: boolean;
+      _fadeTimer: number;
+      _fadeIn: boolean;
+      _fadeDuration: number;
+      _contextTimeOnStart: number;
+      _contextTimeOnPause: number;
+      
+      _setPosition(this: this): void;
+      play(this: this): void;
+    }
+    interface SoundHandleWebAudioConstructor extends ImpactClass<ig.SoundHandleWebAudio> { new (): ig.SoundHandleWebAudio }
+    var SoundHandleWebAudio: ig.SoundHandleWebAudioConstructor;
     namespace Sound {
       interface FORMAT {
         ext: string;
