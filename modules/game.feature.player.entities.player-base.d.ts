@@ -18,6 +18,7 @@ declare global {
       }
     }
     interface PlayerBaseEntity extends ig.ENTITY.Combatant {
+      maxJumpHeight: number;
       guard: PlayerBaseEntity.Guard;
 
       damageShield(this: this, damage: number): boolean;
