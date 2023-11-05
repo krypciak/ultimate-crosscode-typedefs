@@ -18,6 +18,9 @@ declare global {
       context: ig.WebAudio;
       buffers: { [path: string]: AudioBuffer };
 
+      playSoundHandle(this: this, a: ig.SoundHandleBase, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
+      _solveGroupRequests(this: this, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
+      connectSound(this: this, connectObj: { connect(gain: GainNode): void }): void;
       loadWebAudio(
         this: this,
         path: string,
