@@ -95,6 +95,11 @@ declare global {
       loadingComplete(this: this): void;
       update(this: this): void;
       varsChangedDeferred(this: this): void;
+
+      trace(
+        this: this, res: ig.Physics.TraceResult, x: number, y: number, z: number, vx: number, vy: number,
+        width: number, height: number, zHeight: number, collType: ig.COLLTYPE,
+        entryException: null, collisionList: any[], onGround?: boolean): boolean;
     }
     interface GameConstructor extends ImpactClass<Game> {
       new (): Game;
