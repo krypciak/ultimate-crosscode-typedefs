@@ -50,6 +50,27 @@ declare global {
     interface SoundWebAudioConstructor extends ImpactClass<SoundWebAudio>, SoundConstructorCommon {}
     var SoundWebAudio: SoundWebAudioConstructor;
 
+    interface SoundHandleBase extends ig.Class {
+      pos: null | {
+        point: Vec2;
+        entity: ig.Entity | null;
+        align: ig.ENTITY_ALIGN | null;
+        offset: null;
+        range: number;
+        rangeType: ig.SOUND_RANGE_TYPE;
+      }
+      offset: Vec2;
+
+      setFixPosition(this: this, point: Vec3, range?: number, type?: ig.SOUND_RANGE_TYPE): void;
+      setEntityPosition(this: this, entity: ig.Entity, align: ig.ENTITY_ALIGN, offset: null, range?: number, type?: ig.SOUND_RANGE_TYPE): void;
+      _updateEntityPos(this: this, force?: boolean): void;
+
+      isLooping(this: this): boolean;
+      getPlayTime(this: this): number;
+      stop(this: this): void;
+    }
+    interface SoundHandleBaseConstructor extends ImpactClass<ig.SoundHandleBase> { new (): ig.SoundHandleBase }
+    var SoundHandleBase: ig.SoundHandleBaseConstructor;
     namespace Sound {
       interface FORMAT {
         ext: string;
