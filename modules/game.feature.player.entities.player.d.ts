@@ -78,6 +78,7 @@ declare global {
       dashTimer: number;
       dashBlock: number;
       charging: ig.ENTITY.Player.Charging;
+      floating: boolean;
       isPlayer: true;
       
       updateSkinAura(this: this): void;
