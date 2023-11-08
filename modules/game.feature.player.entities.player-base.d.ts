@@ -18,6 +18,10 @@ declare global {
       }
     }
     interface PlayerBaseEntity extends ig.ENTITY.Combatant {
+      configs: {
+        normal: ig.ActorConfig;
+        aiming: ig.ActorConfig;
+      };
       maxJumpHeight: number;
       guard: PlayerBaseEntity.Guard;
 
