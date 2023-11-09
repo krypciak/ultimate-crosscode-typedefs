@@ -28,7 +28,7 @@ declare global {
     function length(v: Vec2, newLength: number, dest?: Optional<Vec2>): Vec2;
     function limit(v: Vec2, min: number, max: number, dest?: Optional<Vec2>): Vec2;
     function normalize(v: Vec2, dest?: Optional<Vec2>): Vec2;
-    function clockangle(v: Vec2): Vec2;
+    function clockangle(v: Vec2): number;
     function angle(v1: Vec2, v2: Vec2): number;
     function angle3Point(start: Vec2, dest1: Vec2, dest2: Vec2): number;
     function areClockwise(v1: Vec2, v2: Vec2): boolean;
