@@ -11,6 +11,8 @@ declare global {
     }
 
     interface EventManager extends ig.Class {
+      blockingEventCall: ig.EventCall;
+      
       callEvent(
         this: this,
         event: ig.Event,
@@ -21,6 +23,9 @@ declare global {
         callEntity?: ig.Entity,
         data?: unknown
       ): void
+      clear(this: this): void;
+      _startEventCall(this: this, event: ig.EventCall): void;
+      _endEventCall(this: this, event: ig.EventCall): void;
     }
     interface EventManagerConstructor extends ImpactClass<EventManager> {
       new (): EventManager;
