@@ -99,7 +99,7 @@ declare global {
     namespace SoundHelper {
       function playAtEntity(
         sound: ig.Sound, entity: ig.Entity, isLooped: boolean,
-        settings: SoundPlaySettings, range?: number, type?: ig.SOUND_RANGE_TYPE): void;
+        settings: SoundPlaySettings, range?: number, type?: ig.SOUND_RANGE_TYPE): ig.SoundHandle;
     }
     type SoundHandle = ig.SoundHandleWebAudio | ig.SoundHandleDefault
 
