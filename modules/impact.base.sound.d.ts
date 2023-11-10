@@ -72,6 +72,11 @@ declare global {
     interface SoundHandleBaseConstructor extends ImpactClass<ig.SoundHandleBase> { new (): ig.SoundHandleBase }
     var SoundHandleBase: ig.SoundHandleBaseConstructor;
 
+    interface SoundHandleDefault extends ig.SoundHandleBase {}
+    interface SoundHandleDefaultConstructor extends ImpactClass<SoundHandleDefault> { new (): ig.SoundHandleDefault }
+    var SoundHandleDefault: ig.SoundHandleDefault
+
+
     interface SoundHandleWebAudio extends ig.SoundHandleBase {
       _buffer: null | AudioBufferSourceNode;
       _volume: number;
