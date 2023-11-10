@@ -5,6 +5,10 @@ export {};
 
 declare global {
   namespace ig {
+    interface ActorConfig extends ig.Class {
+      clearOverwrite(this: this): void;
+    }
+
     enum ActorEntity$FACE4 {
       NORTH = 0,
       EAST = 1,
