@@ -5,6 +5,8 @@ export {}
 
 declare global {
     namespace sc {
+        interface InputForcerGui extends ig.GuiElementBase { }
+
         namespace InputForcer {
             interface Entry {
                 cancelAction: boolean
