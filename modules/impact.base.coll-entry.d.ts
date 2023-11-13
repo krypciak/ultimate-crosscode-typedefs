@@ -34,6 +34,7 @@ declare global {
       baseZPos: number;
       shadow: CollEntry.Shadow;
       vel: Vec3;
+      shape?: ig.COLLSHAPE;
 
       setSize(x: number, y: number, z: number): void;
       setPadding(this: this, x: number, y: number): void;
