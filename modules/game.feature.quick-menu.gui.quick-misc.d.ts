@@ -10,6 +10,12 @@ export {};
 
 declare global {
   namespace sc {
+    interface QuickFocusScreen extends ig.GuiElementBase {
+      addSubGui(this: this, gui: ig.GuiElementBase): void
+    }
+    interface QuickFocusScreenConstructor extends ImpactClass<QuickFocusScreen> { new (): QuickFocusScreen }
+    var QuickFocusScreen: QuickFocusScreenConstructor
+
     interface QuickBorderArrowLevelBox extends ig.GuiElementBase {
       ninepatch: ig.NinePatch;
       levelNumber: sc.NumberGui;
