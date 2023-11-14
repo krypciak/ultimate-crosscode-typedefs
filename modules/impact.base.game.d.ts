@@ -48,6 +48,7 @@ declare global {
       paused: boolean;
       mapName: string;
       entities: ig.Entity[];
+      shownEntities: ig.Entity[];
       events: ig.EventManager;
       physics: ig.Physics;
       playerEntity: ig.ENTITY.Player;
