@@ -46,14 +46,23 @@ declare global {
 
 
         namespace QUICK_MENU_TYPES {
-            interface Analyzable extends sc.QuickMenuTypesBase { }
-            interface NPC extends sc.QuickMenuTypesBase { }
+            interface Analyzable extends sc.QuickMenuTypesBase {
+                nameGui: sc.QuickArrowBox
+                displayNameAllTime: boolean
+            }
+            interface AnalyzableConstructor extends ImpactClass<Analyzable> { new (): Analyzable }
+            var Analyzable: AnalyzableConstructor
+
+            interface NPC extends sc.QuickMenuTypesBase {
+                nameGui: sc.QuickArrowBox
+                displayNameAllTime: boolean
+            }
+            interface NPCConstructor extends ImpactClass<NPC> { new (): NPC }
+            var NPC: NPCConstructor
+
             interface Enemy extends sc.QuickMenuTypesBase { }
-        }
-        var QUICK_MENU_TYPES: {
-            Analyzable: sc.QUICK_MENU_TYPES.Analyzable
-            NPC: sc.QUICK_MENU_TYPES.NPC
-            Enemy: sc.QUICK_MENU_TYPES.Enemy
+            interface EnemyConstructor extends ImpactClass<Enemy> { new (): Enemy }
+            var Enemy: EnemyConstructor
         }
     }
 }
