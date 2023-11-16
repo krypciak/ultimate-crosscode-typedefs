@@ -232,6 +232,9 @@ declare global {
       values: ig.Storage.GlobalsData.Options;
 
       dispatchKeySwappedEvent(this: this): void;
+      set<K extends keyof sc.OPTIONS_DEFINITION.KnownTypesMap>(
+        this: this, key: K, value: sc.OPTIONS_DEFINITION.KnownTypesMap[K]['init']): void;
+      set(this: this, key: string, value: any): void;
       get<K extends keyof sc.OPTIONS_DEFINITION.KnownTypesMap>(
         this: this,
         key: K,
