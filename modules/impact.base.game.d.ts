@@ -50,6 +50,7 @@ declare global {
       entities: ig.Entity[];
       shownEntities: ig.Entity[];
       events: ig.EventManager;
+      renderer: ig.Renderer2d;
       physics: ig.Physics;
       playerEntity: ig.ENTITY.Player;
       addons: Game.Addons;
