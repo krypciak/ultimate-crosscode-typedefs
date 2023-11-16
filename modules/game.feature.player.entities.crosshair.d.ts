@@ -5,6 +5,9 @@ export {};
 declare global {
   namespace ig.ENTITY {
     interface Crosshair extends ig.Entity {
+      _aimDir: Vec2
+
+      deferredUpdate(this: this): void
       _updateCrossHair(
         this: this,
         pos: Vec3,
