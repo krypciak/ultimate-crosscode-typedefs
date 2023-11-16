@@ -33,7 +33,10 @@ declare global {
       attackInfo: sc.AttackInfo;
       remainingHits: number;
       timer: number;
+      speed: number;
+      speedFactor: number;
 
+      changeSpeed(this: this, speed: number, applySpeedFactor?: boolean): void
       destroy(this: this): void;
     }
     interface BallConstructor extends ImpactClass<Ball> {
