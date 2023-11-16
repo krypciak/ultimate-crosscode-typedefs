@@ -92,8 +92,9 @@ declare global {
         reloadCache?: Optional<boolean>,
       ): void;
       isTeleporting(this: this): boolean;
+      preloadLevel(this: this, mapName: string): void;
       // TODO: map data
-      loadLevel(this: this, data: any, clearCache?: boolean, reloadCache?: boolean): void;
+      loadLevel(this: this, data: sc.MapModel.Map, clearCache?: boolean, reloadCache?: boolean): void;
       loadingComplete(this: this): void;
       update(this: this): void;
       varsChangedDeferred(this: this): void;
