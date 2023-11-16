@@ -32,6 +32,22 @@ declare global {
     }
     namespace ig {
         namespace ENTITY {
+            namespace BounceSwitch {
+                interface Settings {}
+            }
+            interface BounceSwitch extends ig.AnimatedEntity {
+                effects: ig.EffectSheet
+                group: string
+                isOn: boolean
+
+                ballHit(this: this, entity: ig.Entity | ig.ENTITY.Ball): boolean
+                onGroupResolve(this: this): void
+            }
+            interface BounceSwitchConstructor extends ImpactClass<BounceSwitch> {
+                new (x: number, y: number, z: number, settings: ig.ENTITY.BounceSwitch.Settings): BounceSwitch
+            }
+            var BounceSwitch: BounceSwitchConstructor
+            
             namespace BounceBlock {
                 interface Settings {}
             }
