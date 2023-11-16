@@ -52,10 +52,16 @@ declare global {
                 interface Settings {}
             }
             interface BounceBlock extends ig.AnimatedEntity {
-                blockState: number
+                effects: ig.EffectSheet
+                group: string
+                blockState: 0 | 1 | 2
+                timer: ig.WeightTimer
+                ballTime: number
+
+                onGroupResolve(this: this, hide?: boolean): void
             }
             interface BounceBlockConstructor extends ImpactClass<BounceBlock> {
-                new(x: number, y: number, z: number, settings: ig.ENTITY.BounceBlock.Settings): BounceBlock
+                new (x: number, y: number, z: number, settings: ig.ENTITY.BounceBlock.Settings): BounceBlock
             }
             var BounceBlock: BounceBlockConstructor
         }
