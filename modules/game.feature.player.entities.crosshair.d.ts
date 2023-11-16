@@ -4,6 +4,9 @@ export {};
 
 declare global {
   namespace ig.ENTITY {
+    namespace Crosshair {
+      interface Settings {}
+    }
     interface Crosshair extends ig.Entity {
       _aimDir: Vec2
 
@@ -21,7 +24,9 @@ declare global {
         s?: ig.Entity
       ): void;
     }
-    interface CrosshairConstructor extends ImpactClass<Crosshair> {}
+    interface CrosshairConstructor extends ImpactClass<Crosshair> {
+      new (x: number, y: number, z: number, settings: ig.ENTITY.Crosshair.Settings): Crosshair
+    }
     var Crosshair: CrosshairConstructor;
 
     interface CrosshairDot extends ig.AnimatedEntity {}
