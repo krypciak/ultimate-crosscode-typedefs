@@ -30,7 +30,6 @@ declare global {
       interface Settings extends ig.Entity.Settings {}
     }
     interface Ball extends ig.ENTITY.Projectile {
-      isBall?: boolean;
       attackInfo: sc.AttackInfo;
       remainingHits: number;
       timer: number;
