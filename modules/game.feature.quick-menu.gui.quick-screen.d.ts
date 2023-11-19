@@ -21,6 +21,9 @@ declare global {
             cursor: sc.QuickMenuAnalysisCursor
 
             show(this: this): void
+            hide(this: this): void
+            enter(this: this): void
+            exit(this: this): void
         }
         interface QuickMenuAnalysisConstructor extends ImpactClass<QuickMenuAnalysis> {
             new(): QuickMenuAnalysis
