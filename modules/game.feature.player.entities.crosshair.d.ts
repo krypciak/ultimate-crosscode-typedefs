@@ -8,6 +8,7 @@ declare global {
       interface Settings {}
     }
     interface Crosshair extends ig.Entity {
+      active: boolean
       _aimDir: Vec2
 
       deferredUpdate(this: this): void
