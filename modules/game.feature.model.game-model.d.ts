@@ -35,6 +35,7 @@ declare global {
     let GAME_MOBILITY_BLOCK: GAME_MOBILITY_BLOCK;
 
     interface GameModel extends ig.GameAddon, sc.Model {
+      currentState: sc.GAME_MODEL_STATE;
       currentSubState: sc.GAME_MODEL_SUBSTATE;
       prevSubState: sc.GAME_MODEL_SUBSTATE;
       player: sc.PlayerModel;
@@ -77,6 +78,11 @@ declare global {
       DREAM_MODE_CHANGE = 9
     }
 
+    enum GAME_MODEL_STATE {
+      TITLE = 0,
+      GAME = 1,
+      CUTSCENE = 2
+    }
     enum GAME_MODEL_SUBSTATE {
       RUNNING = 0,
       TELEPORT = 1,
