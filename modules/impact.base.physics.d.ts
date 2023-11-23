@@ -28,6 +28,7 @@ declare global {
     interface Physics extends ig.Class {
       cellSize: number;
       _updateCount: number;
+      _trackEntityTouch: boolean;
 
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
     }
