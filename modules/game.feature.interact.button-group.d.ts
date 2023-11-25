@@ -1,14 +1,20 @@
 // requires impact.feature.interact.button-interact
 
-export {};
+export { };
 
 declare global {
   namespace sc {
+    interface MouseButtonGroup extends ig.ButtonGroup { }
+    interface MouseButtonGroupConstructor extends ImpactClass<MouseButtonGroup> {
+      new(): MouseButtonGroup
+    }
+    var MouseButtonGroup: MouseButtonGroupConstructor
+    
     interface ButtonGroup extends ig.ButtonGroup {
-      
+
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {
-      new (): sc.ButtonGroup;
+      new(): sc.ButtonGroup;
     }
     var ButtonGroup: ButtonGroupConstructor;
 
@@ -25,7 +31,7 @@ declare global {
       stepUp(this: this): void;
     }
     interface RowButtonGroupConstructor extends ImpactClass<RowButtonGroup> {
-      new (): sc.RowButtonGroup
+      new(): sc.RowButtonGroup
     }
     var RowButtonGroup: RowButtonGroupConstructor;
   }
