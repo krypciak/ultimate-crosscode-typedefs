@@ -32,7 +32,17 @@ declare global {
                 skipRender?: boolean;
             }
         }
-        interface WallBase extends ig.Entity {}
+        interface WallBase extends ig.Entity {
+            condition: ig.VarCondition
+            active: boolean
+            wallCollType: keyof typeof sc.WALL_COLL_TYPES
+            wallZHeight: number
+            wallBlockers: ig.ENTITY.WallBlocker[]
+            skipRender: boolean
+            noNavMapBlock: boolean
+
+            updateWallBlockers(this: this): void
+        }
         interface WallBaseConstructor extends ImpactClass<WallBase> {
             new (x: number, y: number, z: number, settings: WallBase.Settings): WallBase;
         }
