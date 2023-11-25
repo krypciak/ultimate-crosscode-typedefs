@@ -24,12 +24,14 @@ declare global {
             typeIcon: ig.ImageGui
 
             setIconColor(this: this, color: sc.ANALYSIS_COLORS): void
-            alignGuiPosition(this: this): void
+            show(this: this, stateTransition?: string): void
+            hide(this: this, stateTransition?: string): void
+            alignGuiPosition(this: this, x?: number, y?: number): void
             onAnalysisEnter(this: this): void
             onAnalysisExit(this: this): void
         }
         interface QuickMenuTypesBaseSettings {
-            type: string
+            type: keyof typeof sc.QUICK_MENU_TYPES
             entity: ig.Entity
             displayName?: string
             displayTrigger?: unknown
@@ -50,18 +52,24 @@ declare global {
                 nameGui: sc.QuickArrowBox
                 displayNameAllTime: boolean
             }
-            interface AnalyzableConstructor extends ImpactClass<Analyzable> { new (): Analyzable }
+            interface AnalyzableConstructor extends ImpactClass<Analyzable> {
+                new (type: string, settings: sc.QuickMenuTypesBaseSettings, screen: sc.QuickFocusScreen): Analyzable
+            }
             var Analyzable: AnalyzableConstructor
 
             interface NPC extends sc.QuickMenuTypesBase {
                 nameGui: sc.QuickArrowBox
                 displayNameAllTime: boolean
             }
-            interface NPCConstructor extends ImpactClass<NPC> { new (): NPC }
+            interface NPCConstructor extends ImpactClass<NPC> {
+                new (type: string, settings: sc.QuickMenuTypesBaseSettings, screen: sc.QuickFocusScreen): NPC 
+            }
             var NPC: NPCConstructor
 
             interface Enemy extends sc.QuickMenuTypesBase { }
-            interface EnemyConstructor extends ImpactClass<Enemy> { new (): Enemy }
+            interface EnemyConstructor extends ImpactClass<Enemy> {
+                new (type: string, settings: sc.QuickMenuTypesBaseSettings, screen: sc.QuickFocusScreen): Enemy
+            }
             var Enemy: EnemyConstructor
         }
     }
