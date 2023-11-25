@@ -80,10 +80,21 @@ declare global {
         namespace WallBlocker {
             interface Settings extends ig.Entity.Settings {
                 collType: keyof typeof sc.WALL_COLL_TYPES;
+                noNavMapBlock: boolean
             }
         }
         interface WallBlocker extends ig.Entity {
+            maxHeight: number
             colorGfx: ig.DoubleColor;
+            maxAplha: number
+            timer: number
+            MOVE_TIMER: number
+            GLOW_TIMER: number
+            skipRender: boolean
+            navBlocker: unknown // ig.NavBlocker
+            noNavMapBlock: boolean
+
+            setActive(this: this, isBaseActive: boolean, isActive: boolean): void
         }
         interface WallBlockerConstructor extends ImpactClass<WallBlocker> {
             new (x: number, y: number, z: number, settings: WallBlocker.Settings): WallBlocker;
