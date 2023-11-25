@@ -16,9 +16,12 @@ declare global {
         }
         var QuickMenuAnalysisCursor: QuickMenuAnalysisCursorConstructor
         interface QuickMenuAnalysis extends ig.GuiElementBase {
+            buttonGroup: sc.MouseButtonGroup
             entities: sc.QuickMenuTypesBase[]
             _cursorPos: Vec2
             cursor: sc.QuickMenuAnalysisCursor
+            iconContainer: ig.GuiElementBase
+            focusContainer: sc.QuickFocusScreen
 
             show(this: this): void
             hide(this: this): void
