@@ -91,6 +91,10 @@ declare global {
       SOUTH = 3
     }
 
+    namespace EntityTools {
+      function isInScreen(entity: ig.Entity, x?: number, y?: number): boolean
+    }
+
     enum COLLTYPE {
       NONE = 0,
       IGNORE = 1,
