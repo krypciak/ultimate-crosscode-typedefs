@@ -22,6 +22,11 @@ declare global {
 
             enterQuickMenu(this: this): void
             exitQuickMenu(this: this): void
+            isDeviceSynced(this: this): boolean
+            isQuickNone(this: this): boolean
+            isQuickItems(this: this): boolean
+            isQuickParty(this: this): boolean
+            isQuickCheck(this: this): boolean
         }
 
         interface QuickMenuModelConstructor extends ImpactClass<QuickMenuModel> { new (): QuickMenuModel }
