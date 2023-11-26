@@ -43,11 +43,6 @@ declare global {
       undoTransform(this: this): void;
     }
 
-    namespace GUI {
-    }
-    interface GUI {}
-    var GUI: GUI;
-
     enum GUI_ALIGN {
       Y_TOP,
       Y_CENTER,
@@ -206,7 +201,7 @@ declare global {
       setAlign(this: this, x: ig.GUI_ALIGN, y: ig.GUI_ALIGN): void;
       isVisible(this: this): boolean;
       getChildGuiIndex(this: this, gui: ig.GuiElementBase): number;
-      getChildGuiByIndex(this: this, index: number): ig.GuiElementBase;
+      getChildGuiByIndex(this: this, index: number): ig.GuiHook;
       addChildGui(this: this, guiElement: ig.GuiElementBase): void;
       insertChildGui(this: this, guiElement: ig.GuiElementBase, index: number): void;
       removeChildGui(this: this, guiElement: ig.GuiElementBase): void;
