@@ -23,6 +23,7 @@ declare global {
             color: sc.ANALYSIS_COLORS
             typeIcon: ig.ImageGui
 
+            isMouseOver(this: this): boolean
             setIconColor(this: this, color: sc.ANALYSIS_COLORS): void
             show(this: this, stateTransition?: string): void
             hide(this: this, stateTransition?: string): void
