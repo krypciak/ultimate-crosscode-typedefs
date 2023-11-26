@@ -30,19 +30,22 @@ declare global {
     var MapInteractIcon: MapInteractIconConstructor;
 
     interface MapInteractEntry extends ig.Class {
-      entity: unknown
-      handler: unknown
+      entity: ig.Entity
+      handler: ig.Entity
       offset: unknown
       state: sc.INTERACT_ENTRY_STATE
       icon: sc.MapInteractIcon
       interrupting: boolean
       zCondition: sc.INTERACT_Z_CONDITION
-      gui: unknown
+      gui: ig.GUI.Interact
       blockedDuringCombat: boolean
 
       setIcon(this: this, icon: sc.MapInteractIcon): void;
     }
-    interface MapInteractEntryConstructor extends ImpactClass<MapInteractEntry> {}
+    interface MapInteractEntryConstructor extends ImpactClass<MapInteractEntry> {
+      new (entity: ig.Entity, handler: ig.Entity, icon: sc.MapInteractIcon,
+        zCondition: sc.INTERACT_Z_CONDITION, interrupting: boolean): MapInteractEntry
+    }
     var MapInteractEntry: MapInteractEntryConstructor;
   }
 }
