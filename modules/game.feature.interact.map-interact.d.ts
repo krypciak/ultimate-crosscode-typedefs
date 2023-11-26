@@ -14,6 +14,10 @@ declare global {
       FOCUS = 4,
       RUNNING = 5,
     }
+    enum INTERACT_Z_CONDITION {
+      SAME_Z = 1,
+      Z_RANGE_OVERLAP = 2
+    }
 
     interface MapInteractIcon extends ig.Class {}
     interface MapInteractIconConstructor extends ImpactClass<MapInteractIcon> {
@@ -26,6 +30,16 @@ declare global {
     var MapInteractIcon: MapInteractIconConstructor;
 
     interface MapInteractEntry extends ig.Class {
+      entity: unknown
+      handler: unknown
+      offset: unknown
+      state: sc.INTERACT_ENTRY_STATE
+      icon: sc.MapInteractIcon
+      interrupting: boolean
+      zCondition: sc.INTERACT_Z_CONDITION
+      gui: unknown
+      blockedDuringCombat: boolean
+
       setIcon(this: this, icon: sc.MapInteractIcon): void;
     }
     interface MapInteractEntryConstructor extends ImpactClass<MapInteractEntry> {}
