@@ -51,5 +51,13 @@ declare global {
       new (entity: ig.Entity, text: string, time: number, align?: SmallBoxAlign, offY?: number): SmallEntityBox;
     }
     let  SmallEntityBox: SmallEntityBoxConstructor;
+
+    interface SmallBlackBoxGui extends ig.BoxGui {
+      text: unknown
+    }
+    interface SmallBlackBoxGuiConstructor extends ImpactClass<SmallBlackBoxGui> {
+      new(width: number): SmallBlackBoxGui
+    }
+    var SmallBlackBoxGui: SmallBlackBoxGuiConstructor
   }
 }
