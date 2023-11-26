@@ -25,11 +25,20 @@ declare global {
         }
         interface Door extends ig.AnimatedEntity {
             doorType: keyof typeof ig.DOOR_TYPE
+            condition: ig.VarCondition
             map: string
             marker: string
             dir: keyof typeof ig.ActorEntity.FACE4
             active: boolean
-            blockEventCondition: string
+            openTimer: number
+            hasDoorMat: boolean
+            hasDoorGlow: boolean
+            hideManager?: ig.EntityHideManager
+            blockEvent: ig.Event
+            blockEventCondition: ig.VarCondition
+            openEffect: ig.EffectHandle
+            sounds: { activate: ig.Sound, deactivate: ig.Sound }
+            fx: { sheet: ig.EffectSheet }
         }
         interface DoorConstructor extends ImpactClass<Door> {
             new(x: number, y: number, z: number, settings: ig.ENTITY.Door.Settings): Door
