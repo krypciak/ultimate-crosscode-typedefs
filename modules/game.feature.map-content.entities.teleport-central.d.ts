@@ -24,10 +24,21 @@ declare global {
             }
         }
         interface TeleportField extends ig.AnimatedEntity {
+            centralName: string
             map: string
             marker: string
             dir: keyof typeof ig.ActorEntity.FACE4
-            blockEventCondition: string
+            glowHandle: ig.EffectHandle
+            glowFxReplace: ig.EffectHandle
+            hideFxReplace: ig.EffectHandle
+            initialized: boolean
+            longTelCond: ig.VarCondition
+            teleportIcon: sc.MapInteractIcon
+            interactEntry: sc.MapInteractEntry
+            effects: { upgrade: ig.EffectSheet, puzzle: ig.EffectSheet, teleport: ig.EffectSheet }
+            blockEvent?: ig.Event
+            blockEventCondition?: ig.VarCondition
+            gfxType: unknown
         }
         interface TeleportFieldConstructor extends ImpactClass<TeleportField> {
             new(x: number, y: number, z: number, settings: ig.ENTITY.TeleportField.Settings): TeleportField
