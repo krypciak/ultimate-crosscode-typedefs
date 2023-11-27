@@ -27,7 +27,9 @@ declare global {
 
       damageShield(this: this, damage: number): boolean;
     }
-    interface PlayerBaseEntityConstructor extends ImpactClass<PlayerBaseEntity> {}
+    interface PlayerBaseEntityConstructor extends ImpactClass<PlayerBaseEntity> {
+      new(x: number, y: number, z: number, settings: ig.Entity.Settings): PlayerBaseEntity
+    }
     var PlayerBaseEntity: PlayerBaseEntityConstructor;
   }
 }
