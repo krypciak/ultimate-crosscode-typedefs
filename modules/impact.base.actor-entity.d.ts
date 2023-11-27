@@ -6,8 +6,16 @@ export {};
 declare global {
   namespace ig {
     interface ActorConfig extends ig.Class {
+      empty: boolean
+      data: Record<string, unknown>
+      original: unknown
+
       clearOverwrite(this: this): void;
     }
+    interface ActorConfigConstructor extends ImpactClass<ActorConfig> {
+      new(data: unknown, parentConfig: unknown): ActorConfig
+    }
+    var ActorConfig: ActorConfigConstructor
 
     enum ActorEntity$FACE4 {
       NORTH = 0,
