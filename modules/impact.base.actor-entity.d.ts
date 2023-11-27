@@ -62,18 +62,24 @@ declare global {
       face: Vec2;
       animationFixed: boolean;
       walkAnims: ActorEntity.WalkAnims;
+      defaultConfig: ig.ActorConfig
+      jumpingEnabled: boolean
+      jumping: boolean
+      floatJump: number
+      preJumpStats: { maxVel: number, accelSpeed: number, zGravityFactor: number }
 
+      setDefaultConfig(this: this, config: ig.ActorConfig): void
+      setAttribute(this: this, key: string, value: unknown): void;
+      getAttribute(this: this, key: string): unknown;
+      getTarget(this: this): Optional<ig.ActorEntity>;
       setAction(
         this: this,
         action: ig.Action,
         keepState?: Optional<boolean>,
         noStateReset?: Optional<boolean>,
       ): void;
-      getTarget(this: this): Optional<ig.ActorEntity>;
-      setAttribute(this: this, key: string, value: unknown): void;
-      getAttribute(this: this, key: string): unknown;
-      storeWalkAnims(this: this, name: string, config: ig.ActorEntity.WalkAnims): void;
       setWalkAnims(this: this, config: string | ig.ActorEntity.WalkAnims): void;
+      storeWalkAnims(this: this, name: string, config: ig.ActorEntity.WalkAnims): void;
     }
     interface ActorEntityConstructor extends ImpactClass<ActorEntity> {
       FACE4: typeof ActorEntity$FACE4
