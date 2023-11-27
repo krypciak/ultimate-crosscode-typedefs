@@ -24,6 +24,7 @@ declare global {
     }
     interface PartyMemberModel extends ig.Class, sc.Model {
       config: sc.PlayerConfig;
+      animSheet: ig.AnimationSheet;
       params: sc.CombatParams;
       elementConfigs: Record<sc.ELEMENT, sc.PlayerSubConfig>;
       healing: PartyMemberModel.Healing;
