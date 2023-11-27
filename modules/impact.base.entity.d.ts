@@ -122,10 +122,12 @@ declare global {
       interface Settings extends ig.Entity.Settings {}
     }
     interface AnimatedEntity extends ig.Entity {
+      animSheet: ig.AnimationSheet
       animState: ig.AnimationState;
+      animSpeedFactor: number
       currentAnim: string;
 
-      initAnimations(this: this, sheet: ig.AnimationSheet | string | unknown): void;
+      initAnimations(this: this, sheet?: ig.AnimationSheet | string | unknown): void;
       setCurrentAnim(this: this, name: string, reset?: boolean, followUp?: Optional<string>, force?: boolean, callbackOnFinish?: boolean): void;
     }
     interface AnimatedEntityConstructor extends ImpactClass<AnimatedEntity> {
