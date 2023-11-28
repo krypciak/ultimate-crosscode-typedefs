@@ -92,6 +92,7 @@ declare global {
     }
 
     namespace EntityTools {
+      function getGroundEntity(entity: ig.Entity): Optional<ig.Entity>
       function isInScreen(entity: ig.Entity, x?: number, y?: number): boolean
     }
 
