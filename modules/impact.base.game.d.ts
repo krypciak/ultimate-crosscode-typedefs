@@ -49,6 +49,9 @@ declare global {
       mapName: string;
       entities: ig.Entity[];
       shownEntities: ig.Entity[];
+      maxLevel: number
+      minLevelZ: number
+      masterLevel: number
       events: ig.EventManager;
       renderer: ig.Renderer2d;
       physics: ig.Physics;
