@@ -84,6 +84,8 @@ declare global {
     interface ActorEntityConstructor extends ImpactClass<ActorEntity> {
       FACE4: typeof ActorEntity$FACE4
       FACE8: typeof ActorEntity$FACE8
+
+      new (x: number, y: number, z: number, settings: ig.Entity.Settings): ig.ActorEntity
     }
     var ActorEntity: ActorEntityConstructor;
   }
