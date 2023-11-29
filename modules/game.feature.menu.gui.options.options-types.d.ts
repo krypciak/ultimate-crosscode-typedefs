@@ -14,14 +14,28 @@ declare global {
       interface BUTTON_GROUP extends ig.GuiElementBase {}
       interface BUTTON_GROUP_CONSTRUCTOR extends ImpactClass<BUTTON_GROUP> {}
 
-      interface ARRAY_SLIDER extends ig.GuiElementBase {}
+      interface ARRAY_SLIDER extends ig.GuiElementBase {
+        slider: sc.OptionFocusSlider
+        _lastVal: number
+        scale: number
+        stepSize: number
+
+        onLeftRight(this: this, direction: boolean): void
+      }
       interface ARRAY_SLIDER_CONSTRUCTOR extends ImpactClass<ARRAY_SLIDER> {}
 
-      interface OBJECT_SLIDER extends ig.GuiElementBase {}
-      interface OBJECT_SLIDER_CONSTRUCTOR extends ImpactClass<OBJECT_SLIDER> {}
+      interface OBJECT_SLIDER extends ig.GuiElementBase {
+        slider: sc.OptionFocusSlider
+        _lastVal: number
+        currentNumber: sc.TextGui | sc.NumberGui
+
+        onLeftRight(this: this, direction: boolean): void
+      }
+      interface OBJECT_SLIDER_CONSTRUCTOR extends ImpactClass<OBJECT_SLIDER> { }
 
       interface CHECKBOX extends ig.GuiElementBase {
         button: sc.CheckboxGui;
+        onPressed(this: this, checkbox: sc.CheckboxGui): void
       }
       interface CHECKBOX_CONSTRUCTOR extends ImpactClass<CHECKBOX> {}
 
@@ -50,7 +64,12 @@ declare global {
     var OptionInfoBox: OptionInfoBoxConstructor;
 
     interface OptionRow extends ig.GuiElementBase {
+      row: number;
+      optionName: string;
       option: sc.OptionDefinition;
+      optionDes: string;
+      local: boolean;
+      divider: boolean;
       nameGui: sc.TextGui;
       typeGui:
         | sc.OPTION_GUIS_DEFS.BUTTON_GROUP
@@ -60,6 +79,7 @@ declare global {
         | sc.OPTION_GUIS_DEFS.CONTROLS
         | sc.OPTION_GUIS_DEFS.LANGUAGE;
       _hasEntered: boolean;
+      _rowGroup: sc.RowButtonGroup;
     }
     interface OptionRowConstructor extends ImpactClass<OptionRow> {
       new (

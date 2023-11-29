@@ -25,6 +25,7 @@ declare global {
         getButtonText(this: this): sc.TextLike;
         setText(this: this, text: sc.TextLike): void;
         setWidthToTextSize(this: this): void;
+        onPressedChange(this: this, pressed: boolean): void
       }
       interface TabButtonConstructor extends ImpactClass<TabButton> {
         new (
