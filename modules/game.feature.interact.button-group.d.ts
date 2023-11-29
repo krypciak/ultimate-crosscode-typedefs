@@ -31,7 +31,7 @@ declare global {
       stepUp(this: this): void;
     }
     interface RowButtonGroupConstructor extends ImpactClass<RowButtonGroup> {
-      new(): sc.RowButtonGroup
+      new (): sc.RowButtonGroup
     }
     var RowButtonGroup: RowButtonGroupConstructor;
   }

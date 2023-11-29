@@ -28,6 +28,7 @@ declare global {
       rows: (sc.OptionInfoBox | sc.OptionRow)[];
 
       showMenu(this: this): void
+      _createOptionList(this: this, tabIndex: number): void
       _rearrangeTabs(this: this): void;
       _createTabButton(
         this: this,
