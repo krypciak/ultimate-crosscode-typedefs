@@ -28,6 +28,7 @@ declare global {
       rows: (sc.OptionInfoBox | sc.OptionRow)[];
 
       showMenu(this: this): void
+      _createOptionList(this: this, tabIndex: number): void
       _rearrangeTabs(this: this): void;
       _createTabButton(
         this: this,
@@ -35,7 +36,6 @@ declare global {
         x: number,
         type: sc.OPTION_CATEGORY,
       ): sc.ItemTabbedBox.TabButton;
-      _createOptionList(this: this, tabIndex: number): void
     }
     interface OptionsTabBoxConstructor extends ImpactClass<OptionsTabBox> {
       new (isLocal: boolean): OptionsTabBox;
