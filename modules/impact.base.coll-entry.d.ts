@@ -49,6 +49,8 @@ declare global {
       pushVel: Vec2
       accelDir: Vec2
       parentColl?: ig.CollEntry
+      totalBlockTimer: number
+      partlyBlockTimer: number
       updated: number
       _collData: {
         collided: boolean
@@ -59,13 +61,15 @@ declare global {
         zPush: boolean
         skipPhysics: boolean
         forceMoveFrameVel: boolean
+        groundEntry: ig.CollEntry
         groundEntryOffset: Vec2
         overlapEntryFactor: number
         noSlipping: boolean
       }
 
-      setSize(x: number, y: number, z: number): void;
+      setSize(this: this, x: number, y: number, z: number): void;
       setPadding(this: this, x: number, y: number): void;
+      getCenter(this: this, target?: Vec2): Vec2
     }
     interface CollEntryConstructor extends ImpactClass<CollEntry> {
       new (entity: ig.Entity): CollEntry;
