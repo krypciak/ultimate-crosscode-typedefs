@@ -10,6 +10,7 @@ declare global {
             activeZHeight: number
             useStyleSheet: string
             anims: any
+
             hitCondition(a: unknown, b: unknown): void
         }
         var ONE_TIME_SWITCH_TYPE: {
