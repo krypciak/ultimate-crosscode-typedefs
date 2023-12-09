@@ -33,6 +33,7 @@ declare global {
       alwaysRender: boolean
       ignoreCollision: boolean
       weight: number;
+      friction: { ground: number, air: number, terrain: number, ignoreTerrain: boolean }
       accelSpeed: number
       maxVel: number
       maxZVel: number
@@ -41,6 +42,7 @@ declare global {
       zBounciness: number;
       minBounceBelocity: number
       zGravityFactor: number;
+      float: { height: number, variance: number, maxSpeed: number, acel: number }
       pos: Vec3;
       level: number;
       baseZPos: number;
