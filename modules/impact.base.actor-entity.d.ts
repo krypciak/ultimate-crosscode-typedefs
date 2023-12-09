@@ -80,6 +80,8 @@ declare global {
       ): void;
       setWalkAnims(this: this, config: string | ig.ActorEntity.WalkAnims): void;
       storeWalkAnims(this: this, name: string, config: ig.ActorEntity.WalkAnims): void;
+      doJump(this: this, zVel: number, callbackHeight: number, maxVel: number, accelSpeed: Optional<number>, ignoreSounds: boolean): void
+      doFloatJump(this: this, floatJump: number, jumping: boolean | number, maxVel: number): void
     }
     interface ActorEntityConstructor extends ImpactClass<ActorEntity> {
       FACE4: typeof ActorEntity$FACE4
