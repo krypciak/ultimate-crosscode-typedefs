@@ -5,6 +5,8 @@ export {};
 
 declare global {
   namespace ig {
+    var ACTOR_RUN_THRESHOLD: number
+
     interface ActorConfig extends ig.Class {
       empty: boolean
       data: Record<string, unknown>
