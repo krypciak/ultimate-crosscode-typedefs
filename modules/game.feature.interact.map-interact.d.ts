@@ -19,6 +19,15 @@ declare global {
       Z_RANGE_OVERLAP = 2
     }
 
+    interface MapInteract extends ig.GameAddon {
+      entries: MapInteractEntry[]
+    }
+    interface MapInteractConstructor extends ImpactClass<MapInteract> {
+      new(): MapInteract
+    }
+    var MapInteract: MapInteractConstructor
+    var mapInteract: MapInteract
+
     interface MapInteractIcon extends ig.Class {}
     interface MapInteractIconConstructor extends ImpactClass<MapInteractIcon> {
       new (
@@ -41,6 +50,7 @@ declare global {
       blockedDuringCombat: boolean
 
       setIcon(this: this, icon: sc.MapInteractIcon): void;
+      setState(this: this, state: sc.INTERACT_ENTRY_STATE): void
     }
     interface MapInteractEntryConstructor extends ImpactClass<MapInteractEntry> {
       new (entity: ig.Entity, handler: ig.Entity, icon: sc.MapInteractIcon,
