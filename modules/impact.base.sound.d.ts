@@ -1,7 +1,7 @@
 // requires impact.base.loader
 // requires impact.base.system.web-audio
 
-export {};
+export { };
 
 declare global {
   namespace ig {
@@ -38,16 +38,33 @@ declare global {
         ) => void,
       ): void;
     }
-    interface SoundManagerConstructor extends ImpactClass<SoundManager> {}
+    interface SoundManagerConstructor extends ImpactClass<SoundManager> { }
     var SoundManager: SoundManagerConstructor;
     var soundManager: SoundManager;
 
-    interface SoundDefault extends ig.Class, SoundCommon {}
-    interface SoundDefaultConstructor extends ImpactClass<SoundDefault>, SoundConstructorCommon {}
+    interface WebAudioBuffer extends ig.Loadable {
+      cacheType: 'WebAudioBuffer'
+    }
+    interface WebAudioBufferConstructor extends ImpactClass<WebAudioBuffer> {
+      new(path: string): WebAudioBuffer
+    }
+    var WebAudioBuffer: WebAudioBufferConstructor
+
+    interface SoundDefault extends ig.Class, SoundCommon { }
+    interface SoundDefaultConstructor extends ImpactClass<SoundDefault>, SoundConstructorCommon { }
     var SoundDefault: SoundDefaultConstructor;
 
-    interface SoundWebAudio extends ig.Class, SoundCommon {}
-    interface SoundWebAudioConstructor extends ImpactClass<SoundWebAudio>, SoundConstructorCommon {}
+    interface SoundWebAudio extends ig.Class, SoundCommon {
+      group: string
+      webAudioBuffer: ig.WebAudioBuffer
+      volume: number
+      variance: number
+
+      clone(this: this): SoundWebAudio
+      clearCached(this: this): void
+      stop(this: this): void
+    }
+    interface SoundWebAudioConstructor extends ImpactClass<SoundWebAudio>, SoundConstructorCommon { }
     var SoundWebAudio: SoundWebAudioConstructor;
 
     interface SoundHandleBase extends ig.Class {
@@ -69,11 +86,11 @@ declare global {
       getPlayTime(this: this): number;
       stop(this: this): void;
     }
-    interface SoundHandleBaseConstructor extends ImpactClass<ig.SoundHandleBase> { new (): ig.SoundHandleBase }
+    interface SoundHandleBaseConstructor extends ImpactClass<ig.SoundHandleBase> { new(): ig.SoundHandleBase }
     var SoundHandleBase: ig.SoundHandleBaseConstructor;
 
-    interface SoundHandleDefault extends ig.SoundHandleBase {}
-    interface SoundHandleDefaultConstructor extends ImpactClass<SoundHandleDefault> { new (): ig.SoundHandleDefault }
+    interface SoundHandleDefault extends ig.SoundHandleBase { }
+    interface SoundHandleDefaultConstructor extends ImpactClass<SoundHandleDefault> { new(): ig.SoundHandleDefault }
     var SoundHandleDefault: ig.SoundHandleDefault
 
 
@@ -94,11 +111,11 @@ declare global {
       _fadeDuration: number;
       _contextTimeOnStart: number;
       _contextTimeOnPause: number;
-      
+
       _setPosition(this: this): void;
       play(this: this): void;
     }
-    interface SoundHandleWebAudioConstructor extends ImpactClass<ig.SoundHandleWebAudio> { new (): ig.SoundHandleWebAudio }
+    interface SoundHandleWebAudioConstructor extends ImpactClass<ig.SoundHandleWebAudio> { new(): ig.SoundHandleWebAudio }
     var SoundHandleWebAudio: ig.SoundHandleWebAudioConstructor;
 
     namespace SoundHelper {
@@ -133,7 +150,7 @@ declare global {
       var CAF: ig.Sound.FORMAT;
     }
     interface SoundConstructorCommon {
-      new (path: string, volume?: number, variance?: number, group?: string): ig.Sound;
+      new(path: string, volume?: number, variance?: number, group?: string): ig.Sound;
       FORMAT: typeof Sound$FORMAT;
       use: ig.Sound.FORMAT[];
     }
