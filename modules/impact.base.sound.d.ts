@@ -17,7 +17,11 @@ declare global {
       format: ig.Sound.FORMAT;
       context: ig.WebAudio;
       buffers: { [path: string]: AudioBuffer };
+      soundHandles: ig.SoundHandle[]
+      soundStack: ig.SoundHandle[][]
+      soundGroups: Record<string, { playing: ig.SoundHandle[], requests: ig.SoundHandle[] }>
 
+      reset(this: this): void
       playSoundHandle(this: this, a: ig.SoundHandleBase, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
       _solveGroupRequests(this: this, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
       connectSound(this: this, connectObj: { connect(gain: GainNode): void }): void;
@@ -38,7 +42,9 @@ declare global {
         ) => void,
       ): void;
     }
-    interface SoundManagerConstructor extends ImpactClass<SoundManager> { }
+    interface SoundManagerConstructor extends ImpactClass<SoundManager> {
+      new (): SoundManager
+    }
     var SoundManager: SoundManagerConstructor;
     var soundManager: SoundManager;
 
