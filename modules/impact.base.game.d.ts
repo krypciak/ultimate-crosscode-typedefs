@@ -63,7 +63,7 @@ declare global {
       playerEntity: ig.ENTITY.Player;
       addons: Game.Addons;
 
-      getLevelHeight(this: this, level: number): number
+      getLevelHeight(this: this, level: number | string): number
       getEntityByName<E extends ig.Entity>(this: this, name: string): E;
       getEntitiesInCircle(
         center: Vec3,
