@@ -49,6 +49,11 @@ declare global {
       mapName: string;
       entities: ig.Entity[];
       shownEntities: ig.Entity[];
+      levels: Record<string, {
+        height?: number 
+        collision?: sc.MapModel.MapLayer
+        maps?: ig.ChunkedMap[]
+      }>
       maxLevel: number
       minLevelZ: number
       masterLevel: number
