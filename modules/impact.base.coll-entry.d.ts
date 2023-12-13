@@ -44,7 +44,7 @@ declare global {
       zGravityFactor: number;
       float: { height: number, variance: number, maxSpeed: number, acel: number }
       pos: Vec3;
-      level: number;
+      level: string;
       baseZPos: number;
       shadow: CollEntry.Shadow;
       vel: Vec3;
