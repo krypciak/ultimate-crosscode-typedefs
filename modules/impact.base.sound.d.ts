@@ -22,7 +22,10 @@ declare global {
       soundGroups: Record<string, { playing: ig.SoundHandle[], requests: ig.SoundHandle[] }>
 
       reset(this: this): void
-      playSoundHandle(this: this, a: ig.SoundHandleBase, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
+      playSoundHandle(this: this, handle: ig.SoundHandleBase, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
+      stopSoundHandle(this: this, handle: ig.SoundHandleBase): void
+      pushPaused(this: this, noFadeOut?: boolean): void
+      popPaused(this: this): void
       _solveGroupRequests(this: this, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
       connectSound(this: this, connectObj: { connect(gain: GainNode): void }): void;
       loadWebAudio(
@@ -120,6 +123,7 @@ declare global {
 
       _setPosition(this: this): void;
       play(this: this): void;
+      pause(this: this, noFadeOut?: boolean): void
     }
     interface SoundHandleWebAudioConstructor extends ImpactClass<ig.SoundHandleWebAudio> { new(): ig.SoundHandleWebAudio }
     var SoundHandleWebAudio: ig.SoundHandleWebAudioConstructor;
