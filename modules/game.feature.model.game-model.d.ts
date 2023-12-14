@@ -52,12 +52,14 @@ declare global {
       enterGame(this: this): void;
       enterRunning(this: this): void;
       enterReset(this: this): void;
+      enterQuickMenu(this: this): boolean
       enterPrevSubState(this: this): void;
       enterMenu(this: this, force?: Optional<boolean>): void;
       isTitle(this: this): boolean;
       enterPrevSubState(this: this): void;
       isCutscene(this: this): boolean;
       isQuickMenu(this: this): boolean;      
+      isPlayerControlBlocked(this: this): boolean
     }
     interface GameModelConstructor extends ImpactClass<GameModel> {
       new (): GameModel;
