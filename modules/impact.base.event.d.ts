@@ -32,7 +32,12 @@ declare global {
     }
     let EventManager: EventManagerConstructor;
 
-    interface EventCall extends ig.Class {}
+    interface EventCall extends ig.Class {
+      runType: ig.EventRunType
+      done: boolean
+      blocked: boolean
+      pauseParallel: boolean
+    }
     interface EventCallConstructor extends ImpactClass<EventCall> {}
     var EventCall: EventCallConstructor;
 
