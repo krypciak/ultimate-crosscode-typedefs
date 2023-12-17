@@ -196,7 +196,13 @@ declare global {
       WIIU = 4,
     }
 
+    var OS: string
     var platform: ig.PLATFORM_TYPES;
+    function getPlatformName(platformId: ig.PLATFORM_TYPES): 'Unknown' | 'Dekstop' | 'Browser' | 'Mobile' | 'WiiU' | 'Say Wat?'
+    var browser: string
+    var browserVersion: string
+    var nwjsVersion: string
+    var nwjs64: boolean
 
     interface Perf {
         update: boolean;
