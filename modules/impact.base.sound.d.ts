@@ -169,4 +169,6 @@ declare global {
     type SoundConstructor = SoundDefaultConstructor | SoundWebAudioConstructor;
     var Sound: SoundConstructor;
   }
+
+  var webAudioActive: boolean
 }
