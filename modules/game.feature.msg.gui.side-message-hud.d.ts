@@ -17,6 +17,19 @@ declare global {
             new (): SideMessageHudGui
         }
         var SideMessageHudGui: SideMessageHudGuiConstructor
+
+        interface SideMessageBoxGui extends sc.SlickBoxRawGui {
+            text: sc.TextGui
+            face: sc.SideMessageFaceGui
+            beepSound: ig.Sound
+
+            setContent(this: this, character: sc.CharacterExpression, text: sc.TextLike, skip: boolean): void
+        }
+        interface SideMessageBoxGuiConstructor extends ImpactClass<SideMessageBoxGui> {
+            new(): SideMessageBoxGui
+        }
+        var SideMessageBoxGui: SideMessageBoxGuiConstructor
+
         interface SideMessageFaceGui extends ig.GuiElementBase {
             charExpression: sc.CharacterExpression
             timer: number
@@ -27,6 +40,7 @@ declare global {
             new(): SideMessageFaceGui
         }
         var SideMessageFaceGui: SideMessageFaceGuiConstructor
+
         interface SideMessageLabelGui extends ig.GuiElementBase {
             iconText: sc.TextGui
             currentIconDevice: ig.INPUT_DEVICES
