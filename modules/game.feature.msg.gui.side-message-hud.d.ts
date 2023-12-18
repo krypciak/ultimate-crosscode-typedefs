@@ -17,5 +17,15 @@ declare global {
             new (): SideMessageHudGui
         }
         var SideMessageHudGui: SideMessageHudGuiConstructor
+        interface SideMessageFaceGui extends ig.GuiElementBase {
+            charExpression: sc.CharacterExpression
+            timer: number
+
+            setFace(this: this, expression: sc.CharacterExpression, height: number): void
+        }
+        interface SideMessageFaceGuiConstructor extends ImpactClass<SideMessageFaceGui> {
+            new(): SideMessageFaceGui
+        }
+        var SideMessageFaceGui: SideMessageFaceGuiConstructor
     }
 }
