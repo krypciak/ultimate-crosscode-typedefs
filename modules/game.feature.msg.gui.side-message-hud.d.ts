@@ -27,5 +27,13 @@ declare global {
             new(): SideMessageFaceGui
         }
         var SideMessageFaceGui: SideMessageFaceGuiConstructor
+        interface SideMessageLabelGui extends ig.GuiElementBase {
+            iconText: sc.TextGui
+            currentIconDevice: ig.INPUT_DEVICES
+        }
+        interface SideMessageLabelGuiConstructor extends ImpactClass<SideMessageLabelGui> {
+            new(): SideMessageLabelGui
+        }
+        var SideMessageLabelGui: SideMessageLabelGuiConstructor
     }
 }
