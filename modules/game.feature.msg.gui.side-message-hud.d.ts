@@ -4,17 +4,29 @@
 // requires game.feature.gui.base.slick-box
 // requires game.feature.msg.gui.msg-skip-hud
 
-export {}
+export { }
 
 declare global {
     namespace sc {
         function getMessageTime(textLike: sc.TextLike): number
 
         interface SideMessageHudGui extends ig.GuiElementBase {
+            sideLabel: sc.SideMessageLabelGui
+            pauseMaxY: number
+            pauseBoxes: sc.SideMessageBoxGui[]
+            visibleBoxes: sc.SideMessageBoxGui[]
+            timer: number
+            pauseMode: boolean
+            messageIndex: number
+            quickPop: boolean
+
+            popMessage(this: this): void
             showNextSideMessage(this: this): void
+            onMessageFinish(this: this): void
+            onSkipInteract(this: this, type: sc.SKIP_INTERACT_MSG): void
         }
         interface SideMessageHudGuiConstructor extends ImpactClass<SideMessageHudGui> {
-            new (): SideMessageHudGui
+            new(): SideMessageHudGui
         }
         var SideMessageHudGui: SideMessageHudGuiConstructor
 
