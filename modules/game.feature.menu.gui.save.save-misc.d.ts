@@ -51,6 +51,10 @@ declare global {
     var SaveSlotPlayTime: SaveSlotPlayTimeConstructor
 
     interface SaveSlotLocation extends ig.GuiElementBase {
+      location: sc.TextGui
+      version: sc.TextGui
+      newGamePlus: ig.ImageGui
+
       setLocation(this: this, save: ig.SaveSlot.Data): void;
     }
     interface SaveSlotLocationConstructor extends ImpactClass<SaveSlotLocation> { }
