@@ -104,6 +104,7 @@ declare global {
       }
     }
     interface MapModel extends ig.GameAddon, sc.Model {
+      activeLandmarks: Record<string, Record<string, { active: boolean }>>
       areas: { [name: string]: sc.MapModel.Area };
       currentArea: sc.AreaLoadable;
 
