@@ -27,6 +27,17 @@ declare global {
     interface SaveSlotLocationConstructor extends ImpactClass<SaveSlotLocation> {}
     var SaveSlotLocation: SaveSlotLocationConstructor;
 
+    interface SaveSlotParty extends ig.BoxGui {
+      headsGfx: ig.Image
+      party: number[]
+
+      setParty(this: this, save: ig.SaveSlot.Data): void
+    }
+    interface SaveSlotPartyConstructor extends ImpactClass<SaveSlotParty> {
+      new(): SaveSlotParty
+    }
+    var SaveSlotParty: SaveSlotPartyConstructor
+
     interface SaveSlotChapter extends ig.GuiElementBase {
       textGui: sc.TextGui;
       chapterGui: sc.NumberGui;
