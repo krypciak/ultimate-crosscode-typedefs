@@ -9,7 +9,7 @@
 // requires game.feature.arena.arena-challenges
 // requires game.feature.arena.arena-cheer
 
-export {};
+export { };
 
 declare global {
   namespace sc {
@@ -78,7 +78,7 @@ declare global {
           type: sc.ARENA_BASE_TYPE;
         }
 
-        interface ArenaRound {}
+        interface ArenaRound { }
       }
 
       interface CupData {
@@ -99,6 +99,10 @@ declare global {
 
       interface RushProgress extends RoundProgress {
         chain: number;
+        cleared: number
+        medal: number
+        points: number
+        time: number
       }
 
       interface ArenaBonusObjective {
@@ -192,7 +196,7 @@ declare global {
       hasChallenge(this: this, challenge: keyof sc.ARENA_CHALLENGES): boolean;
     }
     interface ArenaConstructor extends ImpactClass<Arena> {
-      new (): Arena;
+      new(): Arena;
     }
     var Arena: ArenaConstructor;
     var arena: Arena;
