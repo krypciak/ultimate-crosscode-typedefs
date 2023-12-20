@@ -90,9 +90,15 @@ declare global {
       interface Applier {
         onNewGameApply(this: this, save: ig.SaveSlot.Data): void;
       }
+      interface Data {
+        options: sc.NewGamePlusModel['options']
+        active: boolean
+        store: sc.NewGamePlusModel['store']
+      }
     }
     interface NewGamePlusModel extends ig.GameAddon, sc.Model {
       active: boolean;
+      store: { level?: number }
       options: Record<sc.NEW_GAME_OPTIONS.Keys, boolean>;
 
       setActive(this: this, active: boolean): void
