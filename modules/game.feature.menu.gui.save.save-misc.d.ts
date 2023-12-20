@@ -38,15 +38,26 @@ declare global {
     }
     var SaveSlotParty: SaveSlotPartyConstructor
 
+    interface SaveSlotElements extends ig.GuiElementBase {
+      elements: [boolean, boolean, boolean, boolean]
+
+      setElements(this: this, save: ig.SaveSlot.Data): void
+    }
+    interface SaveSlotElementsConstructor extends ImpactClass<SaveSlotElements> {
+      new(): SaveSlotElements
+    }
+    var SaveSlotElements: SaveSlotElementsConstructor
+
     interface SaveSlotChapter extends ig.GuiElementBase {
       textGui: sc.TextGui;
       chapterGui: sc.NumberGui;
       metaMarker: ig.ImageGui;
     }
     interface SaveSlotChapterConstructor extends ImpactClass<SaveSlotChapter> {
-      new (): SaveSlotChapter;
+      new(): SaveSlotChapter;
     }
     var SaveSlotChapter: SaveSlotChapterConstructor;
+
     interface SaveSlotButtonHighlight extends ig.GuiElementBase {
       slot: number
       focus: boolean
