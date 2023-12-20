@@ -9,6 +9,16 @@ export { };
 
 declare global {
   namespace sc {
+    interface SaveSlotNewButton extends ig.FocusGui {
+      slot: number
+      slotOver: sc.SaveSlotButtonHighlight
+      text: sc.TextGui
+    }
+    interface SaveSlotNewButtonConstructor extends ImpactClass<SaveSlotNewButton> {
+      new(): SaveSlotNewButton
+    }
+    var SaveSlotNewButton: SaveSlotNewButtonConstructor
+
     interface SaveSlotButton extends ig.FocusGui {
       slot: number
       slotOver: sc.SaveSlotButtonHighlight
