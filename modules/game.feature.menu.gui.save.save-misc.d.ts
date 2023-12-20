@@ -21,10 +21,29 @@ declare global {
     }
     var SaveSlotButton: SaveSlotButtonConstructor;
 
+    interface SaveSlotPlayTime extends ig.GuiElementBase {
+      gfx: ig.Image
+      hour: sc.NumberGui
+      minute: sc.NumberGui
+      second: sc.NumberGui
+      millis: Optional<sc.NumberGui>
+      color: sc.GUI_NUMBER_COLOR
+      hideHours: boolean
+      drawHourDots: boolean
+
+      setColor(this: this, color?: sc.GUI_NUMBER_COLOR): void
+      setTime(this: this, save: ig.SaveSlot.Data, skip?: boolean): void
+      setTimeFromValue(this: this, seconds: number, skip?: boolean): void
+    }
+    interface SaveSlotPlayTimeConstructor extends ImpactClass<SaveSlotPlayTime> {
+      new(): SaveSlotPlayTime
+    }
+    var SaveSlotPlayTime: SaveSlotPlayTimeConstructor
+
     interface SaveSlotLocation extends ig.GuiElementBase {
       setLocation(this: this, save: ig.SaveSlot.Data): void;
     }
-    interface SaveSlotLocationConstructor extends ImpactClass<SaveSlotLocation> {}
+    interface SaveSlotLocationConstructor extends ImpactClass<SaveSlotLocation> { }
     var SaveSlotLocation: SaveSlotLocationConstructor;
 
     interface SaveSlotParty extends ig.BoxGui {
