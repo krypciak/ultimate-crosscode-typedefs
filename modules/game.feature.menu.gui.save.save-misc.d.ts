@@ -36,5 +36,11 @@ declare global {
       new (): SaveSlotChapter;
     }
     var SaveSlotChapter: SaveSlotChapterConstructor;
+    interface SaveSlotUpdateEffect extends ig.GuiElementBase {
+    }
+    interface SaveSlotUpdateEffectConstructor extends ImpactClass<SaveSlotUpdateEffect> {
+      new(): SaveSlotUpdateEffect
+    }
+    var SaveSlotUpdateEffect: SaveSlotUpdateEffectConstructor
   }
 }
