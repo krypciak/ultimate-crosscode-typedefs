@@ -18,5 +18,18 @@ declare global {
         }
         var SaveAutoSaveSlot: SaveAutoSaveSlotConstructor
 
+        interface SaveList extends ig.GuiElementBase {
+            gfx: ig.Image
+            list: sc.ButtonListBox
+            buttongroup: sc.ButtonGroup
+            slots: sc.SaveSlotButton[]
+            submitSound: ig.Sound
+            selectedSlot: sc.SaveSlotButton
+            autoSlot: sc.SaveAutoSaveSlot
+        }
+        interface SaveListConstructor extends ImpactClass<SaveList> {
+            new(): SaveList
+        }
+        var SaveList: SaveListConstructor
     }
 }
