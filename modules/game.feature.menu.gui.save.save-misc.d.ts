@@ -5,19 +5,29 @@
 // requires game.feature.menu.gui.menu-misc
 // requires impact.feature.interact.gui.focus-gui
 
-export {};
+export { };
 
 declare global {
   namespace sc {
     interface SaveSlotButton extends ig.FocusGui {
+      slot: number
+      slotOver: sc.SaveSlotButtonHighlight
+      level: sc.NumberGui
+      location: sc.SaveSlotLocation
+      time: sc.SaveSlotPlayTime
+      credit: sc.NumberGui
       chapter: sc.SaveSlotChapter;
+      party: sc.SaveSlotParty
+      elements: sc.SaveSlotElements
       autoSlotMiss: sc.TextGui;
+      wrapper: ig.GuiElementBase
       content: ig.GuiElementBase;
+      effect: sc.SaveSlotUpdateEffect
 
       setSave(this: this, save: ig.SaveSlot.Data, slot?: number, skip?: boolean): void;
     }
     interface SaveSlotButtonConstructor extends ImpactClass<SaveSlotButton> {
-      new (save?: ig.SaveSlot.Data, slot?: number): SaveSlotButton;
+      new(save?: ig.SaveSlot.Data, slot?: number): SaveSlotButton;
     }
     var SaveSlotButton: SaveSlotButtonConstructor;
 
