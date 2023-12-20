@@ -101,6 +101,7 @@ declare global {
       hasDivider?: boolean;
       header?: string;
       restart?: boolean;
+      hasLocal?: boolean /* the game checks for it in some places, but none of the options have it */
     }
 
     type OptionDefinition = OptionDefinitionCommon &
