@@ -43,6 +43,15 @@ declare global {
       undoTransform(this: this): void;
     }
 
+    interface Gui extends ig.GameAddon {
+      namedGuiElements: Record<string, unknown>
+    }
+    interface GuiConstructor extends ImpactClass<Gui> {
+      new(): Gui
+    }
+    var Gui: GuiConstructor
+
+
     enum GUI_ALIGN {
       Y_TOP,
       Y_CENTER,
