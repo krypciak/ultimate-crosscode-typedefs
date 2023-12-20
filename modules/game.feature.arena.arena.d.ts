@@ -140,6 +140,12 @@ declare global {
         roundStarted: boolean;
         currentRound: number;
       }
+
+      interface Data {
+        coins: number
+        coinsSpend: number
+        cupData: Record<string, CupProgress>
+      }
     }
 
     interface Arena extends ig.GameAddon, ig.Vars.Accessor, sc.Model.Observer {
