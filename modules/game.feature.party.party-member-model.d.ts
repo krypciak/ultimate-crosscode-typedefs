@@ -21,6 +21,15 @@ declare global {
         cooldown: number;
         needRestock: boolean;
       }
+      interface Data {
+        level: number
+        equipLevel: number
+        exp: number
+        spLevel: number
+        allElements: boolean
+        temporary: boolean
+        noDie: boolean
+      }
     }
     interface PartyMemberModel extends ig.Class, sc.Model {
       config: sc.PlayerConfig;
