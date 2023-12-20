@@ -8,7 +8,34 @@ export {};
 
 declare global {
   namespace sc {
+    namespace MessageModel {
+      namespace Data {
+        interface SideMessage {
+          char: string
+          expression: string
+          message: ig.LangLabel.Data | string
+          main: boolean
+        }
+      }
+      interface Data {
+        autoScript: boolean
+        sideMessages: sc.MessageModel.Data.SideMessage[]
+        sideMessageStack: sc.MessageModel.Data.SideMessage[]
+        displayedSideMessages: number
+      }
+
+      interface SideMessage {
+        charExpression: sc.CharacterExpression
+        message: ig.LangLabel.Data | string
+        main: boolean
+      }
+    }
     interface MessageModel extends ig.GameAddon, sc.Model {
+      sideMessages: sc.MessageModel.SideMessage[]
+      sideMessageStack: sc.MessageModel.SideMessage[]
+      sideMessageDelayedStack: sc.MessageModel.SideMessage[]
+      sideMessageQueuing: boolean
+      displayedSideMessages: number
       blocking: boolean;
 
       clearBlocking(this: this): void
