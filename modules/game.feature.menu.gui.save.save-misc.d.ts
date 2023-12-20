@@ -36,6 +36,19 @@ declare global {
       new (): SaveSlotChapter;
     }
     var SaveSlotChapter: SaveSlotChapterConstructor;
+    interface SaveSlotButtonHighlight extends ig.GuiElementBase {
+      slot: number
+      focus: boolean
+      newgame: boolean
+      slotGui: sc.TextGui | sc.NumberGui
+
+      setSlot(this: this, slot?: number): void
+    }
+    interface SaveSlotButtonHighlightConstructor extends ImpactClass<SaveSlotButtonHighlight> {
+      new(): SaveSlotButtonHighlight
+    }
+    var SaveSlotButtonHighlight: SaveSlotButtonHighlightConstructor
+
     interface SaveSlotUpdateEffect extends ig.GuiElementBase {
     }
     interface SaveSlotUpdateEffectConstructor extends ImpactClass<SaveSlotUpdateEffect> {
