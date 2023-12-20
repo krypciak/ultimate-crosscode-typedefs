@@ -92,6 +92,30 @@ declare global {
       }
       
       type ActionKey = sc.PLAYER_ACTION | keyof typeof sc.PLAYER_ACTION;
+
+      interface Data {
+        playerConfig: string
+        credit: number
+        level: number
+        exp: number
+        currentElementMode: sc.ELEMENT
+        elementLoad: number
+        hasOverload: boolean
+        hp: number
+        core: sc.PlayerModel['core']
+        skills: Optional<boolean>[]
+        chapter: number
+        skillPoints: sc.PlayerModel['skillPoints']
+        skillPointsExtra: sc.PlayerModel['skillPointsExtra']
+        items: sc.PlayerModel['items']
+        equip: sc.PlayerModel['equip']
+        levelUpDelta: sc.PlayerModel['levelUpDelta']
+        spLevel: number
+        itemFavs: sc.PlayerModel['itemFavs']
+        itemNew: sc.PlayerModel['itemNew']
+        itemToggles: sc.PlayerModel['itemToggles']
+        skillVersion: number
+      }
     }
 
     interface PlayerModel extends ig.Class, ig.Vars.Accessor, sc.Model, ig.Storage.Listener {
@@ -232,6 +256,7 @@ declare global {
       getParamAvgLevel(this: this, level: number): number;
       usedSkillPoints(this: this): boolean;
       getMaxSkillPoints(this: this, element: sc.ELEMENT): number;
+      getSaveData(this: this): sc.PlayerModel.Data
       checkBodyPart(this: this, id: sc.ItemID): boolean;
     }
     interface PlayerModelContructor extends ImpactClass<PlayerModel> {
