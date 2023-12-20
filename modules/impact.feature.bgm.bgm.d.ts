@@ -25,6 +25,16 @@ declare global {
     }
     type BGM_SWITCH_MODE = keyof typeof BGM_SWITCH_MODE;
 
+    namespace Bgm {
+      interface Data {
+        defaultTrackSet: string
+        defaultTrackTypeStack: string[]
+        overloadDefault: boolean
+        paused: boolean
+        resumeOnChange: Optional<unknown>
+      }
+    }
+
     interface Bgm extends ig.GameAddon {
       clear(this: this, mode?: ig.BGM_SWITCH_MODE): void;
     }
