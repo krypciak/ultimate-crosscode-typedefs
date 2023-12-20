@@ -157,25 +157,51 @@ declare global {
         amount: number;
         price: number;
       }
+
+      interface LogEntry {
+        type: keyof typeof sc.LOG_TYPES
+        task?: number
+        accept?: boolean
+        quest?: string
+        finish?: boolean
+        trader?: string
+        lore?: string
+      }
+
+      type StampTypes = keyof typeof ig.ActorEntity.FACE4 | keyof typeof sc.MAP_STAMPS
+      interface Stamp {
+        key: StampTypes
+        x: number
+        y: number
+        level: number
+        index: number
+      }
     }
     namespace MenuModel {
       type BackCallback = () => void;
       type HotkeyCallback = () => sc.ButtonGui;
     }
+
     interface MenuModel extends ig.GameAddon, sc.Model {
       previousMenu: sc.MENU_SUBMENU;
       buttonInteract: ig.ButtonInteractEntry;
       backCallbackStack: sc.MenuModel.BackCallback[];
       hotkeysCallbacks: sc.MenuModel.HotkeyCallback;
       currentBackCallback: sc.MenuModel.BackCallback;
+      mapStamps: Record<string, Optional<sc.MenuModel.Stamp>[]>
       shopID: Optional<string>;
       shopPage: number;
       shopCart: sc.MenuModel.ShopCartEntry[];
       shopSellMode: boolean;
+      newUnlocks: Record<sc.MENU_SUBMENU, string[]>
+      logEntries: sc.MenuModel.LogEntry[]
       statusElement: sc.ELEMENT;
       statusDiff: boolean;
+      dropCounts: Record<string, { anim: string, count: number, time: number, completed: boolean }>
 
-      addMapStamp(area: string, type: string, x: number, y: number, level: number): number;
+      addLog(this: this, entry: sc.MenuModel.LogEntry): void
+      addNewUnlock(this: this, type: sc.MENU_SUBMENU, entry: string): void
+      addMapStamp(this: this, area: string, type: sc.MenuModel.StampTypes, x: number, y: number, level: number): number;
       addHotkey(this: this, callback: sc.MenuModel.HotkeyCallback, commit?: Optional<boolean>): void;
       commitHotkeys(this: this, a?: boolean): void;
       updateHotkeys(this: this): void;
