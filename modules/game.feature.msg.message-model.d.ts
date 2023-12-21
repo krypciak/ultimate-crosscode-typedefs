@@ -42,6 +42,7 @@ declare global {
       showMessage(this: this, personName: string, message: string, autoContinue: boolean): void;
       setExpression(this: this, personName: string, expression: sc.CharacterExpression): void;
       clearAll(this: this): void;
+      hasChoice(this: this): boolean
     }
     interface MessageModelConstructor extends ImpactClass<MessageModel> {}
     var MessageModel: MessageModelConstructor;
