@@ -20,6 +20,7 @@ declare global {
             messageIndex: number
             quickPop: boolean
 
+            doMessageStep(this: this, quickPop?: boolean): void
             popMessage(this: this): void
             showNextSideMessage(this: this): void
             onMessageFinish(this: this): void
