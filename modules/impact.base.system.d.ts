@@ -19,6 +19,7 @@ declare global {
       scale: number;
       contextScale: number;
       systemFontScale: number;
+      skipMode: boolean
       timeFactor: number;
       totalTimeFactor: number;
       rawTick: number;
