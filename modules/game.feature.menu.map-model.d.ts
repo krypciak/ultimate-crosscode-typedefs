@@ -124,5 +124,11 @@ declare global {
     }
     var MapModel: MapModelConstructor;
     var map: sc.MapModel;
+
+    enum MAP_EVENT {
+      LANDMARK_ADDED = 1,
+      PLAYER_AREA_CHANGED = 2,
+      MAP_ENTERED = 3,
+    }
   }
 }
