@@ -42,7 +42,8 @@ declare global {
         var MessageOverlayGui: MessageOverlayGuiConstructor
 
         interface MessageAreaGui extends ig.GuiElementBase {
-            clockToContinue: boolean
+            clickToContinue: boolean
+            messages: sc.MsgBoxGui[]
 
             onTextFinished(this: this): void
             clearMessages(this: this): void
