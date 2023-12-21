@@ -13,6 +13,8 @@ declare global {
             order: number
             beepSound: ig.Sound
             displayName: ig.MessageOverlayGui.DisplayName
+
+            addMessage(this: this, maxWidth: number, text: ig.LangLabel): sc.MsgBoxGui
         }
         interface MessageOverlayGui$EntryConstructor extends ImpactClass<MessageOverlayGui$Entry> {
             new(area: ig.MessageAreaGui, name: string, lookRight: boolean,
