@@ -21,6 +21,7 @@ declare global {
       soundStack: ig.SoundHandle[][]
       soundGroups: Record<string, { playing: ig.SoundHandle[], requests: ig.SoundHandle[] }>
 
+      update(this: this): void
       reset(this: this): void
       playSoundHandle(this: this, handle: ig.SoundHandleBase, group: { playing: ig.SoundHandleBase[], requests: ig.SoundHandleBase[] }): void;
       stopSoundHandle(this: this, handle: ig.SoundHandleBase): void
