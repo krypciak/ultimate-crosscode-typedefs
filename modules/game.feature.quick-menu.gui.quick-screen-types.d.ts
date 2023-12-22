@@ -67,7 +67,9 @@ declare global {
             }
             var NPC: NPCConstructor
 
-            interface Enemy extends sc.QuickMenuTypesBase { }
+            interface Enemy extends sc.QuickMenuTypesBase {
+                level: sc.QuickBorderArrowLevelBox
+            }
             interface EnemyConstructor extends ImpactClass<Enemy> {
                 new (type: string, settings: sc.QuickMenuTypesBaseSettings, screen: sc.QuickFocusScreen): Enemy
             }
