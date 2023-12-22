@@ -27,7 +27,9 @@ declare global {
     }
 
     interface Enemy extends ig.ENTITY.Combatant {
+      enemyName: string
       enemyType: sc.EnemyType;
+      enemyGroup: string
       currentState: string;
       boosterState: sc.ENEMY_BOOSTER_STATE;
       level: Enemy.Level;
