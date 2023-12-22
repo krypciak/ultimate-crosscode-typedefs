@@ -20,6 +20,27 @@ declare global {
         interface QuickFocusScreenConstructor extends ImpactClass<QuickFocusScreen> { new(): QuickFocusScreen }
         var QuickFocusScreen: QuickFocusScreenConstructor
 
+
+        namespace QUICK_INFO_BOXES {
+            interface Enemy extends ig.BoxGui {
+                title: sc.TextGui
+                arrow: sc.QuickItemArrow
+                baseHp: sc.EnemyBaseParamLine
+                baseAttack: sc.EnemyBaseParamLine
+                baseDefense: sc.EnemyBaseParamLine
+                baseFocus: sc.EnemyBaseParamLine
+                resistance: sc.EnemyResistence
+                anchor: null
+                enemy: null
+
+                setData(this: this, enemyType: keyof typeof sc.combat.enemyDataList, enemy: ig.ENTITY.Enemy): void
+            }
+            interface EnemyConstructor extends ImpactClass<Enemy> {
+                new(): Enemy
+            }
+            var Enemy: EnemyConstructor
+        }
+
         interface QuickArrowBox extends ig.GuiElementBase {
             name: sc.TextGui
             arrowOff: Vec2
