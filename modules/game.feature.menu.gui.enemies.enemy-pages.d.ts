@@ -44,5 +44,15 @@ declare global {
       new (): EnemyDrops;
     }
     var EnemyDrops: EnemyDropsConstructor;
+
+    interface EnemyElementSlopeLine extends ig.GuiElementBase {
+      slope: sc.SlopeLine
+      line: ig.ColorGui
+      hasLine: boolean
+    }
+    interface EnemyElementSlopeLineConstructor extends ImpactClass<EnemyElementSlopeLine> {
+      new(): EnemyElementSlopeLine
+    }
+    var EnemyElementSlopeLine: EnemyElementSlopeLineConstructor
   }
 }
