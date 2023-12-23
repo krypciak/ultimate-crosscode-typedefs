@@ -193,7 +193,7 @@ declare global {
       shopPage: number;
       shopCart: sc.MenuModel.ShopCartEntry[];
       shopSellMode: boolean;
-      newUnlocks: Record<sc.MENU_SUBMENU, string[]>
+      newUnlocks: { [key in sc.MENU_SUBMENU]?: string[] }
       logEntries: sc.MenuModel.LogEntry[]
       statusElement: sc.ELEMENT;
       statusDiff: boolean;
