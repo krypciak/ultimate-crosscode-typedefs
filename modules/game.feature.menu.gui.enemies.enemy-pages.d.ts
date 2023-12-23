@@ -27,6 +27,7 @@ declare global {
 
     interface EnemyBaseParamLine extends ig.GuiElementBase {
       gfx: ig.Image;
+      number: sc.NumberGui
       icon: number;
     }
     interface EnemyBaseParamLineConstructor extends ImpactClass<EnemyBaseParamLine> {}
