@@ -23,6 +23,7 @@ declare global {
         descriptions: EnemyDescriptionBlock[];
         boostedLevel: number;
         boss: boolean;
+        track?: boolean
       }
 
       interface LoreData {
