@@ -7,6 +7,11 @@ export {};
 
 declare global {
   namespace sc {
+    enum ENEMY_HP_BAR {
+      AUTO = 0,
+      VISIBLE = 1,
+      HIDDEN = 2
+    }
     enum ENEMY_BOOSTER_STATE {
       NONE = 0,
       BOOSTABLE = 1,
@@ -33,6 +38,7 @@ declare global {
       currentState: string;
       boosterState: sc.ENEMY_BOOSTER_STATE;
       level: Enemy.Level;
+      visibility: { analyzable: boolean, hpBar: sc.ENEMY_HP_BAR }
 
       setLevelOverride(this: this, newLevel?: Optional<number>): void;
       getLevel(this: this): number;
