@@ -35,6 +35,7 @@ declare global {
       effects: sc.Combat.Effects;
       active: boolean;
 
+      isEnemyAnalyzable(this: this, enemyType: string): boolean
       canShowBoostedEntry(this: this, enemyName: string, isBoss: boolean): boolean;
       showHitEffect(this: this, entity: ig.Entity, hitPos: Vec3, hitDegree: sc.ATTACK_TYPE, hitElement: sc.ELEMENT, shielded: boolean, critical: boolean, ignoreSounds: boolean): ig.ENTITY.Effect;
       showPerfectDashEffect(this: this, target: ig.ActorEntity): void;
