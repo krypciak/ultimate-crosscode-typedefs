@@ -39,6 +39,7 @@ declare global {
       mapId: number;
 
       settings: unknown; // an empty object, appears to be unused
+      name?: Optional<string>
       coll: ig.CollEntry;
       sprites: ig.CubeSprite[];
       entityAttached: ig.Entity.Attachable[];
