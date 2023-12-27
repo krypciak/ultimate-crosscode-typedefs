@@ -39,6 +39,8 @@ declare global {
             blockEvent?: ig.Event
             blockEventCondition?: ig.VarCondition
             gfxType: unknown
+
+            onInteraction(this: this): void
         }
         interface TeleportFieldConstructor extends ImpactClass<TeleportField> {
             new(x: number, y: number, z: number, settings: ig.ENTITY.TeleportField.Settings): TeleportField
