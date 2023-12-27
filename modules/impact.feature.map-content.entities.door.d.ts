@@ -39,6 +39,8 @@ declare global {
             openEffect: ig.EffectHandle
             sounds: { activate: ig.Sound, deactivate: ig.Sound }
             fx: { sheet: ig.EffectSheet }
+
+            open(this: this, entity: ig.Entity, data: Vec2 & { dot: number }): void
         }
         interface DoorConstructor extends ImpactClass<Door> {
             new(x: number, y: number, z: number, settings: ig.ENTITY.Door.Settings): Door
