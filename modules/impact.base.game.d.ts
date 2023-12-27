@@ -61,6 +61,7 @@ declare global {
       renderer: ig.Renderer2d;
       physics: ig.Physics;
       playerEntity: ig.ENTITY.Player;
+      marker: string
       addons: Game.Addons;
 
       getLevelHeight(this: this, level: number | string): number
@@ -70,9 +71,9 @@ declare global {
         radius: number,
         yScale: number,
         zHeight: number,
-        dir: Vec2,
-        startAngle: number,
-        endAngle: number,
+        dir?: Vec2,
+        startAngle?: number,
+        endAngle?: number,
         exception?: ig.Entity,
         moreExceptions?: ig.Entity[],
         rectangular?: boolean
@@ -94,6 +95,7 @@ declare global {
       ): E;
       reset(this: this): void;
       teleport(
+        this: this,
         mapName: string,
         marker?: Optional<ig.TeleportPosition>,
         hint?: ig.Game.TeleportLoadHint,
