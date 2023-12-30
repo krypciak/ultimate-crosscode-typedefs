@@ -21,8 +21,8 @@ declare global {
     function mulF(v1: Vec2, f: number, dest?: Vec2): Vec2;
     function div(v1: Vec2, v2: Vec2, dest?: Optional<Vec2>): Vec2;
     function divC(v: Vec2, x: number, y?: Optional<number>, dest?: Optional<Vec2>): Vec2;
-    function dot(v1: Vec2, v2: Vec2): Vec2;
-    function dotR(v1: Vec2, v2: Vec2): Vec2;
+    function dot(v1: Vec2, v2: Vec2): number;
+    function dotR(v1: Vec2, v2: Vec2): number;
     //the length function behaves differently depending if newLength is passed in.
     function length(v: Vec2): number;
     function length(v: Vec2, newLength: number, dest?: Optional<Vec2>): Vec2;
