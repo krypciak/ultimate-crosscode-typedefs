@@ -62,24 +62,24 @@ declare global {
         entities: MapModel.MapEntity[],
         layer: MapModel.MapLayer[];
       }
-      
+
       interface MapEntity {
-        type: string,
-        x: number,
-        y: number,
-        level: number,
-        settings: ig.Entity.Settings
+        type: string;
+        x: number;
+        y: number;
+        level: number;
+        settings: ig.Entity.Settings;
       }
 
       interface MapAttributes {
-        saveMode: 'ENABLED' | 'DISABLED' | ''
-        bgm: string
-        cameraInBounds: boolean
-        'map-sounds': string
-        mapStyle: string
-        weather: string
-        area: string
-        npcRunners: string
+        saveMode: 'ENABLED' | 'DISABLED' | '';
+        bgm: string;
+        cameraInBounds: boolean;
+        'map-sounds': string;
+        mapStyle: string;
+        weather: string;
+        area: string;
+        npcRunners: string;
       }
 
       type MapLayerType = 'Background' | 'Collision' | 'Navigation' | 'Light' | 'object1' | 'object2' | 'object3';

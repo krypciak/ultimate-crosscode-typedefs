@@ -1,6 +1,7 @@
 // requires impact.base.entity
 // requires impact.feature.effect.effect-sheet
 // requires game.feature.combat.combat-target-event
+
 export {};
 
 declare global {
@@ -9,10 +10,9 @@ declare global {
             interface Teleportable {
                 doTeleport(this: this, portal: ig.ENTITY.WaveTeleport): void;
             }
+            interface Settings extends ig.Entity.Settings {}
         }
-        interface WaveTeleport extends ig.AnimatedEntity {
-
-        }
+        interface WaveTeleport extends ig.AnimatedEntity {}
         interface WaveTeleportConstructor extends ImpactClass<WaveTeleport> {}
 
         let WaveTeleport: WaveTeleportConstructor;

@@ -23,8 +23,10 @@ declare global {
 
     namespace Entity {
       interface Settings {
+        name?: string;
         size?: Partial<Vec3>;
         mapId?: number;
+        spawnCondition?: string;
       }
 
       interface Attachable {

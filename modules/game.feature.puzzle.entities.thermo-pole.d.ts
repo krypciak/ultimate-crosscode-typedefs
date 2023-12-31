@@ -16,16 +16,31 @@ declare global {
 
         interface ElementPoleGroups {
             getGroup(group: string): ElementPoleGroups.Group;
-            onPoleHit(pole: ig.ENTITY.ElementPole, ball: ig.ENTITY.Ball, alreadyHit: boolean): boolean;
+            onPoleHit(
+                pole: ig.ENTITY.ElementPole,
+                ball: ig.ENTITY.Ball,
+                alreadyHit: boolean,
+            ): boolean;
             onCancelCheck(pole: ig.ENTITY.ElementPole): boolean;
         }
         let ElementPoleGroups: ElementPoleGroups;
+
+        enum TERMO_POLE_TYPE {
+            LONG,
+            LONG64,
+            SHORT,
+        }
     }
 
     namespace ig.ENTITY {
         namespace ElementPole {
             interface Charge {
                 element: sc.ELEMENT;
+            }
+            interface Settings extends ig.Entity.Settings {
+                group: string;
+                spawnCondition?: string;
+                poleType?: keyof typeof sc.TERMO_POLE_TYPE;
             }
         }
         interface ElementPole extends ig.AnimatedEntity {
@@ -35,6 +50,6 @@ declare global {
             ballHit(this: this, ball: ig.ENTITY.Ball): boolean;
         }
         interface ElementPoleConstructor extends ImpactClass<ElementPole> {}
-        let ElementPole: ElementPoleConstructor
+        let ElementPole: ElementPoleConstructor;
     }
 }

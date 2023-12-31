@@ -64,7 +64,10 @@ declare global {
       storeWalkAnims(this: this, name: string, config: ig.ActorEntity.WalkAnims): void;
       setWalkAnims(this: this, config: string | ig.ActorEntity.WalkAnims): void;
     }
-    interface ActorEntityConstructor extends ImpactClass<ActorEntity> {}
+    interface ActorEntityConstructor extends ImpactClass<ActorEntity> {
+      FACE4: typeof ActorEntity$FACE4
+      FACE8: typeof ActorEntity$FACE8
+    }
     var ActorEntity: ActorEntityConstructor;
   }
 }

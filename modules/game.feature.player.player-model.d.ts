@@ -194,6 +194,7 @@ declare global {
       getCore(this: this, core: sc.PLAYER_CORE): boolean;
       getCombatCooldownTime(this: this): number;
       hasElement(this: this, element: sc.ELEMENT): boolean;
+      setLevel(this: this, level: number, dontResetSkillTree?: boolean): void;
       addExperience(
         this: this,
         exp: number,
