@@ -80,6 +80,7 @@ declare global {
         keepState?: Optional<boolean>,
         noStateReset?: Optional<boolean>,
       ): void;
+      cancelJump(this: this): void;
       setWalkAnims(this: this, config: string | ig.ActorEntity.WalkAnims): void;
       storeWalkAnims(this: this, name: string, config: ig.ActorEntity.WalkAnims): void;
       doJump(this: this, zVel: number, callbackHeight: number, maxVel: number, accelSpeed: Optional<number>, ignoreSounds: boolean): void
