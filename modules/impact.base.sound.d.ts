@@ -124,6 +124,7 @@ declare global {
 
       _setPosition(this: this): void;
       play(this: this): void;
+      _disconnect(this: this): void;
       pause(this: this, noFadeOut?: boolean): void
     }
     interface SoundHandleWebAudioConstructor extends ImpactClass<ig.SoundHandleWebAudio> { new(): ig.SoundHandleWebAudio }
