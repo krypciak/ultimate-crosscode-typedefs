@@ -15,6 +15,7 @@ declare global {
             MAP = 4,
         }
         interface QuickMenuModel extends ig.GameAddon {
+            activeState: boolean
             currentState: sc.QUICK_MENU_STATE
             previousState: sc.QUICK_MENU_STATE
             cursorMoved: boolean
