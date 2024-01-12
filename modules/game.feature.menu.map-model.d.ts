@@ -118,6 +118,7 @@ declare global {
       getCurrentAreaName(this: this): ig.LangLabel
       getAreaName(this: this, a?: string, b?: boolean, c?: boolean): string;
       getCurrentMapName(this: this, returnQuestionMarkIfItsCurrentMap?: boolean): ig.LangLabel
+      getMapName(this: this, map: string): ig.LangLabel;
       getVisitedArea(this: this, area: string): boolean;
       getChestCount(this: this, key: string): number;
     }
