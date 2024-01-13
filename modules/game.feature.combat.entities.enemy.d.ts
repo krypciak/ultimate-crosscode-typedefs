@@ -42,7 +42,7 @@ declare global {
 
       setLevelOverride(this: this, newLevel?: Optional<number>): void;
       getLevel(this: this): number;
-      changeState(this: this, state: string, immediate?: Optional<boolean>): void;
+      changeState(this: this, state: string, immediate?: Optional<boolean>, switchStateConfig?: boolean): void;
     }
     interface EnemyConstructor extends ImpactClass<Enemy> {
       new (x: number, y: number, z: number, settings: ig.ENTITY.Enemy.Settings): ig.ENTITY.Enemy
