@@ -18,6 +18,7 @@ declare global {
             activeState: boolean
             currentState: sc.QUICK_MENU_STATE
             previousState: sc.QUICK_MENU_STATE
+            visible: boolean
             cursorMoved: boolean
             cursor: Vec2
 
