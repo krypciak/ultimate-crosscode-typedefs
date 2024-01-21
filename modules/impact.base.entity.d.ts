@@ -43,6 +43,8 @@ declare global {
       coll: ig.CollEntry;
       sprites: ig.CubeSprite[];
       entityAttached: ig.Entity.Attachable[];
+      _hidden: boolean;
+      _hideRequest: boolean;
       _killed: boolean;
       
       ballDestroyer?: boolean;
