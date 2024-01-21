@@ -64,6 +64,9 @@ declare global {
       face: Vec2;
       animationFixed: boolean;
       walkAnims: ActorEntity.WalkAnims;
+      stepTimer: number
+      stepSync: number
+      stepData: Record<string, any>
       defaultConfig: ig.ActorConfig
       jumpingEnabled: boolean
       jumping: boolean
