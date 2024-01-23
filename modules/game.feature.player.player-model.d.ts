@@ -226,7 +226,7 @@ declare global {
         baseLevel: number,
         bonus: number,
         ignoreModifier: boolean,
-        ignoreGlobalLevelCurve: boolean
+        levelCurve: sc.LevelCurve
       ): number;
       addCredit(this: this, amount: number): void;
       removeCredit(this: this, amount: number): void;
