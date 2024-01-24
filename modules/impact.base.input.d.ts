@@ -159,6 +159,7 @@ declare global {
       actions: Record<ig.KEY, boolean>;
       currentDevice: ig.INPUT_DEVICES
       mouse: Vec2;
+      mouseGuiActive: boolean;
       ignoreKeyboard: boolean;
       
       keydown(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
