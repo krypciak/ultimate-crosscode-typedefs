@@ -55,6 +55,7 @@ declare global {
         ignoreIfSame?: Optional<boolean>,
         ignoreEmptyCells?: Optional<boolean>,
       ): void;
+      unfocusCurrentButton(this: this): void
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {}
     var ButtonGroup: ButtonGroupConstructor;
