@@ -5,6 +5,7 @@ export {};
 declare global {
   namespace sc {
     interface BaseMenu extends ig.GuiElementBase {
+      gfx: ig.Image;
       visible: boolean;
 
       addObservers(this: this): void;
