@@ -56,7 +56,10 @@ declare global {
       textChild: sc.TextGui;
 
       setWidth(this: this, width: number): void;
+      setHeight(this: this, height: number): void;
       setText(this: this, text: sc.TextLike, ignoreWidth?: boolean): void;
+      resetText(this: this): void
+      unsetFocus(this: this): void
       getButtonText(this: this): string;
     }
     interface ButtonGuiConstructor extends ImpactClass<ButtonGui> {
