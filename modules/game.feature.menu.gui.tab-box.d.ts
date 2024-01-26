@@ -11,7 +11,7 @@ declare global {
     namespace TabbedPane {
       interface Settings {
         /* this may be incomplemte */
-        type: number;
+        type?: number;
         skipSounds?: boolean;
       }
       interface Content {
@@ -21,6 +21,7 @@ declare global {
       }
     }
     interface TabbedPane extends ig.GuiElementBase {
+      tabGroup: sc.ButtonGroup;
       keys: string[];
       tabs: Record<string, sc.ItemTabbedBox.TabButton>;
       tabArray: sc.ItemTabbedBox.TabButton[];
@@ -29,6 +30,7 @@ declare global {
       currentContent: sc.TabbedPane.Content;
       cacheContent: boolean;
       _prevIndex: number;
+      _prevPressed: sc.ItemTabbedBox.TabButton;
 
       setPanelSize(this: this, width: number, height: number): void;
       addTab(this: this, key: string, index: number, settings: sc.TabbedPane.Settings): void;
@@ -41,6 +43,11 @@ declare global {
       show(this: this, tabIndex?: number): void;
       hide(this: this): void;
       rearrangeTabs(this: this): void;
+      resetButtons(
+        this: this,
+        exceptThisButton?: sc.ItemTabbedBox.TabButton,
+        unfocusAll?: boolean,
+      ): void;
       onTabButtonCreation(
         this: this,
         key: string,
