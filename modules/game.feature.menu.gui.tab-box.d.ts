@@ -87,6 +87,13 @@ declare global {
       currentGroup: sc.ButtonGroup;
       bg: sc.MenuScanLines;
 
+      onListEntryPressed(this: this, button: sc.ListBoxButton): void;
+      onLeftRightPress(
+        this: this,
+        button: sc.ItemTabbedBox.TabButton,
+        index: number,
+        dir: -1 | 1,
+      ): void;
       onCreateListEntries(
         this: this,
         list: sc.ButtonListBox,
