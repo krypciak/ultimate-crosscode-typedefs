@@ -19,7 +19,7 @@ declare global {
     }
     var BaseMenu: BaseMenuConstructor;
 
-    interface ListInfoMenu extends sc.BaseMenu {
+    interface ListInfoMenu extends sc.BaseMenu, sc.Model.Observer {
       hotkeyHelp: sc.ButtonGui;
       hotkeySort: sc.ButtonGui;
       helpGui: sc.HelpScreen;
