@@ -10,7 +10,9 @@ declare global {
     }
     var MouseButtonGroup: MouseButtonGroupConstructor;
 
-    interface ButtonGroup extends ig.ButtonGroup {}
+    interface ButtonGroup extends ig.ButtonGroup {
+        doButtonTraversal(this: this, inputRegainded: boolean): void
+    }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {
       new (): sc.ButtonGroup;
     }
