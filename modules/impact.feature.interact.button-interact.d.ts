@@ -40,6 +40,7 @@ declare global {
         asBackButton?: boolean,
       ): void;
       removeFocusGui(this: this, x: number, y: number): void;
+      invokeCurrentButton(this: this): void;
       setMouseFocusLostCallback(this: this, callback: () => void): void;
       addPressCallback(this: this, callback: ig.ButtonGroup.PressCallback): void;
       addSelectionCallback(this: this, callback: ig.ButtonGroup.SelectionCallback): void;
@@ -55,7 +56,7 @@ declare global {
         ignoreIfSame?: Optional<boolean>,
         ignoreEmptyCells?: Optional<boolean>,
       ): void;
-      unfocusCurrentButton(this: this): void
+      unfocusCurrentButton(this: this): void;
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {}
     var ButtonGroup: ButtonGroupConstructor;
