@@ -10,11 +10,14 @@ declare global {
 
       loadInternal(this: this): void;
       get<T = string>(this: this, path: string): T;
+      onerror(this: this, error: unknown): void;
+      onload(this: this, labels: any): void;
       grammarReplace(
         template: string,
         substitution: sc.TextLike,
         unknownValue?: Optional<any>, // TODO
       ): string;
+      _doCallback(this: this): void;
     }
     interface LangConstructor extends ImpactClass<Lang> {}
     var Lang: LangConstructor;
