@@ -6,6 +6,21 @@ export {};
 
 declare global {
   namespace sc {
+    interface HelpScrollContainer extends ig.GuiElementBase {
+      scrollPane: sc.ScrollPane;
+      content: ig.GuiElementBase;
+
+      setElement(this: this, gui: ig.GuiElementBase): void;
+      scroll(this: this, value: number, skipTransition?: boolean): void;
+      getScrollY(this: this): number;
+      clear(this: this): void;
+      _updateContentHeight(this: this): void;
+    }
+    interface HelpScrollContainerConstructor extends ImpactClass<HelpScrollContainer> {
+      new (): HelpScrollContainer;
+    }
+    var HelpScrollContainer: HelpScrollContainerConstructor;
+
     interface MultiPagePageCounter extends ig.GuiElementBase {
       count: sc.NumberGui;
       max: sc.NumberGui;
@@ -45,6 +60,7 @@ declare global {
       curPage: number;
       backSound: ig.Sound;
       _width: number;
+      scrollContainer: sc.HelpScrollContainer;
 
       openMenu(this: this): void;
       closeMenu(this: this): void;
