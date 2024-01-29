@@ -40,7 +40,7 @@ declare global {
             disabled?: boolean
             color?: sc.ANALYSIS_COLORS
             showType?: sc.SHOW_TYPE
-            text?: string
+            text?: ig.LangLabel.Data
         }
         interface QuickMenuTypesBaseConstructor extends ImpactClass<sc.QuickMenuTypesBase> {
             new (type: string, settings: Omit<QuickMenuTypesBaseSettings, 'entity'>, screen: sc.QuickFocusScreen): sc.QuickMenuTypesBase
