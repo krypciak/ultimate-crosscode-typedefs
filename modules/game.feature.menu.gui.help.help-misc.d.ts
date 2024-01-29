@@ -17,6 +17,32 @@ declare global {
     }
     let HELP_ANNO_TYPE: HELP_ANNO_TYPE;
 
+    interface HelpInfoBox extends sc.MenuPanel {
+      title: sc.TextGui;
+      description: sc.TextGui;
+      line: ig.ColorGui;
+      content: ig.GuiElementBase;
+
+      show(
+        this: this,
+        button: sc.ButtonGui,
+        title: Optional<string>,
+        description: Optional<string>,
+        content: sc.HelpScreen.Annotation['content'],
+        type: sc.HelpScreen.Annotation['descType'],
+      ): void;
+      hide(this: this): void;
+      getText<T>(
+        this: this,
+        stringGetter: (arg: T) => string | string,
+        stringGetterArgument?: T,
+      ): string;
+    }
+    interface HelpInfoBoxConstructor extends ImpactClass<HelpInfoBox> {
+      new (): HelpInfoBox;
+    }
+    var HelpInfoBox: HelpInfoBoxConstructor;
+
     interface HelpLevelEntry extends ig.GuiElementBase {
       color: sc.TextGui;
       desc: sc.TextGui;
