@@ -21,8 +21,7 @@ declare global {
     var lang: ig.Lang;
 
     namespace LangLabel {
-      // TODO: is a simple string valid `ig.LangLabel.Data`?
-      interface Data {
+      type Data = {
         en_US?: string,
         de_DE?: string,
         ja_JP?: string,
@@ -30,7 +29,7 @@ declare global {
         ko_KR?: string,
         zh_TW?: string,
         langUid?: number,
-      }
+      } | string
     }
     interface LangLabel extends ig.Class {
       value: string;
