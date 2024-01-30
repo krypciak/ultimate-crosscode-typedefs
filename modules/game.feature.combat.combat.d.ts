@@ -14,6 +14,21 @@ declare global {
       OTHER = 3,
     }
 
+    interface DramaticEffect {
+      timeFactor: number;
+      wait: number;
+      blurDuration: number;
+      blurType?: 'NONE' | 'LIGHT';
+      clearTime: number;
+      zoom: number;
+      label?: string;
+      alwaysFocus?: boolean;
+      speedlines?: boolean;
+      break?: boolean;
+      camera?: number;
+    }
+    var DRAMATIC_EFFECT: Record<string, DramaticEffect>;
+
     namespace Combat {
       interface Effects {
         hit: ig.EffectSheet;
@@ -35,14 +50,32 @@ declare global {
       effects: sc.Combat.Effects;
       active: boolean;
 
-      isEnemyAnalyzable(this: this, enemyType: string): boolean
+      isEnemyAnalyzable(this: this, enemyType: string): boolean;
       canShowBoostedEntry(this: this, enemyName: string, isBoss: boolean): boolean;
-      showHitEffect(this: this, entity: ig.Entity, hitPos: Vec3, hitDegree: sc.ATTACK_TYPE, hitElement: sc.ELEMENT, shielded: boolean, critical: boolean, ignoreSounds: boolean, spriteFilter: number[]): ig.ENTITY.Effect;
+      showHitEffect(
+        this: this,
+        entity: ig.Entity,
+        hitPos: Vec3,
+        hitDegree: sc.ATTACK_TYPE,
+        hitElement: sc.ELEMENT,
+        shielded: boolean,
+        critical: boolean,
+        ignoreSounds: boolean,
+        spriteFilter: number[],
+      ): ig.ENTITY.Effect;
       showPerfectDashEffect(this: this, target: ig.ActorEntity): void;
       getElementMode(this: this, combatant: ig.ENTITY.Combatant): sc.ELEMENT;
       isInCombat(this: this, combatant: ig.ENTITY.Combatant): boolean;
-      onCombatantDeathHit(this: this, attacker: ig.ENTITY.Combatant, victim: ig.ENTITY.Combatant): void;
-      showModeChange(this: this, combatant: ig.ENTITY.Combatant, element: sc.ELEMENT): ig.ENTITY.Effect;
+      onCombatantDeathHit(
+        this: this,
+        attacker: ig.ENTITY.Combatant,
+        victim: ig.ENTITY.Combatant,
+      ): void;
+      showModeChange(
+        this: this,
+        combatant: ig.ENTITY.Combatant,
+        element: sc.ELEMENT,
+      ): ig.ENTITY.Effect;
       showModeAura(this: this, combatant: ig.ENTITY.Combatant, element: sc.ELEMENT): void;
       clearModeAura(this: this, combatant: ig.ENTITY.Combatant): void;
       showModeDash(this: this, combatant: ig.ENTITY.Combatant, element: sc.ELEMENT): void;
