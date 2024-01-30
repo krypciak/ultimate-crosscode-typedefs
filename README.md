@@ -6,7 +6,7 @@ Hi! This document serves as the documentation for the _Ultimate CrossCode TypeDe
 
 ## Setting up a TypeScript mod project
 
-**NOTE:** despite my personal preference for [Yarn](https://yarnpkg.com/) over [npm](https://www.npmjs.com/) I included npm commands here because virtually everyone in CC modding seems to be using it, I hope you can figure out Yarn commands yourself if you use it, the syntax should be more or less equivalent.
+**NOTE:** this project uses [pnpm](https://pnpm.io). The CLI is compatible with [npm](https://www.npmjs.com), so it's as simple as running `npm i -g pnpm` and using `pnpm` instead of `npm`.
 
 **NOTE 2:** this tutorial will be updated when CCLoader3 has released.
 
