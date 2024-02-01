@@ -104,7 +104,7 @@ declare global {
             this: this,
             renderer: ig.GuiRenderer,
             x: number,
-            left: number,
+            left: boolean,
             heads: number[],
           ): void;
         }
