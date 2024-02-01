@@ -67,17 +67,29 @@ declare global {
       }
       type AutoEquip = AutoEquipEntry[];
     }
+
     interface PlayerConfig extends ig.JsonLoadable {
       name: string;
+      clazz: string;
+      character: sc.Character;
+      combatStyle: unknown;
+      animSheet: ig.AnimationSheet;
+      proxies: Record<string, sc.ProxySpawnerBase>;
+      headIdx: number;
       stats: PlayerConfig.Stats;
       autoequip: PlayerConfig.AutoEquip;
       baseConfig: sc.PlayerSubConfig;
       elementConfigs: Record<sc.ELEMENT, sc.PlayerSubConfig>;
+      skillRanking: string[];
     }
     interface PlayerConfigConstructor extends ImpactClass<PlayerConfig> {
       new (name: string): sc.PlayerConfig;
 
-      getElementBall(combatant: sc.PlayerBaseEntity, element: sc.ELEMENT, charged: boolean): sc.ProxySpawnerBase
+      getElementBall(
+        combatant: sc.PlayerBaseEntity,
+        element: sc.ELEMENT,
+        charged: boolean,
+      ): sc.ProxySpawnerBase;
     }
     var PlayerConfig: PlayerConfigConstructor;
 
