@@ -218,6 +218,7 @@ declare global {
       removeAllChildren(this: this): void;
       update(this: this): void;
       updateDrawables(this: this, renderer: ig.GuiRenderer): void;
+      remove(this: this, immediately?: boolean): void
       onAttach(this: this): void;
       onDetach(this: this): void;
       doStateTransition(
