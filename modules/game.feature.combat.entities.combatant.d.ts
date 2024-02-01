@@ -65,6 +65,7 @@ declare global {
       shieldsConnections: sc.CombatantShieldConnection[];
       effects: Record<string, ig.EffectSheet>;
 
+      isDefeated(this: this): boolean
       setTarget(this: this, combatant: sc.BasicCombatant, fixed?: Optional<boolean>): void;
       onPreDamageModification(
         this: this,
