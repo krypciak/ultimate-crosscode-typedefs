@@ -15,7 +15,7 @@ declare global {
     }
     interface ButtonGroup extends ig.Class {
       buttonInteract: ig.ButtonInteractEntry;
-      elements: sc.ButtonGui[][];
+      elements: ig.FocusGui[][];
       selectionCallbacks: ig.ButtonGroup.SelectionCallback[];
       pressCallbacks: ig.ButtonGroup.PressCallback[];
       mouseFocusLostCallback: () => void;
