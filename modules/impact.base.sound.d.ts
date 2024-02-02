@@ -123,7 +123,6 @@ declare global {
       _contextTimeOnPause: number;
 
       _setPosition(this: this): void;
-      play(this: this): void;
       _disconnect(this: this): void;
       pause(this: this, noFadeOut?: boolean): void
     }
