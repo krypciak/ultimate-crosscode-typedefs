@@ -10,7 +10,22 @@ declare global {
     var BUTTON_DEFAULT_WIDTH: number;
     var BUTTON_MENU_WIDTH: number;
     var BUTTON_TOP_MENU_WIDTH: number;
-    var BUTTON_SOUND: { [name: string]: ig.Sound };
+    var BUTTON_SOUND: Record<string, ig.Sound> &
+      Record<
+        | 'submit'
+        | 'back'
+        | 'equip'
+        | 'denied'
+        | 'quickAppear'
+        | 'quickHide'
+        | 'shop_up'
+        | 'shop_down'
+        | 'shop_cash'
+        | 'quest_accept'
+        | 'toggle_on'
+        | 'toggle_off',
+        ig.Sound
+      >;
 
     interface ButtonHighlightGui extends ig.GuiElementBase {
       focusWeight: number;
@@ -58,8 +73,8 @@ declare global {
       setWidth(this: this, width: number): void;
       setHeight(this: this, height: number): void;
       setText(this: this, text: sc.TextLike, ignoreWidth?: boolean): void;
-      resetText(this: this): void
-      unsetFocus(this: this): void
+      resetText(this: this): void;
+      unsetFocus(this: this): void;
       getButtonText(this: this): string;
     }
     interface ButtonGuiConstructor extends ImpactClass<ButtonGui> {
@@ -79,7 +94,7 @@ declare global {
       hookGui: ig.ImageGui;
     }
     interface CheckboxGuiConstructor extends ImpactClass<CheckboxGui> {
-      new (initValue: boolean, width?: number, active?: boolean): sc.CheckboxGui
+      new (initValue: boolean, width?: number, active?: boolean): sc.CheckboxGui;
     }
     var CheckboxGui: CheckboxGuiConstructor;
 
