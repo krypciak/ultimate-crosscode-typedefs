@@ -78,7 +78,7 @@ declare global {
     }
     var WebAudioBuffer: WebAudioBufferConstructor;
 
-    interface SoundDefault extends ig.Class {
+    interface SoundDefault extends ig.Class, SoundCommon {
       group: string;
       multiAudio: ig.MultiAudio;
       volume: number;
@@ -87,7 +87,6 @@ declare global {
 
       clone(this: this): ig.SoundDefault;
       clearCached(this: this): void;
-      play(this: this, pos?: boolean, settings?: SoundPlaySettings): ig.SoundHandle;
       stop(this: this): void;
     }
     interface SoundDefaultConstructor extends ImpactClass<SoundDefault>, SoundConstructorCommon {}
@@ -196,7 +195,7 @@ declare global {
     }
 
     interface SoundCommon {
-      play(this: this, pos?: boolean, settings?: SoundPlaySettings): ig.SoundHandle;
+      play(this: ig.Sound, pos?: boolean, settings?: SoundPlaySettings): ig.SoundHandle;
     }
 
     namespace Sound$FORMAT {
@@ -212,7 +211,7 @@ declare global {
       use: ig.Sound.FORMAT[];
     }
 
-    type Sound = SoundDefault | SoundWebAudio;
+    type Sound = SoundDefault | SoundWebAudio
     type SoundConstructor = SoundDefaultConstructor | SoundWebAudioConstructor;
     var Sound: SoundConstructor;
   }
