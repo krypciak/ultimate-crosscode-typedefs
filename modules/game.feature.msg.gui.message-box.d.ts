@@ -17,7 +17,7 @@ declare global {
         }
         interface MsgBoxGuiConstructor extends ImpactClass<MsgBoxGui> {
             new(maxWidth: number, pointerType: sc.ArrowBoxGui.POINTER,
-                text: ig.LangLabel, speed: ig.TextBlock.SPEED, personEntry: ig.MessageOverlayGui.Entry, beepSound: Optional<ig.Sound>): MsgBoxGui
+                text: ig.LangLabel, speed: ig.TextBlock.SPEED, personEntry: ig.MessageOverlayGui.Entry, beepSound: Nullable<ig.Sound>): MsgBoxGui
         }
         var MsgBoxGui: MsgBoxGuiConstructor
     }

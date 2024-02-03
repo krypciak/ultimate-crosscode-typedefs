@@ -103,7 +103,7 @@ declare global {
         hasOverload: boolean
         hp: number
         core: sc.PlayerModel['core']
-        skills: Optional<boolean>[]
+        skills: Nullable<boolean>[]
         chapter: number
         skillPoints: sc.PlayerModel['skillPoints']
         skillPointsExtra: sc.PlayerModel['skillPointsExtra']

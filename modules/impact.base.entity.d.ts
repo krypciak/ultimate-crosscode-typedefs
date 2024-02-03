@@ -39,7 +39,7 @@ declare global {
       mapId: number;
 
       settings: unknown; // an empty object, appears to be unused
-      name?: Optional<string>
+      name?: Nullable<string>
       coll: ig.CollEntry;
       sprites: ig.CubeSprite[];
       entityAttached: ig.Entity.Attachable[];
@@ -96,7 +96,7 @@ declare global {
     }
 
     namespace EntityTools {
-      function getGroundEntity(entity: ig.Entity): Optional<ig.Entity>
+      function getGroundEntity(entity: ig.Entity): Nullable<ig.Entity>
       function isInScreen(entity: ig.Entity, x?: number, y?: number): boolean
     }
 

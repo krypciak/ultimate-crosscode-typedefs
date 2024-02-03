@@ -9,9 +9,9 @@ declare global {
         area: ig.LangLabel.Data;
         arena: sc.Arena.Data
         bgm: ig.Bgm.Data
-        cancelButtonText: Optional<ig.LangLabel>
+        cancelButtonText: Nullable<ig.LangLabel>
         commonEvents: { runData: Record<string, { trigger: number }> }
-        currentTask: Optional<ig.LangLabel.Data>
+        currentTask: Nullable<ig.LangLabel.Data>
         drops: sc.MenuModel['dropCounts']
         floor: ig.LangLabel.Data | 'MISSING LABEL';
         forceCombatMode: boolean
