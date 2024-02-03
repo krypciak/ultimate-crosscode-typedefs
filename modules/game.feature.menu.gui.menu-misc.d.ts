@@ -79,7 +79,7 @@ declare global {
       ): void;
     }
     interface InfoBarConstructor extends ImpactClass<InfoBar> {
-      new (width: number, height: number, skipRender: boolean): InfoBar;
+      new (width?: number, height?: number, skipRender?: boolean): InfoBar;
     }
     var InfoBar: InfoBarConstructor;
 
