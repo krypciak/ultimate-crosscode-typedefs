@@ -46,7 +46,7 @@ declare global {
       hour: sc.NumberGui
       minute: sc.NumberGui
       second: sc.NumberGui
-      millis: Optional<sc.NumberGui>
+      millis: Nullable<sc.NumberGui>
       color: sc.GUI_NUMBER_COLOR
       hideHours: boolean
       drawHourDots: boolean

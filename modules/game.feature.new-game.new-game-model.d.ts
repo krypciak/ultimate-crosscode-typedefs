@@ -102,7 +102,7 @@ declare global {
       options: Record<sc.NEW_GAME_OPTIONS.Keys, boolean>;
 
       setActive(this: this, active: boolean): void
-      toggle(this: this, options: sc.NEW_GAME_OPTIONS.Keys, set?: Optional<sc.NEW_GAME_SETS.Keys>): void
+      toggle(this: this, options: sc.NEW_GAME_OPTIONS.Keys, set?: Nullable<sc.NEW_GAME_SETS.Keys>): void
       get(this: this, option: sc.NEW_GAME_OPTIONS.Keys): boolean;
       applyStoreData(this: this, atRhombus: boolean): void;
       getDropRateMultiplier(this: this): number;

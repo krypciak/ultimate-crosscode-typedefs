@@ -35,7 +35,7 @@ declare global {
     interface PercentNumber extends ig.GuiElementBase {
       number: sc.NumberGui
 
-      setNumber(this: this, number: number, skipTransition?: Optional<boolean>): void
+      setNumber(this: this, number: number, skipTransition?: Nullable<boolean>): void
       setColor(this: this, color: sc.GUI_NUMBER_COLOR): void;
     }
     interface PercentNumberConstructor extends ImpactClass<PercentNumber> {
