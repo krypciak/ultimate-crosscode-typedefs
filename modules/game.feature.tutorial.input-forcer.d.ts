@@ -37,6 +37,7 @@ declare global {
             new (): InputForcer
         }
         var InputForcer: InputForcerConstructor
+        var inputForcer: InputForcer
 
         var INPUT_FORCER_ENTRIES: {
             DODGE_RIGHT: sc.InputForcer.Entry
