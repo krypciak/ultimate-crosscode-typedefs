@@ -45,6 +45,7 @@ declare global {
       addPressCallback(this: this, callback: ig.ButtonGroup.PressCallback): void;
       addSelectionCallback(this: this, callback: ig.ButtonGroup.SelectionCallback): void;
       clear(this: this): void;
+      getCurrentElement(this: this): ig.FocusGui
       isActive(this: this): boolean;
       setCurrentFocus(this: this, x: number, y: number): void;
       focusCurrentButton(
