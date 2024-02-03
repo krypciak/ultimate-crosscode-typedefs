@@ -26,8 +26,8 @@ declare global {
       show(
         this: this,
         button: sc.ButtonGui,
-        title: Optional<string>,
-        description: Optional<string>,
+        title: Nullable<string>,
+        description: Nullable<string>,
         content: sc.HelpScreen.Annotation['content'],
         type: sc.HelpScreen.Annotation['descType'],
       ): void;

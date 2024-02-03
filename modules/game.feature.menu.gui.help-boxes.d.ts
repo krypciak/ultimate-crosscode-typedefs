@@ -35,8 +35,8 @@ declare global {
 
     namespace MultiPageBoxGui {
       interface Page {
-        header?: Optional<string>;
-        title?: Optional<string>;
+        header?: Nullable<string>;
+        title?: Nullable<string>;
         content: string[]
         isList?: boolean;
       }

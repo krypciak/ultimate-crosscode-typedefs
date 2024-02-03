@@ -6,7 +6,7 @@ declare global {
   namespace sc {
     interface StatusBarEntry {
       icon: number;
-      init?: Optional<unknown>;
+      init?: Nullable<unknown>;
       barY: number;
       half?: boolean;
     }

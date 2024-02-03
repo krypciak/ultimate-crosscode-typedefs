@@ -32,7 +32,7 @@ declare global {
       info: sc.HelpInfoBox;
       buttonInteract: ig.ButtonInteractEntry;
       buttonGroup: sc.ButtonGroup;
-      backCallback?: Optional<() => void>;
+      backCallback?: Nullable<() => void>;
       manualTitle: string;
       manualContent: string[];
       manualGui: sc.MultiPageBoxGui;
