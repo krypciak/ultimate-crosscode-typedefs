@@ -54,7 +54,7 @@ declare global {
       enterReset(this: this): void;
       enterQuickMenu(this: this): boolean
       enterPrevSubState(this: this): void;
-      enterMenu(this: this, force?: Optional<boolean>): void;
+      enterMenu(this: this, force?: Nullable<boolean>): void;
       isTitle(this: this): boolean;
       enterPrevSubState(this: this): void;
       isCutscene(this: this): boolean;
