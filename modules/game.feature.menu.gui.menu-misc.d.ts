@@ -33,15 +33,15 @@ declare global {
     }
 
     interface PercentNumber extends ig.GuiElementBase {
-      number: sc.NumberGui
+      number: sc.NumberGui;
 
-      setNumber(this: this, number: number, skipTransition?: Optional<boolean>): void
+      setNumber(this: this, number: number, skipTransition?: Optional<boolean>): void;
       setColor(this: this, color: sc.GUI_NUMBER_COLOR): void;
     }
     interface PercentNumberConstructor extends ImpactClass<PercentNumber> {
-      new(maxValue: number, settings?: sc.NumberGui.Settings): PercentNumber
+      new (maxValue: number, settings?: sc.NumberGui.Settings): PercentNumber;
     }
-    var PercentNumber: PercentNumberConstructor
+    var PercentNumber: PercentNumberConstructor;
 
     interface NewUnlockButton extends sc.ButtonGui {}
     interface NewUnlockButtonConstructor extends ImpactClass<NewUnlockButton> {}
@@ -68,6 +68,8 @@ declare global {
         timeFunction: KeySpline;
         timer: number;
       };
+      skipRender: boolean;
+      alpha: number;
 
       doSizeTransition(
         this: this,
@@ -77,6 +79,7 @@ declare global {
         timeFunction: KeySpline,
         delay: number,
       ): void;
+      setText(this: this, text: sc.TextLike, sizeTransitionDelay?: number): void;
     }
     interface InfoBarConstructor extends ImpactClass<InfoBar> {
       new (width?: number, height?: number, skipRender?: boolean): InfoBar;
@@ -210,14 +213,13 @@ declare global {
     }
     var ScrollPane: ScrollPaneConstructor;
 
-
     namespace Slider {
       interface Thumb extends ig.GuiElementBase {
         updateDrawables(this: this, renderer: ig.GuiRenderer): void;
       }
     }
     interface Slider extends ig.GuiElementBase {
-      offset: Vec2
+      offset: Vec2;
       inset: { top: number; right: number; bottom: number; left: number };
       minValue: number;
       maxValue: number;
