@@ -57,7 +57,7 @@ declare global {
         interface ActorEntity extends ig.ActorEntity {
             soundType: 'default'
             dustType: sc.ACTOR_DUST
-            stepFx: { frames: number[], lastFrame: number, effects: ig.EffectSheet, prevTerrain: Optional<ig.TERRAIN>, prevEffect: Optional<ig.ENTITY.Effect> }
+            stepFx: { frames: number[], lastFrame: number, effects: ig.EffectSheet, prevTerrain: Nullable<ig.TERRAIN>, prevEffect: Nullable<ig.ENTITY.Effect> }
             nav: { path: ig.NavPath, failTimer: number, lastFailCount: number }
             tooHighToFall: boolean
             stepStats: { terrain: ig.TERRAIN, centerTerrain: number }

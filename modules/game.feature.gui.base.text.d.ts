@@ -24,7 +24,7 @@ declare global {
       font: ig.MultiFont;
       text: sc.TextLike;
       textBlock: ig.TextBlock;
-      beepSound: Optional<ig.Sound>
+      beepSound: Nullable<ig.Sound>
       bleepDelay: number;
       playSound: boolean;
       stopped: boolean;
