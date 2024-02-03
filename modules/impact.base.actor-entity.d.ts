@@ -76,12 +76,12 @@ declare global {
       setDefaultConfig(this: this, config: ig.ActorConfig): void
       setAttribute(this: this, key: string, value: unknown): void;
       getAttribute(this: this, key: string): unknown;
-      getTarget(this: this): Optional<ig.ActorEntity>;
+      getTarget(this: this): Nullable<ig.ActorEntity>;
       setAction(
         this: this,
         action: ig.Action,
-        keepState?: Optional<boolean>,
-        noStateReset?: Optional<boolean>,
+        keepState?: Nullable<boolean>,
+        noStateReset?: Nullable<boolean>,
       ): void;
       cancelJump(this: this): void;
       setWalkAnims(this: this, config: string | ig.ActorEntity.WalkAnims): void;

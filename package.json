@@ -29,7 +29,7 @@
   },
   "exports": {
     ".": "./index-crosscode-ccloader-all.js",
-    "./crosscode-ccloader-all.js": "./index-crosscode-ccloader-all.js"
+    "./*": "./*.d.ts"
   },
   "types": "crosscode-ccloader-all.d.ts",
   "typesVersions": {

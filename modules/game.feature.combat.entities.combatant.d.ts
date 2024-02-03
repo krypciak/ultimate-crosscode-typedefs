@@ -66,13 +66,13 @@ declare global {
       effects: Record<string, ig.EffectSheet>;
 
       isDefeated(this: this): boolean
-      setTarget(this: this, combatant: sc.BasicCombatant, fixed?: Optional<boolean>): void;
+      setTarget(this: this, combatant: sc.BasicCombatant, fixed?: Nullable<boolean>): void;
       onPreDamageModification(
         this: this,
         modifications: unknown,
         damagingEntity: sc.BasicCombatant.DamagingEntity,
         attackInfo: sc.AttackInfo,
-        partEntity: Optional<sc.BasicCombatant.DamagingEntity>,
+        partEntity: Nullable<sc.BasicCombatant.DamagingEntity>,
         damageResult: sc.CombatParams.DamageResult,
         shieldResult: sc.SHIELD_RESULT,
       ): boolean;
