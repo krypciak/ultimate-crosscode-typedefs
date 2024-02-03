@@ -31,7 +31,7 @@ declare global {
         defaultTrackTypeStack: string[]
         overloadDefault: boolean
         paused: boolean
-        resumeOnChange: Optional<unknown>
+        resumeOnChange: Nullable<unknown>
       }
     }
 
