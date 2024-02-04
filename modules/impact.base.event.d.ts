@@ -12,7 +12,7 @@ declare global {
 
     interface EventManager extends ig.Class {
       blockingEventCall: ig.EventCall;
-      
+
       callEvent(
         this: this,
         event: ig.Event,
@@ -21,8 +21,8 @@ declare global {
         onEnd?: Nullable<() => void>,
         input?: unknown,
         callEntity?: ig.Entity,
-        data?: unknown
-      ): void
+        data?: unknown,
+      ): void;
       clear(this: this): void;
       _startEventCall(this: this, event: ig.EventCall): void;
       _endEventCall(this: this, event: ig.EventCall): void;
@@ -33,10 +33,13 @@ declare global {
     let EventManager: EventManagerConstructor;
 
     interface EventCall extends ig.Class {
-      runType: ig.EventRunType
-      done: boolean
-      blocked: boolean
-      pauseParallel: boolean
+      runType: ig.EventRunType;
+      done: boolean;
+      blocked: boolean;
+      pauseParallel: boolean;
+
+      setDone(this: this): void;
+      isRunning(this: this): boolean
     }
     interface EventCallConstructor extends ImpactClass<EventCall> {}
     var EventCall: EventCallConstructor;
@@ -80,7 +83,7 @@ declare global {
     interface Event extends ig.Class {}
     interface EventConstructor extends ImpactClass<Event> {
       new (settings: ig.Event.Settings): Event;
-      
+
       getVec2(input: Event.VarExpression<Vec2>, dest: Vec2): Vec2;
       getVec3(input: Event.VarExpression<Vec3>, dest: Vec3): Vec3;
       getVarName(varName: string | ig.Event.VarObject): string | null;
