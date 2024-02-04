@@ -22,7 +22,7 @@ declare global {
         input?: unknown,
         callEntity?: ig.Entity,
         data?: unknown,
-      ): void;
+      ): ig.EventCall;
       clear(this: this): void;
       _startEventCall(this: this, event: ig.EventCall): void;
       _endEventCall(this: this, event: ig.EventCall): void;
