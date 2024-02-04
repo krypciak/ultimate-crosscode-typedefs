@@ -10,6 +10,15 @@ export {};
 
 declare global {
   namespace sc {
+    /* data for sc.PLAYER_MSG.ITEM_OBTAINED */
+    interface PLAYER_MSG_ITEM_OBTAINED_DATA {
+        id: ItemID
+        equipID: number
+        amount: number
+        skip: boolean
+        cutscene: boolean
+    }
+
     var ITEM_USE_TIMER: number;
     var ITEM_MAX_FAVS: number;
 
