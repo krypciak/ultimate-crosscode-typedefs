@@ -36,6 +36,9 @@ declare global {
         group: { playing: ig.SoundHandleBase[]; requests: ig.SoundHandleBase[] },
       ): void;
       connectSound(this: this, connectObj: { connect(gain: GainNode): void }): void;
+      addNamedSound(this: this, name: string, handle: ig.SoundHandle): void
+      getNamedSounds(this: this, name: string): ig.SoundHandle[]
+      stopNamedSounds(this: this, name: string): void
       loadWebAudio(
         this: this,
         path: string,
