@@ -5,6 +5,12 @@ export {};
 
 declare global {
   namespace sc {
+    interface WhiteLineBox extends ig.BoxGui {}
+    interface WhiteLineBoxConstructor extends ImpactClass<WhiteLineBox> {
+      new (width: number, height: number): WhiteLineBox;
+    }
+    var WhiteLineBox: WhiteLineBoxConstructor;
+
     enum ArrowBoxGui$POINTER {
       NONE = 0,
       TOP_LEFT = 1,
