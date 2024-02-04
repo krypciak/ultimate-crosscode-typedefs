@@ -14,6 +14,17 @@ declare global {
       GRAB: sc.PROP_INTERACT_ICONS_BASE;
     };
 
+    namespace PropInteract {
+      interface Settings {
+        icon?: keyof typeof sc.PROP_INTERACT_ICONS;
+        event?: unknown;
+        permaEffect?: ig.EffectHandle.Settings;
+        combatOkay?: boolean;
+        cutsceneType?: ig.EVENT_TYPE;
+        title?: ig.LangLabel.Data;
+        hoverText?: ig.LangLabel.Data;
+      }
+    }
     interface PropInteract extends ig.Class {
       prop: ig.ENTITY.Prop;
       icon: sc.PROP_INTERACT_ICONS_BASE;
@@ -30,7 +41,7 @@ declare global {
       onInteraction(this: this): boolean;
     }
     interface PropInteractConstructor extends ImpactClass<PropInteract> {
-      new (prop: ig.ENTITY.Prop): PropInteract;
+      new (prop: ig.ENTITY.Prop, settings: sc.PropInteract.Settings): PropInteract;
     }
     var PropInteract: PropInteractConstructor;
   }
