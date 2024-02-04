@@ -63,7 +63,7 @@ declare global {
         zPush: boolean
         skipPhysics: boolean
         forceMoveFrameVel: boolean
-        groundEntry: ig.CollEntry
+        groundEntry: ig.CollEntry | false
         groundEntryOffset: Vec2
         overlapEntryFactor: number
         noSlipping: boolean
