@@ -20,5 +20,21 @@ declare global {
       new (id: ItemID, amount?: number): ItemContent;
     }
     var ItemContent: ItemContentConstructor;
+
+    interface ItemHudBox extends sc.RightHudBoxGui, sc.Model.Observer {
+      delayedStack: sc.ItemHudBox[];
+      size: number;
+
+      addEntry(this: this, id: ItemID, amount?: number): void;
+      update(this: this): void;
+      _isInEntries(this: this, id: ItemID): sc.ItemHudBox;
+      _popDelayed(this: this): void;
+      _updateSizes(this: this, b: unknown): void;
+      modelChanged(this: this, b: unknown, a: unknown, d: unknown): void;
+    }
+    interface ItemHudBoxConstructor extends ImpactClass<ItemHudBox> {
+      new (): ItemHudBox;
+    }
+    var ItemHudBox: ItemHudBoxConstructor;
   }
 }
