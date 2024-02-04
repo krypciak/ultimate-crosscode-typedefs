@@ -26,7 +26,7 @@ declare global {
           touchVar: string
           _triggered: boolean
           shuffleAnims: boolean
-          interact: ig.PROP_INTERACT_CLASS
+          interact?: sc.PropInteract
           currentInteract: unknown
           ballKill: { fx?: ig.EffectHandle }
           hideManager?: ig.EntityHideManager
