@@ -32,14 +32,28 @@ declare global {
     }
     let EventManager: EventManagerConstructor;
 
+    namespace EventCall {
+      interface StackEntry {
+        event: ig.Event;
+        currentStep: Nullable<ig.EventStepBase>;
+        stepData: Record<any, any>;
+        vars: ReturnType<ig.Event['setupInput']>;
+      }
+    }
     interface EventCall extends ig.Class {
       runType: ig.EventRunType;
       done: boolean;
       blocked: boolean;
+      stack: ig.EventCall.StackEntry[];
       pauseParallel: boolean;
 
+      callInLineEvent(
+        this: this,
+        event: ig.Event,
+        callData: { runCount: number },
+      ): ig.EventCall.StackEntry;
       setDone(this: this): void;
-      isRunning(this: this): boolean
+      isRunning(this: this): boolean;
     }
     interface EventCallConstructor extends ImpactClass<EventCall> {}
     var EventCall: EventCallConstructor;
@@ -80,7 +94,31 @@ declare global {
       type BooleanExpression = VarExpression<boolean>;
       type StringExpression = VarExpression<string>;
     }
-    interface Event extends ig.Class {}
+    interface Event extends ig.Class {
+      name: string;
+      rootStep: ig.EventStepBase;
+      /* not complete */
+      inputSignature: Record<
+        string,
+        {
+          _type:
+            | 'StringExpression'
+            | 'String'
+            | 'BooleanExpression'
+            | 'Boolean'
+            | 'NumberExpression'
+            | 'Number'
+            | 'Vec2'
+            | 'Vec3'
+            | 'VarName'
+            | 'Entity'
+            | 'LangLabel';
+        }
+      >;
+
+      /* i give up - krypek */
+      setupInput<T extends Record<string, unknown>>(this: this, b: T): Record<keyof T, any>;
+    }
     interface EventConstructor extends ImpactClass<Event> {
       new (settings: ig.Event.Settings): Event;
 
