@@ -61,7 +61,7 @@ declare global {
         shielded: boolean,
         critical: boolean,
         ignoreSounds: boolean,
-        spriteFilter: number[],
+        spriteFilter?: number[],
       ): ig.ENTITY.Effect;
       showPerfectDashEffect(this: this, target: ig.ActorEntity): void;
       getElementMode(this: this, combatant: ig.ENTITY.Combatant): sc.ELEMENT;
