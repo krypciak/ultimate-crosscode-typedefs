@@ -16,6 +16,29 @@ declare global {
       QUESTION = 4,
     }
 
+    interface ModalScreenInteract extends ig.GuiElementBase {
+      gfx: ig.Image;
+      msgBox: sc.CenterBoxGui;
+      textGui: sc.TextGui;
+      textDone: boolean;
+      icon: number;
+      screenInteract: sc.ScreenInteractEntry;
+      callback: () => void;
+
+      _onTextFinish(this: this): void;
+      _close(this: this): void;
+      onInteraction(this: this): void;
+    }
+    interface ModalScreenInteractConstructor extends ImpactClass<ModalScreenInteract> {
+      new (
+        text: sc.TextLike,
+        icon?: sc.DIALOG_INFO_ICON,
+        iconLeft?: boolean,
+        callback?: () => void,
+      ): ModalScreenInteract;
+    }
+    var ModalScreenInteract: ModalScreenInteractConstructor;
+
     interface ModalButtonInteract extends ig.GuiElementBase {
       msgBox: sc.CenterBoxGui;
       textGui: sc.TextGui;
