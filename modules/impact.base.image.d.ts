@@ -75,7 +75,7 @@ declare global {
         sourceY: number,
         width: number,
         height: number,
-        patternType: ImagePattern$OPT,
+        patternType?: ImagePattern$OPT,
       ): ig.ImagePattern;
     }
     var ImagePattern: ImagePatternConstructor;
