@@ -14,14 +14,17 @@ declare global {
       buttonGroup: sc.ButtonGroup;
       contentPane: ig.GuiElementBase;
 
-      activate(buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
+      activate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
+      deactivate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
       addButton(
+        this: this,
         button: ig.GuiElementBase,
         skipButtonGroup: true,
         xOffset?: Nullable<number>,
         yOffset?: Nullable<number>,
       ): void;
       addButton(
+        this: this,
         button: ig.FocusGui,
         skipButtonGroup?: Nullable<false>,
         xOffset?: Nullable<number>,
@@ -30,7 +33,17 @@ declare global {
       clear(this: this, skip?: Nullable<boolean>): void;
       scrollToY(this: this, y: number, b: boolean): void;
     }
-    interface ButtonListBoxConstructor extends ImpactClass<ButtonListBox> {}
+    interface ButtonListBoxConstructor extends ImpactClass<ButtonListBox> {
+      new (
+        paddingTop?: number,
+        paddingBetween?: number,
+        pageSize?: number,
+        columns?: sc.LIST_COLUMNS,
+        columnPadding?: number,
+        buttonWidth?: number,
+        buttonInteract?: ig.ButtonInteractEntry,
+      ): ButtonListBox;
+    }
     var ButtonListBox: ButtonListBoxConstructor;
 
     interface ItemListBox extends ig.GuiElementBase {
@@ -41,7 +54,11 @@ declare global {
       getChildren(this: this): ig.FocusGui[];
     }
     interface ItemListBoxConstructor extends ImpactClass<ItemListBox> {
-      new (topPadding: number, noHeader: boolean, buttonInteract: ig.ButtonInteractEntry): ItemListBox;
+      new (
+        topPadding: number,
+        noHeader: boolean,
+        buttonInteract: ig.ButtonInteractEntry,
+      ): ItemListBox;
     }
     var ItemListBox: ItemListBoxConstructor;
 
