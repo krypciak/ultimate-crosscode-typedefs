@@ -198,7 +198,13 @@ declare global {
       box: sc.ScrollPane.Container;
 
       setContent(this: this, content: ig.GuiElementBase): void;
-      scrollY(this: this, amount: number): void;
+      scrollY(
+        this: this,
+        amount: number,
+        skipTransition?: boolean,
+        time?: KeySpline,
+        timeFunction?: KeySpline,
+      ): void;
       setScrollY(
         this: this,
         value: number,
