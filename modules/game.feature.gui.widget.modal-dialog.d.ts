@@ -65,11 +65,41 @@ declare global {
     var ModalButtonInteract: ModalButtonInteractConstructor;
 
     interface Dialogs {
+      showDialog(
+        text: sc.TextLike,
+        icon?: sc.DIALOG_INFO_ICON,
+        iconLeft?: boolean,
+        callback?: () => void,
+      ): void;
+      showInfoDialog(text: sc.TextLike, iconLeft?: boolean, callback?: () => void): void;
+      showWarningDialog(text: sc.TextLike, iconLeft?: boolean, callback?: () => void): void;
+      showErrorDialog(text: sc.TextLike, iconLeft?: boolean, callback?: () => void): void;
+      showQuestionDialog(text: sc.TextLike, iconLeft?: boolean, callback?: () => void): void;
+      showChoiceDialog(
+        text: sc.TextLike,
+        icon: Nullable<sc.DIALOG_INFO_ICON>,
+        options: sc.TextLike[],
+        callback: (
+          button: sc.ButtonGui & { data: number },
+          dialog?: sc.ModalButtonInteract,
+        ) => void,
+        disableSubmitSound?: Nullable<boolean>,
+      ): void;
+      showConformationDialog(
+        text: sc.TextLike,
+        icon: Nullable<sc.DIALOG_INFO_ICON>,
+        option: sc.TextLike,
+        callback: (
+          button: sc.ButtonGui & { data: number },
+          dialog?: sc.ModalButtonInteract,
+        ) => void,
+      ): void;
       showYesNoDialog(
-        this: this,
-        text?: Nullable<sc.TextLike>,
+        text: sc.TextLike,
         icon?: Nullable<sc.DIALOG_INFO_ICON>,
-        callback?: Nullable<(button: sc.ButtonGui & {data: number}, dialog?: sc.ModalButtonInteract) => void>,
+        callback?: Nullable<
+          (button: sc.ButtonGui & { data: number }, dialog?: sc.ModalButtonInteract) => void
+        >,
         noSubmitSound?: boolean,
       ): void;
     }
