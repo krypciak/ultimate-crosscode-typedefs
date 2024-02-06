@@ -35,7 +35,7 @@ declare global {
     interface PercentNumber extends ig.GuiElementBase {
       number: sc.NumberGui;
 
-      setNumber(this: this, number: number, skipTransition?: Nullable<boolean>): void
+      setNumber(this: this, number: number, skipTransition?: Nullable<boolean>): void;
       setColor(this: this, color: sc.GUI_NUMBER_COLOR): void;
     }
     interface PercentNumberConstructor extends ImpactClass<PercentNumber> {
@@ -178,7 +178,9 @@ declare global {
     var HeaderMenuPanel: HeaderMenuPanelConstructor;
 
     interface MenuScanLines extends ig.GuiElementBase {}
-    interface MenuScanLinesConstructor extends ImpactClass<MenuScanLines> {}
+    interface MenuScanLinesConstructor extends ImpactClass<MenuScanLines> {
+      new (): MenuScanLines;
+    }
     var MenuScanLines: MenuScanLinesConstructor;
 
     namespace ScrollPane {
