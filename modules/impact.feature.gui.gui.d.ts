@@ -44,13 +44,12 @@ declare global {
     }
 
     interface Gui extends ig.GameAddon {
-      namedGuiElements: Record<string, unknown>
+      namedGuiElements: Record<string, unknown>;
     }
     interface GuiConstructor extends ImpactClass<Gui> {
-      new(): Gui
+      new (): Gui;
     }
-    var Gui: GuiConstructor
-
+    var Gui: GuiConstructor;
 
     enum GUI_ALIGN {
       Y_TOP,
@@ -128,6 +127,16 @@ declare global {
         callback?: (() => void) | null,
         initDelay?: number,
       ): void;
+      doPosTranstition(
+        this: this,
+        x: number,
+        y: number,
+        time?: number,
+        timeFunction?: KeySpline,
+        initDelay?: number,
+        preserveTime?: boolean,
+        endCallback?: () => void,
+      ): void;
       setScale(this: this, scaleX: number, scaleY: number): void;
     }
     interface GuiHookConstructor extends ImpactClass<GuiHook> {}
@@ -176,8 +185,8 @@ declare global {
         }
 
         interface Size {
-          x: number | "dyn";
-          y: number | "dyn";
+          x: number | 'dyn';
+          y: number | 'dyn';
           offX?: number;
           offY?: number;
         }
@@ -218,7 +227,7 @@ declare global {
       removeAllChildren(this: this): void;
       update(this: this): void;
       updateDrawables(this: this, renderer: ig.GuiRenderer): void;
-      remove(this: this, immediately?: boolean): void
+      remove(this: this, immediately?: boolean): void;
       onAttach(this: this): void;
       onDetach(this: this): void;
       doStateTransition(
@@ -229,7 +238,7 @@ declare global {
         callback?: (() => void) | null,
         initDelay?: number,
       ): void;
-
+      doPosTranstition: ig.GuiHook['doPosTranstition'];
       // For whatever reason if I change type of `onVisibilityChange` to field
       // which contains a callback this will confuse the TS compiler and I won't
       // be able to cast children of `ig.GuiElementBase` to the base class.
