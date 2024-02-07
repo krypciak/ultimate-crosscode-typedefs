@@ -87,6 +87,7 @@ declare global {
       currentGroup: sc.ButtonGroup;
       bg: sc.MenuScanLines;
 
+      onInitSortType(this: this): number
       onListEntryPressed(this: this, button: sc.ListBoxButton): void;
       onLeftRightPress(
         this: this,
