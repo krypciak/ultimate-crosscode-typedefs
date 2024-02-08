@@ -98,6 +98,18 @@ declare global {
     }
     var CheckboxGui: CheckboxGuiConstructor;
 
-    var BUTTON_TYPE: { [type: string]: ButtonGui.Type };
+    var BUTTON_TYPE: Record<string, ButtonGui.Type> &
+      Record<
+        | 'DEFAULT'
+        | 'SMALL'
+        | 'EQUIP'
+        | 'ITEM'
+        | 'OPTION'
+        | 'GROUP'
+        | 'GROUP_LEFT'
+        | 'GROUP_RIGHT'
+        | 'START',
+        ButtonGui.Type
+      >;
   }
 }
