@@ -87,7 +87,7 @@ declare global {
       currentGroup: sc.ButtonGroup;
       bg: sc.MenuScanLines;
 
-      onInitSortType(this: this): number
+      onInitSortType(this: this): number;
       onListEntryPressed(this: this, button: sc.ListBoxButton): void;
       onLeftRightPress(
         this: this,
@@ -102,6 +102,9 @@ declare global {
         type: number,
         sort: number,
       ): void;
+
+      addObservers?(this: this): void;
+      removeObservers?(this: this): void;
     }
     interface ListTabbedPaneConstructor extends ImpactClass<ListTabbedPane> {
       new (cacheContent?: boolean): ListTabbedPane;
