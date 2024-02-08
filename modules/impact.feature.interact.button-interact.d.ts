@@ -45,7 +45,7 @@ declare global {
       addPressCallback(this: this, callback: ig.ButtonGroup.PressCallback): void;
       addSelectionCallback(this: this, callback: ig.ButtonGroup.SelectionCallback): void;
       clear(this: this): void;
-      getCurrentElement(this: this): ig.FocusGui
+      getCurrentElement(this: this): ig.FocusGui;
       isActive(this: this): boolean;
       setCurrentFocus(this: this, x: number, y: number): void;
       focusCurrentButton(
@@ -58,6 +58,7 @@ declare global {
         ignoreEmptyCells?: Nullable<boolean>,
       ): void;
       unfocusCurrentButton(this: this): void;
+      _setBackButton(this: this, button: sc.ButtonGui): void;
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {}
     var ButtonGroup: ButtonGroupConstructor;
