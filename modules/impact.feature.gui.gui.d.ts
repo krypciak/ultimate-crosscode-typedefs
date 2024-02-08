@@ -64,6 +64,7 @@ declare global {
       new (): Gui;
     }
     var Gui: GuiConstructor;
+    var gui: ig.Gui
 
     enum GUI_ALIGN {
       Y_TOP,
