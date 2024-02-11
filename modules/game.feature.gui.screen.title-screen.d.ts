@@ -18,6 +18,7 @@ declare global {
       buttons: sc.TitleScreenButtonGui;
       versionGui: sc.TextGui;
 
+      onInteraction(this: this): void
       _introDone(this: this): void;
     }
     interface TitleScreenGuiConstructor extends ImpactClass<TitleScreenGui> {
