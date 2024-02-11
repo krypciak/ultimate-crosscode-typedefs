@@ -64,7 +64,7 @@ declare global {
       new (): Gui;
     }
     var Gui: GuiConstructor;
-    var gui: ig.Gui
+    var gui: ig.Gui;
 
     enum GUI_ALIGN {
       Y_TOP,
@@ -109,6 +109,24 @@ declare global {
         active: boolean;
         zIndex: number;
       }
+
+      interface AnimTargetState {
+        targetState: unknown;
+        initState: unknown;
+        timer: number;
+        maxTime: number;
+        timeFunction: KeySpline;
+      }
+
+      interface PosTransition {
+        startX: number;
+        startY: number;
+        x: number;
+        y: number;
+        time: number;
+        timeFunction: KeySpline;
+        endCallback?: () => void;
+      }
     }
     interface GuiHook extends ig.Class {
       pos: Vec2;
@@ -118,28 +136,68 @@ declare global {
       align: { x: ig.GUI_ALIGN; y: ig.GUI_ALIGN };
       parentHook: Nullable<ig.GuiHook>;
       children: ig.GuiHook[];
+      mouseRecord: boolean;
       screenCoords?: ig.GuiHook.ScreenCoords;
+      mouseOver: boolean;
       localAlpha: number;
       zIndex: number;
       pauseGui: boolean;
       invisibleUpdate: boolean;
       screenBlocking: boolean;
+      stateCallback: Nullable<() => void>;
       clip: boolean;
       temporary: boolean;
       transitions: { [name: string]: ig.GuiHook.Transition };
       gui: ig.GuiElementBase;
+      currentState: ig.GuiHook.State;
       currentStateName: string;
+      anim: ig.GuiHook.AnimTargetState;
       removeAfterTransition: boolean;
+      posTransition: ig.GuiHook.PosTransition;
+      scrollTransition: ig.GuiHook.PosTransition;
       _visible: boolean;
+      _subState: { subtreeTransition: boolean };
+      mapGuiInfo?: { name: string; type: keyof ig.GUI; settings: any; free?: boolean };
+      drawSteps: ig.GuiDrawable[];
 
+      setMouseRecord(this: this, value: boolean): void;
+      onAttach(this: this, newParentHook?: Nullable<ig.GuiHook>): void;
+      onDetach(this: this): void;
+      getChildGuiIndex(this: this, hook: ig.GuiHook): number;
+      getChildGuiByIndex(this: this, index: number): ig.GuiHook;
+      addChildHook(this: this, hook: ig.GuiHook): void;
+      insertChildHook(this: this, hook: ig.GuiHook, index: number): void;
       removeChildHook(this: this, hook: ig.GuiHook): void;
       removeChildHookByIndex(this: this, index: number): ig.GuiHook;
+      removeAllChildren(this: this): void;
       doStateTransition(
         this: this,
         name: string,
         skipTransition?: boolean,
         removeAfter?: boolean,
-        callback?: (() => void) | null,
+        callback?: Nullable<() => void>,
+        initDelay?: number,
+      ): void;
+      getStateTransitionProgress(this: this): unknown;
+      doTempStateTransition(
+        this: this,
+        stateData: Partial<ig.GuiHook.State>,
+        time: number,
+        keySpline: KeySpline,
+        skipTransition?: boolean,
+        removeAfter?: boolean,
+        callback?: Nullable<() => void>,
+        initDelay?: number,
+      ): void;
+      setScale(this: this, scaleX: number, scaleY: number): void;
+      _setStateData(
+        this: this,
+        stateData: Partial<ig.GuiHook.State>,
+        time: number,
+        keySpline: KeySpline,
+        skipTransition?: boolean,
+        removeAfter?: boolean,
+        callback?: Nullable<() => void>,
         initDelay?: number,
       ): void;
       doPosTranstition(
@@ -152,7 +210,24 @@ declare global {
         preserveTime?: boolean,
         endCallback?: () => void,
       ): void;
-      setScale(this: this, scaleX: number, scaleY: number): void;
+      getPosTransitionProgress(this: this): number;
+      doScrollTransition(
+        this: this,
+        x: number,
+        y: number,
+        time: number,
+        timeFunction?: KeySpline,
+        endCallback?: Nullable<() => void>,
+      ): void;
+      hasTransition(this: this): boolean;
+      getTransitionFactor(this: this): number;
+      setStateValue(
+        this: this,
+        state: string,
+        attribute: keyof ig.GuiHook.State,
+        value: number,
+      ): void;
+      updateState(this: this): boolean;
     }
     interface GuiHookConstructor extends ImpactClass<GuiHook> {}
     var GuiHook: GuiHookConstructor;
@@ -243,23 +318,62 @@ declare global {
       update(this: this): void;
       updateDrawables(this: this, renderer: ig.GuiRenderer): void;
       remove(this: this, immediately?: boolean): void;
-      onAttach(this: this): void;
-      onDetach(this: this): void;
-      doStateTransition(
-        this: this,
-        name: string,
-        skipTransition?: boolean,
-        removeAfter?: boolean,
-        callback?: (() => void) | null,
-        initDelay?: number,
-      ): void;
-      doPosTranstition: ig.GuiHook['doPosTranstition'];
+      onAttach?(this: this): void;
+      onDetach?(this: this): void;
       // For whatever reason if I change type of `onVisibilityChange` to field
       // which contains a callback this will confuse the TS compiler and I won't
       // be able to cast children of `ig.GuiElementBase` to the base class.
       // Probably because TS can't upgrade `this` type in sub-interfaces when it
       // is specified in a callback.
       onVisibilityChange?(this: this, visible: boolean): void;
+      isMouseOver?(this: this): boolean;
+      hide(this: this, ...args: unknown[]): void;
+      show(this: this, ...args: unknown[]): void;
+      doStateTransition(
+        this: this,
+        name: string,
+        skipTransition?: boolean,
+        removeAfter?: boolean,
+        callback?: Nullable<() => void>,
+        initDelay?: number,
+      ): void;
+      doTempStateTransition(
+        this: this,
+        stateData: Partial<ig.GuiHook.State>,
+        time: number,
+        keySpline: KeySpline,
+        skipTransition?: boolean,
+        removeAfter?: boolean,
+        callback?: Nullable<() => void>,
+        initDelay?: number,
+      ): void;
+      doPosTranstition(
+        this: this,
+        x: number,
+        y: number,
+        time?: number,
+        timeFunction?: KeySpline,
+        initDelay?: number,
+        preserveTime?: boolean,
+        endCallback?: () => void,
+      ): void;
+      doScrollTransition(
+        this: this,
+        x: number,
+        y: number,
+        time: number,
+        timeFunction?: KeySpline,
+        endCallback?: Nullable<() => void>,
+      ): void;
+      hasTransition(this: this): boolean;
+      getTransitionFactor(this: this): number;
+      setStateValue(
+        this: this,
+        state: string,
+        attribute: keyof ig.GuiHook.State,
+        value: number,
+      ): void;
+      updateState(this: this): boolean;
     }
     interface GuiElementBaseConstructor extends ImpactClass<GuiElementBase> {
       new (): GuiElementBase;
