@@ -15,16 +15,40 @@ export {};
 declare global {
   namespace sc {
     interface TitleScreenGui extends ig.GuiElementBase {
+      background: ig.Image;
+      parallax: ig.Parallax;
+      bgGui: ig.ParallaxGui;
+      startGui: sc.TitleScreenStartGui;
       buttons: sc.TitleScreenButtonGui;
+      introGui: ig.GUI.IntroScreen;
+      screenInteract: sc.ScreenInteractEntry;
+      isPostInit: boolean;
       versionGui: sc.TextGui;
 
-      onInteraction(this: this): void
+      postInit(this: this): void;
+      modelChanged(this: this, c: unknown, d: unknown): void;
+      onInteraction(this: this): void;
+      _startBg(this: this): void;
       _introDone(this: this): void;
+      _bgCallback(this: this, a: unknown, b: unknown): void;
     }
     interface TitleScreenGuiConstructor extends ImpactClass<TitleScreenGui> {
       new (): TitleScreenGui;
     }
     var TitleScreenGui: TitleScreenGuiConstructor;
+
+    /* game.feature.gui.screen.title-screen */
+    interface TitleScreenStartGui extends ig.GuiElementBase {
+      gfx: ig.Image;
+      timer: ig.WeightTimer;
+
+      show(this: this): void;
+      hide(this: this): void;
+    }
+    interface TitleScreenStartGuiConstructor extends ImpactClass<TitleScreenStartGui> {
+      new (): TitleScreenStartGui;
+    }
+    var TitleScreenStartGui: TitleScreenStartGuiConstructor;
 
     interface TitleScreenButtonGui extends ig.GuiElementBase {
       buttonInteract: ig.ButtonInteractEntry;
