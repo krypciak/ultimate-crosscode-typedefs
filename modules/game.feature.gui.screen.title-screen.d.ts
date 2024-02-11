@@ -17,6 +17,8 @@ declare global {
     interface TitleScreenGui extends ig.GuiElementBase {
       buttons: sc.TitleScreenButtonGui;
       versionGui: sc.TextGui;
+
+      _introDone(this: this): void;
     }
     interface TitleScreenGuiConstructor extends ImpactClass<TitleScreenGui> {
       new (): TitleScreenGui;
