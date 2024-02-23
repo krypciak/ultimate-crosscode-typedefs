@@ -6,6 +6,15 @@ export {};
 
 declare global {
   namespace sc {
+    interface GlobalInput extends ig.GameAddon {
+      onPreUpdate(this: this): void;
+      onPostUpdate(this: this): void;
+    }
+    interface GlobalInputConstructor extends ImpactClass<GlobalInput> {
+      new (): GlobalInput;
+    }
+    var GlobalInput: GlobalInputConstructor;
+
     interface Control extends ig.Class {
       autoControl: sc.AutoControl;
 
