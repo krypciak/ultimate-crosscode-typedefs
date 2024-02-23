@@ -48,8 +48,8 @@ declare global {
       getCurrentElement(this: this): ig.FocusGui;
       isActive(this: this): boolean;
       setCurrentFocus(this: this, x: number, y: number): void;
-      focusCurrentButtonX(this: this, x: number): void
-      focusCurrentButtonY(this: this, y: number): void
+      focusCurrentButtonX(this: this, x: number): void;
+      focusCurrentButtonY(this: this, y: number): void;
       focusCurrentButton(
         this: this,
         newX: number,
@@ -61,12 +61,14 @@ declare global {
       ): void;
       unfocusCurrentButton(this: this): void;
       _setBackButton(this: this, button: sc.ButtonGui): void;
-      _invokePressCallbacks(this: this, button: ig.FocusGui, fromMouse?: boolean): void
+      _invokePressCallbacks(this: this, button: ig.FocusGui, fromMouse?: boolean): void;
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {}
     var ButtonGroup: ButtonGroupConstructor;
 
     interface ButtonInteractEntry extends ig.InteractEntry {
+      buttonGroupStack: sc.ButtonGroup[];
+
       pushButtonGroup(this: this, buttonGroup: ig.ButtonGroup): void;
       addGlobalButton(
         this: this,
