@@ -159,22 +159,22 @@ declare global {
       }
 
       interface LogEntry {
-        type: keyof typeof sc.LOG_TYPES
-        task?: number
-        accept?: boolean
-        quest?: string
-        finish?: boolean
-        trader?: string
-        lore?: string
+        type: keyof typeof sc.LOG_TYPES;
+        task?: number;
+        accept?: boolean;
+        quest?: string;
+        finish?: boolean;
+        trader?: string;
+        lore?: string;
       }
 
-      type StampTypes = keyof typeof ig.ActorEntity.FACE4 | keyof typeof sc.MAP_STAMPS
+      type StampTypes = keyof typeof ig.ActorEntity.FACE4 | keyof typeof sc.MAP_STAMPS;
       interface Stamp {
-        key: StampTypes
-        x: number
-        y: number
-        level: number
-        index: number
+        key: StampTypes;
+        x: number;
+        y: number;
+        level: number;
+        index: number;
       }
     }
     namespace MenuModel {
@@ -183,26 +183,38 @@ declare global {
     }
 
     interface MenuModel extends ig.GameAddon, sc.Model {
+      currentMenu: sc.MENU_SUBMENU;
       previousMenu: sc.MENU_SUBMENU;
       buttonInteract: ig.ButtonInteractEntry;
       backCallbackStack: sc.MenuModel.BackCallback[];
       hotkeysCallbacks: sc.MenuModel.HotkeyCallback;
       currentBackCallback: sc.MenuModel.BackCallback;
-      mapStamps: Record<string, Nullable<sc.MenuModel.Stamp>[]>
+      mapStamps: Record<string, Nullable<sc.MenuModel.Stamp>[]>;
       shopID: Nullable<string>;
       shopPage: number;
       shopCart: sc.MenuModel.ShopCartEntry[];
       shopSellMode: boolean;
-      newUnlocks: { [key in sc.MENU_SUBMENU]?: string[] }
-      logEntries: sc.MenuModel.LogEntry[]
+      newUnlocks: { [key in sc.MENU_SUBMENU]?: string[] };
+      logEntries: sc.MenuModel.LogEntry[];
       statusElement: sc.ELEMENT;
       statusDiff: boolean;
-      dropCounts: Record<string, { anim: string, count: number, time: number, completed: boolean }>
+      dropCounts: Record<string, { anim: string; count: number; time: number; completed: boolean }>;
 
-      addLog(this: this, entry: sc.MenuModel.LogEntry): void
-      addNewUnlock(this: this, type: sc.MENU_SUBMENU, entry: string): void
-      addMapStamp(this: this, area: string, type: sc.MenuModel.StampTypes, x: number, y: number, level: number): number;
-      addHotkey(this: this, callback: sc.MenuModel.HotkeyCallback, commit?: Nullable<boolean>): void;
+      addLog(this: this, entry: sc.MenuModel.LogEntry): void;
+      addNewUnlock(this: this, type: sc.MENU_SUBMENU, entry: string): void;
+      addMapStamp(
+        this: this,
+        area: string,
+        type: sc.MenuModel.StampTypes,
+        x: number,
+        y: number,
+        level: number,
+      ): number;
+      addHotkey(
+        this: this,
+        callback: sc.MenuModel.HotkeyCallback,
+        commit?: Nullable<boolean>,
+      ): void;
       commitHotkeys(this: this, a?: boolean): void;
       updateHotkeys(this: this): void;
       removeHotkeys(this: this): void;
@@ -212,7 +224,13 @@ declare global {
       popMenu(this: this): void;
       setDirectMode(direct?: Nullable<boolean>, menu?: Nullable<sc.MENU_SUBMENU>): void;
       exitMenu(this: this): void;
-      moveLeaSprite(this: this, x: number, y: number, state: sc.MENU_LEA_STATE, skip?: boolean): void;
+      moveLeaSprite(
+        this: this,
+        x: number,
+        y: number,
+        state: sc.MENU_LEA_STATE,
+        skip?: boolean,
+      ): void;
       setInfoText(this: this, text: sc.TextLike, fade?: boolean): void;
       setBuffText(this: this, text: sc.TextLike, fade?: boolean, id?: sc.ItemID): void;
       setShopPage(this: this, page: number): void;
