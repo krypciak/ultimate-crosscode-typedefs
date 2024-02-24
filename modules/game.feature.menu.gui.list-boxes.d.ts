@@ -13,6 +13,7 @@ declare global {
     interface ButtonListBox extends sc.ScrollPane {
       buttonGroup: sc.ButtonGroup;
       contentPane: ig.GuiElementBase;
+      columns: sc.LIST_COLUMNS
 
       activate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
       deactivate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
