@@ -13,7 +13,19 @@ declare global {
     interface ButtonListBox extends sc.ScrollPane {
       buttonGroup: sc.ButtonGroup;
       contentPane: ig.GuiElementBase;
-      columns: sc.LIST_COLUMNS
+      paddingTop: number;
+      paddingBetween: number;
+      columnPadding: number;
+      buttonWidth: number;
+      useShoulderScroll: boolean;
+      forceLastScroll: boolean;
+      buttonInteract: ig.ButtonInteractEntry;
+      pageSize: number;
+      offsets: Vec2;
+      columns: sc.LIST_COLUMNS;
+      _prevIndex: number;
+      _skipFirst: boolean;
+      _prevScrollBarHeight: number;
 
       activate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
       deactivate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
@@ -33,6 +45,7 @@ declare global {
       ): void;
       clear(this: this, skip?: Nullable<boolean>): void;
       scrollToY(this: this, y: number, b: boolean): void;
+      _getContentHeight(this: this, isNotFirstColumn?: boolean): number;
     }
     interface ButtonListBoxConstructor extends ImpactClass<ButtonListBox> {
       new (
