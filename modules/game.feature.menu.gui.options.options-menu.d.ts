@@ -23,8 +23,8 @@ declare global {
       onHotkeyHelpCheck(this: this): boolean;
       onHelpButtonPressed(this: this): void;
       createHelpGui(this: this): void;
-      onAddHotkeys(this: this, inputRegained?: boolean): void;
-      commitHotKeysToTopBar(this: this, inputRegained?: boolean): void;
+      onAddHotkeys(this: this, longTransition?: boolean): void;
+      commitHotKeysToTopBar(this: this, longTransition?: boolean): void;
       onBackButtonPress(this: this): void;
       onLangPopUpClose(this: this): void;
     }

@@ -215,7 +215,7 @@ declare global {
         callback: sc.MenuModel.HotkeyCallback,
         commit?: Nullable<boolean>,
       ): void;
-      commitHotkeys(this: this, a?: boolean): void;
+      commitHotkeys(this: this, longTransition?: boolean): void;
       updateHotkeys(this: this): void;
       removeHotkeys(this: this): void;
       pushBackCallback(this: this, callback: sc.MenuModel.BackCallback): void;
