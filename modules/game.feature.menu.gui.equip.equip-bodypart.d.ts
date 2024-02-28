@@ -7,8 +7,38 @@ export {};
 
 declare global {
   namespace sc {
-    interface EquipRightContainer extends sc.MenuPanel {}
-    interface EquipRightContainerConstructor extends ImpactClass<EquipRightContainer> {
+    interface EquipRightContainer extends sc.MenuPanel, sc.Model.Observer {
+      partChooser: sc.EquipBodyPartContainer;
+      itemList: sc.ItemListBox;
+      sortTypes: { [key in sc.MENU_EQUIP_BODYPART]?: sc.SORT_TYPE };
+      _itemListActive: boolean;
+      _lastEquipState: boolean;
+      _globalButtons: sc.EquipMenu.GlobalButtons;
+      _refocusFromCycle: boolean;
+
+      _equipItem(this: this, newItemID: sc.ItemID, fromMouse?: boolean): boolean;
+      setCurrentBodypartPressed(this: this): void;
+      setCurrentBodypartUnpressed(this: this): void;
+      _updateItemList(this: this): void;
+      _activateItemList(this: this): void;
+      _deactivateItemList(this: this, popMenu?: boolean): void;
+      _exitItemList(this: this): void;
+      _makeList(
+        this: this,
+        refocus: boolean,
+        fromMouse: boolean,
+        newItemID: sc.ItemID,
+        skipSounds?: boolean,
+        sortType?: sc.SORT_TYPE,
+      ): void;
+      isIDEquipped(this: this, part: sc.MENU_EQUIP_BODYPART): boolean;
+      getCurrentSortText(this: this): string;
+      showMenu(this: this): void;
+      hideMenu(this: this): void;
+      tempShowMenu(this: this): void;
+      tempHideMenu(this: this): void;
+    }
+    interface EquipRightContainerConstructor extends ImpactClass<sc.EquipRightContainer> {
       new (globalButtons: sc.EquipMenu.GlobalButtons): sc.EquipRightContainer;
     }
     var EquipRightContainer: EquipRightContainerConstructor;
@@ -33,7 +63,7 @@ declare global {
     }
     interface EquipBodyPartContainer extends ig.GuiElementBase {
       buttonGroup: sc.ButtonGroup;
-      
+
       showMenu(this: this): void;
       _moveButtons(this: this, bodypart: sc.MENU_EQUIP_BODYPART): void;
       _pullInAllButtons(this: this, exception: ig.FocusGui): void;
@@ -42,6 +72,6 @@ declare global {
       new (globalButtons: sc.EquipMenu.GlobalButtons): sc.EquipBodyPartContainer;
       Entry: EquipBodyPartContainer.EntryConstructor;
     }
-    var EquipBodyPartContainer: EquipBodyPartContainerConstructor
+    var EquipBodyPartContainer: EquipBodyPartContainerConstructor;
   }
 }
