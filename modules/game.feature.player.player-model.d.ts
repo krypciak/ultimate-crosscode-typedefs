@@ -220,7 +220,7 @@ declare global {
       canAddFavorite(this: this): boolean;
       isFavorite(this: this, item: sc.ItemID): boolean;
       updateFavorite(this: this, item: sc.ItemID): boolean;
-      setEquipment(this: this, bodypart: sc.MENU_EQUIP_BODYPART, itemID: sc.ItemID): void;
+      setEquipment(this: this, bodypart: sc.MENU_EQUIP_BODYPART, itemID: sc.ItemID): boolean;
       isEquipped(this: this, itemID: sc.ItemID): void;
       getAvgEquipLevel(this: this): number;
       setCore(this: this, core: sc.PLAYER_CORE, state: boolean): void;
