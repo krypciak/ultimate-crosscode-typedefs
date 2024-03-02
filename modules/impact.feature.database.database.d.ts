@@ -11,6 +11,7 @@ declare global {
         enemies: { [id: string]: EnemyData };
         leawords: string[]
         lore: Record<string, LoreData>
+        names: ig.Database.Names
         shops: { [id: string]: ShopData };
         traders: { [id: string]: sc.TradeModel.Trader };
         chapters: Chapter[];
@@ -85,6 +86,13 @@ declare global {
         order: number;
         color: string;
         items: sc.ItemID[];
+      }
+
+      type Names = Name[]
+      interface Name {
+          gender: 'MALE' | 'FEMALE' | 'BOTH'
+          name: ig.LangLabel.Data
+
       }
     }
     interface Database extends ig.SingleLoadable {
