@@ -35,8 +35,8 @@ declare global {
       addFocusGui(
         this: this,
         gui: ig.FocusGui,
-        x?: number,
-        y?: number,
+        x: number,
+        y: number,
         asBackButton?: boolean,
       ): void;
       removeFocusGui(this: this, x: number, y: number): void;
