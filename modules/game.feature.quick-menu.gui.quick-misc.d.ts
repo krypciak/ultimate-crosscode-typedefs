@@ -10,17 +10,17 @@ export {};
 
 declare global {
   namespace sc {
-    interface QuickFocusScreen extends ig.GuiElementBase {
-      subGuis: ig.GuiElementBase[];
+    interface QuickMenuBuffsGui extends ig.BoxGui {
+      ninepatch: ig.NinePatch;
 
-      addSubGui(this: this, gui: ig.GuiElementBase): void;
-      resetSubGuis(this: this): void;
-      reset(this: this): void;
+      show(this: this, repopulate: false, hideInitDelay?: number): void;
+      show(this: this, repopulate: true): void;
+      hide(this: this, skipTransition?: boolean): void;
     }
-    interface QuickFocusScreenConstructor extends ImpactClass<QuickFocusScreen> {
-      new (): QuickFocusScreen;
+    interface QuickMenuBuffsGuiConstructor extends ImpactClass<QuickMenuBuffsGui> {
+      new (): QuickMenuBuffsGui;
     }
-    var QuickFocusScreen: QuickFocusScreenConstructor;
+    var QuickMenuBuffsGui: QuickMenuBuffsGuiConstructor;
 
     interface QuickLocationBox extends ig.BoxGui {
       ninepatch: ig.NinePatch;
@@ -36,7 +36,19 @@ declare global {
     interface QuickLocationBoxConstructor extends ImpactClass<QuickLocationBox> {
       new (): QuickLocationBox;
     }
+
     var QuickLocationBox: QuickLocationBoxConstructor;
+    interface QuickFocusScreen extends ig.GuiElementBase {
+      subGuis: ig.GuiElementBase[];
+
+      addSubGui(this: this, gui: ig.GuiElementBase): void;
+      resetSubGuis(this: this): void;
+      reset(this: this): void;
+    }
+    interface QuickFocusScreenConstructor extends ImpactClass<QuickFocusScreen> {
+      new (): QuickFocusScreen;
+    }
+    var QuickFocusScreen: QuickFocusScreenConstructor;
 
     namespace QUICK_INFO_BOXES {
       interface Enemy extends ig.BoxGui {
