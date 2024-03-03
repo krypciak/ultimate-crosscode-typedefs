@@ -85,16 +85,36 @@ declare global {
     }
     interface Inventory extends ig.SingleLoadable {
       items: Inventory.Item[];
-      scalable: number[];
+      scalable: sc.ItemID[];
 
       updateScaledEquipment(this: this, newLevel: number): void;
+      isScalable(this: this, id: sc.ItemID): boolean;
       getItem(id: sc.ItemID): Nullable<sc.Inventory.Item>;
-      getItemName(this: this, id: sc.ItemID): string;
-      getBuffString(this: this, id: sc.ItemID, a?: boolean, statChangeSettings?: string[]): string | undefined;
-      isBuffID(this: this, id: sc.ItemID): boolean
+      getItemName(this: this, id: sc.ItemID): Nullable<string>;
+      getItemByName(this: this, name: string): Nullable<sc.Inventory.Item>;
+      getItemLevel(this: this, id: sc.ItemID): number;
+      getItemID(this: this, name: string): sc.ItemID;
+      getBuffString(
+        this: this,
+        id: sc.ItemID,
+        a?: boolean,
+        statChangeSettings?: string[],
+      ): string | undefined;
+      areStatChangesRanksUniform(
+        this: this,
+        statNames: sc.StatChange.StatName[],
+      ): sc.StatChangeSettings.Grade;
+      isBuffID(this: this, id: sc.ItemID): boolean;
+      isEquipID(this: this, id: sc.ItemID): boolean;
       getRaritySuffix(this: this, rarity: sc.ITEMS_RARITY): string;
       getItemNameWithIcon(this: this, id: sc.ItemID): string;
       getItemIcon(this: this, id: sc.ItemID): string;
+      getItemDescription(this: this, id: sc.ItemID): string;
+      getItemRarity(this: this, id: sc.ItemID): sc.ITEMS_RARITY;
+      getItemSubType(this: this, id: sc.ItemID): Nullable<sc.ITEMS_EQUIP_TYPES>;
+      isConsumable(this: this, id: sc.ItemID): boolean;
+      getTotalItemsUnlocked(this: this, percent: boolean, type?: sc.ITEMS_TYPES, equipType?: sc.ITEMS_EQUIP_TYPES, printErrorWhenItemMissing?: boolean): number;
+      _isBuff(this: this, item: sc.Inventory.Item): boolean;
     }
     interface InventoryConstructor extends ImpactClass<Inventory> {
       new (): Inventory;
