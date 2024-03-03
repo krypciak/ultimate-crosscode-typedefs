@@ -4,14 +4,21 @@ export {};
 
 declare global {
   namespace sc {
-    interface MouseButtonGroup extends ig.ButtonGroup {}
+    interface MouseButtonGroup extends ig.ButtonGroup {
+      _counter: number;
+      onButtonTraversal: unknown;
+
+      addFocusGui(this: this, gui: ig.FocusGui): void;
+      doButtonTraversal(this: this, regainFocus: boolean): void;
+      isNonMouseMenuInput(this: this): false;
+    }
     interface MouseButtonGroupConstructor extends ImpactClass<MouseButtonGroup> {
       new (): MouseButtonGroup;
     }
     var MouseButtonGroup: MouseButtonGroupConstructor;
 
     interface ButtonGroup extends ig.ButtonGroup {
-        doButtonTraversal(this: this, inputRegainded: boolean): void
+      doButtonTraversal(this: this, inputRegainded: boolean): void;
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {
       new (): sc.ButtonGroup;
