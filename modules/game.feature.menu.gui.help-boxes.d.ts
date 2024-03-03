@@ -37,7 +37,7 @@ declare global {
       interface Page {
         header?: Nullable<string>;
         title?: Nullable<string>;
-        content: string[]
+        content: string[];
         isList?: boolean;
       }
       interface ConditionalPage extends Page {
@@ -73,7 +73,9 @@ declare global {
       onTurnLeftCheck(this: this): boolean;
       onTurnRightCheck(this: this): boolean;
     }
-    interface MultiPageBoxGuiConstructor extends ImpactClass<MultiPageBoxGui> {}
+    interface MultiPageBoxGuiConstructor extends ImpactClass<MultiPageBoxGui> {
+      new (width?: number, height?: number): MultiPageBoxGui;
+    }
     var MultiPageBoxGui: MultiPageBoxGuiConstructor;
   }
 }
