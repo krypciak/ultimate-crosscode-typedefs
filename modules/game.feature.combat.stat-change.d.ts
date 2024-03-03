@@ -67,12 +67,15 @@ declare global {
     }
     var STAT_PARAM_TYPE: Record<string, StatParamType>;
 
+    namespace StatChangeSettings {
+        type Grade = string
+    }
     interface StatChangeSettings {
       change: sc.STAT_CHANGE_TYPE;
       type: sc.StatParamType;
       value: number;
       icon: string;
-      grade?: string;
+      grade?: sc.StatChangeSettings.Grade;
     }
     var STAT_CHANGE_SETTINGS: Record<string, StatChangeSettings>;
   }
