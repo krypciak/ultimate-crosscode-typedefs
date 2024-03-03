@@ -22,6 +22,29 @@ declare global {
     }
     var QuickMenuBuffsGui: QuickMenuBuffsGuiConstructor;
 
+    interface QuickBuffEntry extends ig.GuiElementBase {
+      icon: sc.TextGui;
+      description: unknown;
+      statName: sc.TextGui;
+
+      getStatName(
+        this: this,
+        type: sc.StatParamType,
+        changeType: sc.STAT_CHANGE_TYPE,
+        isDescription?: boolean,
+      ): string;
+      getStatValue(
+        this: this,
+        type: sc.StatParamType,
+        value: number,
+        changeType: sc.STAT_CHANGE_TYPE,
+      ): number;
+    }
+    interface QuickBuffEntryConstructor extends ImpactClass<QuickBuffEntry> {
+      new (settings: sc.StatChangeSettings): QuickBuffEntry;
+    }
+    var QuickBuffEntry: QuickBuffEntryConstructor;
+
     interface QuickLocationBox extends ig.BoxGui {
       ninepatch: ig.NinePatch;
       location: sc.TextGui;
