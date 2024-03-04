@@ -58,7 +58,7 @@ declare global {
         text: sc.TextLike,
         icon: Nullable<sc.DIALOG_INFO_ICON>,
         options: sc.TextLike[],
-        callback: (button: sc.ButtonGui) => void,
+        callback: (button: sc.ButtonGui & { data: number }) => void,
         disableSubmitSound?: Nullable<boolean>,
       ): ModalButtonInteract;
     }
