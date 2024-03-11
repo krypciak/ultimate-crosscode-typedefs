@@ -41,13 +41,29 @@ declare global {
       interface Mapping {
         [name: string]: [number, number];
       }
+      interface IconChangeListener {
+        onIconChange(this: this): void;
+      }
     }
     interface MultiFont extends ig.Font {
+      cacheType: 'MultiFont';
+      fontStyles: [] /* always empty, unused */;
       iconSets: ig.Font[];
+      mapping: MultiFont.Mapping;
+      indexMapping: string[];
+      iconChangeListeners: ig.MultiFont.IconChangeListener[];
+      colorSets: { img: ig.Image; color: string }[];
 
       pushIconSet(this: this, iconSet: ig.Font): void;
       setIconSet(this: this, iconSet: ig.Font, index: number): void;
+      addIconChangeListener(this: this, listener: ig.MultiFont.IconChangeListener): void;
+      removeIconChangeListener(this: this, listener: ig.MultiFont.IconChangeListener): void;
+      callChangeListeners(this: this): void;
       setMapping(this: this, mapping: MultiFont.Mapping): void;
+      pushColorSet(this: this, index: number, img: ig.Image, color: string): void;
+      getTextDimensions(this: this, text: string, linePadding: number): ig.TextBlock.Size;
+      _getActualIndex(this: this, index: number): [number, number];
+      getLineWidth(this: this, line: string, size: ig.TextBlock.Size, index: number): number;
       getTextDimensions(this: this, text: string, linePadding: number): ig.TextBlock.Size;
       wrapText(
         this: this,
@@ -57,6 +73,15 @@ declare global {
         bestRatio: Nullable<number>,
         commands: ig.TextCommand[],
       ): string;
+      drawLines(
+        this: this,
+        text: string,
+        x: number,
+        y: number,
+        align: ig.Font.ALIGN,
+        commands: ig.TextCommand[],
+        padding?: number,
+      ): void;
       getCharWidth(this: this, code: number): number;
     }
     interface MultiFontConstructor extends ImpactClass<MultiFont> {
@@ -109,7 +134,7 @@ declare global {
       currentCmd: number;
       currentSpeed: number;
       timer: number;
-      onFinish: Nullable<(() => void)>;
+      onFinish: Nullable<() => void>;
       prerendered: boolean;
       drawCallback: Nullable<ig.TextBlock.DrawCallback>;
       buffer: ig.ImageAtlasFragment;
@@ -121,7 +146,7 @@ declare global {
       prerender(this: this): void;
       clearPrerendered(this: this): void;
       reset(this: this): void;
-      setSpeed(this: this, speed: ig.TextBlock.SPEED): void
+      setSpeed(this: this, speed: ig.TextBlock.SPEED): void;
       isFinished(this: this): boolean;
       update(this: this): void;
       draw(this: this, x: number, y: number): void;
