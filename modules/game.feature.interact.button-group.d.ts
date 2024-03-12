@@ -18,6 +18,7 @@ declare global {
     var MouseButtonGroup: MouseButtonGroupConstructor;
 
     interface ButtonGroup extends ig.ButtonGroup {
+      onButtonTraversal?(this: this): void;
       doButtonTraversal(this: this, inputRegainded: boolean): void;
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {
