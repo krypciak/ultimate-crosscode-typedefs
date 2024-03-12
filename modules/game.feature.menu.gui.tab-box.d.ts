@@ -87,6 +87,7 @@ declare global {
       currentGroup: sc.ButtonGroup;
       bg: sc.MenuScanLines;
 
+      onButtonTraversal(this: this): void
       switchTab(this: this, index: number): void
       onInitSortType(this: this): number;
       onListEntryPressed(this: this, button: sc.ListBoxButton): void;
