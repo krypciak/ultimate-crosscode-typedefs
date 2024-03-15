@@ -47,7 +47,7 @@ declare global {
         fxKey: 'heatConvert' | 'coldConvert' | 'shockConvert' | 'waveConvert';
       }
       interface CHANGE_ELEMENTConstructor extends ImpactClass<CHANGE_ELEMENT> {
-        new (settings: { element: Omit<keyof typeof sc.ELEMENT, 'NEUTRAL'> }): CHANGE_ELEMENT;
+        new (settings: { element: Exclude<keyof typeof sc.ELEMENT, 'NEUTRAL'> }): CHANGE_ELEMENT;
       }
     }
     var BALL_CHANGER_TYPE: {
@@ -80,19 +80,42 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace BallChanger {
-        interface Settings extends ig.Entity.Settings {
+        type Settings = ig.Entity.Settings & {
           ballTime?: number;
           resetBounce?: boolean;
           condition?: string;
-          changerType: {
-            type: keyof typeof sc.BALL_CHANGER_TYPE;
-            options: {
-              dir?: keyof typeof ig.ActorEntity.FACE8; // for use when CHANGE_DIR
-              factor?: number; // for use when CHANGE_SPEED
-              element?: sc.ELEMENT; // for use when CHANGE_ELEMENT
-            };
-          };
-        }
+        } & (
+            | {
+                changerType: {
+                  type: 'CHANGE_DIR';
+                  settings: {
+                    dir: keyof typeof ig.ActorEntity.FACE8;
+                  };
+                };
+              }
+            | {
+                changerType: {
+                  type: 'CHANGE_SPEED';
+                  settings: {
+                    factor?: number;
+                  };
+                };
+              }
+            | {
+                changerType: {
+                  type: 'RESET_SPEED';
+                  settings: {};
+                };
+              }
+            | {
+                changerType: {
+                  type: 'CHANGE_ELEMENT';
+                  settings: {
+                    element: Exclude<keyof typeof sc.ELEMENT, 'NEUTRAL'>;
+                  };
+                };
+              }
+          );
       }
 
       interface BallChanger extends ig.AnimatedEntity {
