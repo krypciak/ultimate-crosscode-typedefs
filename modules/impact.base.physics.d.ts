@@ -27,13 +27,17 @@ declare global {
     }
     interface Physics extends ig.Class {
       cellSize: number;
-      collUpdateList: ig.CollEntry[]
-      collOutOfScreenList: ig.CollEntry[]
+      collUpdateList: ig.CollEntry[];
+      collOutOfScreenList: ig.CollEntry[];
+      collEntryMap: ig.CollEntry[][][] & {
+        width: number;
+        height: number;
+      };
       _updateCount: number;
       _trackEntityTouch: boolean;
 
-      update(this: this): void
-      updateCollEntry(this: this, coll: ig.CollEntry, array: unknown[]): void
+      update(this: this): void;
+      updateCollEntry(this: this, coll: ig.CollEntry, array: unknown[]): void;
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
     }
     interface PhysicsConstructor extends ImpactClass<Physics> {
