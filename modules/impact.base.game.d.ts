@@ -45,11 +45,22 @@ declare global {
       type TeleportLoadHint = Nullable<'NEW' | 'LOAD'>;
     }
     interface Game extends ig.Class {
+      clearColor: string;
+      gravity: number;
+      screen: Vec2;
+      soundPos: Vec2;
+      size: Vec2;
       paused: boolean;
+      mapRenderingBlocked: boolean;
+      isReset: boolean;
+      shadowImage: ig.Image;
+      previousMap: string;
       mapName: string;
+      currentLoadingResource: string;
       entities: ig.Entity[];
       mapEntities: ig.Entity[];
       shownEntities: ig.Entity[];
+      freeEntityIds: number[];
       namedEntities: ig.Entity[];
       conditionalEntities: {
         condition: ig.VarCondition;
@@ -60,6 +71,7 @@ declare global {
         settings: ig.Entity.Settings;
         entity: ig.Entity;
       }[];
+      maps: ig.MAP.AllUnion[];
       levels: Record<
         string,
         {
@@ -71,13 +83,30 @@ declare global {
       maxLevel: number;
       minLevelZ: number;
       masterLevel: number;
+      backgroundAnims: {} /* afaik always empty */;
+      backgroundAnimTimer: number;
+      cellSize: number;
       events: ig.EventManager;
       renderer: ig.Renderer2d;
       physics: ig.Physics;
+      _deferredDetach: ig.Entity[];
+      _levelToLoad: null /* unused */;
       playerEntity: ig.ENTITY.Player;
       marker: string;
+      postPlacementAction?: { onPostPlacementAction(player: ig.ENTITY.Player): void };
+      teleporting: {
+        active: boolean;
+        timer: number;
+        position: ig.TeleportPosition;
+        clearCache: boolean;
+        reloadCache: boolean;
+        levelData: Nullable<sc.MapModel.Map>;
+      };
       addons: Game.Addons;
+      states: ig.GameState[];
 
+      popState(this: this): void;
+      printGameAddonsString(this: this): void;
       getLevelHeight(this: this, level: number | string): number;
       getEntityByName<E extends ig.Entity>(this: this, name: string): E;
       getEntitiesInCircle(
@@ -118,8 +147,9 @@ declare global {
         reloadCache?: Nullable<boolean>,
       ): void;
       isTeleporting(this: this): boolean;
+      onTeleportEnd(this: this): void;
+      createPlayer(this: this): void;
       preloadLevel(this: this, mapName: string): void;
-      // TODO: map data
       loadLevel(
         this: this,
         data: sc.MapModel.Map,
@@ -128,6 +158,13 @@ declare global {
       ): void;
       loadingComplete(this: this): void;
       update(this: this): void;
+      preDrawMaps(this: this): void;
+      run(this: this): void;
+      deferredUpdate(this: this): void;
+      deferredMapEntityUpdate(this: this): void;
+      draw(this: this): void;
+      finalDraw(this: this): void;
+      varsChanged(this: this): void;
       varsChangedDeferred(this: this): void;
 
       trace(
