@@ -59,8 +59,10 @@ declare global {
 
   namespace ig.ENTITY {
     interface Combatant extends sc.BasicCombatant {
-      party: sc.COMBATANT_PARTY
       params: sc.CombatParams;
+      isCombatant: true
+      party: sc.COMBATANT_PARTY
+      damageTimer: number
       invincibleTimer: number;
       shieldsConnections: sc.CombatantShieldConnection[];
       effects: Record<string, ig.EffectSheet>;
