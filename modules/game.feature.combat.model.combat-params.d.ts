@@ -45,15 +45,14 @@ declare global {
         attack: number;
         defense: number;
         focus: number;
-        
+
         elemFactor: number[];
         statusInflict: number[];
-        statusEffect: number[];
+        statusEffect?: number[];
       }
       type ParamName = keyof sc.CombatParams.Params;
 
-      interface BaseParams extends Params {
-      }
+      interface BaseParams extends Params {}
 
       interface DamageResult {
         damage: number;
@@ -85,6 +84,8 @@ declare global {
       hpRegTime: number;
       hpHealTimer: number;
       criticalDmgFactor: number;
+      lockedBy: ig.ActorEntity[];
+      stats: Record<string, number>;
 
       getStat<K extends sc.CombatParams.ParamName>(
         this: this,
@@ -103,7 +104,7 @@ declare global {
         damageFactorMod: number,
         combatant: ig.ENTITY.Combatant,
         shieldResult?: sc.SHIELD_RESULT,
-        hitIgnore?: boolean
+        hitIgnore?: boolean,
       ): CombatParams.DamageResult;
       getHealAmount(this: this, healInfo: sc.HealInfoType): number;
       setCritical(this: this): void;
@@ -117,12 +118,15 @@ declare global {
       getRelativeSp(this: this): number;
       notifySpConsume(this: this, sp: number): void;
       isDefeated(this: this): boolean;
+      setDefeated(this: this): void;
       addBuff(this: this, buff: sc.StatChange): true;
       removeBuff(this: this, buff: sc.StatChange): void;
       removeAllBuffs(this: this): void;
       update(this: this, inCombat: boolean): void;
     }
-    interface CombatParamsConstructor extends ImpactClass<CombatParams> {}
+    interface CombatParamsConstructor extends ImpactClass<CombatParams> {
+      new (stats: sc.StatChange.Params): CombatParams;
+    }
     var CombatParams: CombatParamsConstructor;
 
     interface AttackInfo extends ig.Class {
@@ -136,22 +140,22 @@ declare global {
       critFactor: number;
       spFactor: number;
 
-      hasHint(this: this, hint: string): boolean
+      hasHint(this: this, hint: string): boolean;
     }
     interface AttackInfoConstructor extends ImpactClass<AttackInfo> {}
     var AttackInfo: AttackInfoConstructor;
 
     namespace HealInfo {
       interface Settings {
-        value: number,
-        absolute?: boolean
+        value: number;
+        absolute?: boolean;
       }
     }
     interface HealInfo extends ig.Class {
       healerParams: sc.CombatParams;
       value: number;
       absolute: boolean;
-      clone (this: this): sc.HealInfo;
+      clone(this: this): sc.HealInfo;
     }
     interface HealInfoConstructor extends ImpactClass<HealInfo> {
       new (params: sc.CombatParams, settings: HealInfo.Settings): sc.HealInfo;
