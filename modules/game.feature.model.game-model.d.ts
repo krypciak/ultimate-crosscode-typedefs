@@ -59,6 +59,7 @@ declare global {
       enterPrevSubState(this: this): void;
       isCutscene(this: this): boolean;
       isQuickMenu(this: this): boolean;      
+      isCombatMode(this: this): boolean;
       isPlayerControlBlocked(this: this): boolean
     }
     interface GameModelConstructor extends ImpactClass<GameModel> {
