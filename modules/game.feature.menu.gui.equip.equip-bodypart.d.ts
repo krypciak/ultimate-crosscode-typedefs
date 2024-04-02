@@ -46,9 +46,23 @@ declare global {
     namespace EquipBodyPartContainer {
       interface Entry extends ig.GuiElementBase {
         numberGfx: ig.Image;
+        text: sc.TextGui;
         button: sc.BodyPartButton;
+        defaultPosition: unknown;
+        _isActiveTop: boolean;
+        _hidden: boolean;
+        topY: number;
+        bottomY: number;
         level: number;
         isScalable: boolean;
+
+        setData(this: this, text: sc.TextLike, data: ig.LangLabel, level: number, isScalable: boolean): void;
+        moveToNormal(this: this): void;
+        moveToBottom(this: this): void;
+        moveToTop(this: this): void;
+        reset(this: this): void;
+        hideButton(this: this): void;
+        showButton(this: this): void;
       }
       interface EntryConstructor extends ImpactClass<Entry> {
         new (
