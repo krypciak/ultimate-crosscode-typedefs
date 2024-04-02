@@ -57,9 +57,9 @@ declare global {
         mapHeight: number;
         mapWidth: number;
         masterLevel: number;
-        attributes: MapModel.MapAttributes
-        screen: Vec2
-        entities: MapModel.MapEntity[],
+        attributes: MapModel.MapAttributes;
+        screen: Vec2;
+        entities: MapModel.MapEntity[];
         layer: MapModel.MapLayer[];
       }
 
@@ -82,7 +82,14 @@ declare global {
         npcRunners: string;
       }
 
-      type MapLayerType = 'Background' | 'Collision' | 'Navigation' | 'Light' | 'object1' | 'object2' | 'object3';
+      type MapLayerType =
+        | 'Background'
+        | 'Collision'
+        | 'Navigation'
+        | 'Light'
+        | 'object1'
+        | 'object2'
+        | 'object3';
       type MapLayerLevelType = 'last' | 'light' | 'object1' | 'object2' | 'object3' | number;
 
       interface MapLayer {
@@ -104,7 +111,7 @@ declare global {
       }
     }
     interface MapModel extends ig.GameAddon, sc.Model {
-      activeLandmarks: Record<string, Record<string, { active: boolean }>>
+      activeLandmarks: Record<string, Record<string, { active: boolean }>>;
       areas: { [name: string]: sc.MapModel.Area };
       currentArea: sc.AreaLoadable;
 
@@ -112,12 +119,13 @@ declare global {
       getTotalChestsFound(this: this, asPercent: boolean): number;
       getTotalChests(this: this): number;
       onLevelLoadStart(this: this, data: sc.MapModel.Map): void;
+      updateVisitedArea(this: this, areaName: string): void;
       validateCurrentPlayerFloor(this: this): void;
       getLandmark(this: this, landmark: string, area: string): sc.MapModel.Area.Landmark;
       getCurrentAreaLandmark(this: this, landmark: string): sc.MapModel.Area.Landmark;
-      getCurrentAreaName(this: this): ig.LangLabel
+      getCurrentAreaName(this: this): ig.LangLabel;
       getAreaName(this: this, a?: string, b?: boolean, c?: boolean): string;
-      getCurrentMapName(this: this, returnQuestionMarkIfItsCurrentMap?: boolean): ig.LangLabel
+      getCurrentMapName(this: this, returnQuestionMarkIfItsCurrentMap?: boolean): ig.LangLabel;
       getMapName(this: this, map: string): ig.LangLabel;
       getVisitedArea(this: this, area: string): boolean;
       getChestCount(this: this, key: string): number;
