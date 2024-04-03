@@ -32,20 +32,25 @@ declare global {
     function angle(v1: Vec2, v2: Vec2): number;
     function angle3Point(start: Vec2, dest1: Vec2, dest2: Vec2): number;
     function areClockwise(v1: Vec2, v2: Vec2): boolean;
-    function isAngleInRange(testVec: Vec2, destVec: Vec2, startAngle: number, endAngle: number): boolean;
+    function isAngleInRange(
+      testVec: Vec2,
+      destVec: Vec2,
+      startAngle: number,
+      endAngle: number,
+    ): boolean;
     function rotate(v: Vec2, angle: number, dest?: Vec2): Vec2;
-    function rotate90CW(v: Vec2, dest?: Vec2): Vec2
-    function rotate90CCW(v: Vec2, dest?: Vec2): Vec2
-    function flip(v: Vec2, dest?: Vec2): Vec2; 
+    function rotate90CW(v: Vec2, dest?: Vec2): Vec2;
+    function rotate90CCW(v: Vec2, dest?: Vec2): Vec2;
+    function flip(v: Vec2, dest?: Vec2): Vec2;
     function rotateToward(v1: Vec2, v2: Vec2, maxAngle: number): boolean;
     function equal(v1: Vec2, v2: Vec2): boolean;
     function epsilonEquals(v1: Vec2, v2: Vec2, epsilon: number): boolean;
     function distance(v1: Vec2, v2: Vec2): number;
     function lengthVec(v: Vec2): number;
-    function distanceC(x1: number, y1: number, x2: number, y2: number): number
+    function distanceC(x1: number, y1: number, x2: number, y2: number): number;
     function squareDistance(v1: Vec2, v2: Vec2): number;
     function lerp(v1: Vec2, v2: Vec2, i: number, dest?: Vec2): number;
-    function isZero(v: Vec2): boolean
+    function isZero(v: Vec2): boolean;
     function lengthVec(v: Vec2): number;
     function min(v1: Vec2, v2: Vec2, dest?: Vec2): Vec2;
     function minC(v: Vec2, x: number, y: number, dest?: Vec2): Vec2;
@@ -66,10 +71,10 @@ declare global {
     function createC(x?: number, y?: number, z?: number): Vec3;
     function assign(v1: Vec3, v2: Vec3): Vec3;
     function assignC(v: Vec3, x?: number, y?: number, z?: number): Vec3;
-    function add(v1: Vec3, v2: Vec3, dest?: Vec3): Vec3
+    function add(v1: Vec3, v2: Vec3, dest?: Vec3): Vec3;
     function addMulF(v1: Vec3, v2: Vec3, factor: number, dest?: Vec3): Vec3;
     function addC(v1: Vec3, x?: number, y?: number, z?: number, dest?: Vec3): Vec3;
-    function sub(v1: Vec3, v2: Vec3, dest?: Vec3): Vec3
+    function sub(v1: Vec3, v2: Vec3, dest?: Vec3): Vec3;
     function subC(v1: Vec3, x?: number, y?: number, z?: number, dest?: Vec3): Vec3;
     function mul(v1: Vec3, v2: Vec3, dest?: Vec3): Vec3;
     function mulC(v1: Vec3, x?: number, y?: number, z?: number, dest?: Vec3): Vec3;
@@ -79,7 +84,7 @@ declare global {
     function dot(v1: Vec3, v2: Vec3): number;
     function length(v: Vec3, newLength?: number, dest?: Vec3): number;
     function normalize(v: Vec3, dest?: Vec3): void;
-    function flip(v: Vec3, dest?: Vec3): Vec3; 
+    function flip(v: Vec3, dest?: Vec3): Vec3;
     function equal(v1: Vec3, v2: Vec3): boolean;
     function distance(v1: Vec3, v2: Vec3): number;
     function lerp(v1: Vec3, v2: Vec3, i: number, dest?: Vec3): number;
@@ -196,39 +201,41 @@ declare global {
       WIIU = 4,
     }
 
-    var OS: string
+    var OS: string;
     var platform: ig.PLATFORM_TYPES;
-    function getPlatformName(platformId: ig.PLATFORM_TYPES): 'Unknown' | 'Dekstop' | 'Browser' | 'Mobile' | 'WiiU' | 'Say Wat?'
-    var browser: string
-    var browserVersion: string
-    var nwjsVersion: string
-    var nwjs64: boolean
+    function getPlatformName(
+      platformId: ig.PLATFORM_TYPES,
+    ): 'Unknown' | 'Dekstop' | 'Browser' | 'Mobile' | 'WiiU' | 'Say Wat?';
+    var browser: string;
+    var browserVersion: string;
+    var nwjsVersion: string;
+    var nwjs64: boolean;
 
     interface Perf {
-        update: boolean;
-        deferredUpdate: boolean;
-        draw: boolean;
-        drawSprites: boolean;
-        spriteFilter: boolean;
-        spriteShadow: boolean;
-        spriteOverlapSolver: boolean;
-        smoothMapRendering: boolean;
-        showImageAtlas: boolean;
-        showHitBoxes: boolean;
-        gui: boolean;
-        lighting: boolean;
-        weather: boolean;
-        navigationMarker: boolean;
-        overlay: boolean;
-        envParticles: boolean;
-        fullEnemyFibula: boolean;
-        fullLoreList: boolean;
-        hitNumberFactors: boolean;
-        aiSmart: boolean;
-        grantArenaBonus: boolean;
-        enableArenaRound: boolean;
-        gameSense: boolean;
-        skipDmgModifiers: boolean;
+      update: boolean;
+      deferredUpdate: boolean;
+      draw: boolean;
+      drawSprites: boolean;
+      spriteFilter: boolean;
+      spriteShadow: boolean;
+      spriteOverlapSolver: boolean;
+      smoothMapRendering: boolean;
+      showImageAtlas: boolean;
+      showHitBoxes: boolean;
+      gui: boolean;
+      lighting: boolean;
+      weather: boolean;
+      navigationMarker: boolean;
+      overlay: boolean;
+      envParticles: boolean;
+      fullEnemyFibula: boolean;
+      fullLoreList: boolean;
+      hitNumberFactors: boolean;
+      aiSmart: boolean;
+      grantArenaBonus: boolean;
+      enableArenaRound: boolean;
+      gameSense: boolean;
+      skipDmgModifiers: boolean;
     }
     var perf: Perf;
   }
@@ -270,7 +277,7 @@ declare global {
   var IG_LANG: string;
   var IG_ENTITY_KILL_CALL: boolean;
   var IG_IGNORE_OPTIONS: boolean;
-  var IG_SCREEN_MODE: number;
+  var IG_SCREEN_MODE: sc.DISPLAY_TYPE;
   var IG_USE_WEBAUDIO: boolean;
   var IG_GAME_SCALE: number;
   var IG_WIDTH: number;
