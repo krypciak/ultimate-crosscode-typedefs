@@ -24,15 +24,11 @@ declare global {
     var lang: ig.Lang;
 
     namespace LangLabel {
-      type Data = {
-        en_US?: string,
-        de_DE?: string,
-        ja_JP?: string,
-        zh_CN?: string,
-        ko_KR?: string,
-        zh_TW?: string,
-        langUid?: number,
-      } | string
+      type Data =
+        | ({ [key in typeof ig.SUPPORTED_LANG[number]]?: string } & {
+            langUid?: number;
+          })
+        | string;
     }
     interface LangLabel extends ig.Class {
       value: string;
