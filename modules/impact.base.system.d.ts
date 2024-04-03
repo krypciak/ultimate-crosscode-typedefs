@@ -29,7 +29,7 @@ declare global {
       clock: ig.Timer;
       context: CanvasRenderingContext2D;
 
-      resize(this: this, width: number, height: number, contextScale?: number): void
+      resize(this: this, width: number, height: number, contextScale?: number): void;
       getScreenFromMapPos(this: this, dest: Vec2, x: number, y: number): Vec2;
       getMapFromScreenPos(this: this, dest: Vec2, x: number, y: number): Vec2;
       setFocusLost(this: this): void;
@@ -39,6 +39,7 @@ declare global {
       getBufferContext(this: this, buffer: HTMLCanvasElement): CanvasRenderingContext2D;
       error(this: this, error: Error): never;
       hasFocusLost(this: this): boolean;
+      setCanvasSize(this: this, width: number, height: number, hideBorder?: boolean): void;
     }
     interface SystemConstructor extends ImpactClass<System> {}
     var System: SystemConstructor;
