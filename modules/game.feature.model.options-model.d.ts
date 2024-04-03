@@ -9,6 +9,13 @@ declare global {
   namespace sc {
     var KEY_BLACK_LIST: Record<ig.KEY, boolean>;
 
+    enum DISPLAY_TYPE {
+      ORIGINAL = 0,
+      SCALE_X2 = 1,
+      FIT = 2,
+      CRUSHING = 3,
+    }
+
     enum LANGUAGE {
       ENGLISH = 0,
       GERMAN = 1,
@@ -17,7 +24,7 @@ declare global {
       KOREAN = 4,
       CHINESE_TRAD = 5,
     }
-    var LANGUAGE_MAP: Record<sc.LANGUAGE, ig.LANGUAGE_UNION>
+    var LANGUAGE_MAP: Record<sc.LANGUAGE, ig.LANGUAGE_UNION>;
 
     enum OPTION_TYPES {
       BUTTON_GROUP = 0,
@@ -94,7 +101,7 @@ declare global {
       hasDivider?: boolean;
       header?: string;
       restart?: boolean;
-      hasLocal?: boolean /* the game checks for it in some places, but none of the options have it */
+      hasLocal?: boolean /* the game checks for it in some places, but none of the options have it */;
     }
 
     type OptionDefinition = OptionDefinitionCommon &
@@ -228,7 +235,10 @@ declare global {
       persistOptions(this: this): void;
       dispatchKeySwappedEvent(this: this): void;
       set<K extends keyof sc.OPTIONS_DEFINITION.KnownTypesMap>(
-        this: this, key: K, value: sc.OPTIONS_DEFINITION.KnownTypesMap[K]['init']): void;
+        this: this,
+        key: K,
+        value: sc.OPTIONS_DEFINITION.KnownTypesMap[K]['init'],
+      ): void;
       set(this: this, key: string, value: any): void;
       get<K extends keyof sc.OPTIONS_DEFINITION.KnownTypesMap>(
         this: this,
