@@ -246,6 +246,7 @@ declare global {
         local?: boolean,
       ): sc.OPTIONS_DEFINITION.KnownTypesMap[K]['init'];
       get(this: this, key: string, local?: boolean): unknown;
+      _setDisplaySize(this: this): void;
       _checkForKeyBindingFailure(this: this): void;
       onStorageGlobalSave(this: this, globals: ig.Storage.GlobalsData): void;
       onStorageGlobalLoad(this: this, globals: ig.Storage.GlobalsData): void;
