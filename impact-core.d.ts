@@ -111,7 +111,7 @@ declare global {
   }
 
   namespace ig {
-    var currentLang: string;
+    var currentLang: ig.LANGUAGE_UNION;
 
     namespace Resource {
       type LoadCallback = (type: string, path: string, success: boolean) => void;

@@ -2,6 +2,19 @@ export {};
 
 declare global {
   namespace ig {
+    interface Languages {
+      en_US: never;
+      de_DE: never;
+      fr_FR: never;
+      zh_CN: never;
+      zh_TW: never;
+      ja_JP: never;
+      ko_KR: never;
+    }
+
+    type LANGUAGE_UNION = keyof ig.Languages;
+    var SUPPORTED_LANG: LANGUAGE_UNION[];
+
     interface LangOptions {
       systemFont?: string;
       useFor?: string;
@@ -43,6 +56,6 @@ declare global {
       BEACH_WATER = 23,
       BEACH_SAND = 24,
     }
-    var TERRAIN_DEFAULT: ig.TERRAIN.NORMAL
+    var TERRAIN_DEFAULT: ig.TERRAIN.NORMAL;
   }
 }
