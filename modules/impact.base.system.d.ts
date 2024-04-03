@@ -29,6 +29,7 @@ declare global {
       clock: ig.Timer;
       context: CanvasRenderingContext2D;
 
+      resize(this: this, width: number, height: number, contextScale?: number): void
       getScreenFromMapPos(this: this, dest: Vec2, x: number, y: number): Vec2;
       getMapFromScreenPos(this: this, dest: Vec2, x: number, y: number): Vec2;
       setFocusLost(this: this): void;
