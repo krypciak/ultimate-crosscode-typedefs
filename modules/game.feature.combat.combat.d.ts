@@ -51,6 +51,7 @@ declare global {
       active: boolean;
 
       isEnemyAnalyzable(this: this, enemyType: string): boolean;
+      addActiveCombatant(this: this, combatant: ig.ENTITY.Combatant): void;
       canShowBoostedEntry(this: this, enemyName: string, isBoss: boolean): boolean;
       showHitEffect(
         this: this,
