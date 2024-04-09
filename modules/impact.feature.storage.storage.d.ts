@@ -140,6 +140,7 @@ declare global {
 
       register(this: this, listener: ig.Storage.Listener): void;
       _saveToStorage(this: this): ig.StorageData.SaveFileData;
+      loadSlot(this: this, id?: number, teleportRightAway?: boolean): void
     }
     interface StorageConstructor extends ImpactClass<Storage> {
       new (): Storage;
