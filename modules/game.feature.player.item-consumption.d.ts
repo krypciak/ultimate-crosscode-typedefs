@@ -8,7 +8,7 @@ declare global {
             runHealChange(this: this, settings: sc.StatChangeSettings): void;
         }
         interface ItemConsumptionConstructor extends ImpactClass<ItemConsumption> {
-            new (): void;
+            new (): ItemConsumption;
         }
         var ItemConsumption: ItemConsumptionConstructor;
     }
