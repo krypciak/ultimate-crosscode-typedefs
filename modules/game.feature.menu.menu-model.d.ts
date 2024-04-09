@@ -237,6 +237,10 @@ declare global {
       updateCart(this: this, itemID: sc.ItemID, amount: number, price: number): void;
       getTotalCost(this: this): number;
       getItemQuantity(this: this, itemID: sc.ItemID, price: number): number;
+      newSlot(this: this): void;
+      saveSlot(this: this, id: number): void
+      deleteSlot(this: this, id: number): void
+      loadSlot(this: this, id: number): void
       sortList(this: this, button: ig.FocusGui): void;
       isStart(this: this): boolean;
       isSkills(this: this): boolean;
