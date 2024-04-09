@@ -38,6 +38,7 @@ declare global {
       currentState: sc.GAME_MODEL_STATE;
       currentSubState: sc.GAME_MODEL_SUBSTATE;
       prevSubState: sc.GAME_MODEL_SUBSTATE;
+      leaConfig: sc.PlayerConfig;
       player: sc.PlayerModel;
       message: sc.MessageModel;
       mobilityBlock: keyof GAME_MOBILITY_BLOCK;
@@ -51,16 +52,33 @@ declare global {
       enterCutscene(this: this, combatCutscene?: boolean): void;
       enterGame(this: this): void;
       enterRunning(this: this): void;
+      enterNewGame(this: this): void;
       enterReset(this: this): void;
-      enterQuickMenu(this: this): boolean
+      enterQuickMenu(this: this): boolean;
+      enterPrevSubState(this: this): void;
       enterPrevSubState(this: this): void;
       enterMenu(this: this, force?: Nullable<boolean>): void;
+      enterPause(this: this, force?: Nullable<boolean>): void;
       isTitle(this: this): boolean;
-      enterPrevSubState(this: this): void;
+      isGame(this: this): boolean;
       isCutscene(this: this): boolean;
-      isQuickMenu(this: this): boolean;      
+      isRunning(this: this): boolean;
+      isTeleport(this: this): boolean;
+      isLoading(this: this): boolean;
+      isNewGame(this: this): boolean;
+      isReset(this: this): boolean;
+      isLoadGame(this: this): boolean;
+      isMenu(this: this): boolean;
+      isPaused(this: this): boolean;
+      isHUDBlocked(this: this): boolean;
+      isLevelUp(this: this): boolean;
+      isQuestSolved(this: this): boolean;
+      isQuickMenu(this: this): boolean;
+      isForceCombat(this: this): boolean;
       isCombatMode(this: this): boolean;
-      isPlayerControlBlocked(this: this): boolean
+      isCombatActive(this: this): boolean;
+      isCombatCooldown(this: this): boolean;
+      isPlayerControlBlocked(this: this): boolean;
     }
     interface GameModelConstructor extends ImpactClass<GameModel> {
       new (): GameModel;
@@ -78,13 +96,13 @@ declare global {
       RESET_MENU_STATE = 6,
       PERMA_TASK_CHANGED = 7,
       CLEAR_TOP_MESSAGE = 8,
-      DREAM_MODE_CHANGE = 9
+      DREAM_MODE_CHANGE = 9,
     }
 
     enum GAME_MODEL_STATE {
       TITLE = 0,
       GAME = 1,
-      CUTSCENE = 2
+      CUTSCENE = 2,
     }
     enum GAME_MODEL_SUBSTATE {
       RUNNING = 0,
