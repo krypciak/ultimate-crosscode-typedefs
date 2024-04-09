@@ -20,7 +20,7 @@ declare global {
         offsetHeight?: number,
         fragment?: unknown,
         fragmentAlpha?: number,
-        filtered?: unknown
+        filtered?: unknown,
       ): void;
     }
 
@@ -87,7 +87,7 @@ declare global {
       new (color: string): SimpleColor;
     }
     let SimpleColor: SimpleColorConstructor;
-    
+
     interface TransitionColor extends ig.Class, Drawable {
       colorA: string;
       colorB: string;
@@ -99,7 +99,7 @@ declare global {
       new (colorA: string, colorB?: string, colorBWeight?: number): TransitionColor;
     }
     let TransitionColor: TransitionColorConstructor;
-    
+
     interface DoubleColor extends ig.Class {
       color1: ig.TransitionColor;
       color2: ig.TransitionColor;
@@ -118,6 +118,7 @@ declare global {
         height: number,
         fillCallback: () => void,
       ): ig.ImageAtlasFragment;
+      defragment(this: this, clearBuffers?: boolean): void;
       _getFragment(
         this: this,
         width: number,
