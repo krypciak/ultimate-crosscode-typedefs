@@ -17,7 +17,7 @@ declare global {
       }
       interface HeightMapConstructor extends ImpactClass<HeightMap> {
         levelKey: 'heightMap';
-        new (data: sc.MapModel.Map, zHeight: number): HeightMap;
+        new (data: sc.MapModel.MapLayer, zHeight: number): HeightMap;
       }
       
     }
