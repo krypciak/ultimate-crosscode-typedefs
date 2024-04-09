@@ -11,7 +11,9 @@ declare global {
       _wm: ig.Config;
     }
     interface NavigationConstructor extends ImpactClass<Navigation> {
-      new (data: sc.MapModel.Map, zHeight: number): Navigation;
+      new (data: sc.MapModel.MapLayer, zHeight: number): Navigation;
+
+      levelKey: 'navigation'
     }
   }
 }
