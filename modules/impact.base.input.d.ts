@@ -157,19 +157,49 @@ declare global {
     interface Input extends ig.Class {
       bindings: Record<ig.KEY, ig.Input.KnownAction> & Record<ig.KEY, string>;
       actions: Record<ig.KEY, boolean>;
-      currentDevice: ig.INPUT_DEVICES
+      presses: Record<ig.KEY, boolean>;
+      keyups: Record<ig.KEY, boolean>;
+      locks: Record<ig.KEY, boolean>;
+      delayedKeyup: ig.KEY[];
+      currentDevice: ig.INPUT_DEVICES;
+      isUsingMouse: boolean;
+      isUsingKeyboard: boolean;
+      isUsingAccelerometer: boolean;
       mouse: Vec2;
+      accel: Vec3;
       mouseGuiActive: boolean;
+      lastMousePos: Vec2;
       ignoreKeyboard: boolean;
-      
-      keydown(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
+
+      initMouse(this: this): void;
+      initKeyboard(this: this): void;
+      initAccelerometer(this: this): void;
+      mousewheel(this: this, event: WheelEvent): void;
+      mousemove(this: this, event: MouseEvent): void;
+      mouseout(this: this): void;
+      mouseOutOfScreen(this: this): boolean;
+      contextmenu(this: this, event: PointerEvent): void;
+      isInIframe(this: this): boolean;
+      isInIframeAndUnfocused(this: this): boolean;
+      keydown(this: this, event: MouseEvent | KeyboardEvent): void;
+      keyup(this: this, event: MouseEvent | KeyboardEvent): void;
+      blur(this: this, event: MouseEvent | KeyboardEvent): void;
+      focus(this: this): void;
+      devicemotion(this: this, event: DeviceMotionEvent): void;
       bind(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): void;
+      bindTouch(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): void;
       unbind(this: this, key: ig.KEY): void;
+      unbindAll(this: this): void;
       state(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
       pressed(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
       keyupd(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
+      clearPressed(this: this): void;
+      touchStart(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): boolean;
+      touchEnd(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): boolean;
     }
-    interface InputConstructor extends ImpactClass<Input> {}
+    interface InputConstructor extends ImpactClass<Input> {
+      new (): Input;
+    }
     var Input: InputConstructor;
     var input: Input;
   }
