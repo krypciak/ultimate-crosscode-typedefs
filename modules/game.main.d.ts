@@ -14,11 +14,19 @@ declare global {
       NEW_GAME_PLUS = 3,
     }
 
+    interface EmptyLoader extends ig.Loader {}
+    interface EmptyLoaderConstructor extends ImpactClass<EmptyLoader> {}
+    var EmptyLoader: EmptyLoaderConstructor;
+
     interface CrossCode extends ig.Game {
-      effects: Record<"dust" | "teleport" | "npc" | "death" | "speedlines" | "drops", ig.EffectSheet>;
+      transitionTimer: number;
+      effects: Record<
+        'dust' | 'teleport' | 'npc' | 'death' | 'speedlines' | 'drops',
+        ig.EffectSheet
+      >;
 
       onGameLoopStart(this: this): void;
-      getVersion(this: this): string
+      getVersion(this: this): string;
       addTeleportMessage(this: this, message: string): void;
       start(this: this, startMode?: sc.START_MODE, transitionTime?: number): void;
       transitionEnded(this: this): void;
