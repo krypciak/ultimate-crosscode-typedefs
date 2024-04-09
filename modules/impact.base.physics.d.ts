@@ -36,6 +36,7 @@ declare global {
       _updateCount: number;
       _trackEntityTouch: boolean;
 
+      mapLoaded(this: this): void
       update(this: this): void;
       updateCollEntry(this: this, coll: ig.CollEntry, array: unknown[]): void;
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
