@@ -21,7 +21,7 @@ declare global {
       setTileset(this: this, tileset: string): void;
     }
     interface BackgroundConstructor extends ImpactClass<Background> {
-      new (data: sc.MapModel.Map, zHeight: number): Background;
+      new (data: sc.MapModel.MapLayer, zHeight: number): Background;
     }
   }
 }
