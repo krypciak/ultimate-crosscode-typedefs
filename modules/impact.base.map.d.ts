@@ -29,7 +29,7 @@ declare global {
       setGridTile(this: this, x: number, y: number, tile: number): boolean;
     }
     interface MapConstructor extends ImpactClass<Map> {
-      new (data: sc.MapModel.Map, zHeight: number): Map;
+      new (data: sc.MapModel.MapLayer, zHeight: number): Map;
     }
     var Map: MapConstructor;
 
@@ -86,7 +86,7 @@ declare global {
       drawAnimated(this: this, x: number, y: number, width: number, height: number): void;
     }
     interface ChunkedMapConstructor extends ImpactClass<ChunkedMap> {
-      new (data: sc.MapModel.Map, zHeight: number): ChunkedMap;
+      new (data: sc.MapModel.MapLayer, zHeight: number): ChunkedMap;
     }
     var ChunkedMap: ChunkedMapConstructor;
   }
