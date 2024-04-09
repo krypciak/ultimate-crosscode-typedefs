@@ -8,10 +8,32 @@ declare global {
       interface Settings {}
     }
     interface Crosshair extends ig.Entity {
-      active: boolean
-      _aimDir: Vec2
+      offset: Vec3;
+      tileSheet: ig.TileSheet;
+      thrower: ig.ENTITY.Player;
+      controller: sc.PlayerCrossHairController;
+      rangeStart: number;
+      aimTime: number;
+      maxAngleMove: number;
+      chargeActive: boolean;
+      rangeCurrent: number;
+      currentCharge: number;
+      speedFactor: number;
+      baseSpeedFactor: number;
+      doBlink: boolean;
+      gamepadMode: boolean;
+      active: boolean;
+      special: boolean;
+      circleGlow: number;
+      _lastDir: Vec2;
+      _aimDir: Vec2;
+      _dots: ig.ENTITY.CrosshairDot[];
+      _currentDot: number;
+      sounds: { charged: ig.Sound };
+      soundTimer: number;
+      dirHelperDrawInfo: Vec2 & { tile: number; flipX: number; flipY: number }[];
 
-      deferredUpdate(this: this): void
+      deferredUpdate(this: this): void;
       _updateCrossHair(
         this: this,
         pos: Vec3,
@@ -22,16 +44,30 @@ declare global {
         bouncePoints: number,
         maxPoint: number,
         maxBounce: number,
-        s?: ig.Entity
+        s?: ig.Entity,
       ): void;
     }
     interface CrosshairConstructor extends ImpactClass<Crosshair> {
-      new (x: number, y: number, z: number, settings: ig.ENTITY.Crosshair.Settings): Crosshair
+      new (x: number, y: number, z: number, settings: ig.ENTITY.Crosshair.Settings): Crosshair;
     }
     var Crosshair: CrosshairConstructor;
 
     interface CrosshairDot extends ig.AnimatedEntity {}
     interface CrosshairDotConstructor extends ImpactClass<CrosshairDot> {}
     var CrosshairDot: CrosshairDotConstructor;
+  }
+  namespace sc {
+    interface PlayerCrossHairController extends ig.Class {
+      gamepadMode: boolean;
+
+      isAiming(this: this): boolean;
+      getAimingDistance(this: this, currentDir: Vec2, offsetDir: Vec2): unknown;
+      onActiveChange(this: this, crosshair: ig.ENTITY.Crosshair): void;
+      updatePos(this: this, crosshair: ig.ENTITY.Crosshair): void;
+    }
+    interface PlayerCrossHairControllerConstructor extends ImpactClass<PlayerCrossHairController> {
+      new (): PlayerCrossHairController;
+    }
+    var PlayerCrossHairController: PlayerCrossHairControllerConstructor;
   }
 }
