@@ -57,11 +57,27 @@ declare global {
     var SingleLoadable: SingleLoadableConstructor;
 
     interface Loader extends ig.Class {
+      resources: unknown[];
+      prevResourcesCnt: number;
+      status: number;
+      done: boolean;
+      lastPath: string;
+      gameObjectCreated: boolean;
       _unloaded: string[];
+      _drawStatus: number;
+      _intervalId: number;
+      _loadIndex: number;
 
+      load(this: this): void;
+      end(this: this): void;
+      onEnd(this: this): void;
+      finalize(this: this): void;
+      draw(this: this): void;
       _loadCallback: ReplaceThisParameter<ig.Resource.LoadCallback, this>;
     }
-    interface LoaderConstructor extends ImpactClass<Loader> {}
+    interface LoaderConstructor extends ImpactClass<Loader> {
+      new (gameClass?: sc.CrossCodeConstructor): Loader;
+    }
     var Loader: LoaderConstructor;
   }
 }
