@@ -24,6 +24,8 @@ declare global {
             timeScale: number
             maxStep: number
 
+            step(): void
+
             new(target: number): Timer
         }
         var Timer: TimerConstructor
