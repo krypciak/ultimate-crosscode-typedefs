@@ -19,13 +19,15 @@ declare global {
       ): string;
       _doCallback(this: this): void;
     }
-    interface LangConstructor extends ImpactClass<Lang> {}
+    interface LangConstructor extends ImpactClass<Lang> {
+      new (): Lang;
+    }
     var Lang: LangConstructor;
     var lang: ig.Lang;
 
     namespace LangLabel {
       type Data =
-        | ({ [key in typeof ig.SUPPORTED_LANG[number]]?: string } & {
+        | ({ [key in (typeof ig.SUPPORTED_LANG)[number]]?: string } & {
             langUid?: number;
           })
         | string;
