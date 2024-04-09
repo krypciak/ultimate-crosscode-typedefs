@@ -67,7 +67,7 @@ declare global {
         type: string;
         x: number;
         y: number;
-        level: number;
+        level: number | { offset?: number; level: number };
         settings: ig.Entity.Settings;
       }
 
@@ -82,14 +82,7 @@ declare global {
         npcRunners: string;
       }
 
-      type MapLayerType =
-        | 'Background'
-        | 'Collision'
-        | 'Navigation'
-        | 'Light'
-        | 'object1'
-        | 'object2'
-        | 'object3';
+      type MapLayerType = keyof typeof ig.MAP | 'object1' | 'object2' | 'object3';
       type MapLayerLevelType = 'last' | 'light' | 'object1' | 'object2' | 'object3' | number;
 
       interface MapLayer {
