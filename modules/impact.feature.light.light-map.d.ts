@@ -23,7 +23,7 @@ declare global {
       drawTiled(this: this): void;
     }
     interface LightConstructor extends ImpactClass<Light> {
-      new (data: sc.MapModel.Map, zHeight: number): Light;
+      new (data: sc.MapModel.MapLayer, zHeight: number): Light;
     }
   }
 }
