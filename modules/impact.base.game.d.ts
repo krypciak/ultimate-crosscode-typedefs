@@ -56,7 +56,7 @@ declare global {
       shadowImage: ig.Image;
       previousMap: string;
       mapName: string;
-      currentLoadingResource: string;
+      currentLoadingResource: string | ig.Loader;
       entities: ig.Entity[];
       mapEntities: ig.Entity[];
       shownEntities: ig.Entity[];
@@ -104,10 +104,15 @@ declare global {
       };
       addons: Game.Addons;
       states: ig.GameState[];
+      fullyStopped: boolean;
+      firstUpdateLoop: boolean;
+      _deferredVarChanged: boolean;
+      mapLoader?: ig.LoaderConstructor;
 
       popState(this: this): void;
       printGameAddonsString(this: this): void;
       getLevelHeight(this: this, level: number | string): number;
+      getHeightFromLevelOffset(this: this, level: sc.MapModel.MapEntity['level']): number;
       getEntityByName<E extends ig.Entity>(this: this, name: string): E;
       getEntitiesInCircle(
         center: Vec3,
@@ -183,6 +188,8 @@ declare global {
         collisionList: any[],
         onGround?: boolean,
       ): boolean;
+
+      onGameLoopStart?(): void;
     }
     interface GameConstructor extends ImpactClass<Game> {
       new (): Game;
