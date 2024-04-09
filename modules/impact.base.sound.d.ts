@@ -36,9 +36,9 @@ declare global {
         group: { playing: ig.SoundHandleBase[]; requests: ig.SoundHandleBase[] },
       ): void;
       connectSound(this: this, connectObj: { connect(gain: GainNode): void }): void;
-      addNamedSound(this: this, name: string, handle: ig.SoundHandle): void
-      getNamedSounds(this: this, name: string): ig.SoundHandle[]
-      stopNamedSounds(this: this, name: string): void
+      addNamedSound(this: this, name: string, handle: ig.SoundHandle): void;
+      getNamedSounds(this: this, name: string): ig.SoundHandle[];
+      stopNamedSounds(this: this, name: string): void;
       loadWebAudio(
         this: this,
         path: string,
@@ -80,6 +80,13 @@ declare global {
       new (path: string): WebAudioBuffer;
     }
     var WebAudioBuffer: WebAudioBufferConstructor;
+
+    interface Music extends ig.Class {}
+    interface MusicConstructor extends ImpactClass<Music> {
+      new (): Music;
+    }
+    var Music: MusicConstructor;
+    var music: Music
 
     interface SoundDefault extends ig.Class, SoundCommon {
       group: string;
@@ -173,8 +180,13 @@ declare global {
 
     namespace SoundHelper {
       function playAtEntity(
-        sound: ig.Sound, entity: ig.Entity, isLooped: Nullable<boolean>,
-        settings: Nullable<SoundPlaySettings>, range?: number, type?: ig.SOUND_RANGE_TYPE): ig.SoundHandle;
+        sound: ig.Sound,
+        entity: ig.Entity,
+        isLooped: Nullable<boolean>,
+        settings: Nullable<SoundPlaySettings>,
+        range?: number,
+        type?: ig.SOUND_RANGE_TYPE,
+      ): ig.SoundHandle;
     }
     type SoundHandle = ig.SoundHandleWebAudio | ig.SoundHandleDefault;
 
@@ -209,7 +221,7 @@ declare global {
       use: ig.Sound.FORMAT[];
     }
 
-    type Sound = SoundDefault | SoundWebAudio
+    type Sound = SoundDefault | SoundWebAudio;
     type SoundConstructor = SoundDefaultConstructor | SoundWebAudioConstructor;
     var Sound: SoundConstructor;
   }
