@@ -42,8 +42,14 @@ declare global {
       or<T = ig.VarValue>(this: this, path: string, value: T): void;
       xor<K extends keyof ig.KnownVars>(this: this, path: K, value: ig.KnownVars[K]): void;
       xor<T = ig.VarValue>(this: this, path: string, value: T): void;
-      
-      registerVarAccessor(this: this, domain: string, accessor: ig.Vars.Accessor, editor?: string): void;
+
+      registerVarAccessor(
+        this: this,
+        domain: string,
+        accessor: ig.Vars.Accessor,
+        editor?: string,
+      ): void;
+      onLevelChange(this: this, mapName: string): void;
     }
     interface VarsConstructor extends ImpactClass<Vars> {
       new (): Vars;
