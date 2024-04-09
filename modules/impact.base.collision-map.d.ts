@@ -40,7 +40,10 @@ declare global {
       ): boolean;
     }
     interface CollisionConstructor extends ImpactClass<Collision> {
-      new (data: sc.MapModel.Map, zHeight: number): Collision;
+      new (data: sc.MapModel.MapLayer, zHeight: number): Collision;
+
+      levelKey: 'collision'
+      staticNoCollision: sc.MapModel.MapLayer;
     }
   }
 }
