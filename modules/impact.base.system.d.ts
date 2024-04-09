@@ -7,6 +7,8 @@ export {};
 declare global {
   namespace ig {
     interface System extends ig.Class {
+      fps: number;
+      frameSkip: number;
       width: number;
       height: number;
       contextWidth: number;
@@ -26,10 +28,22 @@ declare global {
       tick: number;
       actualTick: number;
       ingameTick: number;
+      intervalId: number;
+      newGameClass: Nullable<ig.GameConstructor>;
+      running: boolean;
+      delegate: ig.Game;
       clock: ig.Timer;
-      context: CanvasRenderingContext2D;
+      canvas: HTMLCanvasElement;
+      context: Nullable<CanvasRenderingContext2D>;
+      cancelFocusLostCallback: () => boolean;
 
       resize(this: this, width: number, height: number, contextScale?: number): void;
+      setGame(this: this, gameConstructor: GameConstructor): void;
+      setGameNow(this: this, gameConstructor: GameConstructor): void;
+      setDelegate(this: this, game: ig.Game): void;
+      stopRunLoop(this: this): void;
+      startRunLoop(this: this): void;
+      run(this: this): void;
       getScreenFromMapPos(this: this, dest: Vec2, x: number, y: number): Vec2;
       getMapFromScreenPos(this: this, dest: Vec2, x: number, y: number): Vec2;
       setFocusLost(this: this): void;
@@ -41,7 +55,16 @@ declare global {
       hasFocusLost(this: this): boolean;
       setCanvasSize(this: this, width: number, height: number, hideBorder?: boolean): void;
     }
-    interface SystemConstructor extends ImpactClass<System> {}
+    interface SystemConstructor extends ImpactClass<System> {
+      new (
+        canvasId: string,
+        inputDomId: string,
+        fps: number,
+        width: number,
+        height: number,
+        scale: number,
+      ): System;
+    }
     var System: SystemConstructor;
     var system: ig.System;
   }
