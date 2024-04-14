@@ -27,18 +27,21 @@ declare global {
 
     namespace Bgm {
       interface Data {
-        defaultTrackSet: string
-        defaultTrackTypeStack: string[]
-        overloadDefault: boolean
-        paused: boolean
-        resumeOnChange: Nullable<unknown>
+        defaultTrackSet: string;
+        defaultTrackTypeStack: string[];
+        overloadDefault: boolean;
+        paused: boolean;
+        resumeOnChange: Nullable<unknown>;
       }
     }
 
     interface Bgm extends ig.GameAddon {
       clear(this: this, mode?: ig.BGM_SWITCH_MODE): void;
+      onDeferredUpdate(this: this): void;
     }
-    interface BgmConstructor extends ImpactClass<Bgm> {}
+    interface BgmConstructor extends ImpactClass<Bgm> {
+      new (): Bgm;
+    }
     var Bgm: BgmConstructor;
     var bgm: Bgm;
   }
