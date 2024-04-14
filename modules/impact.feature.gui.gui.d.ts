@@ -48,6 +48,7 @@ declare global {
       guiHooks: ig.GuiHook[];
       controlModule: sc.Control;
 
+      onDeferredUpdate(this: this): void;
       createEventGui<Key extends keyof ig.GUI, S, T>(
         this: this,
         name: string,
