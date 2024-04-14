@@ -58,10 +58,10 @@ declare global {
       mapName: string;
       currentLoadingResource: string | ig.Loader;
       entities: ig.Entity[];
-      mapEntities: ig.Entity[];
-      shownEntities: ig.Entity[];
+      mapEntities: Nullable<ig.Entity>[];
+      shownEntities: Nullable<ig.Entity>[];
       freeEntityIds: number[];
-      namedEntities: ig.Entity[];
+      namedEntities: Record<string, ig.Entity>;
       conditionalEntities: {
         condition: ig.VarCondition;
         type: Parameters<ig.Game['spawnEntity']>[0];
@@ -76,7 +76,7 @@ declare global {
         string,
         {
           height?: number;
-          collision?: sc.MapModel.MapLayer;
+          collision?: ig.MAP.Collision;
           maps?: ig.ChunkedMap[];
         }
       >;
@@ -92,7 +92,7 @@ declare global {
       _deferredDetach: ig.Entity[];
       _levelToLoad: null /* unused */;
       playerEntity: ig.ENTITY.Player;
-      marker: string;
+      marker?: Nullable<string>;
       postPlacementAction?: { onPostPlacementAction(player: ig.ENTITY.Player): void };
       teleporting: {
         active: boolean;
@@ -130,7 +130,12 @@ declare global {
         this: this,
         type: new (x: number, y: number, z: number, settings: S) => E | string,
       ): E[];
-      createPlayer(this: this): void;
+      isPlayerTouch(
+        this: this,
+        entity: ig.Entity,
+        player: ig.Entity,
+        dir?: Nullable<Vec2 & { dot: number }>,
+      ): boolean;
       getErrorData(this: this, gameInfo: Record<string, unknown>): void;
       setPaused(this: this, paused: boolean): void;
       spawnEntity<E extends ig.Entity, S extends ig.Entity.Settings>(
