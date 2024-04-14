@@ -4,10 +4,6 @@ export {};
 
 declare global {
   namespace ig.ENTITY {
-    interface HiddenSkyBlock extends ig.Entity {}
-    interface HiddenSkyBlockConstructor extends ImpactClass<HiddenSkyBlock> {}
-    var HiddenSkyBlock: HiddenSkyBlockConstructor;
-
     namespace HiddenBlock {
       interface Settings extends ig.Entity.Settings {
         collType?: keyof typeof ig.COLLTYPE;
@@ -19,5 +15,19 @@ declare global {
         blockNavMap?: boolean;
       }
     }
+
+    namespace HiddenSkyBlock {
+      interface Settings extends ig.Entity.Settings {}
+    }
+    interface HiddenSkyBlock extends ig.Entity {}
+    interface HiddenSkyBlockConstructor extends ImpactClass<HiddenSkyBlock> {
+      new (
+        x: number,
+        y: number,
+        z: number,
+        settings: ig.ENTITY.HiddenSkyBlock.Settings,
+      ): HiddenSkyBlock;
+    }
+    var HiddenSkyBlock: HiddenSkyBlockConstructor;
   }
 }
