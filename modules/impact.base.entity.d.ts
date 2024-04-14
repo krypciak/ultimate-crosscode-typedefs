@@ -62,7 +62,7 @@ declare global {
       updateSprites(this: this): void;
       addEntityAttached(this: this, attachable: ig.Entity.Attachable): void;
       removeEntityAttached(this: this, attachable: ig.Entity.Attachable): void;
-      clearEntityAttached(this: this, conditionCallback: (attachable: ig.Entity.Attachable) => boolean): void;
+      clearEntityAttached(this: this, conditionCallback?: (attachable: ig.Entity.Attachable) => boolean): void;
       show(this: this): void;
       hide(this: this): void;
       kill(this: this, levelChange?: Nullable<boolean>): void;
