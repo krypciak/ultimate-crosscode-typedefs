@@ -201,6 +201,7 @@ declare global {
       dropCounts: Record<string, { anim: string; count: number; time: number; completed: boolean }>;
 
       addLog(this: this, entry: sc.MenuModel.LogEntry): void;
+      onPostUpdate(this: this): void
       addNewUnlock(this: this, type: sc.MENU_SUBMENU, entry: string): void;
       addMapStamp(
         this: this,
