@@ -11,6 +11,7 @@ declare global {
     }
 
     interface EventManager extends ig.Class {
+      runningEventCalls: ig.EventCall[];
       blockingEventCall: ig.EventCall;
 
       callEvent(
@@ -23,7 +24,8 @@ declare global {
         callEntity?: ig.Entity,
         data?: unknown,
       ): ig.EventCall;
-      update(this: this): void
+      getBlockingEventCall(this: this): ig.EventCall;
+      update(this: this): void;
       clear(this: this): void;
       _startEventCall(this: this, event: ig.EventCall): void;
       _endEventCall(this: this, event: ig.EventCall): void;
@@ -55,6 +57,7 @@ declare global {
       ): ig.EventCall.StackEntry;
       setDone(this: this): void;
       isRunning(this: this): boolean;
+      update(this: this): boolean;
     }
     interface EventCallConstructor extends ImpactClass<EventCall> {}
     var EventCall: EventCallConstructor;
