@@ -61,6 +61,8 @@ declare global {
       _cameraInBounds: boolean;
       postUpdateOrder: number;
       levelLoadStartOrder: number;
+
+      onPostUpdate(this: this): void;
     }
     interface CameraConstructor extends ImpactClass<ig.Camera> {
       new (): ig.Camera;
