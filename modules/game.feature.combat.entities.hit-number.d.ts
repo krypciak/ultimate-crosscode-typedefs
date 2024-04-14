@@ -14,8 +14,12 @@ declare global {
 
   namespace ig {
     namespace ENTITY {
+      namespace HitNumber {
+        interface Settings extends ig.Entity.Settings {}
+      }
       interface HitNumber extends sc.HitNumberEntityBase {}
       interface HitNumberConstructor extends ImpactClass<HitNumber> {
+        new (x: number, y: number, z: number, settings: ig.ENTITY.HitNumber.Settings): HitNumber;
         spawnHealingNumber(pos: Vec3, entity: ig.Entity, healAmount: number): void;
       }
       var HitNumber: HitNumberConstructor;
