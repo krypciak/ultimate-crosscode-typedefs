@@ -66,6 +66,7 @@ declare global {
       _unloaded: string[];
       _drawStatus: number;
       _intervalId: number;
+      _loadCallbackBound: Nullable<ig.Resource.LoadCallback>;
       _loadIndex: number;
 
       load(this: this): void;
