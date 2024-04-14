@@ -8,7 +8,7 @@ declare global {
     interface Collision extends ig.Map {
       _wm: ig.Config;
 
-      prepare(this: this, data: sc.MapModel.Map, yOffset: number): void;
+      prepare(this: this, neighbourCollisionLayer?: ig.MAP.Collision, yDiff?: number): void;
       isTileGround(this: this, entityX: number, entityY: number): boolean;
       isTileAreaBlocked(
         this: this,
@@ -42,8 +42,8 @@ declare global {
     interface CollisionConstructor extends ImpactClass<Collision> {
       new (data: sc.MapModel.MapLayer, zHeight: number): Collision;
 
-      levelKey: 'collision'
-      staticNoCollision: sc.MapModel.MapLayer;
+      levelKey: 'collision';
+      staticNoCollision: ig.MAP.Collision;
     }
   }
 }
