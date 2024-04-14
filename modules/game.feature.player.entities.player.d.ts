@@ -144,7 +144,9 @@ declare global {
       onPerfectDash(this: this): void;
       onHeal(this: this, healInfo: sc.HealInfo.Settings | sc.HealInfo, amount: number): void;
     }
-    interface PlayerConstructor extends ImpactClass<Player> {}
+    interface PlayerConstructor extends ImpactClass<Player> {
+      new (x: number, y: number, z: number, settings: {}): Player;
+    }
     var Player: PlayerConstructor;
   }
 }
