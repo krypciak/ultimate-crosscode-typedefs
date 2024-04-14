@@ -23,13 +23,13 @@ declare global {
             lightHandle: boolean
             inputSubmitted: boolean
             sounds: { start: ig.Sound }
-            preUpdateOrder: number
 
             setEntry(this: this, action: keyof typeof sc.INPUT_FORCER_ENTRIES, title: ig.LangLabel.Data | string,
                 textKeyboard: ig.LangLabel.Data | string, textGamepad: ig.LangLabel.Data | string): void
             isBlocking(this: this): boolean
             clearEntry(this: this): void
             isSubmitted(this: this): boolean
+            onPreUpdate(this: this): void
             _startBlock(this: this, cancelAction: boolean): void
             _endBlock(this: this): void
         }
