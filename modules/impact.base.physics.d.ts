@@ -36,10 +36,12 @@ declare global {
       _updateCount: number;
       _trackEntityTouch: boolean;
 
-      mapLoaded(this: this): void
+      mapLoaded(this: this): void;
       update(this: this): void;
       updateCollEntry(this: this, coll: ig.CollEntry, array: unknown[]): void;
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
+      addCollEntry(this: this, coll: ig.CollEntry): void;
+      removeCollEntry(this: this, coll: ig.CollEntry): void;
     }
     interface PhysicsConstructor extends ImpactClass<Physics> {
       new (): Physics;
