@@ -7,42 +7,42 @@ declare global {
     namespace SaveSlot {
       interface Data {
         area: ig.LangLabel.Data;
-        arena: sc.Arena.Data
-        bgm: ig.Bgm.Data
-        cancelButtonText: Nullable<ig.LangLabel>
-        commonEvents: { runData: Record<string, { trigger: number }> }
-        currentTask: Nullable<ig.LangLabel.Data>
-        drops: sc.MenuModel['dropCounts']
+        arena: sc.Arena.Data;
+        bgm: ig.Bgm.Data;
+        cancelButtonText: Nullable<ig.LangLabel>;
+        commonEvents: { runData: Record<string, { trigger: number }> };
+        currentTask: Nullable<ig.LangLabel.Data>;
+        drops: sc.MenuModel['dropCounts'];
         floor: ig.LangLabel.Data | 'MISSING LABEL';
-        forceCombatMode: boolean
-        gui: Record<string, ig.GuiElementBase>
-        highscore: number[]
-        highscoreObs: number[]
-        landmarks: sc.MapModel['activeLandmarks']
-        logs: sc.MenuModel.LogEntry[]
-        lories: sc.LoreModel['unlockedLories']
-        map: string
-        menuNewEntries: sc.MenuModel['newUnlocks']
-        message: sc.MessageModel.Data
-        mobilityBlock: keyof typeof sc.GAME_MOBILITY_BLOCK
-        newGamePlus: sc.NewGamePlusModel.Data
-        options: {} /* this is always empty */
-        party: sc.PartyModel.Data
-        permaTask: ig.LangLabel.Data
-        player: sc.PlayerModel.Data
-        playtime: number
-        position: ig.TeleportPosition.Settings
+        forceCombatMode: boolean;
+        gui: Record<string, ig.GuiElementBase>;
+        highscore: number[];
+        highscoreObs: number[];
+        landmarks: sc.MapModel['activeLandmarks'];
+        logs: sc.MenuModel.LogEntry[];
+        lories: sc.LoreModel['unlockedLories'];
+        map: string;
+        menuNewEntries: sc.MenuModel['newUnlocks'];
+        message: sc.MessageModel.Data;
+        mobilityBlock: keyof typeof sc.GAME_MOBILITY_BLOCK;
+        newGamePlus: sc.NewGamePlusModel.Data;
+        options: {} /* this is always empty */;
+        party: sc.PartyModel.Data;
+        permaTask: ig.LangLabel.Data;
+        player: sc.PlayerModel.Data;
+        playtime: number;
+        position: ig.TeleportPosition.Settings;
         quests: Data.Quests;
-        questsSeen: Record<string, boolean>
-        saveVersion: number
+        questsSeen: Record<string, boolean>;
+        saveVersion: number;
         specialMap: ig.LangLabel.Data;
-        stamps: sc.MenuModel['mapStamps']
-        stats: sc.StatsModel['values']
-        timers: Record<string, sc.TimerEntry.Data>
+        stamps: sc.MenuModel['mapStamps'];
+        stats: sc.StatsModel['values'];
+        timers: Record<string, sc.TimerEntry.Data>;
         tradersFound: { [id: string]: Data.TraderFound };
         vars: Data.Vars;
-        version: string
-        visitedAreas: Record<string, {}>
+        version: string;
+        visitedAreas: Record<string, {}>;
       }
 
       namespace Data {
@@ -140,7 +140,13 @@ declare global {
 
       register(this: this, listener: ig.Storage.Listener): void;
       _saveToStorage(this: this): ig.StorageData.SaveFileData;
-      loadSlot(this: this, id?: number, teleportRightAway?: boolean): void
+      _saveState(
+        this: this,
+        output: Partial<ig.SaveSlot.Data>,
+        mapName?: string,
+        teleportPositionSettings?: ig.TeleportPosition.Settings,
+      ): void;
+      loadSlot(this: this, id?: number | ig.SaveSlot, teleportRightAway?: boolean): void;
     }
     interface StorageConstructor extends ImpactClass<Storage> {
       new (): Storage;
