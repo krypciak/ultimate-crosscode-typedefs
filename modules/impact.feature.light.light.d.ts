@@ -42,14 +42,14 @@ declare global {
       draw(this: this, baseAlpha: number, sizeOffset: number): void;
     }
     interface LightHandleConstructor extends ImpactClass<LightHandle> {
-      new(
+      new (
         entity: ig.Entity,
         size?: ig.LIGHT_SIZE,
         fadeIn?: Nullable<number>,
         fadeOut?: Nullable<number>,
         duration?: Nullable<number>,
         maxAlpha?: Nullable<number>,
-        glow?: Nullable<boolean>
+        glow?: Nullable<boolean>,
       ): LightHandle;
     }
     let LightHandle: LightHandleConstructor;
@@ -63,7 +63,7 @@ declare global {
     interface ScreenFlashHandle extends ig.Class {}
     interface ScreenFlashHandleConstructor extends ImpactClass<ScreenFlashHandle> {}
     let ScreenFlashHandle: ScreenFlashHandleConstructor;
-  
+
     interface GlowColor extends ig.Class {}
     interface GlowColorConstructor extends ImpactClass<GlowColor> {}
     let GlowColor: GlowColorConstructor;
@@ -85,8 +85,11 @@ declare global {
       addLightHandle(this: this, lightHandle: ig.LightHandle): void;
       addShadowProvider(this: this, shadowProvider: ig.Light.ShadowProvider): void;
       removeShadowProvider(this: this, shadowProvider: ig.Light.ShadowProvider): void;
+      onDeferredUpdate(this: this): void;
     }
-    interface LightConstructor extends ImpactClass<Light> {}
+    interface LightConstructor extends ImpactClass<Light> {
+      new (): Light;
+    }
     let Light: LightConstructor;
     let light: ig.Light;
   }
