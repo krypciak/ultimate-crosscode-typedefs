@@ -5,7 +5,7 @@ export {};
 declare global {
   namespace ig.ENTITY {
     namespace Crosshair {
-      interface Settings {}
+      interface Settings extends ig.Entity.Settings {}
     }
     interface Crosshair extends ig.Entity {
       offset: Vec3;
@@ -52,8 +52,18 @@ declare global {
     }
     var Crosshair: CrosshairConstructor;
 
+    namespace CrosshairDot {
+      interface Settings extends ig.Entity.Settings {}
+    }
     interface CrosshairDot extends ig.AnimatedEntity {}
-    interface CrosshairDotConstructor extends ImpactClass<CrosshairDot> {}
+    interface CrosshairDotConstructor extends ImpactClass<CrosshairDot> {
+      new (
+        x: number,
+        y: number,
+        z: number,
+        settings: ig.ENTITY.CrosshairDot.Settings,
+      ): CrosshairDot;
+    }
     var CrosshairDot: CrosshairDotConstructor;
   }
   namespace sc {
