@@ -6,9 +6,13 @@ export {};
 declare global {
   namespace ig {
     enum BUTTONS {
+      /** XBox A */
       FACE0 = 0,
+      /** XBox B */
       FACE1 = 1,
+      /** XBox X */
       FACE2 = 2,
+      /** XBox Y */
       FACE3 = 3,
       LEFT_SHOULDER = 4,
       RIGHT_SHOULDER = 5,
