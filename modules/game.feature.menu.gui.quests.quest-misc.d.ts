@@ -26,7 +26,11 @@ declare global {
       setElite(this: this, isElite: boolean, isSolved: boolean): void;
     }
     interface QuestBaseBoxConstructor extends ImpactClass<QuestBaseBox> {
-      new (width?: Nullable<number>, height?: Nullable<number>, level?: Nullable<number>): QuestBaseBox;
+      new (
+        width?: Nullable<number>,
+        height?: Nullable<number>,
+        level?: Nullable<number>,
+      ): QuestBaseBox;
     }
     var QuestBaseBox: QuestBaseBoxConstructor;
 
@@ -90,6 +94,38 @@ declare global {
       new (quest: sc.Quest, finished: boolean): QuestDialog;
     }
     var QuestDialog: QuestDialogConstructor;
+
+    interface QuestDialogWrapper extends ig.GuiElementBase {
+      screenInteract: sc.ScreenInteractEntry;
+      buttonInteract: ig.ButtonInteractEntry;
+      buttonGroup: sc.ButtonGroup;
+      callback: (accepted: boolean, quest: sc.Quest) => void;
+      quest: null;
+      questBox: sc.QuestDialog;
+      buttons: sc.QuestStartDialogButtonBox;
+      acceptText: sc.TextGui;
+      overlay: ig.GuiElementBase;
+      finished: boolean;
+      firstQuest: sc.Quest;
+      subQuests: sc.QuestTask['subQuests'];
+      next: number;
+      _characterName: Nullable<string>;
+      _mapName: Nullable<string>;
+
+      onDetach(this: this): void;
+      onButtonPress(this: this, button: sc.ButtonGui): void;
+      _close(this: this, accept: boolean): void;
+    }
+    interface QuestDialogWrapperConstructor extends ImpactClass<QuestDialogWrapper> {
+      new (
+        firstQuest: sc.Quest,
+        callback: sc.QuestDialogWrapper['callback'],
+        finished?: boolean,
+        characterName?: string,
+        mapName?: string,
+      ): QuestDialogWrapper;
+    }
+    var QuestDialogWrapper: QuestDialogWrapperConstructor;
 
     interface QuestStartDialogButtonBox extends ig.BoxGui {
       acceptButton: sc.ButtonGui;
