@@ -26,6 +26,11 @@ declare global {
     }
     var LANGUAGE_MAP: Record<sc.LANGUAGE, ig.LANGUAGE_UNION>;
 
+    enum ITEM_HUD_SIZE {
+      NORMAL = 0,
+      SMALL = 0,
+    }
+
     enum OPTION_TYPES {
       BUTTON_GROUP = 0,
       ARRAY_SLIDER = 1,
