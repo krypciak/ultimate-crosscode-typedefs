@@ -18,6 +18,32 @@ declare global {
     interface EmptyLoaderConstructor extends ImpactClass<EmptyLoader> {}
     var EmptyLoader: EmptyLoaderConstructor;
 
+    namespace CrossCode {
+      interface Gui {
+        // @ts-expect-error
+        statusHud: sc.StatusHudGui;
+        rightHudPanel: sc.RightHudGui;
+        // @ts-expect-error
+        taskHud: sc.TaskHudBox;
+        // @ts-expect-error
+        moneyHud: sc.MoneyHudBox;
+        itemHud: sc.ItemHudBox;
+        // @ts-expect-error
+        featHud: sc.FeatHud;
+        // @ts-expect-error
+        questHud: sc.FavQuestHud;
+        // @ts-expect-error
+        questTaskHud: sc.QuestUpdateHud;
+        // @ts-expect-error
+        landmarkHud: sc.LandmarkHud;
+        // @ts-expect-error
+        loreHud: sc.LoreUpdateHud;
+        // @ts-expect-error
+        dropHud: sc.DropUpdateHud;
+      }
+    }
+    var gui: sc.CrossCode.Gui;
+
     interface CrossCode extends ig.Game {
       transitionTimer: number;
       effects: Record<
