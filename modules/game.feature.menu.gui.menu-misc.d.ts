@@ -196,13 +196,18 @@ declare global {
     }
     interface ScrollPane extends ig.GuiElementBase {
       box: sc.ScrollPane.Container;
+      scrollType: sc.ScrollType;
+      scrollbarV?: sc.Slider;
+      scrollbarH?: sc.Slider;
+      showTopBar: boolean;
+      showBottomBar: boolean;
 
       setContent(this: this, content: ig.GuiElementBase): void;
       scrollY(
         this: this,
         amount: number,
         skipTransition?: boolean,
-        time?: KeySpline,
+        time?: number,
         timeFunction?: KeySpline,
       ): void;
       setScrollY(
