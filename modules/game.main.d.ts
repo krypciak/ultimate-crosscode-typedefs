@@ -29,9 +29,12 @@ declare global {
       getVersion(this: this): string;
       addTeleportMessage(this: this, message: string): void;
       start(this: this, startMode?: sc.START_MODE, transitionTime?: number): void;
+      gotoTitle(this: this): void;
       transitionEnded(this: this): void;
     }
-    interface CrossCodeConstructor extends ImpactClass<CrossCode> {}
+    interface CrossCodeConstructor extends ImpactClass<CrossCode> {
+      new (): CrossCode;
+    }
     var CrossCode: CrossCodeConstructor;
   }
 
