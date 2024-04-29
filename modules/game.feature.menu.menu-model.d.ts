@@ -201,7 +201,7 @@ declare global {
       dropCounts: Record<string, { anim: string; count: number; time: number; completed: boolean }>;
 
       addLog(this: this, entry: sc.MenuModel.LogEntry): void;
-      onPostUpdate(this: this): void
+      onPostUpdate(this: this): void;
       addNewUnlock(this: this, type: sc.MENU_SUBMENU, entry: string): void;
       addMapStamp(
         this: this,
@@ -239,9 +239,9 @@ declare global {
       getTotalCost(this: this): number;
       getItemQuantity(this: this, itemID: sc.ItemID, price: number): number;
       newSlot(this: this): void;
-      saveSlot(this: this, id: number): void
-      deleteSlot(this: this, id: number): void
-      loadSlot(this: this, id: number): void
+      saveSlot(this: this, id: number): void;
+      deleteSlot(this: this, id: number): void;
+      loadSlot(this: this, id: number): void;
       sortList(this: this, button: ig.FocusGui): void;
       isStart(this: this): boolean;
       isSkills(this: this): boolean;
@@ -253,6 +253,9 @@ declare global {
       isOptions(this: this): boolean;
       isShop(this: this): boolean;
       isButtonInteractActive(this: this): boolean;
+
+      /** set in sc.TitleScreenButtonGui */
+      exitCallback?: () => void;
     }
     interface MenuModelConstructor extends ImpactClass<MenuModel> {
       new (): MenuModel;
