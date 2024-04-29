@@ -46,6 +46,7 @@ declare global {
       setNoDie(this: this, a: boolean): void;
       update(this: this): void;
       reset(this: this): void;
+      setSpLevel(this: this, level: number): void
     }
     interface PartyMemberModelConstructor extends ImpactClass<PartyMemberModel> {
       new (name: string): PartyMemberModel;
