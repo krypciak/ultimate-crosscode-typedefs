@@ -51,6 +51,7 @@ declare global {
       _trigger?: string;
       _initialized: boolean;
       _noTrack: boolean;
+      hideManager?: ig.EntityHideManager;
 
       _initGfx(this: this): void;
       onEffectEvent(this: this, handle: { isDone: () => boolean }): void;
