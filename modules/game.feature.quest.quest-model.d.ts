@@ -17,10 +17,19 @@ declare global {
       ALL = 2,
     }
 
-    interface QuestModel extends ig.GameAddon, sc.Model, ig.Storage.Listener {
-      isQuestSolved(this: this, id: string): boolean;
+    interface QuestModel extends ig.GameAddon, sc.Model, sc.Model.Observer, ig.Storage.Listener {
+      _solvedTimer: number;
+      _hasSolveDialogs: boolean;
+
+      hasQuestSolvedDialogs(this: this): boolean;
+
+      getSubQuests(this: this, quest: sc.Quest): sc.QuestTask['subQuests'] | undefined;
+      _collectRewards(this: this, quest: sc.Quest): void;
+      _loadStaticQuests(this: this): void;
     }
-    interface QuestModelConstructor extends ImpactClass<QuestModel> {}
+    interface QuestModelConstructor extends ImpactClass<QuestModel> {
+      new (): QuestModel;
+    }
     var QuestModel: QuestModelConstructor;
     var quests: QuestModel;
   }
