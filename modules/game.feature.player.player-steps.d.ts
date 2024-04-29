@@ -11,6 +11,21 @@ export {};
 
 declare global {
   namespace ig {
+    namespace EVENT_STEP {
+      namespace RESET_SKILL_TREE {
+        interface Settings {
+          element?: keyof typeof sc.ELEMENT;
+        }
+      }
+      interface RESET_SKILL_TREE extends ig.EventStepBase {
+        element: sc.ELEMENT;
+        _wm: ig.Config;
+      }
+      interface RESET_SKILL_TREEConstructor extends ImpactClass<RESET_SKILL_TREE> {
+        new (settings: ig.EVENT_STEP.RESET_SKILL_TREE.Settings): RESET_SKILL_TREE;
+      }
+      var RESET_SKILL_TREE: RESET_SKILL_TREEConstructor;
+    }
     namespace ACTION_STEP {
       interface SET_PLAYER_INVINCIBLE extends ActionStepBase {
         factor: number;
