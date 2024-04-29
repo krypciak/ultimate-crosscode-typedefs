@@ -28,7 +28,9 @@ declare global {
     var ArrowBoxGui: ArrowBoxGuiConstructor;
 
     interface BlackWhiteBox extends ig.BoxGui {}
-    interface BlackWhiteBoxConstructor extends ImpactClass<BlackWhiteBox> {}
+    interface BlackWhiteBoxConstructor extends ImpactClass<BlackWhiteBox> {
+      new (width: number, height: number, flipped?: Nullable<boolean>): BlackWhiteBox;
+    }
     var BlackWhiteBox: BlackWhiteBoxConstructor;
 
     interface CenterBoxGui extends ig.GuiElementBase {
