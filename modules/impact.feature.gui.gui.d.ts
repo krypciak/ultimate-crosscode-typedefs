@@ -301,7 +301,7 @@ declare global {
       hook: ig.GuiHook;
       annotation?: GuiElementBase.Annotation;
 
-      setPos(this: this, x: number, y: number): void;
+      setPos(this: this, x?: number, y?: number): void;
       getDestPos(this: this): Vec2;
       setScroll(this: this, x: number, y: number): void;
       getDestScroll(this: this): Vec2;
