@@ -123,6 +123,7 @@ declare global {
       switchedMode: boolean;
 
       initModel(this: this): void;
+      initIdleActions(this: this): void;
       updateAnimSheet(this: this, updateFx?: boolean): void;
       updateSkinAura(this: this): void;
       updateModelStats(this: this, a: boolean): void;
