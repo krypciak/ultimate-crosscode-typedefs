@@ -33,6 +33,8 @@ declare global {
       size: Vec3;
       alwaysRender: boolean;
       ignoreCollision: boolean;
+      groundSlip: boolean;
+      edgeSlipInward: boolean;
       weight: number;
       friction: { ground: number; air: number; terrain: number; ignoreTerrain: boolean };
       accelSpeed: number;
@@ -68,6 +70,14 @@ declare global {
         groundEntryOffset: Vec2;
         overlapEntryFactor: number;
         noSlipping: boolean;
+        holeInfo: {
+          mapRes: number;
+          mapDir: Vec2;
+          entryDir: Vec2;
+          entryZ: number;
+          entryDist: number;
+          entryDanger: boolean;
+        };
       };
 
       setSize(this: this, x: number, y: number, z: number): void;
