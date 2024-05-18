@@ -42,6 +42,20 @@ declare global {
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
       addCollEntry(this: this, coll: ig.CollEntry): void;
       removeCollEntry(this: this, coll: ig.CollEntry): void;
+      moveEntity(this: this, coll: ig.CollEntry, collisionList: ig.CollEntry[]): void;
+      moveEntityZ(this: this, coll: ig.CollEntry, fVel: Vec2, prevOnGround: boolean): void;
+      getGroundEntry(
+        this: this,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        zHeight: number,
+        currentZ: number,
+        minZ: number,
+        exception: ig.CollEntry,
+        collData?: ig.CollEntry,
+      ): ig.CollEntry | undefined;
     }
     interface PhysicsConstructor extends ImpactClass<Physics> {
       new (): Physics;
