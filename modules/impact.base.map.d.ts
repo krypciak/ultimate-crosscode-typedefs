@@ -3,7 +3,12 @@ export {};
 declare global {
   namespace ig {
     namespace MAP {
-      type AllUnion = ig.MAP.HeightMap | ig.MAP.Collision | ig.MAP.Navigation | ig.MAP.Background | ig.MAP.Light
+      type AllUnion =
+        | ig.MAP.HeightMap
+        | ig.MAP.Collision
+        | ig.MAP.Navigation
+        | ig.MAP.Background
+        | ig.MAP.Light;
     }
     var MAP: {
       HeightMap: ig.MAP.HeightMapConstructor;
