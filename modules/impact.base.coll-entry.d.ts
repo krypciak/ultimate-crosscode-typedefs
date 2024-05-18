@@ -7,12 +7,12 @@ declare global {
       NORTH_UP = 1,
       EAST_UP = 2,
       WEST_UP = 3,
-      SOUTH_UP = 4
+      SOUTH_UP = 4,
     }
     enum COLL_SHADOW_TYPE {
       DEFAULT = 0,
       STATIC_SIZE = 1,
-      RECTANGULAR = 2, 
+      RECTANGULAR = 2,
     }
     namespace CollEntry {
       interface Shadow {
@@ -23,55 +23,56 @@ declare global {
       }
     }
     interface CollEntry extends ig.Class {
-      entity: ig.Entity
-      _active: boolean
-      _inCollisionMap: boolean
-      _killed: boolean
+      entity: ig.Entity;
+      _active: boolean;
+      _inCollisionMap: boolean;
+      _killed: boolean;
       type: COLLTYPE;
       shape: ig.COLLSHAPE;
+      heightShape: ig.COLL_HEIGHT_SHAPE;
       size: Vec3;
-      alwaysRender: boolean
-      ignoreCollision: boolean
+      alwaysRender: boolean;
+      ignoreCollision: boolean;
       weight: number;
-      friction: { ground: number, air: number, terrain: number, ignoreTerrain: boolean }
-      accelSpeed: number
-      maxVel: number
-      maxZVel: number
+      friction: { ground: number; air: number; terrain: number; ignoreTerrain: boolean };
+      accelSpeed: number;
+      maxVel: number;
+      maxZVel: number;
       relativeVel: number;
-      bounciness: number
+      bounciness: number;
       zBounciness: number;
-      minBounceBelocity: number
+      minBounceBelocity: number;
       zGravityFactor: number;
-      float: { height: number, variance: number, maxSpeed: number, acel: number }
+      float: { height: number; variance: number; maxSpeed: number; acel: number };
       pos: Vec3;
       level: string;
       baseZPos: number;
       shadow: CollEntry.Shadow;
       vel: Vec3;
-      pushVel: Vec2
-      accelDir: Vec2
-      parentColl?: ig.CollEntry
-      totalBlockTimer: number
-      partlyBlockTimer: number
-      updated: number
+      pushVel: Vec2;
+      accelDir: Vec2;
+      parentColl?: ig.CollEntry;
+      totalBlockTimer: number;
+      partlyBlockTimer: number;
+      updated: number;
       _collData: {
-        collided: boolean
-        frameVel: Vec3
-        blockDir: Vec2
-        slipped: boolean
-        zBaseUncertain: boolean
-        zPush: boolean
-        skipPhysics: boolean
-        forceMoveFrameVel: boolean
-        groundEntry: ig.CollEntry | false
-        groundEntryOffset: Vec2
-        overlapEntryFactor: number
-        noSlipping: boolean
-      }
+        collided: boolean;
+        frameVel: Vec3;
+        blockDir: Vec2;
+        slipped: boolean;
+        zBaseUncertain: boolean;
+        zPush: boolean;
+        skipPhysics: boolean;
+        forceMoveFrameVel: boolean;
+        groundEntry: ig.CollEntry | false;
+        groundEntryOffset: Vec2;
+        overlapEntryFactor: number;
+        noSlipping: boolean;
+      };
 
       setSize(this: this, x: number, y: number, z: number): void;
       setPadding(this: this, x: number, y: number): void;
-      getCenter(this: this, target?: Vec2): Vec2
+      getCenter(this: this, target?: Vec2): Vec2;
     }
     interface CollEntryConstructor extends ImpactClass<CollEntry> {
       new (entity: ig.Entity): CollEntry;
@@ -80,8 +81,8 @@ declare global {
 
     interface CollTools {
       getDistVec2(coll1: CollEntry, coll2: CollEntry, dest: Vec2): Vec2;
-      isPostMoveOverHole(coll: ig.CollEntry, boo: boolean): boolean
-      hasWallCollide(coll: ig.CollEntry, maxAngle: number): boolean
+      isPostMoveOverHole(coll: ig.CollEntry, boo: boolean): boolean;
+      hasWallCollide(coll: ig.CollEntry, maxAngle: number): boolean;
     }
     var CollTools: CollTools;
   }
