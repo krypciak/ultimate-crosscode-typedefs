@@ -16,6 +16,18 @@ declare global {
       }
     }
 
+    interface HiddenBlock extends ig.Entity {
+      terrain: ig.TERRAIN;
+      _wm: ig.Config;
+      blockNavMap: boolean
+
+      onHideRequest(this: this): void;
+    }
+    interface HiddenBlockConstructor extends ImpactClass<HiddenBlock> {
+      new (x: number, y: number, z: number, settings: ig.ENTITY.HiddenBlock.Settings): HiddenBlock;
+    }
+    var HiddenBlock: HiddenBlockConstructor;
+
     namespace HiddenSkyBlock {
       interface Settings extends ig.Entity.Settings {}
     }
