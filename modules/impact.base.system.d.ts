@@ -53,6 +53,7 @@ declare global {
       getBufferContext(this: this, buffer: HTMLCanvasElement): CanvasRenderingContext2D;
       error(this: this, error: Error): never;
       hasFocusLost(this: this): boolean;
+      getDrawPos(this: this, x: number): number;
       setCanvasSize(this: this, width: number, height: number, hideBorder?: boolean): void;
     }
     interface SystemConstructor extends ImpactClass<System> {
