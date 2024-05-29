@@ -86,7 +86,7 @@ declare global {
       new (): Music;
     }
     var Music: MusicConstructor;
-    var music: Music
+    var music: Music;
 
     interface SoundDefault extends ig.Class, SoundCommon {
       group: string;
@@ -99,7 +99,9 @@ declare global {
       clearCached(this: this): void;
       stop(this: this): void;
     }
-    interface SoundDefaultConstructor extends ImpactClass<SoundDefault>, SoundConstructorCommon {}
+    interface SoundDefaultConstructor
+      extends ImpactClass<SoundDefault>,
+        SoundConstructorCommon<ig.SoundDefault> {}
     var SoundDefault: SoundDefaultConstructor;
 
     interface SoundWebAudio extends ig.Class, SoundCommon {
@@ -112,7 +114,9 @@ declare global {
       clearCached(this: this): void;
       stop(this: this): void;
     }
-    interface SoundWebAudioConstructor extends ImpactClass<SoundWebAudio>, SoundConstructorCommon {}
+    interface SoundWebAudioConstructor
+      extends ImpactClass<SoundWebAudio>,
+        SoundConstructorCommon<ig.SoundWebAudio> {}
     var SoundWebAudio: SoundWebAudioConstructor;
 
     interface SoundHandleBase extends ig.Class, SoundCommon {
@@ -215,8 +219,8 @@ declare global {
       var WEBM: ig.Sound.FORMAT;
       var CAF: ig.Sound.FORMAT;
     }
-    interface SoundConstructorCommon {
-      new (path: string, volume?: number, variance?: number, group?: string): ig.Sound;
+    interface SoundConstructorCommon<T extends ig.Sound> {
+      new (path: string, volume?: number, variance?: number, group?: string): T;
       FORMAT: typeof Sound$FORMAT;
       use: ig.Sound.FORMAT[];
     }
