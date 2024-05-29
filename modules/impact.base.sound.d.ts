@@ -75,6 +75,8 @@ declare global {
 
     interface WebAudioBuffer extends ig.Loadable {
       cacheType: 'WebAudioBuffer';
+
+      get(this: this): AudioBuffer;
     }
     interface WebAudioBufferConstructor extends ImpactClass<WebAudioBuffer> {
       new (path: string): WebAudioBuffer;
