@@ -11,13 +11,14 @@ declare global {
       getSampleRate(this: this): number;
       getCurrentTime(this: this): number;
       getCurrentTimeRaw(this: this): number;
+      createPanner(this: this): PannerNode;
       createBufferGain(
         this: this,
         buffer: AudioBufferSourceNode,
         volume?: number,
         playbackRate?: number,
       ): ig.WebAudioBufferGain;
-      createPanner(this: this): PannerNode;
+      _createContext(this: this): void;
     }
     interface WebAudioConstructor extends ImpactClass<WebAudio> {
       new (): ig.WebAudio;
