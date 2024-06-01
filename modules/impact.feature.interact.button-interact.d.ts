@@ -78,6 +78,7 @@ declare global {
       ): void;
       removeGlobalButton(this: this, button: sc.ButtonGui): void;
       addParallelGroup(this: this, buttongroup: sc.ButtonGroup): void;
+      removeParallelGroup(this: this, buttongroup: sc.ButtonGroup): void;
       removeButtonGroup(this: this, buttongroup: sc.ButtonGroup): void;
     }
     interface ButtonInteractEntryConstructor extends ImpactClass<ButtonInteractEntry> {
