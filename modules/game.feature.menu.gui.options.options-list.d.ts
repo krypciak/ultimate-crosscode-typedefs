@@ -24,10 +24,29 @@ declare global {
         arena: sc.ItemTabbedBox.TabButton;
       }
     }
+    namespace OptionsTabBox {
+      interface ButtonData {
+        type: sc.OPTION_CATEGORY;
+      }
+      interface TabButton extends sc.ItemTabbedBox {
+        data: ButtonData
+      }
+    }
     interface OptionsTabBox extends ig.GuiElementBase {
+      prevIndex: number;
       tabs: OptionsTabBox.Tabs;
-      tabArray: sc.ItemTabbedBox.TabButton[];
+      tabArray: sc.OptionsTabBox.TabButton[];
+      tabGroup: sc.ButtonGroup;
       rows: (sc.OptionInfoBox | sc.OptionRow)[];
+      rowButtonGroup: sc.RowButtonGroup;
+      tabContent: {
+        buttonGroup: Nullable<sc.OptionsTabBox['rowButtonGroup']>;
+        list: Nullable<sc.OptionsTabBox['list']>;
+        rows: Nullable<sc.OptionsTabBox['rows']>;
+      }[];
+      list: sc.ButtonListBox;
+      prevPressed: sc.OptionsTabBox.TabButton;
+      menuScanLines: sc.MenuScanLines;
 
       showMenu(this: this): void;
       _createOptionList(this: this, tabIndex: number): void;
@@ -37,7 +56,7 @@ declare global {
         name: string,
         x: number,
         type: sc.OPTION_CATEGORY,
-      ): sc.ItemTabbedBox.TabButton;
+      ): sc.OptionsTabBox.TabButton;
       _createOptionList(this: this, tabIndex: number): void;
     }
     interface OptionsTabBoxConstructor extends ImpactClass<OptionsTabBox> {
