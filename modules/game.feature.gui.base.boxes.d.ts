@@ -39,7 +39,7 @@ declare global {
       resize(this: this): void;
     }
     interface CenterBoxGuiConstructor extends ImpactClass<CenterBoxGui> {
-      new (content: ig.GuiElementBase): CenterBoxGui;
+      new (content: ig.GuiElementBase, skipTransition?: boolean): CenterBoxGui;
     }
     var CenterBoxGui: CenterBoxGuiConstructor;
 
