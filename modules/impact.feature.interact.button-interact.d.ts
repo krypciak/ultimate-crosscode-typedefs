@@ -60,6 +60,7 @@ declare global {
         ignoreEmptyCells?: Nullable<boolean>,
       ): void;
       unfocusCurrentButton(this: this): void;
+      setPressedFocusGui(this: this, button: sc.ButtonGui): void
       _setBackButton(this: this, button: sc.ButtonGui): void;
       _invokePressCallbacks(this: this, button: ig.FocusGui, fromMouse?: boolean): void;
     }
