@@ -20,6 +20,7 @@ declare global {
     interface ButtonGroup extends ig.ButtonGroup {
       onButtonTraversal?(this: this): void;
       doButtonTraversal(this: this, inputRegainded: boolean): void;
+      isNonMouseMenuInput(this: this): boolean;
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {
       new (): sc.ButtonGroup;
@@ -33,6 +34,12 @@ declare global {
       elements: sc.ButtonGui[][];
 
       addFocusGui(this: this, gui: ig.FocusGui, x: number, y: number): void;
+      regainCurrentFocus(
+        this: this,
+        ignoreCallbacks?: boolean,
+        ignoreSounds?: boolean,
+        ignoreIfSame?: boolean,
+      ): void;
       stepRight(this: this): void;
       stepLeft(this: this): void;
       stepDown(this: this): void;

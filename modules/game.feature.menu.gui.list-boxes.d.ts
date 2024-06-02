@@ -27,6 +27,7 @@ declare global {
       _skipFirst: boolean;
       _prevScrollBarHeight: number;
 
+      setButtonGroup(this: this, buttonGroup: sc.ButtonGroup): void
       activate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
       deactivate(this: this, buttonInteract?: Nullable<ig.ButtonInteractEntry>): void;
       addButton(
