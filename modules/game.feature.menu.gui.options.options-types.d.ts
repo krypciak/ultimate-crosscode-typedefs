@@ -43,7 +43,7 @@ declare global {
       interface CONTROLS_CONSTRUCTOR extends ImpactClass<CONTROLS> {}
 
       interface LANGUAGE extends ig.GuiElementBase {
-          onLanguageSelected(this: this, focusLost: boolean, lang: sc.LANGUAGE): void
+        onLanguageSelected(this: this, focusLost: boolean, lang: sc.LANGUAGE): void;
       }
       interface LANGUAGE_CONSTRUCTOR extends ImpactClass<LANGUAGE> {}
     }
@@ -66,6 +66,7 @@ declare global {
     var OptionInfoBox: OptionInfoBoxConstructor;
 
     interface OptionRow extends ig.GuiElementBase {
+      gfx: ig.Image;
       row: number;
       optionName: string;
       option: sc.OptionDefinition;
