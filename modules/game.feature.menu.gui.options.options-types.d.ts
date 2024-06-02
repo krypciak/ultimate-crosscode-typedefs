@@ -63,8 +63,13 @@ declare global {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): CHECKBOX;
       }
 
-      interface CONTROLS extends ig.GuiElementBase {
+      interface CONTROLS extends ig.GuiElementBase, sc.Model.Observer {
+        keyButton: sc.ButtonGui
+        altButton: sc.ButtonGui
         base: sc.OptionRow;
+        controlKey: string
+        
+        onPressed(this: this, button: sc.ButtonGui): void;
       }
       interface CONTROLS_CONSTRUCTOR extends ImpactClass<CONTROLS> {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): CONTROLS;
