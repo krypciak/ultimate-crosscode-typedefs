@@ -41,9 +41,9 @@ declare global {
       changeCallback: (value: number) => void
 
       setPreferredThumbSize(this: this, width: number, height: number): void;
-      setSize(this: this, x: number, y: number): void;
-      setSize(this: this, x: number, y: number, sliderHeight: number): void;
+      setSize(this: this, x: number, y: number, sliderHeight?: number): void;
       setValue(this: this, value: number): void;
+      getValue(this: this): number
       setMinMaxValue(this: this, min: number, max: number): void;
     }
     interface OptionFocusSliderConstructor extends ImpactClass<OptionFocusSlider> {
