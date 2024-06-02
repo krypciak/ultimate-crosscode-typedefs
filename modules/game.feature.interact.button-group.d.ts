@@ -32,8 +32,10 @@ declare global {
       currentRow: number;
       _lastRowIndex: number;
       elements: sc.ButtonGui[][];
+      leftRightCallback: (stepRight: boolean, row: number) => void;
 
       addFocusGui(this: this, gui: ig.FocusGui, x: number, y: number): void;
+      setLeftRightCallback(this: this, callback: sc.RowButtonGroup['leftRightCallback']): void;
       regainCurrentFocus(
         this: this,
         ignoreCallbacks?: boolean,
