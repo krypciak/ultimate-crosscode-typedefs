@@ -64,7 +64,7 @@ declare global {
       getTextDimensions(this: this, text: string, linePadding: number): ig.TextBlock.Size;
       _getActualIndex(this: this, index: number): [number, number];
       getLineWidth(this: this, line: string, size: ig.TextBlock.Size, index: number): number;
-      getTextDimensions(this: this, text: string, linePadding: number): ig.TextBlock.Size;
+      getTextDimensions(this: this, text: string, linePadding?: number): ig.TextBlock.Size;
       wrapText(
         this: this,
         text: string,
