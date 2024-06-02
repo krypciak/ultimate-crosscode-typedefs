@@ -194,6 +194,9 @@ declare global {
       shopPage: number;
       shopCart: sc.MenuModel.ShopCartEntry[];
       shopSellMode: boolean;
+      optionCurrentTab: number;
+      optionLastButtonData: sc.OptionsTabBox.ButtonData;
+      optionsLocalMode: boolean;
       newUnlocks: { [key in sc.MENU_SUBMENU]?: string[] };
       logEntries: sc.MenuModel.LogEntry[];
       statusElement: sc.ELEMENT;
@@ -243,6 +246,7 @@ declare global {
       deleteSlot(this: this, id: number): void;
       loadSlot(this: this, id: number): void;
       sortList(this: this, button: ig.FocusGui): void;
+      setOptionTab(this: this, tabIndex: number): void;
       isStart(this: this): boolean;
       isSkills(this: this): boolean;
       isEquipment(this: this): boolean;
