@@ -36,11 +36,17 @@ declare global {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): ARRAY_SLIDER;
       }
 
-      interface OBJECT_SLIDER extends ig.GuiElementBase {
+      interface OBJECT_SLIDER extends ig.GuiElementBase, sc.Model.Observer {
         slider: sc.OptionFocusSlider;
-        _lastVal: number;
+        base: sc.OptionRow;
+        entries: number[];
         currentNumber: sc.TextGui | sc.NumberGui;
+        _lastVal: number;
 
+        updateNumberDisplay(this: this): void
+        onAttach(this: this): void
+        onDetach(this: this): void
+        onChange(this: this, value: number): void
         onLeftRight(this: this, direction: boolean): void;
       }
       interface OBJECT_SLIDER_CONSTRUCTOR extends ImpactClass<OBJECT_SLIDER> {
