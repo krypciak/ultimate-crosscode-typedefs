@@ -13,6 +13,11 @@ declare global {
     namespace OPTION_GUIS_DEFS {
       interface BUTTON_GROUP extends ig.GuiElementBase {
         base: sc.OptionRow;
+        buttons: sc.ButtonGui[];
+        _prevPressed: sc.ButtonGui;
+        _rowGroup: sc.RowButtonGroup;
+
+        resetButtons(this: this, except: sc.ButtonGui): void;
       }
       interface BUTTON_GROUP_CONSTRUCTOR extends ImpactClass<BUTTON_GROUP> {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): BUTTON_GROUP;
