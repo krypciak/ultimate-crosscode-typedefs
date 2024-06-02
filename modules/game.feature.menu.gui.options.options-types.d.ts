@@ -96,6 +96,7 @@ declare global {
       _hasEntered: boolean;
       _rowGroup: sc.RowButtonGroup;
 
+      onPressed(this: this, pressedGui: ig.FocusGui): void;
       onLeftRight(this: this, isRight: boolean): boolean;
     }
     interface OptionRowConstructor extends ImpactClass<OptionRow> {
