@@ -95,6 +95,8 @@ declare global {
         | sc.OPTION_GUIS_DEFS.LANGUAGE;
       _hasEntered: boolean;
       _rowGroup: sc.RowButtonGroup;
+
+      onLeftRight(this: this, isRight: boolean): boolean;
     }
     interface OptionRowConstructor extends ImpactClass<OptionRow> {
       new (
