@@ -11,13 +11,16 @@ export {};
 declare global {
   namespace sc {
     namespace OPTION_GUIS_DEFS {
-      interface BUTTON_GROUP extends ig.GuiElementBase {}
+      interface BUTTON_GROUP extends ig.GuiElementBase {
+        base: sc.OptionRow;
+      }
       interface BUTTON_GROUP_CONSTRUCTOR extends ImpactClass<BUTTON_GROUP> {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): BUTTON_GROUP;
       }
 
       interface ARRAY_SLIDER extends ig.GuiElementBase {
         slider: sc.OptionFocusSlider;
+        base: sc.OptionRow;
         _lastVal: number;
         scale: number;
         stepSize: number;
@@ -40,19 +43,26 @@ declare global {
       }
 
       interface CHECKBOX extends ig.GuiElementBase {
+        base: sc.OptionRow;
         button: sc.CheckboxGui;
+
         onPressed(this: this, checkbox: sc.CheckboxGui): void;
       }
       interface CHECKBOX_CONSTRUCTOR extends ImpactClass<CHECKBOX> {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): CHECKBOX;
       }
 
-      interface CONTROLS extends ig.GuiElementBase {}
+      interface CONTROLS extends ig.GuiElementBase {
+        base: sc.OptionRow;
+      }
       interface CONTROLS_CONSTRUCTOR extends ImpactClass<CONTROLS> {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): CONTROLS;
       }
 
       interface LANGUAGE extends ig.GuiElementBase {
+        button: sc.ButtonGui;
+        base: sc.OptionRow;
+
         onLanguageSelected(this: this, focusLost: boolean, lang: sc.LANGUAGE): void;
       }
       interface LANGUAGE_CONSTRUCTOR extends ImpactClass<LANGUAGE> {
