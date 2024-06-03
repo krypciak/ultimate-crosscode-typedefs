@@ -11,13 +11,16 @@ export {};
 declare global {
   namespace sc {
     namespace OPTION_GUIS_DEFS {
-      interface BUTTON_GROUP extends ig.GuiElementBase {
+      interface BUTTON_GROUP extends ig.GuiElementBase, sc.Model.Observer {
         base: sc.OptionRow;
         buttons: sc.ButtonGui[];
         _prevPressed: sc.ButtonGui;
         _rowGroup: sc.RowButtonGroup;
 
         resetButtons(this: this, except: sc.ButtonGui): void;
+        onAttach(this: this): void;
+        onDetach(this: this): void;
+        onPressed(this: this, button: sc.ButtonGui & { data: { id: number } }): void;
       }
       interface BUTTON_GROUP_CONSTRUCTOR extends ImpactClass<BUTTON_GROUP> {
         new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): BUTTON_GROUP;
@@ -43,10 +46,10 @@ declare global {
         currentNumber: sc.TextGui | sc.NumberGui;
         _lastVal: number;
 
-        updateNumberDisplay(this: this): void
-        onAttach(this: this): void
-        onDetach(this: this): void
-        onChange(this: this, value: number): void
+        updateNumberDisplay(this: this): void;
+        onAttach(this: this): void;
+        onDetach(this: this): void;
+        onChange(this: this, value: number): void;
         onLeftRight(this: this, direction: boolean): void;
       }
       interface OBJECT_SLIDER_CONSTRUCTOR extends ImpactClass<OBJECT_SLIDER> {
@@ -64,11 +67,11 @@ declare global {
       }
 
       interface CONTROLS extends ig.GuiElementBase, sc.Model.Observer {
-        keyButton: sc.ButtonGui
-        altButton: sc.ButtonGui
+        keyButton: sc.ButtonGui;
+        altButton: sc.ButtonGui;
         base: sc.OptionRow;
-        controlKey: string
-        
+        controlKey: string;
+
         onPressed(this: this, button: sc.ButtonGui): void;
       }
       interface CONTROLS_CONSTRUCTOR extends ImpactClass<CONTROLS> {
