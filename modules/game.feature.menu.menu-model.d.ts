@@ -187,7 +187,7 @@ declare global {
       previousMenu: sc.MENU_SUBMENU;
       buttonInteract: ig.ButtonInteractEntry;
       backCallbackStack: sc.MenuModel.BackCallback[];
-      hotkeysCallbacks: sc.MenuModel.HotkeyCallback;
+      hotkeysCallbacks: sc.MenuModel.HotkeyCallback[];
       currentBackCallback: sc.MenuModel.BackCallback;
       mapStamps: Record<string, Nullable<sc.MenuModel.Stamp>[]>;
       shopID: Nullable<string>;
