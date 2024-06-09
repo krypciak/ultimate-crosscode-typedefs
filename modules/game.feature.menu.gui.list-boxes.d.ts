@@ -47,6 +47,7 @@ declare global {
       clear(this: this, skip?: Nullable<boolean>): void;
       scrollToY(this: this, y: number, b: boolean): void;
       _getContentHeight(this: this, isNotFirstColumn?: boolean): number;
+      _setContentHeight(this: this, height: number): void
     }
     interface ButtonListBoxConstructor extends ImpactClass<ButtonListBox> {
       new (
