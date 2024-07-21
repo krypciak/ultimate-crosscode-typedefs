@@ -202,6 +202,8 @@ declare global {
       statusElement: sc.ELEMENT;
       statusDiff: boolean;
       dropCounts: Record<string, { anim: string; count: number; time: number; completed: boolean }>;
+      // Set in sc.MainMenu#init
+      guiReference: sc.MainMenu;
 
       addLog(this: this, entry: sc.MenuModel.LogEntry): void;
       onPostUpdate(this: this): void;
