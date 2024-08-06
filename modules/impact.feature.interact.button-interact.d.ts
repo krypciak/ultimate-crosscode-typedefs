@@ -32,13 +32,7 @@ declare global {
       _isParallel: boolean;
       sounds: { focus: ig.Sound };
 
-      addFocusGui(
-        this: this,
-        gui: ig.FocusGui,
-        x: number,
-        y: number,
-        asBackButton?: boolean,
-      ): void;
+      addFocusGui(this: this, gui: ig.FocusGui, x: number, y: number, asBackButton?: boolean): void;
       removeFocusGui(this: this, x: number, y: number): void;
       invokeCurrentButton(this: this): void;
       setMouseFocusLostCallback(this: this, callback: () => void): void;
@@ -60,7 +54,7 @@ declare global {
         ignoreEmptyCells?: Nullable<boolean>,
       ): void;
       unfocusCurrentButton(this: this): void;
-      setPressedFocusGui(this: this, button: sc.ButtonGui): void
+      setPressedFocusGui(this: this, button: sc.ButtonGui): void;
       _setBackButton(this: this, button: sc.ButtonGui): void;
       _invokePressCallbacks(this: this, button: ig.FocusGui, fromMouse?: boolean): void;
     }
@@ -80,6 +74,7 @@ declare global {
       removeGlobalButton(this: this, button: sc.ButtonGui): void;
       addParallelGroup(this: this, buttongroup: sc.ButtonGroup): void;
       removeParallelGroup(this: this, buttongroup: sc.ButtonGroup): void;
+      clearAllButtons(this: this): void;
       removeButtonGroup(this: this, buttongroup: sc.ButtonGroup): void;
     }
     interface ButtonInteractEntryConstructor extends ImpactClass<ButtonInteractEntry> {
