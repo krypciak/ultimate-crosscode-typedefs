@@ -60,6 +60,7 @@ declare global {
         alignXPadding?: number;
         highlight?: Highlight | null;
         height: number;
+        ninepatch: ig.NinePatch;
       }
     }
     interface ButtonGui extends ig.FocusGui {
