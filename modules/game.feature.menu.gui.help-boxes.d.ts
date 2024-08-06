@@ -64,7 +64,7 @@ declare global {
 
       openMenu(this: this): void;
       closeMenu(this: this): void;
-      addPage(this: this, header: string, content: string, isList?: boolean): void;
+      addPage(this: this, header: string, content: string[], isList?: boolean): void;
       addPages(this: this, pages: sc.MultiPageBoxGui.ConditionalPage[]): void;
       setDefaultHeaderText(this: this, header: string): void;
       _setPage(this: this, index: number): void;
