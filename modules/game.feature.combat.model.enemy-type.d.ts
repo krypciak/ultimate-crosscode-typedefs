@@ -59,5 +59,16 @@ declare global {
       new (settings: EnemyInfo.Settings): EnemyInfo;
     }
     var EnemyInfo: EnemyInfoConstructor;
+
+    interface EnemyState extends ig.Class {
+      name: string;
+      entityConfig: ig.ActorConfig;
+
+      selectAction(this: this, enemy: ig.ENTITY.Enemy): Nullable<unknown>;
+    }
+    interface EnemyStateConstructor extends ImpactClass<EnemyState> {
+      new (name: string, b: unknown, d: unknown): EnemyState;
+    }
+    var EnemyState: EnemyStateConstructor;
   }
 }
