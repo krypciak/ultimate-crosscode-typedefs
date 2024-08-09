@@ -29,11 +29,14 @@ declare global {
       reactions: Record<string, EnemyReactionBase>;
       size: Vec2;
 
+      getAppearAction(this: this, enemy: ig.ENTITY.Enemy): ig.Action;
+      updateAction(this: this, enemy: ig.ENTITY.Enemy): void;
+      postActionUpdate(this: this, enemy: ig.ENTITY.Enemy): void;
       resolveItemDrops(this: this, enemyEntity: ig.ENTITY.Enemy): void;
     }
     interface EnemyTypeConstructor extends ImpactClass<EnemyType> {
       cache: Record<string, EnemyType>;
-      
+
       new (name: string): EnemyType;
     }
     var EnemyType: EnemyTypeConstructor;
@@ -53,7 +56,7 @@ declare global {
       clearCached(): void;
     }
     interface EnemyInfoConstructor extends ImpactClass<EnemyInfo> {
-      new(settings: EnemyInfo.Settings): EnemyInfo;
+      new (settings: EnemyInfo.Settings): EnemyInfo;
     }
     var EnemyInfo: EnemyInfoConstructor;
   }
