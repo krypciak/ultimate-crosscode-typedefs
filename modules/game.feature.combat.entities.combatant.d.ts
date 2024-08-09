@@ -60,14 +60,15 @@ declare global {
   namespace ig.ENTITY {
     interface Combatant extends sc.BasicCombatant {
       params: sc.CombatParams;
-      isCombatant: true
-      party: sc.COMBATANT_PARTY
-      damageTimer: number
+      isCombatant: true;
+      party: sc.COMBATANT_PARTY;
+      damageTimer: number;
       invincibleTimer: number;
       shieldsConnections: sc.CombatantShieldConnection[];
       effects: Record<string, ig.EffectSheet>;
 
-      isDefeated(this: this): boolean
+      setRespawnPoint(this: this, pos: Vec3): void;
+      isDefeated(this: this): boolean;
       setTarget(this: this, combatant: sc.BasicCombatant, fixed?: Nullable<boolean>): void;
       onPreDamageModification(
         this: this,
@@ -83,7 +84,7 @@ declare global {
       onHeal?(this: this, healInfo: sc.HealInfoType, amount: number): void;
     }
     interface CombatantConstructor extends ImpactClass<Combatant> {
-      new (x: number, y: number, z: number, settings: ig.Entity.Settings): ig.ENTITY.Combatant
+      new (x: number, y: number, z: number, settings: ig.Entity.Settings): ig.ENTITY.Combatant;
     }
     var Combatant: CombatantConstructor;
   }
