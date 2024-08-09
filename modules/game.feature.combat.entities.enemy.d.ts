@@ -10,7 +10,7 @@ declare global {
     enum ENEMY_HP_BAR {
       AUTO = 0,
       VISIBLE = 1,
-      HIDDEN = 2
+      HIDDEN = 2,
     }
     enum ENEMY_BOOSTER_STATE {
       NONE = 0,
@@ -32,20 +32,27 @@ declare global {
     }
 
     interface Enemy extends ig.ENTITY.Combatant {
-      enemyName: string
+      enemyName: string;
       enemyType: sc.EnemyType;
-      enemyGroup: string
+      enemyGroup: string;
       currentState: string;
       boosterState: sc.ENEMY_BOOSTER_STATE;
       level: Enemy.Level;
-      visibility: { analyzable: boolean, hpBar: sc.ENEMY_HP_BAR }
+      visibility: { analyzable: boolean; hpBar: sc.ENEMY_HP_BAR };
 
       setLevelOverride(this: this, newLevel?: Nullable<number>): void;
       getLevel(this: this): number;
-      changeState(this: this, state: string, immediate?: Nullable<boolean>, switchStateConfig?: boolean): void;
+      onFallBehavior(this: this, terrain: ig.TERRAIN): boolean;
+      changeState(
+        this: this,
+        state: string,
+        immediate?: Nullable<boolean>,
+        switchStateConfig?: boolean,
+      ): void;
+      doEnemyAction(this: this, actionName: string, noStateReset: boolean, inline?: boolean): void;
     }
     interface EnemyConstructor extends ImpactClass<Enemy> {
-      new (x: number, y: number, z: number, settings: ig.ENTITY.Enemy.Settings): ig.ENTITY.Enemy
+      new (x: number, y: number, z: number, settings: ig.ENTITY.Enemy.Settings): ig.ENTITY.Enemy;
     }
     var Enemy: EnemyConstructor;
   }
