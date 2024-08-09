@@ -9,13 +9,13 @@ declare global {
       interface Data {
         areas: { [name: string]: sc.MapModel.Area };
         enemies: { [id: string]: EnemyData };
-        leawords: string[]
-        lore: Record<string, LoreData>
-        names: ig.Database.Names
+        leawords: string[];
+        lore: Record<string, LoreData>;
+        names: ig.Database.Names;
         shops: { [id: string]: ShopData };
         traders: { [id: string]: sc.TradeModel.Trader };
         chapters: Chapter[];
-        toggleSets: { [name: string]: ToggleSet }
+        toggleSets: { [name: string]: ToggleSet };
       }
 
       interface EnemyData {
@@ -24,27 +24,31 @@ declare global {
         descriptions: EnemyDescriptionBlock[];
         boostedLevel: number;
         boss: boolean;
-        track?: boolean
+        track?: boolean;
+        level: number;
       }
 
       interface LoreData {
-        title: ig.LangLabel.Data
-        order: number
-        category: 'STORY' | 'CHARACTERS' | 'CROSS_LORE' | 'EARTH_LORE'
-        content: Record<string, {
-          content: ig.LangLabel.Data
-          switchPage?: boolean
-          image?: { src: string, offX: number, offY: number, width: number, height: number }
-          options?: { allgn: string, wrap: boolean }
-          condition?: string
-          hr?: boolean
-          altContent?: {
-            content: ig.LangLabel.Data
-            condition: string
+        title: ig.LangLabel.Data;
+        order: number;
+        category: 'STORY' | 'CHARACTERS' | 'CROSS_LORE' | 'EARTH_LORE';
+        content: Record<
+          string,
+          {
+            content: ig.LangLabel.Data;
+            switchPage?: boolean;
+            image?: { src: string; offX: number; offY: number; width: number; height: number };
+            options?: { allgn: string; wrap: boolean };
+            condition?: string;
+            hr?: boolean;
+            altContent?: {
+              content: ig.LangLabel.Data;
+              condition: string;
+            };
           }
-        }>
-        parent?: string
-        extension?: string
+        >;
+        parent?: string;
+        extension?: string;
       }
 
       interface EnemyDescriptionBlock {
@@ -81,18 +85,17 @@ declare global {
       }
 
       interface ToggleSet {
-        type: "SINGLE" | "MULTI";
+        type: 'SINGLE' | 'MULTI';
         name: ig.LangLabel.Data;
         order: number;
         color: string;
         items: sc.ItemID[];
       }
 
-      type Names = Name[]
+      type Names = Name[];
       interface Name {
-          gender: 'MALE' | 'FEMALE' | 'BOTH'
-          name: ig.LangLabel.Data
-
+        gender: 'MALE' | 'FEMALE' | 'BOTH';
+        name: ig.LangLabel.Data;
       }
     }
     interface Database extends ig.SingleLoadable {
