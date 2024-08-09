@@ -7,7 +7,7 @@ declare global {
     namespace ENTITY {
       namespace EnemySpawner {
         interface Entry {
-          info: sc.EnemyInfo;
+          info: sc.EnemyInfo.Settings;
           count: number;
         }
         interface Settings extends ig.Entity.Settings {
