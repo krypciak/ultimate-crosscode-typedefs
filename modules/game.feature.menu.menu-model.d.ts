@@ -185,6 +185,7 @@ declare global {
     interface MenuModel extends ig.GameAddon, sc.Model {
       currentMenu: sc.MENU_SUBMENU;
       previousMenu: sc.MENU_SUBMENU;
+      menuStack: sc.MENU_SUBMENU[];
       buttonInteract: ig.ButtonInteractEntry;
       backCallbackStack: sc.MenuModel.BackCallback[];
       hotkeysCallbacks: sc.MenuModel.HotkeyCallback[];
