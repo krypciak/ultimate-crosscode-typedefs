@@ -58,6 +58,7 @@ declare global {
       setGamepadIconStyle(this: this, style: sc.GAMEPAD_ICON_STYLE): void;
       updateGamepadSwapMap(this: this): void;
       hasIcon(this: this, icon: string): boolean;
+      onVarsChanged(this: this): void
     }
     interface FontSystemConstructor extends ImpactClass<FontSystem> {
       new (): FontSystem;
