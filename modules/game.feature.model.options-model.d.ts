@@ -235,6 +235,7 @@ declare global {
     interface OptionModel extends ig.GameAddon, sc.Model, ig.Storage.Listener {
       hdMode: boolean;
       hasChanged: boolean;
+      keyBinder: sc.KeyBinder;
       values: ig.Storage.GlobalsData.Options;
 
       persistOptions(this: this): void;
