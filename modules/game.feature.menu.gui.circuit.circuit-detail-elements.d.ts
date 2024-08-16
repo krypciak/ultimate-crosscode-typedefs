@@ -33,5 +33,13 @@ declare global {
       new (scrollHook: ig.GuiHook): CircuitInfoBox;
     }
     var CircuitInfoBox: CircuitInfoBoxConstructor;
+
+    interface CircuitDetailButtonGroup extends ig.ButtonGroup {
+      cycleElements(this: this, dir: number): unknown;
+    }
+    interface CircuitDetailButtonGroupConstructor extends ImpactClass<CircuitDetailButtonGroup> {
+      new (): CircuitDetailButtonGroup;
+    }
+    var CircuitDetailButtonGroup: CircuitDetailButtonGroupConstructor;
   }
 }

@@ -86,6 +86,13 @@ declare global {
       TORSO = 'torso',
       FEET = 'feet',
     }
+    enum MENU_SKILL_STATE {
+      OVERVIEW = 0,
+      DETAIL_VIEW = 1,
+      NODE_SELECT = 2,
+      NODE_MENU = 3,
+      SWAP_BRANCHES = 4,
+    }
 
     enum MENU_SHOP_TYPES {
       BUY_AND_SELL = 0,
@@ -182,7 +189,16 @@ declare global {
       type HotkeyCallback = () => sc.ButtonGui;
     }
 
-    interface MenuModel extends ig.GameAddon, sc.Model {
+    interface MenuModel
+      extends ig.GameAddon,
+        sc.Model,
+        ig.Vars.Accessor,
+        ig.Storage.Listener,
+        sc.NewGamePlusModel.Applier {
+      guiReference: sc.MainMenu;
+      infoText: Nullable<sc.TextLike>;
+      buffText: Nullable<sc.TextLike>;
+      buffID: sc.ItemID;
       currentMenu: sc.MENU_SUBMENU;
       previousMenu: sc.MENU_SUBMENU;
       menuStack: sc.MENU_SUBMENU[];
@@ -190,25 +206,120 @@ declare global {
       backCallbackStack: sc.MenuModel.BackCallback[];
       hotkeysCallbacks: sc.MenuModel.HotkeyCallback[];
       currentBackCallback: sc.MenuModel.BackCallback;
+      leaState: sc.MENU_LEA_STATE;
+      menuEntered: boolean;
+      currentBodyPart: sc.MENU_EQUIP_BODYPART;
+      previousBodyPart: Nullable<sc.MENU_EQUIP_BODYPART>;
+      /** set in sc.TitleScreenButtonGui */
+      exitCallback?: () => void;
+      currentSkillTree: sc.ELEMENT;
+      previousSkillTree: sc.ELEMENT;
+      skillCursor: Vec2;
+      lastSkillCursor: Vec2;
+      skillRecoverPos: Vec2;
+      skillCamera: Vec2;
+      skillDrag: boolean;
+      skillWasDragged: boolean;
+      skillState: sc.MENU_SKILL_STATE;
+      skillStateOrigin: sc.MENU_SKILL_STATE;
+      skillCursorMoved: boolean;
+      currentSkillFocus: Nullable<sc.CircuitTreeDetail.Node>;
+      skillSwapCursor: Vec2;
+      skillSwapMoved: boolean;
+      skillSwapFocus: Nullable<sc.CircuitTreeDetail.Node>;
+      mapDrag: boolean;
+      mapWasDragged: boolean;
+      mapCamera: Vec2;
+      mapFirstVisit: boolean;
+      mapUnknownArea: boolean;
+      mapMouseOverFloorButtons: boolean;
+      mapCursor: Vec2;
+      mapLastCursor: Vec2;
+      mapCursorMoved: boolean;
+      mapWorldmapActive: boolean;
+      mapWorldCursor: Vec2;
+      mapWorldLastCursor: Vec2;
+      mapWmCursorMoved: boolean;
+      mapAreaFocus: sc.AreaButton;
+      mapMapFocus: sc.AreaButton;
+      mapWorldFirstVisit: boolean;
+      mapLoading: boolean;
+      mapAreaOffset: Vec2;
+      mapStampMenu: boolean;
       mapStamps: Record<string, Nullable<sc.MenuModel.Stamp>[]>;
       shopID: Nullable<string>;
+      shopState: sc.MENU_SHOP_STATE;
+      shopCoinMode: boolean;
       shopPage: number;
       shopCart: sc.MenuModel.ShopCartEntry[];
       shopSellMode: boolean;
+      itemCurrentTab: number;
+      /* could be a bunch of different things */
+      itemLastButtonData: unknown;
       optionCurrentTab: number;
       optionLastButtonData: sc.OptionsTabBox.ButtonData;
       optionsLocalMode: boolean;
+      questCurrentTab: number;
+      questLastButtonData: Nullable<sc.QuestData>;
+      questInfo: Nullable<sc.QuestData>;
+      questDetailMode: boolean;
+      questsSeen: Record<string, boolean>;
+      newGameViewMode: boolean;
+      tradeToggle: boolean;
+      directMode: boolean;
+      directMenu: number;
+      loadMode: boolean;
+      loadSlotID: number;
+      loadClearFilesOnly: boolean;
+      loreCurrentTab: number;
+      synopInfo?: Nullable<unknown>;
       newUnlocks: { [key in sc.MENU_SUBMENU]?: string[] };
       logEntries: sc.MenuModel.LogEntry[];
+      gamepadIcons: boolean;
+      menuHost: sc.MENU_SUBMENU;
+      statusPage: sc.MENU_STATUS_PAGES;
       statusElement: sc.ELEMENT;
       statusDiff: boolean;
-      dropCounts: Record<string, { anim: string; count: number; time: number; completed: boolean }>;
-      // Set in sc.MainMenu#init
-      guiReference: sc.MainMenu;
+      drops: ig.Database.Data['drops'];
+      dropCounts: Record<
+        ig.Database.DropKey,
+        { anim: string; count: number; time: number; completed: boolean }
+      >;
+      questHubID: string;
+      words: ig.Database.Data['leawords'];
+      helpMenuOpen: boolean;
+      varsChangedOrder: number;
 
+      dev_UnlockDrop(this: this, upToIndex: number): void;
+      incrementDropCount(this: this, drop: ig.Database.DropKey, anim: string): void;
+      getFoundDrops(this: this, area: string, sortType: sc.BOTANICS_SORT_TYPE): string[];
+      sortDropList(this: this, drops: ig.Database.DropKey[], sortType: sc.BOTANICS_SORT_TYPE): void;
+      getDropCount(this: this, drop: ig.Database.DropKey): number;
+      hasAnyDropFound(this: this): boolean;
+      hasAnyDropInArea(this: this, area: string): boolean | void;
+      hasDropInArea(this: this, area: string): boolean | void;
+      hasAnyOtherDropFound(this: this): boolean | void;
+      getTotalDropsFoundAndCompleted(this: this, percentage?: boolean): number;
+      getFoundDrop(this: this, drop: ig.Database.DropKey): sc.MenuModel['dropCounts'][any];
+      getDropName(this: this, drop: ig.Database.DropKey): string;
+      getDropArea(this: this, drop: ig.Database.DropKey): string;
+      setStatusPage(this: this, status: sc.MENU_STATUS_PAGES): void;
+      setStatusElement(this: this, element: sc.ELEMENT): void;
+      fireStatusPageEvent(this: this): void;
       addLog(this: this, entry: sc.MenuModel.LogEntry): void;
+      onReset(this: this): void;
+      onVarsChanged(this: this): void;
       onPostUpdate(this: this): void;
+      onLevelLoadStart(this: this): void;
+      onLevelLoaded(this: this): void;
+      enterStartUpMenu(this: this): void;
       addNewUnlock(this: this, type: sc.MENU_SUBMENU, entry: string): void;
+      hasNewUnlock(this: this, type: sc.MENU_SUBMENU): boolean;
+      hasNewUnlockKey(this: this, type: sc.MENU_SUBMENU, newUnlock: string[]): boolean;
+      clearNewUnlock(this: this, type: sc.MENU_SUBMENU, eraseInsteadOfDelete?: boolean): void;
+      onStorageSave(this: this, savefile: ig.SaveSlot.Data): void;
+      onStoragePreLoad(this: this, savefile: ig.SaveSlot.Data): void;
+      onPreLoadDrops(this: this): void;
       addMapStamp(
         this: this,
         area: string,
@@ -217,6 +328,16 @@ declare global {
         y: number,
         level: number,
       ): number;
+      editStamp(
+        this: this,
+        stampIndex: number,
+        map: string,
+        stampType: sc.MenuModel.StampTypes,
+      ): void;
+      removeStamp(this: this, map: string, stampIndex: number): void;
+      getStamps(this: this, map: string): sc.MenuModel['mapStamps'][any];
+      getStampCount(this: this, map: string): number;
+      fullyEntered(this: this): void;
       addHotkey(
         this: this,
         callback: sc.MenuModel.HotkeyCallback,
@@ -227,10 +348,16 @@ declare global {
       removeHotkeys(this: this): void;
       pushBackCallback(this: this, callback: sc.MenuModel.BackCallback): void;
       popBackCallback(this: this): void;
+      invokeTopBackButton(this: this): void;
       pushMenu(this: this, menu: sc.MENU_SUBMENU): void;
       popMenu(this: this): void;
+      enterMenu(this: this): void;
       setDirectMode(direct?: Nullable<boolean>, menu?: Nullable<sc.MENU_SUBMENU>): void;
+      setHost(this: this, menuHost: sc.MENU_SUBMENU): void;
       exitMenu(this: this): void;
+      invokePostExit(this: this): void;
+      setInfoText(this: this, text: sc.TextLike, fade?: boolean): void;
+      setBuffText(this: this, text: sc.TextLike, fade?: boolean, id?: sc.ItemID): void;
       moveLeaSprite(
         this: this,
         x: number,
@@ -238,18 +365,98 @@ declare global {
         state: sc.MENU_LEA_STATE,
         skip?: boolean,
       ): void;
-      setInfoText(this: this, text: sc.TextLike, fade?: boolean): void;
-      setBuffText(this: this, text: sc.TextLike, fade?: boolean, id?: sc.ItemID): void;
+      enterTradeDetails(this: this): void;
+      exitTradeDetails(this: this): void;
+      setShopState(this: this, state: sc.MENU_SHOP_STATE): void;
       setShopPage(this: this, page: number): void;
       updateCart(this: this, itemID: sc.ItemID, amount: number, price: number): void;
-      getTotalCost(this: this): number;
+      getTotalCost(this: this, excludeItemID?: sc.ItemID, excludePrice?: number): number;
       getItemQuantity(this: this, itemID: sc.ItemID, price: number): number;
+      openShopQuantitySelect(this: this, button: sc.ShopItemButton): void;
+      openCheckout(this: this): void;
+      updateTotalCost(
+        this: this,
+        excludeItemID?: sc.ItemID,
+        amount?: boolean,
+        excludePrice?: number,
+      ): void;
       newSlot(this: this): void;
       saveSlot(this: this, id: number): void;
       deleteSlot(this: this, id: number): void;
       loadSlot(this: this, id: number): void;
+      setItemInfo(this: this, itemId: sc.ItemID): void;
+      resetItemInfo(this: this): void;
+      setItemTab(this: this, itemCurrentTab: number): void;
+      getCurrentTabType(this: this): Nullable<sc.ITEMS_TYPES | 'NEW'>;
+      getCurrentTabSubType(this: this): Nullable<sc.ITEMS_EQUIP_TYPES>;
+      isItemEquipTab(this: this): boolean;
       sortList(this: this, button: ig.FocusGui): void;
       setOptionTab(this: this, tabIndex: number): void;
+      getCurrentOptionCategory(this: this): Nullable<number>;
+      openLanguagePopUp(this: this, option: sc.OPTION_GUIS_DEFS.LANGUAGE): void;
+      setSynoTab(this: this): void;
+      setSynopInfo(this: this, info: Nullable<unknown> | undefined, eventData?: boolean): void;
+      setSynopFocus(this: this, button: sc.LoreEntryButton): void;
+      switchSynopsisPage(this: this, direction: -1 | 1): void;
+      setSynopPressed(this: this, button?: sc.ListBoxButton): void;
+      setQuestTab(this: this, tab: number): void;
+      setQuestInfo(this: this, questInfo: Nullable<sc.QuestData>, eventData?: boolean): void;
+      enterQuestDetails(this: this, quest: sc.Quest): void;
+      leaveQuestDetails(this: this): void;
+      selectBodyPart(this: this, bodyPart: sc.MENU_EQUIP_BODYPART): void;
+      cycleBodyPartRight(this: this): void;
+      cycleBodyPartLeft(this: this): void;
+      changeEquipOnCurrentBodypart(this: this, itemId: sc.ItemID): void;
+      ensureCurrentValues(this: this): void;
+      exitEquipMenu(this: this): void;
+      showSkillEffect(
+        this: this,
+        gui: sc.CircuitTreeDetail.Node,
+        isSwitch: boolean,
+        delay?: number,
+      ): void;
+      showSwapSkillEffect(this: this, button: sc.CircuitSwapBranches.Button): void;
+      selectSkillTree(this: this, element: sc.ELEMENT): void;
+      focusCursorOnNode(
+        this: this,
+        x: number,
+        y: number,
+        skillFocus?: Nullable<sc.CircuitTreeDetail.Node>,
+      ): void;
+      unfocusCursor(this: this, skillFocus: Nullable<sc.CircuitTreeDetail.Node>): void;
+      unfocusSwapCursor(this: this, skillFocus: Nullable<sc.CircuitTreeDetail.Node>): void;
+      focusSwapCursor(
+        this: this,
+        x: number,
+        y: number,
+        skillFocus?: Nullable<sc.CircuitTreeDetail.Node>,
+      ): void;
+      resetSwapCursor(this: this): void;
+      centerOnNode(this: this, node: Nullable<sc.CircuitTreeDetail.Node>, hasParent: boolean): void;
+      centerOnNodeCam(
+        this: this,
+        node: sc.CircuitTreeDetail.Node,
+        nodeFocus: Vec2,
+        time?: number,
+        callback?: () => void,
+      ): void;
+      exitNodeMenu(this: this, skillState?: sc.MENU_SKILL_STATE): void;
+      enterSwapBranches(this: this, skillStateOrigin: sc.MENU_SKILL_STATE): void;
+      leaveSwapBranches(this: this): void;
+      toggledInputMode(this: this): void;
+      selectFloor(this: this, floor: number): void;
+      enterWorldMap(this: this): void;
+      exitWorldMap(this: this): void;
+      focusArea(this: this, x: number, y: number, button: sc.AreaButton, gamepad?: boolean): void;
+      focusMap(this: this, x: number, y: number, button: sc.AreaButton, gamepad?: boolean): void;
+      unfocusArea(this: this, button: sc.AreaButton): void;
+      unfocusMap(this: this, button: sc.AreaButton): void;
+      resetWorldmapCursor(this: this): void;
+      loadArea(this: this, areaPath: string): void;
+      setAreaLoadDone(this: this, areaPath: string): void;
+      openStampMenu(this: this, stampGui: sc.StampGui): void;
+      getCurrentMenuAsName(this: this): string;
+      getMenuAsName(this: this, menu: sc.MENU_SUBMENU): string;
       isStart(this: this): boolean;
       isSkills(this: this): boolean;
       isEquipment(this: this): boolean;
@@ -260,9 +467,6 @@ declare global {
       isOptions(this: this): boolean;
       isShop(this: this): boolean;
       isButtonInteractActive(this: this): boolean;
-
-      /** set in sc.TitleScreenButtonGui */
-      exitCallback?: () => void;
     }
     interface MenuModelConstructor extends ImpactClass<MenuModel> {
       new (): MenuModel;

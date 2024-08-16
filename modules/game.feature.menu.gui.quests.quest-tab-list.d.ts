@@ -10,6 +10,10 @@ export {};
 
 declare global {
   namespace sc {
+    interface QuestData {
+      quest: string;
+      index: number;
+    }
     interface QuestListBox extends ig.GuiElementBase {
       tabArray: sc.ItemTabbedBox.TabButton[];
 
