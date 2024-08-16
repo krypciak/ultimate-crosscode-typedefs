@@ -16,6 +16,7 @@ declare global {
         traders: { [id: string]: sc.TradeModel.Trader };
         chapters: Chapter[];
         toggleSets: { [name: string]: ToggleSet };
+        drops: Record<DropKey, Drop>;
       }
 
       interface EnemyData {
@@ -96,6 +97,26 @@ declare global {
       interface Name {
         gender: 'MALE' | 'FEMALE' | 'BOTH';
         name: ig.LangLabel.Data;
+      }
+
+      export type DropKey = string
+
+      export interface Drop {
+        name: ig.LangLabel.Data;
+        track: boolean;
+        order: number;
+        area: string;
+        progress: number;
+        subArea?: ig.LangLabel.Data;
+        id?: string;
+        items: {
+          id: string;
+          prob: number;
+          item?: string;
+        }[];
+        link?: string;
+        extension?: string;
+        other?: boolean;
       }
     }
     interface Database extends ig.SingleLoadable {

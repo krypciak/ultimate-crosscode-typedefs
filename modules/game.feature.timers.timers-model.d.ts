@@ -50,7 +50,7 @@ declare global {
                 temp: boolean
                 stopped: boolean
                 area?: string
-                quest?: { quest: string, index: number }
+                quest?: sc.QuestData
             }
         }
         interface TimerEntry extends ig.Class {
