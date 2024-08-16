@@ -5,6 +5,26 @@ export {};
 
 declare global {
   namespace sc {
+    interface AreaRoomBounds extends ig.Class {
+      zMin: number;
+      zMax: number;
+      min: Vec2;
+      max: Vec2;
+      offset: Vec2;
+      name: string;
+      text: string;
+      id: number;
+    }
+    interface AreaRoomBoundsConstructor extends ImpactClass<AreaRoomBounds> {
+      new (
+        map: sc.AreaLoadable.Map,
+        id: number,
+        sx: number,
+        sy: number,
+        tiles: number[][],
+      ): AreaRoomBounds;
+    }
+    var AreaRoomBounds: AreaRoomBoundsConstructor;
     namespace AreaLoadable {
       interface Data {
         DOCTYPE: 'AREAS_MAP';
@@ -16,7 +36,6 @@ declare global {
         chests: number;
       }
 
-      // TODO
       interface Floor {
         level: number;
         name: ig.LangLabel.Data;
@@ -25,6 +44,7 @@ declare global {
         connections: Connection[];
         icons: Icon[];
         landmarks: Landmark[];
+        rooms?: sc.AreaRoomBounds[];
       }
 
       interface Map {
@@ -37,7 +57,7 @@ declare global {
       interface Connection {
         tx: number;
         ty: number;
-        dir: "VERTICAL" | "HORIZONTAL";
+        dir: 'VERTICAL' | 'HORIZONTAL';
         size: number;
         map1: number;
         map2: number;
@@ -60,10 +80,12 @@ declare global {
     }
     interface AreaLoadable extends ig.Loadable {
       data: sc.AreaLoadable.Data;
-      
+
       onload(this: this, data: sc.AreaLoadable.Data): void;
     }
-    interface AreaLoadableConstructor extends ImpactClass<AreaLoadable>, ig.Cacheable.ImplementsCache<AreaLoadable> {
+    interface AreaLoadableConstructor
+      extends ImpactClass<AreaLoadable>,
+        ig.Cacheable.ImplementsCache<AreaLoadable> {
       new (path: string): AreaLoadable;
     }
     var AreaLoadable: AreaLoadableConstructor;
