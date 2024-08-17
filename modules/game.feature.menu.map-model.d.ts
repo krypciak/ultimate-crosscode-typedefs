@@ -63,13 +63,25 @@ declare global {
         layer: MapModel.MapLayer[];
       }
 
-      interface MapEntity {
-        type: string;
+      type ConstructorReturnType<T extends new (...args: any) => any> = T extends new (
+        ...args: any
+      ) => infer R
+        ? R
+        : any;
+
+      type EntityNames = keyof typeof ig.ENTITY;
+      type MapEntitySpecific<T extends EntityNames> = {
+        type: T;
+        settings: ConstructorParameters<(typeof ig.ENTITY)[T]>[3];
+      };
+
+      type MapEntity<T extends EntityNames = EntityNames> = {
+        [key in T]: MapEntitySpecific<key>;
+      }[T] & {
         x: number;
         y: number;
         level: number | { offset?: number; level: number };
-        settings: ig.Entity.Settings;
-      }
+      };
 
       interface MapAttributes {
         saveMode: 'ENABLED' | 'DISABLED' | '';
