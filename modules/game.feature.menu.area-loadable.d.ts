@@ -44,6 +44,7 @@ declare global {
         connections: Connection[];
         icons: Icon[];
         landmarks: Landmark[];
+        /* not present in the json files, but set on loading in sc.AreaLoadable#_createRooms */
         rooms?: sc.AreaRoomBounds[];
       }
 
