@@ -9,7 +9,7 @@ declare global {
         namespace ENTITY {
             namespace Compressor {
                 interface Settings extends ig.Entity.Settings {
-                    followCamera: boolean;
+                    followCamera?: boolean;
                     basllSpeed?: number;
                     fastMode?: boolean;
                 }
