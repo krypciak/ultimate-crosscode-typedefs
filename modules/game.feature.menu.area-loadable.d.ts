@@ -80,8 +80,10 @@ declare global {
     }
     interface AreaLoadable extends ig.Loadable {
       data: sc.AreaLoadable.Data;
+      lowestFloor: number;
 
       onload(this: this, data: sc.AreaLoadable.Data): void;
+      _createRooms(this: this): void;
     }
     interface AreaLoadableConstructor
       extends ImpactClass<AreaLoadable>,
