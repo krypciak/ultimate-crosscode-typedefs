@@ -20,6 +20,8 @@ declare global {
       prerendered: boolean;
 
       onVisibilityChange(this: this, visible: boolean): void;
+      preRender(this: this): void;
+      clearPrerendered(this: this): void;
     }
     interface MapRoomConstructor extends ImpactClass<MapRoom> {
       new (room: sc.AreaRoomBounds, floor: sc.AreaLoadable.Floor, id: number): MapRoom;
