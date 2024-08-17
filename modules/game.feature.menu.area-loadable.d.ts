@@ -53,6 +53,8 @@ declare global {
         name: ig.LangLabel.Data;
         offset: Vec2;
         dungeon: '' | 'DUNGEON' | 'NO_DUNGEON';
+        minZ?: number
+        maxZ?: number
       }
 
       interface Connection {
