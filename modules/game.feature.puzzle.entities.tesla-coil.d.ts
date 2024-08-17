@@ -28,7 +28,32 @@ declare global {
           varOnDischarge?: string;
           align?: string;
         }
+        type DischargeAction = (
+          entity: (ig.ENTITY.TeslaCoil | ig.ENTITY.OneTimeSwitch)[],
+          align: ig.ENTITY_ALIGN.BOTTOM,
+        ) => void;
       }
+      interface TeslaCoil extends ig.AnimatedEntity {
+        chargeTimer: number;
+        chargeHitExceptions: Nullable<ig.ENTITY.TeslaCoil | ig.ENTITY.OneTimeSwitch>;
+        source: boolean;
+        fast: boolean;
+        effects: { sheet: ig.EffectSheet; handle: Nullable<ig.ENTITY.Effect> };
+        effectAlign?: string;
+        _wm: ig.Config;
+        dischargeAction: Nullable<ig.ENTITY.TeslaCoil.DischargeAction>;
+
+        onHideRequest(this: this): void;
+        onEffectEvent(this: this, effect: ig.ENTITY.Effect): void;
+        onActionEndDetach(this: this): void;
+        extendCharge(this: this, chargeHitExceptions: this['chargeHitExceptions']): void;
+        discharge(this: this, entities: (ig.ENTITY.TeslaCoil | ig.ENTITY.OneTimeSwitch)[]): void;
+        ballHit(this: this, entity: ig.Entity): boolean;
+      }
+      interface TeslaCoilConstructor extends ImpactClass<TeslaCoil> {
+        new (x: number, y: number, z: number, settings: ig.ENTITY.TeslaCoil.Settings): TeslaCoil;
+      }
+      var TeslaCoil: TeslaCoilConstructor;
     }
   }
 }
