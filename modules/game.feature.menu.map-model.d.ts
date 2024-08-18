@@ -37,7 +37,6 @@ declare global {
 
       interface Area {
         name: ig.LangLabel.Data;
-        path: string;
         description: ig.LangLabel.Data;
         areaType: 'PATH' | 'TOWN' | 'DUNGEON';
         order: number;
