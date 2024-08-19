@@ -28,7 +28,12 @@ declare global {
     }
     var LandmarkGui: LandmarkGuiConstructor;
 
-    interface MapNameGui extends ig.BoxGui {}
+    interface MapNameGui extends ig.BoxGui {
+      ninepatch: ig.NinePatch;
+      text: sc.TextGui;
+
+      setText(this: this, text: sc.TextLike, wait?: boolean, skipTransition?: boolean): void;
+    }
     interface MapNameGuiConstructor extends ImpactClass<MapNameGui> {
       new (): MapNameGui;
     }
