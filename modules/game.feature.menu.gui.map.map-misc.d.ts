@@ -32,7 +32,7 @@ declare global {
       ninepatch: ig.NinePatch;
       text: sc.TextGui;
 
-      setText(this: this, text: sc.TextLike, wait?: boolean, skipTransition?: boolean): void;
+      setText(this: this, text: sc.TextLike, wait?: number, skipTransition?: boolean): void;
     }
     interface MapNameGuiConstructor extends ImpactClass<MapNameGui> {
       new (): MapNameGui;
