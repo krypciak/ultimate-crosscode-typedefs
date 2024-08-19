@@ -23,30 +23,30 @@ declare global {
         }
       }
       interface NPC extends sc.ActorEntity {
-        characterName: sc.Character
-        character: sc.Character
-        npcStates: sc.NpcState[]
-        npcStatesData: sc.NpcState.Settings[]
-        activeStateIdx: number
-        configs: Record<string, ig.ActorConfig>
-        hidden: boolean
+        characterName: sc.Character;
+        character: sc.Character;
+        npcStates: sc.NpcState[];
+        npcStatesData: sc.NpcState.Settings[];
+        activeStateIdx: number;
+        configs: Record<string, ig.ActorConfig>;
+        hidden: boolean;
         interactEntry: sc.MapInteractEntry;
-        eventBlocked: boolean
-        deferredReset: boolean
-        npcEffects: ig.EffectSheet
+        eventBlocked: boolean;
+        deferredReset: boolean;
+        npcEffects: ig.EffectSheet;
         interactIcons: ig.ENTITY.NPC.InteractIcons;
-        lookAtAction: ig.Action
-        eventCal: ig.EventCall
-        doPostEventAction: boolean
-        xenoDialog: ig.ENTITY.XenoDialog
-        xenoDialogGui: sc.XenoDialogIcon
-        permaEffect: ig.ENTITY.Effect
-        displayName?: unknown
-        displayTrigger?: unknown
-        displayNameRandom?: string
-        respawn: { pos: Vec3 }
-        hideHandle?: unknown
-        hideManager: ig.EntityHideManager
+        lookAtAction: ig.Action;
+        eventCal: ig.EventCall;
+        doPostEventAction: boolean;
+        xenoDialog: ig.ENTITY.XenoDialog;
+        xenoDialogGui: sc.XenoDialogIcon;
+        permaEffect: ig.ENTITY.Effect;
+        displayName?: unknown;
+        displayTrigger?: unknown;
+        displayNameRandom?: string;
+        respawn: { pos: Vec3 };
+        hideHandle?: unknown;
+        hideManager: ig.EntityHideManager;
 
         setMapInteractIcon(this: this, npcState: sc.NpcState): void;
       }
@@ -64,6 +64,11 @@ declare global {
       QUEST = 2,
       SHOP = 3,
       ARENA = 4,
+    }
+    enum NPC_GENDER {
+      BOTH = 0,
+      MALE = 1,
+      FEMALE = 2,
     }
 
     namespace NpcState {
