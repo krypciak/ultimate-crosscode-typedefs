@@ -27,6 +27,23 @@ declare global {
     }
     let LANDMARK_OPTIONS: LANDMARK_OPTIONS;
 
+    enum MAP_DUNGEON_OVERRIDE {
+      DUNGEON = 1,
+      NO_DUNGEON = 2,
+    }
+    enum AREA_TYPE {
+      TOWN = 0,
+      PATH = 1,
+      DUNGEON = 2,
+    }
+
+    var AREA_ITEM_TYPE: {
+      DUNGEON_KEY: { areaField: 'keyItem' };
+      DUNGEON_MASTER_KEY: { areaField: 'masterKeyItem' };
+      BOOSTER: { areaField: 'boosterItem' };
+    };
+    type AREA_ITEM_TYPE = (typeof sc.AREA_ITEM_TYPE)[keyof typeof sc.AREA_ITEM_TYPE];
+
     namespace MapModel {
       namespace Area {
         interface Landmark {
@@ -38,7 +55,7 @@ declare global {
       interface Area {
         name: ig.LangLabel.Data;
         description: ig.LangLabel.Data;
-        areaType: 'PATH' | 'TOWN' | 'DUNGEON';
+        areaType: keyof typeof sc.AREA_TYPE;
         order: number;
         track: boolean;
         chests: number;
@@ -114,26 +131,107 @@ declare global {
         lighter: boolean;
       }
     }
-    interface MapModel extends ig.GameAddon, sc.Model {
+    interface MapModel extends ig.GameAddon, sc.Model, ig.Vars.Accessor {
       activeLandmarks: Record<string, Record<string, { active: boolean }>>;
       areas: { [name: string]: sc.MapModel.Area };
+      areasVisited: Record<string, {}>;
+      currentPlayerArea: sc.AreaLoadable;
       currentArea: sc.AreaLoadable;
+      currentPlayerFloor: number;
+      currentFloor: number;
+      currentMap: string;
+      unknownArea: null;
+      teleportEvent: Nullable<ig.Event>;
+      _usedNames: boolean[];
+      _oobSoundTerrain: keyof typeof ig.TERRAIN;
 
       isValidArea(this: this, key: string): boolean;
-      getTotalChestsFound(this: this, asPercent: boolean): number;
+      getTotalAreasFound(this: this, asPercent?: boolean): number;
+      getTotalLandmarksFound(this: this, asPercent?: boolean): number;
+      getTotalChestsFound(this: this, asPercent?: boolean): number;
       getTotalChests(this: this): number;
+      hasAllAreasFound(this: this): boolean;
+      getTotalLandmarksFoundInArea(this: this, areaName: string): number;
       onLevelLoadStart(this: this, data: sc.MapModel.Map): void;
+      onLevelLoaded(this: this): void;
+      canUseGenderName(this: this, gender: sc.NPC_GENDER, doesMatch: sc.NPC_GENDER): boolean;
+      onReset(this: this): void;
+      initAreas(this: this): void;
+      loadArea(
+        this: this,
+        areaName: string,
+        loadListener: { onLoadableComplete(loaded: boolean, area: sc.MapModel.Area): void },
+      ): void;
+      unloadCurrentArea(this: this): void;
       updateVisitedArea(this: this, areaName: string): void;
+      undoVisitedArea(this: this, areaName: string, clearVisitedFromgIgVars?: boolean): void;
       validateCurrentPlayerFloor(this: this): void;
+      validateCurrentFloor(this: this): void;
+      restore(this: this): void;
+      addLandmark(
+        this: this,
+        areaName: string,
+        landmarkIndex: number,
+        entityToCallEventOn?: ig.Entity,
+      ): void;
+      startTeleport(this: this, mapName: string): void;
+      getAreaType(this: this, areaName: string): sc.AREA_TYPE;
+      isLandmarkValid(this: this, areaName: string, landmarkIndex: number): boolean;
+      getAreaItemId(this: this, areaItemType: sc.AREA_ITEM_TYPE, areaName: string): sc.ItemID;
+      getAreaItemType(
+        this: this,
+        areaItemTypeString: sc.AREA_ITEM_TYPE['areaField'],
+        areaName?: string,
+      ): keyof typeof sc.AREA_ITEM_TYPE | void;
+      getAreaItemAmount(this: this, areaItemType: sc.AREA_ITEM_TYPE, areaName: string): number;
+      getAreaItemToggleState(
+        this: this,
+        areaItemType: sc.AREA_ITEM_TYPE,
+        areaName: string,
+      ): boolean;
+      isLandmarkActive(
+        this: this,
+        landmarkIndex: number,
+        areaName?: string,
+        isActiveOrJustExists?: boolean,
+      ): boolean;
+      setLandmarkActiveState(
+        this: this,
+        landmarkIndex: number,
+        active: boolean,
+        areaName: string,
+      ): void;
+      setAreaLandmarksActiveState(this: this, areaName: string, state: boolean): void;
+      isDungeon(this: this, ignoreMap?: boolean): boolean;
+      hasAnyAreaUnlocked(this: this): boolean;
+      getUnlockedAreas(this: this): string[];
+      sortAreaList(this: this, areaNameList: string[]): string[];
+      getLandmarkName(this: this, landmarkIndex: number, areaName: string): ig.LangLabel | string;
       getLandmark(this: this, landmark: string, area: string): sc.MapModel.Area.Landmark;
       getCurrentAreaLandmark(this: this, landmark: string): sc.MapModel.Area.Landmark;
+      getCurrentPlayerAreaName(this: this): ig.LangLabel;
       getCurrentAreaName(this: this): ig.LangLabel;
-      getAreaName(this: this, a?: string, b?: boolean, c?: boolean): string;
+      getAreaOrder(this: this, areaName: string): number;
+      getAreaName(
+        this: this,
+        areaName: string,
+        prefferShortName?: boolean,
+        checkIsDlc?: boolean,
+      ): string;
       getCurrentMapName(this: this, returnQuestionMarkIfItsCurrentMap?: boolean): ig.LangLabel;
       getMapName(this: this, map: string): ig.LangLabel;
+      getMapDungeon(this: this, mapPath: string): Nullable<sc.MAP_DUNGEON_OVERRIDE>;
+      getCurrentFloorIndex(this: this): number;
       getCurrentArea(this: this): sc.AreaLoadable.Data;
+      getLandmarkEvent(this: this, entity: ig.Entity): ig.Event;
+      getTeleportEvent(this: this, map: string): ig.Event;
       getVisitedArea(this: this, area: string): boolean;
+      getTeleport(this: this): Nullable<ig.Event>;
+      getCurrentChestCount(this: this): number;
       getChestCount(this: this, key: string): number;
+      onStorageSave(this: this, savefile: ig.SaveSlot.Data): void;
+      onStoragePreLoad(this: this, savefile: ig.SaveSlot.Data): void;
+      onLoadableComplete(this: this): void;
     }
     interface MapModelConstructor extends ImpactClass<MapModel> {
       new (): MapModel;
