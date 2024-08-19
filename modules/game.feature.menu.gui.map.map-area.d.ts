@@ -46,14 +46,14 @@ declare global {
       _gamepadActive: boolean;
       _lastDevice: number;
       mapNameGui: sc.MapNameGui;
-      hoverRoom: Nullable<sc.LandmarkGui | sc.StampGui | false>;
+      hoverRoom: Nullable<sc.LandmarkGui | sc.StampGui | sc.AreaRoomBounds | false>;
       cursor: sc.MapCursor;
       landmarks: sc.LandmarkGui[];
       stamps: sc.StampGui[];
 
       onMouseInteract(this: this, mouseOver: boolean, clicked: boolean): void;
       onLandmarkPressed(this: this, landmark: sc.LandmarkGui): void;
-      findMap(this: this, mx: number, my: number, gamepad: boolean, wait: number): boolean | undefined;
+      findMap(this: this, mx: number, my: number, gamepad: boolean, wait?: number): boolean | undefined;
       showLandmarkName(this: this, name: string): void;
       loadNewArea(this: this, areaName: string): void;
       onLoadableComplete(this: this, loaded: boolean, area: sc.MapModel.Area): void;
