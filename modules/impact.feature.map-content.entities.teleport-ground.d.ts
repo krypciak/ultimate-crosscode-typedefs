@@ -4,25 +4,40 @@
 // requires impact.feature.base.entities.object-layer-view
 // requires game.feature.npc.entities.npc-waypoint
 
-export { }
+export {};
 
 declare global {
-    namespace ig {
-        namespace ENTITY {
-            namespace TeleportGround {
-                interface Settings { }
-            }
-            interface TeleportGround extends ig.Entity {
-                map: string
-                marker: string
-                dir: keyof typeof ig.ActorEntity.FACE4
-                blockEventCondition: string
-            }
-            interface TeleportGroundConstructor extends ImpactClass<TeleportGround> {
-                new(x: number, y: number, z: number, settings: ig.ENTITY.TeleportGround.Settings): TeleportGround
-            }
-            var TeleportGround: TeleportGroundConstructor
-
+  namespace ig {
+    namespace ENTITY {
+      namespace TeleportGround {
+        interface Settings extends ig.Entity.Settings {
+          zHeight?: number;
+          dir?: keyof typeof ig.ActorEntity.FACE4;
+          map: string;
+          marker: string;
+          spawnDistance?: number;
+          blockEvent?: unknown; // steps: e.blockEvent
+          blockEventCondition?: string;
+          transitionType?: 'REGULAR' | 'INTER_AREA';
+          npcRunnerProb?: number;
+          centerWalkThrough?: boolean;
         }
+      }
+      interface TeleportGround extends ig.Entity {
+        map: string;
+        marker: string;
+        dir: keyof typeof ig.ActorEntity.FACE4;
+        blockEventCondition: string;
+      }
+      interface TeleportGroundConstructor extends ImpactClass<TeleportGround> {
+        new (
+          x: number,
+          y: number,
+          z: number,
+          settings: ig.ENTITY.TeleportGround.Settings,
+        ): TeleportGround;
+      }
+      var TeleportGround: TeleportGroundConstructor;
     }
+  }
 }
