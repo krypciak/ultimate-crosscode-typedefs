@@ -45,6 +45,7 @@ declare global {
         entries: number[];
         currentNumber: sc.TextGui | sc.NumberGui;
         _lastVal: number;
+        showPercentage?: boolean;
 
         updateNumberDisplay(this: this): void;
         onAttach(this: this): void;
