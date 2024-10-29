@@ -25,39 +25,46 @@ declare global {
     var KeyBinderGui: KeyBinderGuiConstructor;
 
     interface OptionSlider extends sc.Slider {
-      fill: boolean
-      focus: boolean
+      fill: boolean;
+      focus: boolean;
     }
     interface OptionSliderConstructor extends ImpactClass<OptionSlider> {
-      new (a: unknown, b: unknown, c: unknown, d: unknown): OptionSlider
+      new (a: unknown, b: unknown, c: unknown, d: unknown): OptionSlider;
     }
     var OptionSlider: OptionSliderConstructor;
 
     interface OptionFocusSlider extends ig.FocusGui {
-      slider: sc.OptionSlider
+      slider: sc.OptionSlider;
       snap: boolean;
       clickSound: ig.Sound;
       _hasKeyboardFocus: boolean;
-      changeCallback: (value: number) => void
+      changeCallback: (value: number) => void;
+      _buttonGroup: Nullable<ig.ButtonGroup>;
+      data?: string; // set by other classes
 
       setPreferredThumbSize(this: this, width: number, height: number): void;
       setSize(this: this, x: number, y: number, sliderHeight?: number): void;
       setValue(this: this, value: number): void;
-      getValue(this: this): number
+      getValue(this: this): number;
       setMinMaxValue(this: this, min: number, max: number): void;
     }
     interface OptionFocusSliderConstructor extends ImpactClass<OptionFocusSlider> {
-      new (changeCallback: (value: number) => void, snap?: boolean, fill?: boolean): OptionFocusSlider;
+      new (
+        changeCallback: (value: number) => void,
+        snap?: boolean,
+        fill?: boolean,
+        buttonGroup?: ig.ButtonGroup,
+      ): OptionFocusSlider;
     }
-    var OptionFocusSlider: OptionFocusSliderConstructor
+    var OptionFocusSlider: OptionFocusSliderConstructor;
 
     interface OptionLangPopUp extends ig.BoxGui {
-        buttongroup: sc.ButtonGroup
-        buttons: Record<sc.LANGUAGE, sc.ButtonGui>
-        active: boolean
+      buttongroup: sc.ButtonGroup;
+      buttons: Record<sc.LANGUAGE, sc.ButtonGui>;
+      active: boolean;
 
-        createButtons(this: this): void
-        show(this: this, anchor: sc.OPTION_GUIS_DEFS.LANGUAGE, callback?: () => void): void
+      createButtons(this: this): void;
+      show(this: this, anchor: sc.OPTION_GUIS_DEFS.LANGUAGE, callback?: () => void): void;
     }
     interface OptionLangPopUpConstructor extends ImpactClass<OptionLangPopUp> {
       new (): OptionLangPopUp;
