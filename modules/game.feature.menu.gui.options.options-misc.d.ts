@@ -33,8 +33,23 @@ declare global {
     }
     var OptionSlider: OptionSliderConstructor;
 
+    interface OptionThumb extends ig.GuiElementBase {
+      thumbNinePatch: ig.NinePatch;
+      currentOffset: string;
+      slider: sc.OptionFocusSlider;
+      drag: boolean;
+      wasDragged: boolean;
+      starValue: number;
+      _startPos: Vec2;
+    }
+    interface OptionThumbConstructor extends ImpactClass<OptionThumb> {
+      new (slider: sc.OptionFocusSlider): OptionThumb;
+    }
+    var OptionThumb: OptionThumbConstructor;
+
     interface OptionFocusSlider extends ig.FocusGui {
       slider: sc.OptionSlider;
+      thumb: sc.OptionThumb;
       snap: boolean;
       clickSound: ig.Sound;
       _hasKeyboardFocus: boolean;
