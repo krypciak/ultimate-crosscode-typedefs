@@ -33,6 +33,7 @@ declare global {
       running: boolean;
       delegate: ig.Game;
       clock: ig.Timer;
+      inputDom: HTMLDivElement;
       canvas: HTMLCanvasElement;
       context: Nullable<CanvasRenderingContext2D>;
       cancelFocusLostCallback: () => boolean;
