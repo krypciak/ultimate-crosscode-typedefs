@@ -33,6 +33,16 @@ declare global {
     }
     var ParticleHandle: ParticleHandleConstructor;
 
+    interface FxHomingFly {
+      dist(t: number): number;
+      normal(t: number): number;
+    }
+    interface FX_HOMING_FLY_TYPE {
+      FLY_ARC: FxHomingFly[];
+      EXPAND_DASH: FxHomingFly[];
+    }
+    var FX_HOMING_FLY_TYPE: ig.FX_HOMING_FLY_TYPE;
+
     namespace ENTITY {
       namespace Particle {
         interface Settings extends ig.Entity.Settings {
@@ -97,6 +107,44 @@ declare global {
         ): RhombusParticle;
       }
       var RhombusParticle: RhombusParticleConstructor;
+
+      namespace HomingParticle {
+        interface Settings extends ig.Entity.Settings {
+          flyType?: keyof typeof ig.FX_HOMING_FLY_TYPE;
+          ownerEffect: number;
+          normalXY: number;
+          normalZ: number;
+          phaseDurations?: number[];
+          rotateMoveDir?: boolean;
+          target1Vary?: number;
+          target2Vary?: number;
+        }
+      }
+      interface HomingParticle extends ig.ENTITY.Particle {
+        inverse: boolean;
+        flyType: ig.FX_HOMING_FLY_TYPE;
+        ownerEffect: number;
+        normalXY: number;
+        normalZ: number;
+        moveTimer: number;
+        phaseDurations: number[];
+        autoTargetStuck: boolean;
+        target1Vary?: Nullable<Vec2>;
+        target2Vary?: Nullable<Vec2>;
+
+        _initOffsetParticle(this: this, settings: ig.ENTITY.HomingParticle.Settings): void;
+        _updatePos(this: this, pos?: Vec2): void;
+        update(this: this): void;
+      }
+      interface HomingParticleConstructor extends ImpactClass<HomingParticle> {
+        new (
+          x: number,
+          y: number,
+          z: number,
+          settings: ig.ENTITY.HomingParticle.Settings,
+        ): HomingParticle;
+      }
+      var HomingParticle: HomingParticleConstructor;
     }
   }
 }
