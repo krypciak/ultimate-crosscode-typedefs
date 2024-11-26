@@ -36,7 +36,9 @@ declare global {
       light?: ig.LIGHT_SIZE;
     }
 
-    interface ParticleState extends ig.Class {}
+    interface ParticleState extends ig.Class {
+      initSprite(this: this, sprite: ig.CubeSprite, angle: number, flipX?: boolean): void;
+    }
     interface ParticleStateConstructor extends ImpactClass<ParticleState> {}
     var ParticleState: ParticleStateConstructor;
 
@@ -93,14 +95,24 @@ declare global {
       externalSheet: boolean;
 
       clearCached(this: this): void;
-      spawnOnTarget(this: this, target: ig.Entity, settings?: Nullable<ig.EffectSheet.SpawnSettings>): ig.ENTITY.Effect;
-      spawnFixed(this: this, x: number, y: number, z: number, target: ig.Entity, settings?: Nullable<ig.EffectSheet.SpawnSettings>): ig.ENTITY.Effect;
+      spawnOnTarget(
+        this: this,
+        target: ig.Entity,
+        settings?: Nullable<ig.EffectSheet.SpawnSettings>,
+      ): ig.ENTITY.Effect;
+      spawnFixed(
+        this: this,
+        x: number,
+        y: number,
+        z: number,
+        target: ig.Entity,
+        settings?: Nullable<ig.EffectSheet.SpawnSettings>,
+      ): ig.ENTITY.Effect;
     }
     interface EffectHandleConstructor extends ImpactClass<EffectHandle> {
       new (settings: EffectHandle.Settings): ig.EffectHandle;
     }
     let EffectHandle: EffectHandleConstructor;
-
 
     namespace EffectStepBase {
       interface Settings {
