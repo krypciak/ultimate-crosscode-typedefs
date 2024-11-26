@@ -288,4 +288,13 @@ declare global {
   var SC_SKIP_TITLE: boolean;
   var LOAD_LEVEL_ON_GAME_START: string | undefined | null;
   var MARKER_ON_GAME_START: string | undefined | null;
+
+  interface SeedrandomSeed {
+    (seed: string): void;
+    new (seed: string): () => number;
+  }
+  interface Math {
+    seedrandomSeed: SeedrandomSeed;
+    randomSeed(): number;
+  }
 }
