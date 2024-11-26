@@ -26,5 +26,16 @@ declare global {
       new (color: ig.RGBColorData | string): RGBColor;
     }
     var RGBColor: RGBColorConstructor;
+
+    interface UniformRNG extends ig.Class {
+      lastIndex: number;
+      values: number[];
+
+      get(this: this): number;
+    }
+    interface UniformRNGConstructor extends ImpactClass<UniformRNG> {
+      new (numCount: number, subtractOneFromNumCount?: boolean): UniformRNG;
+    }
+    var UniformRNG: UniformRNGConstructor;
   }
 }
