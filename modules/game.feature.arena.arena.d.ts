@@ -155,6 +155,7 @@ declare global {
       coinsSpend: number;
       cups: Record<string, sc.Arena.Cup>;
       partyStash: string[];
+      sounds: sc.ArenaCrowdCheerController;
       effects: ig.EffectSheet;
       _pauseBlock: boolean;
       _endRoundEnd: boolean;
