@@ -109,6 +109,46 @@ declare global {
     }
     let DoubleColor: DoubleColorConstructor;
 
+    interface ImagePatternSheet extends ig.Cacheable {
+      image: ig.Image;
+      patternTileWidth: number;
+      patternTileHeight: number;
+      offX: number;
+      offY: number;
+      xCount: number;
+      yCount: number;
+      optimization: ig.ImagePattern.OPT;
+      patterns: ig.ImagePattern[];
+
+      getCacheKey(
+        this: this,
+        path: string,
+        optimization: ig.ImagePattern.OPT,
+        tileWidth: number,
+        tileHeight: number,
+        offX: number,
+        offY: number,
+        xCount: number,
+        yCount: number,
+      ): string;
+      onCacheCleared(this: this): void;
+      onImageLoaded(this: this): void;
+      getPattern(this: this, index: number): ig.ImagePattern;
+    }
+    interface ImagePatternSheetConstructor extends ImpactClass<ImagePatternSheet> {
+      new (
+        path: string,
+        optimalization: ig.ImagePattern.OPT,
+        patternTileWidth: number,
+        patternTileHeight?: number,
+        offX?: number,
+        offY?: number,
+        xCount?: number,
+        yCount?: number,
+      ): ImagePatternSheet;
+    }
+    var ImagePatternSheet: ImagePatternSheetConstructor;
+
     interface ImageAtlas extends ig.Class {
       scale: number;
 
