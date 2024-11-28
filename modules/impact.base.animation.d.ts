@@ -33,7 +33,7 @@ declare global {
 
     namespace Animation {
       interface Settings {
-        sheet: ig.TileSheet;
+        sheet: ig.TileSheet | string;
         shapeType?: keyof typeof ig.ANIM_SHAPE_TYPE;
         pivot?: Vec2;
         flipX?: boolean;
@@ -169,7 +169,7 @@ declare global {
 
     // A virtual interface, common methods should go here.
     interface BaseAnimationSet extends ig.Class {
-      animations: ig.Animation.Settings[]
+      animations: ig.Animation.Settings[];
     }
 
     interface SingleDirAnimationSet extends ig.BaseAnimationSet {}
@@ -182,11 +182,29 @@ declare global {
 
     function getRoundedFaceDir(faceX: number, faceY: number, numDirs: number, dest: Vec2): Vec2;
 
+    namespace AnimationSheet {
+      interface Sheet {
+        src: string;
+        width: number;
+        height: number;
+        offY: number;
+        offX: number;
+      }
+      type Sub = Omit<ig.Animation.Settings, 'sheet'> & {
+        name: string;
+        sheet?: ig.AnimationSheet.Sheet;
+      };
+      type Settings = Omit<ig.Animation.Settings, 'sheet' | 'frames'> & {
+        sheet: ig.AnimationSheet.Sheet;
+        frames?: number[];
+        SUB: ig.AnimationSheet.Sub[];
+      };
+    }
     interface AnimationSheet extends ig.JsonLoadable {
       anims: Array<ig.MultiDirAnimationSet | ig.SingleDirAnimationSet>;
     }
     interface AnimationSheetConstructor extends ImpactClass<AnimationSheet> {
-      new (pathOrData: string | unknown): ig.AnimationSheet;
+      new (pathOrData: string | ig.AnimationSheet.Settings): ig.AnimationSheet;
     }
     var AnimationSheet: AnimationSheetConstructor;
 

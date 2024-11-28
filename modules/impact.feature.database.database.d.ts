@@ -38,7 +38,7 @@ declare global {
           {
             content: ig.LangLabel.Data;
             switchPage?: boolean;
-            image?: { src: string; offX: number; offY: number; width: number; height: number };
+            image?: ig.AnimationSheet.Sheet;
             options?: { allgn: string; wrap: boolean };
             condition?: string;
             hr?: boolean;
@@ -99,7 +99,7 @@ declare global {
         name: ig.LangLabel.Data;
       }
 
-      export type DropKey = string
+      export type DropKey = string;
 
       export interface Drop {
         name: ig.LangLabel.Data;
