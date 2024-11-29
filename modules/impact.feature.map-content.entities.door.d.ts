@@ -19,7 +19,7 @@ declare global {
           dir?: keyof typeof ig.ActorEntity.FACE4;
           variation?: string;
           condition?: string;
-          blockEvent?: unknown; // steps: e.blockEvent
+          blockEvent?: ig.EventStepBase.Settings;
           blockEventCondition?: string;
           hideCondition?: string;
         }

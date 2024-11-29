@@ -16,7 +16,7 @@ declare global {
           map: string;
           marker: string;
           spawnDistance?: number;
-          blockEvent?: unknown; // steps: e.blockEvent
+          blockEvent?: ig.EventStepBase.Settings,
           blockEventCondition?: string;
           transitionType?: 'REGULAR' | 'INTER_AREA';
           npcRunnerProb?: number;
