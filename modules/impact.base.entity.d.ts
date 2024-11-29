@@ -39,14 +39,14 @@ declare global {
       mapId: number;
 
       settings: unknown; // an empty object, appears to be unused
-      name?: Nullable<string>
+      name?: Nullable<string>;
       coll: ig.CollEntry;
       sprites: ig.CubeSprite[];
       entityAttached: ig.Entity.Attachable[];
       _hidden: boolean;
       _hideRequest: boolean;
       _killed: boolean;
-      
+
       ballDestroyer?: boolean;
       isPlayer?: boolean;
 
@@ -56,13 +56,18 @@ declare global {
       setZPos(this: this, z: number): void;
       getCenter(this: this, destination?: Nullable<Vec2>): Vec2;
       getAlignedPos(this: this, alignment: ig.ENTITY_ALIGN, dest?: Nullable<Vec3>): Vec3;
+      getOverlapCenterCords(this: this, v1: Vec3, output?: Vec3): Vec3;
+      getHitDir(this: this, v1: Vec2, output?: Vec2): Vec2;
       getCollideSide(this: this, otherEntity: ig.Entity): ig.ActorEntity.FACE4;
       update(this: this): void;
       setSpriteCount(this: this, count: number, guiSprites?: boolean): void;
       updateSprites(this: this): void;
       addEntityAttached(this: this, attachable: ig.Entity.Attachable): void;
       removeEntityAttached(this: this, attachable: ig.Entity.Attachable): void;
-      clearEntityAttached(this: this, conditionCallback?: (attachable: ig.Entity.Attachable) => boolean): void;
+      clearEntityAttached(
+        this: this,
+        conditionCallback?: (attachable: ig.Entity.Attachable) => boolean,
+      ): void;
       show(this: this): void;
       hide(this: this): void;
       kill(this: this, levelChange?: Nullable<boolean>): void;
@@ -70,11 +75,10 @@ declare global {
       erase(this: this): void;
       collideWith(this: this, entity: ig.Entity, dir: Vec2): void;
 
-
       // below are functions and variables not formally defined in ig.Entity,
       // but other relevant classes do check for them.
-      isBall?: boolean
-      terrain?: ig.TERRAIN
+      isBall?: boolean;
+      terrain?: ig.TERRAIN;
 
       varsChanged?(this: this): void;
       isBallDestroyer?(this: this, collPos: Vec3, collRes: { dir: Vec2 }, c?: boolean): boolean;
@@ -92,12 +96,12 @@ declare global {
 
     enum WIPE_DIRECTION {
       NORTH = 1,
-      SOUTH = 3
+      SOUTH = 3,
     }
 
     namespace EntityTools {
-      function getGroundEntity(entity: ig.Entity): Nullable<ig.Entity>
-      function isInScreen(entity: ig.Entity, x?: number, y?: number): boolean
+      function getGroundEntity(entity: ig.Entity): Nullable<ig.Entity>;
+      function isInScreen(entity: ig.Entity, x?: number, y?: number): boolean;
     }
 
     enum COLLTYPE {
@@ -112,7 +116,7 @@ declare global {
       PASSIVE = 8,
       SEMI_IGNORE = 9,
       FENCE = 10,
-      NPFENCE = 11
+      NPFENCE = 11,
     }
 
     enum COLLSHAPE {
@@ -120,20 +124,27 @@ declare global {
       SLOPE_NE = 2,
       SLOPE_SE = 3,
       SLOPE_SW = 4,
-      SLOPE_NW = 5
+      SLOPE_NW = 5,
     }
 
     namespace AnimatedEntity {
       interface Settings extends ig.Entity.Settings {}
     }
     interface AnimatedEntity extends ig.Entity {
-      animSheet: ig.AnimationSheet
+      animSheet: ig.AnimationSheet;
       animState: ig.AnimationState;
-      animSpeedFactor: number
+      animSpeedFactor: number;
       currentAnim: string;
 
       initAnimations(this: this, sheet?: ig.AnimationSheet | string | unknown): void;
-      setCurrentAnim(this: this, name: string, reset?: boolean, followUp?: Nullable<string>, force?: boolean, callbackOnFinish?: boolean): void;
+      setCurrentAnim(
+        this: this,
+        name: string,
+        reset?: boolean,
+        followUp?: Nullable<string>,
+        force?: boolean,
+        callbackOnFinish?: boolean,
+      ): void;
     }
     interface AnimatedEntityConstructor extends ImpactClass<AnimatedEntity> {
       new (x: number, y: number, z: number, settings: ig.AnimatedEntity.Settings): AnimatedEntity;
