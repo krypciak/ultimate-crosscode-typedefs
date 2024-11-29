@@ -22,6 +22,13 @@ declare global {
       idleSpecials: number;
       tempHidden: boolean;
       effects: { water: ig.EffectSheet };
+
+      resetIdleTimer(this: this, additional?: number): void;
+      shouldTempHide(this: this): boolean;
+      resetStartPos(this: this): void;
+      resetPos(this: this, transition?: boolean, assignRespawnPos?: boolean): void;
+      onNavigationFailed(this: this, retryAttempt: number): void;
+      remove(this: this): void;
     }
     interface PlayerPetEntityConstructor extends ImpactClass<PlayerPetEntity> {
       new (x: number, y: number, z: number, settings: sc.PlayerPetEntity.Settings): PlayerPetEntity;
