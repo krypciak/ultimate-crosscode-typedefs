@@ -83,6 +83,7 @@ declare global {
       setSize(this: this, x: number, y: number, z: number): void;
       setPadding(this: this, x: number, y: number): void;
       getCenter(this: this, target?: Vec2): Vec2;
+      getOverlapCenterCords(this: this, v1: Vec3, output?: Vec3): Vec3;
     }
     interface CollEntryConstructor extends ImpactClass<CollEntry> {
       new (entity: ig.Entity): CollEntry;
