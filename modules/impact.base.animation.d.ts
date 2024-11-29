@@ -195,7 +195,7 @@ declare global {
         sheet?: ig.AnimationSheet.Sheet;
       };
       type Settings = Omit<ig.Animation.Settings, 'sheet' | 'frames'> & {
-        sheet: ig.AnimationSheet.Sheet;
+        sheet?: ig.AnimationSheet.Sheet;
         frames?: number[];
         SUB: ig.AnimationSheet.Sub[];
       };
