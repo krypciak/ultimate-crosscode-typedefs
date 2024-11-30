@@ -45,6 +45,15 @@ declare global {
       NO_TOP = 2,
     }
 
+    interface NAV_CLOSE_POINT_SERCH {
+      RANDOM(vec: Vec2): void;
+      BEHIND(): void;
+      FRONT(vec: Vec2): void;
+      BEHIND_FACE(vec: Vec2, target: ig.ActorEntity): void;
+      FRONT_FACE(vec: Vec2, target: ig.ActorEntity): void;
+    }
+    var NAV_CLOSE_POINT_SEARCH: NAV_CLOSE_POINT_SERCH;
+
     interface NavBlocker extends ig.Class {
       entity: ig.Entity;
       pos: Vec3;
