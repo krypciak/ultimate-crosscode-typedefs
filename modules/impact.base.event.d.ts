@@ -97,6 +97,8 @@ declare global {
       type NumberExpression = VarExpression<number>;
       type BooleanExpression = VarExpression<boolean>;
       type StringExpression = VarExpression<string>;
+
+      type NumberVary = number | { base: number; vary?: number };
     }
     interface Event extends ig.Class {
       name: string;
@@ -126,6 +128,7 @@ declare global {
     interface EventConstructor extends ImpactClass<Event> {
       new (settings: ig.Event.Settings): Event;
 
+      getNumberVary(numberVary: ig.Event.NumberVary): number;
       getVec2(input: Event.VarExpression<Vec2>, dest: Vec2): Vec2;
       getVec3(input: Event.VarExpression<Vec3>, dest: Vec3): Vec3;
       getVarName(varName: string | ig.Event.VarObject): string | null;
