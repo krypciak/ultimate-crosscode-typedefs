@@ -7,6 +7,13 @@ export {};
 
 declare global {
   namespace sc {
+    enum ENEMY_CATEGORY {
+      ABSTRACT = 0,
+      PLAYERS = 1,
+      ANIMALS = 2,
+      MECHA = 3,
+      BOSS = 4,
+    }
     namespace EnemyType {
       interface ItemDrop {
         item: sc.ItemID;
