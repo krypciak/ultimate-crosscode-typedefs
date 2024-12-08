@@ -58,6 +58,20 @@ declare global {
   }
 
   namespace ig.ENTITY {
+    namespace Combatant {
+      interface OnDamageData {
+        damageResult: number;
+        attackType?: sc.ATTACK_TYPE;
+        flyLevel?: unknown;
+        hitStable?: unknown;
+        blockedFactor?: unknown;
+        guardedHits?: unknown;
+        weakness: boolean;
+        alignFace: boolean;
+        ignoreHit: boolean;
+        damageFactor: number;
+      }
+    }
     interface Combatant extends sc.BasicCombatant {
       params: sc.CombatParams;
       isCombatant: true;
