@@ -5,7 +5,7 @@ export {};
 
 declare global {
   namespace sc {
-    interface CombatCharge extends ig.Class {
+    interface CombatCharge extends ig.Class, sc.Combat.ActionAttached {
       fx: ig.ENTITY.Effect;
       darkness: ig.DarknessHandle;
       soundHandle: ig.SoundHandle;
@@ -16,7 +16,6 @@ declare global {
 
       charge(this: this, element: sc.ELEMENT, chargeStage: number, showCombatArt?: boolean): void;
       stop(this: this): void;
-      onActionEndDetach(this: this): void;
       onEntityKillDetach(this: this): void;
     }
     interface CombatChargeConstructor extends ImpactClass<CombatCharge> {
