@@ -41,5 +41,19 @@ declare global {
       SHOCK = 4,
       WAVE = 5,
     }
+
+    interface EnemyAnno {
+      doesRandomlyUnderstand(
+        enemy: ig.ENTITY.Enemy,
+        player: ig.ENTITY.Player,
+        multiplier?: number,
+      ): boolean;
+      getUnderstandFactor(
+        enemy: ig.ENTITY.Enemy,
+        player: ig.ENTITY.Player,
+        multiplier?: number,
+      ): number;
+    }
+    var EnemyAnno: EnemyAnno;
   }
 }
