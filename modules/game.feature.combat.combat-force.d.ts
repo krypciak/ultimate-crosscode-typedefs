@@ -4,13 +4,12 @@ export {};
 
 declare global {
   namespace sc {
-    interface CombatForce extends ig.Class, sc.GetCombatant, sc.GetCombatantRoot {
+    interface CombatForce extends ig.Class, sc.GetCombatant, sc.GetCombatantRoot, sc.Combat.ActionAttached {
       combatant: sc.BasicCombatant;
       combatantRoot: ig.ENTITY.Combatant;
 
       update(this: this): boolean;
       isRepeating(this: this): boolean;
-      onActionEndDetach(this: this): void;
       onEnd(this: this): void;
     }
     interface CombatForceConstructor extends ImpactClass<CombatForce> {

@@ -6,30 +6,37 @@
 export {};
 
 declare global {
-    namespace sc {
-        namespace CombatProxyEntity {
-            namespace Settings {
-                interface Data {
-                    startAnim?: string;
-                }
-            }
-            interface Settings {
-                data: Settings.Data;
-            }
+  namespace sc {
+    namespace CombatProxyEntity {
+      namespace Settings {
+        interface Data {
+          startAnim?: string;
         }
-        interface CombatProxyEntity extends sc.BasicCombatant {
-            hp: number;
-            maxHp: number;
-            combatant: sc.BasicCombatant;
-            sourceEntity: sc.BasicCombatant;
-            party: sc.COMBATANT_PARTY;
-            animSheet: ig.AnimationSheet;
-
-            initAnimations(this: this): void;
-        }
-        interface CombatProxyEntityConstructor extends ImpactClass<CombatProxyEntity> {
-            new (x: number, y: number, z: number, settings: CombatProxyEntity.Settings): CombatProxyEntity;
-        }
-        var CombatProxyEntity: CombatProxyEntityConstructor;
+      }
+      interface Settings {
+        data: Settings.Data;
+      }
     }
+    interface CombatProxyEntity extends sc.BasicCombatant {
+      hp: number;
+      maxHp: number;
+      combatant: sc.BasicCombatant;
+      sourceEntity: sc.BasicCombatant;
+      party: sc.COMBATANT_PARTY;
+      animSheet: ig.AnimationSheet;
+
+      initAnimations(this: this): void;
+      onCollabEndDetach(this: this, collab: sc.EnemyCollab): void;
+    }
+    interface CombatProxyEntityConstructor extends ImpactClass<CombatProxyEntity> {
+      new (
+        x: number,
+        y: number,
+        z: number,
+        settings: CombatProxyEntity.Settings,
+      ): CombatProxyEntity;
+    }
+    var CombatProxyEntity: CombatProxyEntityConstructor;
+  }
 }
+

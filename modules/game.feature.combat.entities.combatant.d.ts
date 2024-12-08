@@ -70,6 +70,17 @@ declare global {
       setRespawnPoint(this: this, pos: Vec3): void;
       isDefeated(this: this): boolean;
       setTarget(this: this, combatant: sc.BasicCombatant, fixed?: Nullable<boolean>): void;
+      onEnemyEvent?(
+        this: this,
+        combatant: ig.ENTITY.Combatant,
+        type: sc.CombatEnemyEvent,
+        settings?: Nullable<sc.CombatEnemyEvent.Settings>,
+      ): void;
+      sendEnemyEvent(
+        this: this,
+        type: sc.CombatEnemyEvent,
+        settings: sc.CombatEnemyEvent.Settings,
+      ): void;
       onPreDamageModification(
         this: this,
         modifications: unknown,
@@ -80,6 +91,7 @@ declare global {
         shieldResult: sc.SHIELD_RESULT,
       ): boolean;
       heal(this: this, healInfo: sc.HealInfoType, hideNumbers?: boolean): void;
+      instantDefeat(this: this, skipRumble?: boolean, forceEvenIfNoParams?: boolean): void;
       // only natively exists on ig.ENTITY.Player, but a function of this signature is expected.
       onHeal?(this: this, healInfo: sc.HealInfoType, amount: number): void;
     }
