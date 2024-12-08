@@ -46,6 +46,10 @@ declare global {
         loseDistance: number;
         loseTime: number;
       }
+      interface ElementModes {
+        current: sc.ELEMENT;
+        modes: Record<sc.ELEMENT, Record<string, number>>;
+      }
     }
 
     interface EnemyType extends ig.JsonLoadable {
@@ -112,7 +116,7 @@ declare global {
       isReadyToFight(this: this, enemy: ig.ENTITY.Enemy): boolean;
       resolveHpBreak(
         this: this,
-        dmgMod: Nullable<ig.ENTITY.Combatant.OnDamageData>,
+        dmgMod: Nullable<ig.ENTITY.Combatant.HitProperties>,
         enemy: ig.ENTITY.Enemy,
         combatant: sc.BasicCombatant,
         damage: number,

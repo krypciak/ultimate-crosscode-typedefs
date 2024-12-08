@@ -20,6 +20,13 @@ declare global {
         initiatorLabel: string;
         partiipants: sc.EnemyCollab.ParticipantSettings[];
       }
+
+      interface CollabAttribs {
+        label: string;
+        collabKey: string;
+        point: Nullable<Vec3>;
+        entity: Nullable<ig.Entity>;
+      }
     }
     interface EnemyCollab extends ig.Class, ig.Vars.Accessor, sc.Combat.ActionAttached {
       initiator: ig.ENTITY.Combatant;
