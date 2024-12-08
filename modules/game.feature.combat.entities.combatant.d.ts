@@ -59,7 +59,7 @@ declare global {
 
   namespace ig.ENTITY {
     namespace Combatant {
-      interface OnDamageData {
+      interface HitProperties {
         damageResult: number;
         attackType?: sc.ATTACK_TYPE;
         flyLevel?: unknown;
