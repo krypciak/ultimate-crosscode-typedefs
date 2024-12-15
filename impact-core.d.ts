@@ -289,12 +289,39 @@ declare global {
   var LOAD_LEVEL_ON_GAME_START: string | undefined | null;
   var MARKER_ON_GAME_START: string | undefined | null;
 
-  interface SeedrandomSeed {
-    (seed: string): void;
-    new (seed: string): () => number;
+  /* stolen from https://www.npmjs.com/package/@types/seedrandom/v/2.4.26, modified a bit */
+  export type seedrandomState = {
+    i: number;
+    j: number;
+    S: number[];
+  };
+
+  interface prng {
+    (): number;
+    quick(): number;
+    int32(): number;
+    double(): number;
+    state(): seedrandomState;
   }
+
+  interface seedrandomConstructor {
+    new (seed?: string, options?: seedRandomOptions, callback?: any): prng;
+    (seed?: string, options?: seedRandomOptions, callback?: any): string;
+  }
+
+  interface seedrandomCallback {
+    (prng?: prng, shortseed?: string, global?: boolean, state?: seedrandomState): prng;
+  }
+
+  interface seedRandomOptions {
+    entropy?: boolean;
+    global?: boolean;
+    state?: seedrandomState | boolean;
+    pass?: seedrandomCallback;
+  }
+
   interface Math {
-    seedrandomSeed: SeedrandomSeed;
+    seedrandomSeed: seedrandomConstructor;
     randomSeed(): number;
   }
 }
