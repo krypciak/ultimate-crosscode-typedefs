@@ -98,7 +98,7 @@ declare global {
       cameraHandle: ig.Camera.TargetHandle;
       cameraTargets: ig.Entity[];
       mapStartPos: Vec3;
-      actionBlocked: { action: number; charge: number; dash: number; reaim: number; move: number };
+      actionBlocked: ig.ACTION_STEP.SET_PLAYER_ACTION_BLOCK.BlockData;
       combatStats: { lastTarget: Nullable<ig.Entity> };
       dashDir: Vec2;
       dashDirData: Vec2;
