@@ -11,7 +11,7 @@ export {};
 
 declare global {
   namespace sc {
-    type CombatRankLabel = 'D' | 'C' | 'B' | 'A' | 'S';
+    type CombatRankLabel = 'E' | 'D' | 'C' | 'B' | 'A' | 'S';
     interface CombatRank {
       label: CombatRankLabel;
       dropRate: number;

@@ -10,7 +10,7 @@ declare global {
         arena: sc.Arena.Data;
         bgm: ig.Bgm.Data;
         cancelButtonText: Nullable<ig.LangLabel>;
-        commonEvents: { runData: Record<string, { trigger: number }> };
+        commonEvents: { runData: sc.CommonEvents.RunData };
         currentTask: Nullable<ig.LangLabel.Data>;
         drops: sc.MenuModel['dropCounts'];
         floor: ig.LangLabel.Data | 'MISSING LABEL';

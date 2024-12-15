@@ -7,16 +7,21 @@ declare global {
   namespace ig {
     namespace Database {
       interface Data {
+        // achivments
         areas: { [name: string]: sc.MapModel.Area };
+        chapters: Chapter[];
+        commonEvents: Record<string, sc.CommonEvent.Data>
+        drops: Record<DropKey, Drop>;
         enemies: { [id: string]: EnemyData };
         leawords: string[];
         lore: Record<string, LoreData>;
         names: ig.Database.Names;
+        // quests
         shops: { [id: string]: ShopData };
         traders: { [id: string]: sc.TradeModel.Trader };
-        chapters: Chapter[];
+        // databaseVersions
+        // questsHubs
         toggleSets: { [name: string]: ToggleSet };
-        drops: Record<DropKey, Drop>;
       }
 
       interface EnemyData {
