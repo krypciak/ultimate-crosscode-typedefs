@@ -5,7 +5,10 @@ export {};
 declare global {
   namespace ig.ENTITY {
     namespace Crosshair {
-      interface Settings extends ig.Entity.Settings {}
+      interface Settings extends ig.Entity.Settings {
+        thrower: ig.ENTITY.Player;
+        controller: sc.PlayerCrossHairController;
+      }
     }
     interface Crosshair extends ig.Entity {
       offset: Vec3;
@@ -33,6 +36,16 @@ declare global {
       soundTimer: number;
       dirHelperDrawInfo: Vec2 & { tile: number; flipX: number; flipY: number }[];
 
+      getDir(this: this, res: Vec2): Vec2;
+      getThrowDir(this: this, res: Vec2): Vec2;
+      isThrowCharged(this: this): boolean;
+      setThrown(this: this): number;
+      setBaseSpeedFactor(this: this, baseSpeedFactor: number): void;
+      setSpeedFactor(this: this, speedFactor: number): void;
+      setCircleGlow(this: this): void;
+      reducePrecision(this: this, factor: number): void;
+      setSpecial(this: this, special: boolean): void;
+      setActive(this: this, active: boolean): void;
       deferredUpdate(this: this): void;
       _updateCrossHair(
         this: this,
@@ -46,6 +59,7 @@ declare global {
         maxBounce: number,
         s?: ig.Entity,
       ): void;
+      _getThrowerPos(this: this, res: Vec2): Vec2;
     }
     interface CrosshairConstructor extends ImpactClass<Crosshair> {
       new (x: number, y: number, z: number, settings: ig.ENTITY.Crosshair.Settings): Crosshair;
@@ -71,7 +85,7 @@ declare global {
       gamepadMode: boolean;
 
       isAiming(this: this): boolean;
-      getAimingDistance(this: this, currentDir: Vec2, offsetDir: Vec2): unknown;
+      getAimingDistance(this: this, currentDir: Vec2, offsetDir: Vec2): number;
       onActiveChange(this: this, crosshair: ig.ENTITY.Crosshair): void;
       updatePos(this: this, crosshair: ig.ENTITY.Crosshair): void;
     }
