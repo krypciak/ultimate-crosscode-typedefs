@@ -51,6 +51,16 @@ declare global {
         new (settings: SHOW_FOOD_ICON.Settings): SHOW_FOOD_ICON;
       }
       var SHOW_FOOD_ICON: SHOW_FOOD_ICON_CONSTRUCTOR;
+
+      namespace SET_PLAYER_ACTION_BLOCK {
+        interface BlockData {
+          action: number;
+          dash: number;
+          charge: number;
+          reaim: number;
+          move: number
+        }
+      }
     }
   }
 }

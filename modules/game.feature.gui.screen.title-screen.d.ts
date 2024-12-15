@@ -14,7 +14,7 @@ export {};
 
 declare global {
   namespace sc {
-    interface TitleScreenGui extends ig.GuiElementBase {
+    interface TitleScreenGui extends ig.GuiElementBase, sc.Model.Observer {
       background: ig.Image;
       parallax: ig.Parallax;
       bgGui: ig.ParallaxGui;
@@ -26,7 +26,6 @@ declare global {
       versionGui: sc.TextGui;
 
       postInit(this: this): void;
-      modelChanged(this: this, c: unknown, d: unknown): void;
       onInteraction(this: this): void;
       _startBg(this: this): void;
       _introDone(this: this): void;

@@ -63,7 +63,6 @@ declare global {
       onBackButtonPressed(this: this): void;
       createHelpGui(this: this): void;
       onAddHotkeys(this: this): void;
-      modelChanged(this: this): void;
     }
     interface HelpScreenConstructor extends ImpactClass<HelpScreen> {
       new (

@@ -30,7 +30,6 @@ declare global {
       _isInEntries(this: this, id: ItemID): sc.ItemHudBox;
       _popDelayed(this: this): void;
       _updateSizes(this: this, b: unknown): void;
-      modelChanged(this: this, b: unknown, a: unknown, d: unknown): void;
     }
     interface ItemHudBoxConstructor extends ImpactClass<ItemHudBox> {
       new (): ItemHudBox;
