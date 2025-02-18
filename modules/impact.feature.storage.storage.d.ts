@@ -136,7 +136,9 @@ declare global {
       lastUsedSlot: number;
       listeners: ig.Storage.Listener[];
       globalData: ig.Storage.GlobalsData;
+      checkPointSave: ig.SaveSlot;
       data: ig.StorageData;
+      currentLoadFile: ig.SaveSlot;
 
       register(this: this, listener: ig.Storage.Listener): void;
       _saveToStorage(this: this): ig.StorageData.SaveFileData;
