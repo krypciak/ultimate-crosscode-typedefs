@@ -42,10 +42,14 @@ declare global {
       addTransform(this: this): ig.GuiTransform;
       undoTransform(this: this): void;
     }
+    interface GuiRendererConstructor extends ImpactClass<GuiRenderer> {
+      new (): GuiRenderer;
+    }
 
     interface Gui extends ig.GameAddon {
-      namedGuiElements: Record<string, unknown>;
       guiHooks: ig.GuiHook[];
+      namedGuiElements: Record<string, unknown>;
+      renderer: ig.GuiRenderer;
       controlModule: sc.Control;
 
       onDeferredUpdate(this: this): void;
