@@ -51,7 +51,7 @@ declare global {
         this: this,
         destVec: Vec2,
         lastRelativeVel: number,
-        ignoreLastDir?: Nullable<number>,
+        ignoreLastDir?: Nullable<boolean>,
       ): number;
       pause(this: this): boolean;
       menu(this: this): boolean;
