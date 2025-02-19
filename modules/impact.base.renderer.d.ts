@@ -25,6 +25,8 @@ declare global {
     interface Renderer2d extends ig.Class {
       spriteSlots: ig.Renderer2d.SpriteDrawSlot[];
       guiSpriteSlots: ig.Renderer2d.SpriteDrawSlot[];
+
+      prepareDraw(this: this, shownEntities: ig.Entity[], forceDraw?: boolean): void
       drawPostLayerSprites(this: this): void;
       mapCleared(this: this): void;
     }
