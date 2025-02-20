@@ -9,7 +9,7 @@
 // requires game.feature.arena.arena-challenges
 // requires game.feature.arena.arena-cheer
 
-export { };
+export {};
 
 declare global {
   namespace sc {
@@ -78,7 +78,7 @@ declare global {
           type: sc.ARENA_BASE_TYPE;
         }
 
-        interface ArenaRound { }
+        interface ArenaRound {}
       }
 
       interface CupData {
@@ -99,10 +99,10 @@ declare global {
 
       interface RushProgress extends RoundProgress {
         chain: number;
-        cleared: number
-        medal: number
-        points: number
-        time: number
+        cleared: number;
+        medal: number;
+        points: number;
+        time: number;
       }
 
       interface ArenaBonusObjective {
@@ -142,15 +142,15 @@ declare global {
       }
 
       interface Data {
-        coins: number
-        coinsSpend: number
-        cupData: Record<string, CupProgress>
+        coins: number;
+        coinsSpend: number;
+        cupData: Record<string, CupProgress>;
       }
     }
 
     interface Arena extends ig.GameAddon, ig.Vars.Accessor, sc.Model.Observer {
       active: boolean;
-      runtime: sc.Arena.Runtime
+      runtime: sc.Arena.Runtime;
       coins: number;
       coinsSpend: number;
       cups: Record<string, sc.Arena.Cup>;
@@ -187,6 +187,7 @@ declare global {
       isCupUnlocked(this: this, cupName: string): boolean;
       getTotalDefaultCups(this: this, sorted: boolean): { [key: string]: { order: number } };
       isCupCustom(this: this, cupName: string): boolean;
+      getTotalArenaCoins(this: this): number;
       isEnemyBlocked(this: this, entity: ig.ENTITY.Enemy): boolean;
       onCombatantHeal(this: this, entity: ig.ENTITY.Combatant, healAmount: number): void;
       startRound(this: this): void;
@@ -203,7 +204,7 @@ declare global {
       hasChallenge(this: this, challenge: keyof sc.ARENA_CHALLENGES): boolean;
     }
     interface ArenaConstructor extends ImpactClass<Arena> {
-      new(): Arena;
+      new (): Arena;
     }
     var Arena: ArenaConstructor;
     var arena: Arena;
