@@ -15,9 +15,9 @@ declare global {
       boxes: unknown;
       doReorder: boolean;
 
-      addHudBox(this: this, rightHudBox: sc.RightHudGui, insertIndex?: number): void;
-      addHudBoxBefore(this: this, rightHudBox: sc.RightHudGui, index?: number): void;
-      removeHudBox(this: this, rightHudBox: sc.RightHudGui): void;
+      addHudBox(this: this, rightHudBox: sc.RightHudBoxGui, insertIndex?: number): void;
+      addHudBoxBefore(this: this, rightHudBox: sc.RightHudBoxGui, index?: number): void;
+      removeHudBox(this: this, rightHudBox: sc.RightHudBoxGui): void;
       reorder(this: this): void;
       updateSize(this: this): void;
     }
