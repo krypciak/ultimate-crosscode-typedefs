@@ -12,6 +12,7 @@ declare global {
     }
     interface Cacheable extends ig.Class {
       cacheType: string;
+      cacheKey: string
 
       decreaseRef(this: this): void;
     }
