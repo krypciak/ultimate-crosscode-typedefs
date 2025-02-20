@@ -8,6 +8,7 @@ export {};
 declare global {
   namespace sc {
     interface ShopCart extends ig.BoxGui {
+      ninepatch: ig.NinePatch;
       credits: sc.ShopCartEntry;
       value: sc.ShopCartEntry;
       rest: sc.ShopCartEntry;
@@ -16,6 +17,9 @@ declare global {
 
       resetNumbers(this: this, skipTransition?: boolean): void;
       updateValue(this: this, skipTransition?: boolean): void;
+      setCheckout(this: this, value: boolean): void;
+      onCheckoutPress(this: this): void;
+      onCheckoutCheck(this: this): boolean;
     }
     interface ShopCartConstructor extends ImpactClass<ShopCart> {
       new (): ShopCart;
