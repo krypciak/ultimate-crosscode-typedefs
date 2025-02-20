@@ -7,6 +7,33 @@ export {};
 
 declare global {
   namespace sc {
+    interface NewGameCart extends sc.MenuPanel {
+      points: sc.NewGameCartEntry;
+      cost: sc.NewGameCartEntry;
+      rest: sc.NewGameCartEntry;
+      enabled: boolean;
+
+      resetNumbers(this: this, skipTransition?: boolean): void;
+      updateCost(this: this, skipTransition?: boolean): void;
+    }
+    interface NewGameCartConstructor extends ImpactClass<NewGameCart> {
+      new (): NewGameCart;
+    }
+    var NewGameCart: NewGameCartConstructor;
+
+    interface NewGameCartEntry extends ig.GuiElementBase {
+      gfx: ig.Image;
+      text: sc.TextGui;
+      number: sc.NumberGui;
+      hideSymbol: boolean;
+
+      setNumber(this: this, max: number, skipTransition?: boolean): void;
+    }
+    interface NewGameCartEntryConstructor extends ImpactClass<NewGameCartEntry> {
+      new (text: sc.TextLike): NewGameCartEntry;
+    }
+    var NewGameCartEntry: NewGameCartEntryConstructor;
+
     interface NewGameToggleSet extends ig.GuiElementBase {}
     interface NewGameToggleSetConstructor extends ImpactClass<NewGameToggleSet> {}
     var NewGameToggleSet: NewGameToggleSetConstructor;
