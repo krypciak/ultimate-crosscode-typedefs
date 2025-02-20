@@ -14,6 +14,7 @@ export {};
 declare global {
   namespace sc {
     interface QuestHubListEntry extends ig.FocusGui {
+      gfx: ig.Image;
       questLocation: sc.TextGui;
       levelContent: ig.ColorGui;
       rewards: sc.QuestHubRewards;
