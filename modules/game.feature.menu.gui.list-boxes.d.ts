@@ -67,7 +67,7 @@ declare global {
 
       clear(this: this, skip?: Nullable<boolean>): void;
       addButton(this: this, gui: ig.FocusGui): void;
-      getChildren(this: this): ig.FocusGui[];
+      getChildren(this: this): ig.GuiHook[];
     }
     interface ItemListBoxConstructor extends ImpactClass<ItemListBox> {
       new (
