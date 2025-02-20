@@ -16,5 +16,15 @@ declare global {
             new (): StatusUpperGui;
         }
         let StatusUpperGui: StatusUpperGuiConstructor
+
+        interface ElementalLoadOverlayGui extends ig.GuiElementBase {
+            gfx: ig.Image;
+            alphaHandler: ig.AlphaTransitionHandler;
+            currentWarnMode: number;
+        }
+        interface ElementalLoadOverlayGuiConstructor extends ImpactClass<ElementalLoadOverlayGui> {
+            new (): ElementalLoadOverlayGui;
+        }
+        var ElementalLoadOverlayGui: ElementalLoadOverlayGuiConstructor
     }
 }
