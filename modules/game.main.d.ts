@@ -20,7 +20,6 @@ declare global {
 
     namespace CrossCode {
       interface Gui {
-        // @ts-expect-error
         statusHud: sc.StatusHudGui;
         rightHudPanel: sc.RightHudGui;
         // @ts-expect-error
