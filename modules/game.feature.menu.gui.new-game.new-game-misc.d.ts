@@ -34,8 +34,27 @@ declare global {
     }
     var NewGameCartEntry: NewGameCartEntryConstructor;
 
-    interface NewGameToggleSet extends ig.GuiElementBase {}
-    interface NewGameToggleSetConstructor extends ImpactClass<NewGameToggleSet> {}
+    interface NewGameToggleSet extends ig.GuiElementBase {
+      header: sc.TextGui;
+      background: ig.ColorGui;
+      buttons: sc.NewGameOptionButton[];
+      set: sc.NewGameSet;
+      listIndex: number;
+
+      updateTogglesStates(this: this, pressed: sc.NewGameOptionButton): void;
+      updateActiveState(this: this, trophies: number, totalCost: number, trophies1: number): void;
+      getSingleCost(this: this): number;
+      hasRequired(this: this, key: sc.NEW_GAME_OPTIONS.Keys): boolean;
+    }
+    interface NewGameToggleSetConstructor extends ImpactClass<NewGameToggleSet> {
+      new (
+        set: sc.NEW_GAME_SETS.Keys,
+        list: sc.MultiColumnItemListBox,
+        yOffset: number,
+        listIndex: number,
+        counter: { counter: number },
+      ): NewGameToggleSet;
+    }
     var NewGameToggleSet: NewGameToggleSetConstructor;
 
     interface NewGameOptionButton extends sc.ListBoxButton {
