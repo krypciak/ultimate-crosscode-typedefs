@@ -14,6 +14,12 @@ export {};
 
 declare global {
   namespace sc {
+    interface MasterOverlayGui extends ig.GuiElementBase, sc.Model.Observer {}
+    interface MasterOverlayGuiConstructor extends ImpactClass<MasterOverlayGui> {
+      new (): MasterOverlayGui;
+    }
+    var MasterOverlayGui: MasterOverlayGuiConstructor;
+
     interface TitleScreenGui extends ig.GuiElementBase, sc.Model.Observer {
       background: ig.Image;
       parallax: ig.Parallax;
