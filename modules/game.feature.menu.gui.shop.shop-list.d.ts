@@ -31,15 +31,23 @@ declare global {
     var ShopItemButton: ShopItemButtonConstructor;
 
     interface ShopListMenu extends sc.MenuPanel {
-      _prevSortType: sc.SORT_TYPE;
       buttongroup: sc.ButtonGroup;
+      pagesCache: [];
       list: sc.ItemListBox;
+      repeater: ig.PressRepeater;
+      _prevSortType: sc.SORT_TYPE;
+      _amp: number;
+      _ampTimer: number;
+      _ampDir: Nullable<-1 | 1>;
 
       getRepeaterValue(this: this): number;
       getActiveElement(this: this): sc.ShopItemButton;
+      stepRight(this: this): void;
+      stepLeft(this: this): void;
       changeCount(this: this, direction: 1 | -1): void;
       playSound(this: this, direction: 1 | -1, repeater: boolean): void;
       updateListEntries(this: this, resetCounters?: Nullable<boolean>): void;
+      updateShopPage(this: this, sortOrder?: Nullable<sc.SORT_TYPE>): void;
       createBuyList(
         this: this,
         refocus?: Nullable<boolean>,
@@ -49,8 +57,13 @@ declare global {
       ): void;
       scrapSellList(this: this, shopItems: sc.ItemID[]): void;
       scrapBuyList(this: this, shopItems: ig.Database.ShopItem[]): void;
+      onPressCallback(this: this, button: sc.ShopItemButton): void;
+      onBackButtonPress(this: this): void;
+      leaveList(this: this): void;
     }
-    interface ShopListMenuConstructor extends ImpactClass<ShopListMenu> {}
+    interface ShopListMenuConstructor extends ImpactClass<ShopListMenu> {
+      new (): ShopListMenu;
+    }
     var ShopListMenu: ShopListMenuConstructor;
 
     interface ShopPageCounter extends sc.MenuPanel {
@@ -61,7 +74,9 @@ declare global {
       show(this: this): void;
       cycleSellPages(this: this, dir: number): void;
     }
-    interface ShopPageCounterConstructor extends ImpactClass<ShopPageCounter> {}
+    interface ShopPageCounterConstructor extends ImpactClass<ShopPageCounter> {
+      new (): ShopListMenu;
+    }
     var ShopPageCounter: ShopPageCounterConstructor;
   }
 }
