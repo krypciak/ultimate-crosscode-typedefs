@@ -25,6 +25,23 @@ declare global {
     }
     type BGM_SWITCH_MODE = keyof typeof BGM_SWITCH_MODE;
 
+    interface BGM_TRACK_LIST {}
+    var BGM_TRACK_LIST: BGM_TRACK_LIST;
+
+    type BGM_TRACK = keyof typeof ig.BGM_TRACK_LIST;
+    interface BgmTrack extends ig.Class {
+      name: BGM_TRACK;
+      track: ig.Track;
+
+      get(this: this): ig.Track;
+      clearCached(this: this): void;
+      copy(this: this): ig.BgmTrack;
+    }
+    interface BgmTrackConstructor extends ImpactClass<BgmTrack> {
+      new (name: BGM_TRACK): BgmTrack;
+    }
+
+    var BgmTrack: BgmTrackConstructor;
     namespace Bgm {
       interface Data {
         defaultTrackSet: string;

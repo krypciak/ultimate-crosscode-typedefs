@@ -90,6 +90,18 @@ declare global {
     var Music: MusicConstructor;
     var music: Music;
 
+    interface TrackDefault extends ig.Cacheable {}
+    interface TrackDefaultConstructor extends ImpactClass<TrackDefault> {
+      new (a: unknown, b: unknown, c: unknown, d: unknown, e: unknown): TrackDefault;
+    }
+    var TrackDefault: TrackDefaultConstructor;
+
+    interface TrackWebAudio extends ig.Cacheable {}
+    interface TrackWebAudioConstructor extends ImpactClass<TrackWebAudio> {
+      new (a: unknown, b: unknown, c: unknown, d: unknown, e: unknown): TrackWebAudio;
+    }
+    var TrackWebAudio: TrackWebAudioConstructor;
+
     interface SoundDefault extends ig.Class, SoundCommon {
       group: string;
       multiAudio: ig.MultiAudio;
@@ -229,6 +241,8 @@ declare global {
 
     type Sound = SoundDefault | SoundWebAudio;
     type SoundConstructor = SoundDefaultConstructor | SoundWebAudioConstructor;
+    type Track = TrackDefault | TrackWebAudio;
+    type TrackConstructor = TrackDefaultConstructor | TrackWebAudioConstructor;
     var Sound: SoundConstructor;
   }
 
