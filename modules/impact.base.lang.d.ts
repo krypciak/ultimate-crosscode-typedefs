@@ -10,7 +10,7 @@ declare global {
 
       loadInternal(this: this): void;
       get<T = string>(this: this, path: string): T;
-      onerror(this: this, error: unknown): void;
+      onerror(this: this): void;
       onload(this: this, labels: any): void;
       grammarReplace(
         template: string,
