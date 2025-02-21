@@ -35,7 +35,7 @@ declare global {
       height: number;
       additionalCallbacks: Image.Callback[];
 
-      loadInternal(this: this, path: string): void;
+      loadInternal(this: this): void;
       addCallback(this: this, callback: Image.Callback): void;
       onload(this: this): void;
       onerror(this: this): void;
