@@ -45,7 +45,7 @@ declare global {
       zBounciness: number;
       minBounceBelocity: number;
       zGravityFactor: number;
-      float: { height: number; variance: number; maxSpeed: number; acel: number };
+      float: { height: number; variance: number; maxSpeed: number; accel: number };
       pos: Vec3;
       level: string;
       baseZPos: number;
