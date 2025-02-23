@@ -149,6 +149,8 @@ declare global {
         teleportPositionSettings?: ig.TeleportPosition.Settings,
       ): void;
       loadSlot(this: this, id?: number | ig.SaveSlot, teleportRightAway?: boolean): void;
+      _encrypt(this: this, data: string, _unused?: unknown): string;
+      _decrypt(this: this, data: string, _unused?: unknown): string;
     }
     interface StorageConstructor extends ImpactClass<Storage> {
       new (): Storage;
