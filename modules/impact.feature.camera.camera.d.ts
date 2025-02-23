@@ -31,6 +31,13 @@ declare global {
         transitionFunction?: KeySpline,
         name?: string,
       ): void;
+      replaceTarget(
+        this: this,
+        toDelete: ig.Camera.TargetHandle,
+        newTarget: ig.Camera.TargetHandle,
+        speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
+        transitionFunction?: KeySpline,
+      ): unknown;
       _getDuration(
         this: this,
         speed: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
