@@ -116,7 +116,7 @@ declare global {
         lockZ: boolean;
       }
       interface TargetHandleConstructor extends ImpactClass<TargetHandle> {
-        new (target: ig.Camera.TargetHandle.Target, x: number, y: number): TargetHandle;
+        new (target: ig.Camera.TargetHandle.Target, xOffset: number, yOffset: number): TargetHandle;
       }
     }
   }
