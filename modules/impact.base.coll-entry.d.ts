@@ -109,6 +109,7 @@ declare global {
     var CollEntry: CollEntryConstructor;
 
     interface CollTools {
+      isInScreen(entity: ig.Entity, x?: number, y?: number): boolean;
       getDistVec2(coll1: CollEntry, coll2: CollEntry, dest: Vec2): Vec2;
       isPostMoveOverHole(coll: ig.CollEntry, boo: boolean): boolean;
       hasWallCollide(coll: ig.CollEntry, maxAngle: number): boolean;
