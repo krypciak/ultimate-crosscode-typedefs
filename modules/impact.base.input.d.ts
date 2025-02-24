@@ -156,7 +156,7 @@ declare global {
 
     interface Input extends ig.Class {
       bindings: Record<ig.KEY, ig.Input.KnownAction> & Record<ig.KEY, string>;
-      actions: Record<ig.KEY, boolean>;
+      actions: Record<ig.Input.KnownAction, boolean>;
       presses: Record<ig.KEY, boolean>;
       keyups: Record<ig.KEY, boolean>;
       locks: Record<ig.KEY, boolean>;
