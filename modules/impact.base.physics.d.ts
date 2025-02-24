@@ -40,10 +40,42 @@ declare global {
       update(this: this): void;
       updateCollEntry(this: this, coll: ig.CollEntry, array: unknown[]): void;
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
+      trace(
+        this: this,
+        res: ig.Physics.TraceResult,
+        x: number,
+        y: number,
+        z: number,
+        vx: number,
+        vy: number,
+        width: number,
+        height: number,
+        zHeight: number,
+        collType: ig.COLLTYPE,
+        entryException?: Nullable<ig.CollEntry>,
+        collisionList?: Nullable<ig.CollEntry[]>,
+        onGround?: boolean,
+      ): boolean;
       addCollEntry(this: this, coll: ig.CollEntry): void;
       removeCollEntry(this: this, coll: ig.CollEntry): void;
       moveEntity(this: this, coll: ig.CollEntry, collisionList: ig.CollEntry[]): void;
       moveEntityZ(this: this, coll: ig.CollEntry, fVel: Vec2, prevOnGround: boolean): void;
+      traceOnEntryMap(
+        this: this,
+        res: ig.Physics.TraceResult,
+        x: number,
+        y: number,
+        z: number,
+        vx: number,
+        vy: number,
+        width: number,
+        height: number,
+        zHeight: number,
+        collType: ig.COLLTYPE,
+        entryException?: Nullable<ig.CollEntry>,
+        collisionList?: Nullable<ig.CollEntry[]>,
+        onGround?: boolean,
+      ): boolean;
       getGroundEntry(
         this: this,
         x: number,
