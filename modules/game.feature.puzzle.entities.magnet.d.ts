@@ -14,7 +14,7 @@ declare global {
           altDirs?: string[]; // array of conditions
         }
       }
-      interface Magnet extends ig.AnimatedEntity {
+      interface Magnet extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
         dir: number;
         targetDir: number;
         defaultDir: number;
@@ -31,7 +31,6 @@ declare global {
         _wm: ig.Config;
 
         onHideRequest(this: this): void;
-        onEffectEvent(this: this, effect: ig.ENTITY.Effect): void;
         startPull(this: this): void;
         fetchPullEntities(this: this): void;
         isPullActive(this: this): boolean;

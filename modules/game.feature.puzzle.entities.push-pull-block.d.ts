@@ -26,7 +26,24 @@ declare global {
         pushPullType: keyof typeof sc.PUSH_PULL_TYPES;
       }
     }
-    interface PushPullBlock extends ig.AnimatedEntity {}
+    interface PushPullBlock extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
+      _wm: ig.Config;
+      effects: { sheet: ig.EffectSheet; hideHandle: Nullable<ig.ENTITY.Effect> };
+      pushPullable: sc.PushPullable;
+      squishRespawn: boolean;
+      compressorSlow: number;
+      pushPullDirection: number;
+      bombSnap: boolean;
+
+      show(this: this, dontSpawnEffects?: boolean): void;
+      onHideRequest(this: this): void;
+      resetPos(this: this, pos?: Vec3, noSpawnEffects?: boolean): void;
+      onInteraction(this: this): void;
+      onInteractionEnd(this: this): void;
+      onKill(this: this, dontSpawnEffects?: boolean): void;
+      onMagnetStart(this: this): boolean;
+      onMagnetEnd(this: this, spawnEffects?: boolean): void;
+    }
     interface PushPullBlockConstructor extends ImpactClass<PushPullBlock> {
       new (x: number, y: number, z: number, settings: PushPullBlock.Settings): PushPullBlock;
     }

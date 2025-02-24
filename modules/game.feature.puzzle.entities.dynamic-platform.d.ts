@@ -31,7 +31,7 @@ declare global {
         skipWait?: boolean;
       }
     }
-    interface DynamicPlatform extends ig.ActorEntity {
+    interface DynamicPlatform extends ig.ActorEntity, ig.EffectSheet.EventCallback {
       currentState: unknown;
       states: unknown[];
       pauseCondition: ig.VarCondition;
@@ -47,7 +47,6 @@ declare global {
 
       show(this: this, dontSpawnFx?: boolean): void;
       onHideRequest(this: this): void;
-      onEffectEvent(this: this, effect: ig.ENTITY.Effect): void;
       update(this: this): void;
       postActionUpdate(this: this): void;
       onKill(this: this, _unused?: unknown): void;

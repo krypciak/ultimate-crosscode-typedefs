@@ -35,7 +35,7 @@ declare global {
         detectCondition?: string;
       }
     }
-    interface Chest extends ig.AnimatedEntity {
+    interface Chest extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
       mapIcons: sc.MapInteractIcon;
       mapIconsKey: sc.MapInteractIcon;
       effects: { sheet: ig.EffectSheet; handle?: ig.ENTITY.Effect };
@@ -54,7 +54,6 @@ declare global {
       hideManager?: ig.EntityHideManager;
 
       _initGfx(this: this): void;
-      onEffectEvent(this: this, handle: { isDone: () => boolean }): void;
       show(this: this, noEffects?: boolean): void;
       _updateIcon(this: this): void;
       onHideRequest(this: this): void;
