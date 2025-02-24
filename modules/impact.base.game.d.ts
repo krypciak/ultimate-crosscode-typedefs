@@ -196,10 +196,10 @@ declare global {
         yOffeset?: number,
         zOffset?: number,
         collType?: ig.COLLTYPE,
-        collisionList?: Nullable<any[]>,
+        collisionList?: Nullable<ig.CollEntry[]>,
         entryException?: ig.Entity,
         negZHeight?: number,
-      ): unknown;
+      ): boolean;
       trace(
         this: this,
         res: ig.Physics.TraceResult,
@@ -212,8 +212,8 @@ declare global {
         height: number,
         zHeight: number,
         collType: ig.COLLTYPE,
-        entryException: null,
-        collisionList: any[],
+        entryException?: Nullable<ig.Entity>,
+        collisionList?: Nullable<ig.CollEntry[]>,
         onGround?: boolean,
       ): boolean;
 
