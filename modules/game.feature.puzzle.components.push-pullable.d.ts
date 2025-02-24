@@ -5,6 +5,14 @@ export {};
 
 declare global {
   namespace sc {
+    enum PUSH_PULL_DIRECTION {
+      ALL = 0,
+      LEFT_RIGHT = 1,
+      UP_DOWN = 2,
+    }
+
+    var PushPullSounds: Record<'Start' | 'Loop', ig.Sound>;
+
     type PullableEntity = ig.ENTITY.WavePushPullBlock | ig.ENTITY.PushPullBlock;
     interface PushPullable extends ig.Class {
       entity: PullableEntity;
