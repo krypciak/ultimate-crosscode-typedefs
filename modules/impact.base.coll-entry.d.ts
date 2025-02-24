@@ -80,6 +80,7 @@ declare global {
         };
       };
 
+      setType(this: this, type: ig.COLLTYPE): void;
       setSize(this: this, x: number, y: number, z: number): void;
       setPadding(this: this, x: number, y: number): void;
       getCenter(this: this, target?: Vec2): Vec2;
