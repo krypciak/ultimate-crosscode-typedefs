@@ -30,12 +30,11 @@ declare global {
       namespace AntiCompressor {
         interface Settings extends ig.Entity.Settings {}
       }
-      interface AntiCompressor extends ig.AnimatedEntity {
+      interface AntiCompressor extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
         _wm: ig.Config;
         effects: unknown;
 
         onHideRequest(this: this): void;
-        onEffectEvent(this: this, effect: ig.ENTITY.Effect): void;
         ballHit(this: this, entity: ig.Entity): boolean;
       }
       interface AntiCompressorConstructor extends ImpactClass<AntiCompressor> {

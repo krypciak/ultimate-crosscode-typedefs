@@ -30,7 +30,7 @@ declare global {
       onInteraction(this: this): void;
       onInteractionEnd(this: this): void;
       isInteractionBlocked(this: this): boolean;
-      resetPos(this: this, pos: Vec3, noSpawnEffects?: boolean): void;
+      resetPos(this: this, pos?: Vec3, noSpawnEffects?: boolean): void;
       onUpdate(this: this): void;
       checkLockIn(this: this): void;
       onKill(this: this): void;
