@@ -38,7 +38,7 @@ declare global {
 
       mapLoaded(this: this): void;
       update(this: this): void;
-      updateCollEntry(this: this, coll: ig.CollEntry, array: unknown[]): void;
+      updateCollEntry(this: this, coll: ig.CollEntry, collisionList: ig.CollEntry[]): void;
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
       trace(
         this: this,

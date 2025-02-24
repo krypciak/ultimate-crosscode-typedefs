@@ -157,10 +157,10 @@ declare global {
     interface Input extends ig.Class {
       bindings: Record<ig.KEY, ig.Input.KnownAction> & Record<ig.KEY, string>;
       actions: Record<ig.Input.KnownAction, boolean>;
-      presses: Record<ig.KEY, boolean>;
-      keyups: Record<ig.KEY, boolean>;
-      locks: Record<ig.KEY, boolean>;
-      delayedKeyup: ig.KEY[];
+      presses: Record<ig.Input.KnownAction, boolean>;
+      keyups: Record<ig.Input.KnownAction, boolean>;
+      locks: Record<ig.Input.KnownAction, boolean>;
+      delayedKeyup: ig.Input.KnownAction[];
       currentDevice: ig.INPUT_DEVICES;
       isUsingMouse: boolean;
       isUsingKeyboard: boolean;
