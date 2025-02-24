@@ -186,6 +186,20 @@ declare global {
       varsChanged(this: this): void;
       varsChangedDeferred(this: this): void;
 
+      traceEntity(
+        this: this,
+        res: ig.Physics.TraceResult,
+        entity: ig.Entity,
+        vx: number,
+        vy: number,
+        xOffset?: number,
+        yOffeset?: number,
+        zOffset?: number,
+        collType?: ig.COLLTYPE,
+        collisionList?: Nullable<any[]>,
+        entryException?: ig.Entity,
+        negZHeight?: number,
+      ): unknown;
       trace(
         this: this,
         res: ig.Physics.TraceResult,
