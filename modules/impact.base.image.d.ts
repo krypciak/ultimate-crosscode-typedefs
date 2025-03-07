@@ -30,7 +30,7 @@ declare global {
     }
 
     interface Image extends ig.Loadable, Drawable {
-      data: ig.Image.Data;
+      data: HTMLImageElement;
       width: number;
       height: number;
       additionalCallbacks: Image.Callback[];
