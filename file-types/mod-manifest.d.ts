@@ -11,7 +11,7 @@ export interface Manifest {
   homepage?: string;
   repository?: string;
   tags?: string[];
-  authors?: Person[];
+  authors?: Person[] | Person;
   icons?: ModIcons;
 
   dependencies?: ModDependencies;
