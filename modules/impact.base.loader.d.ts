@@ -2,6 +2,9 @@ export {};
 
 declare global {
   namespace ig {
+    var cacheList: Record<string, Record<string, Nullable<ig.Cacheable>>>;
+    function cleanCache(forceClearMaps?: boolean): void;
+
     var fileForwarding: Record<string, string>;
     function getFilePath(path: string): string;
 
@@ -12,11 +15,19 @@ declare global {
     }
     interface Cacheable extends ig.Class {
       cacheType: string;
-      cacheKey: string
+      cacheKey: string;
+      referenceCount: number;
+      emptyMapChangeCount: number;
 
+      increaseRef(this: this): void;
       decreaseRef(this: this): void;
+      getCacheKey(this: this, ...args: unknown[]): Nullable<string>;
+      onCacheCleared?(this: this): void;
     }
-    interface CacheableConstructor extends ImpactClass<Cacheable> {}
+    interface CacheableConstructor extends ImpactClass<Cacheable> {
+      cache: Record<string, Nullable<Cacheable>>;
+      new (): Cacheable;
+    }
     var Cacheable: CacheableConstructor;
 
     interface Loadable extends ig.Cacheable, ig.Resource {

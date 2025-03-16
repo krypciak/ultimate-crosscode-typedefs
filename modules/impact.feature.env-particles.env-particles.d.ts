@@ -78,7 +78,6 @@ declare global {
       config: ig.EnvParticleSpawner.Settings;
       levels: ig.EnvParticleSpawner.Level[];
 
-      getCacheKey<T>(this: this, key: T): T;
       onCacheCleared(this: this): void;
       _initLevels(this: this): void;
       setQuantity(this: this, quantity: number, reset?: boolean): void;
