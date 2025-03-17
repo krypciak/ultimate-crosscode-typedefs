@@ -19,6 +19,20 @@ declare global {
       glowColor?: string;
     }
 
+    var WEATHER_TYPES: Record<string, ig.WeatherType>;
+
+    interface WeatherInstance extends ig.Cacheable {
+      name: string;
+      config: ig.WeatherType;
+      particleSpawners: ig.EnvParticleSpawner[];
+
+      onCacheCleared(this: this): void;
+    }
+    interface WeatherInstanceConstructor extends ImpactClass<WeatherInstance> {
+      new (name: string): WeatherInstance;
+    }
+    var WeatherInstance: WeatherInstanceConstructor;
+
     interface Weather extends ig.GameAddon {
       onLevelLoaded(this: this): void;
       onDeferredUpdate(this: this): void;
@@ -31,4 +45,3 @@ declare global {
     var Weather: WeatherConstructor;
   }
 }
-
