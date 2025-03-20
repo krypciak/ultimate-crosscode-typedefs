@@ -186,16 +186,16 @@ declare global {
       blur(this: this, event: MouseEvent | KeyboardEvent): void;
       focus(this: this): void;
       devicemotion(this: this, event: DeviceMotionEvent): void;
-      bind(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): void;
-      bindTouch(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): void;
+      bind(this: this, key: ig.KEY, action: ig.Input.KnownAction): void;
+      bindTouch(this: this, key: ig.KEY, action: ig.Input.KnownAction): void;
       unbind(this: this, key: ig.KEY): void;
       unbindAll(this: this): void;
-      state(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
-      pressed(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
-      keyupd(this: this, action: LiteralUnion<ig.Input.KnownAction>): boolean;
+      state(this: this, action: ig.Input.KnownAction): boolean;
+      pressed(this: this, action: ig.Input.KnownAction): boolean;
+      keyupd(this: this, action: ig.Input.KnownAction): boolean;
       clearPressed(this: this): void;
-      touchStart(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): boolean;
-      touchEnd(this: this, key: ig.KEY, action: LiteralUnion<ig.Input.KnownAction>): boolean;
+      touchStart(this: this, key: ig.KEY, action: ig.Input.KnownAction): boolean;
+      touchEnd(this: this, key: ig.KEY, action: ig.Input.KnownAction): boolean;
     }
     interface InputConstructor extends ImpactClass<Input> {
       new (): Input;
