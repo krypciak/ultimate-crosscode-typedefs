@@ -14,5 +14,7 @@ declare global {
       new (): ScreenBlur;
     }
     var ScreenBlur: ScreenBlurConstructor;
+
+    var screenBlur: ScreenBlur;
   }
 }
