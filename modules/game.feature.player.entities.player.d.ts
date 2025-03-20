@@ -126,7 +126,7 @@ declare global {
       initIdleActions(this: this): void;
       updateAnimSheet(this: this, updateFx?: boolean): void;
       updateSkinAura(this: this): void;
-      updateModelStats(this: this, a: boolean): void;
+      updateModelStats(this: this, updateFx?: boolean): void;
       showChargeEffect(this: this, level: number): void;
       clearCharge(this: this): void;
       onKill(this: this, dontRespawn?: boolean): void;
