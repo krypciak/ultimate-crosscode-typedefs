@@ -80,7 +80,24 @@ declare global {
     type SmallBoxAlign = (dest: Vec2, coll: ig.CollEntry) => void;
     let SMALL_BOX_ALIGN: Record<string, SmallBoxAlign>;
 
-    interface SmallEntityBox extends ig.GuiElementBase {}
+    interface SmallEntityBox extends ig.GuiElementBase {
+      ninepatch: ig.NinePatch;
+      entity: ig.Entity;
+      textGui: sc.TextGui;
+      timer: number;
+      rumbleTime: number;
+      finished: boolean;
+      entityOff: Vec2;
+      offY: number;
+      fixedPos?: Vec3;
+      hideSmall: boolean;
+
+      setFixedPos(this: this): void;
+      stopRumble(this: this): void;
+      _updatePos(this: this): void;
+      remove(this: this): void;
+      isFinished(this: this): boolean;
+    }
     interface SmallEntityBoxConstructor extends ImpactClass<SmallEntityBox> {
       new (
         entity: ig.Entity,
