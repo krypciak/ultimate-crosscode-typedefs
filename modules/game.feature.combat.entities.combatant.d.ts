@@ -116,6 +116,7 @@ declare global {
       _onDeathHit(this: this, attacker: ig.ENTITY.Combatant): void;
       heal(this: this, healInfo: sc.HealInfoType, hideNumbers?: boolean): void;
       instantDefeat(this: this, skipRumble?: boolean, forceEvenIfNoParams?: boolean): void;
+      resetStunData(this: this): void;
       // only natively exists on ig.ENTITY.Player, but a function of this signature is expected.
       onHeal?(this: this, healInfo: sc.HealInfoType, amount: number): void;
     }
