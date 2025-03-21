@@ -93,6 +93,7 @@ declare global {
         noHack?: Nullable<boolean>,
       ): sc.CombatParams.Params[K];
       getModifier(this: this, modifier: keyof sc.MODIFIERS): number;
+      revive(this: this, hpFactor?: number): void
       setCombatant(this: this, combatant: ig.ENTITY.Combatant): void;
       setModifiers(this: this, modifiers: sc.ModifierList): void;
       reset(this: this, maxSp: number): void;
