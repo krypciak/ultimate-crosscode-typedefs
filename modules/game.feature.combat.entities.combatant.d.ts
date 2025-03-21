@@ -55,6 +55,12 @@ declare global {
     }
     interface BasicCombatantConstructor extends ImpactClass<BasicCombatant> {}
     var BasicCombatant: BasicCombatantConstructor;
+
+    enum DYING_STATE {
+      ALIVE = 0,
+      KILL_HIT = 1,
+      DYING = 2,
+    }
   }
 
   namespace ig.ENTITY {
@@ -77,6 +83,9 @@ declare global {
       isCombatant: true;
       party: sc.COMBATANT_PARTY;
       damageTimer: number;
+      defeatNotified: boolean;
+      dying: sc.DYING_STATE;
+      skipRumble: boolean;
       invincibleTimer: number;
       shieldsConnections: sc.CombatantShieldConnection[];
       effects: Record<string, ig.EffectSheet>;
@@ -104,6 +113,7 @@ declare global {
         damageResult: sc.CombatParams.DamageResult,
         shieldResult: sc.SHIELD_RESULT,
       ): boolean;
+      _onDeathHit(this: this, attacker: ig.ENTITY.Combatant): void;
       heal(this: this, healInfo: sc.HealInfoType, hideNumbers?: boolean): void;
       instantDefeat(this: this, skipRumble?: boolean, forceEvenIfNoParams?: boolean): void;
       // only natively exists on ig.ENTITY.Player, but a function of this signature is expected.
