@@ -6,8 +6,15 @@ export {};
 declare global {
   namespace ig {
     interface Rumble extends ig.GameAddon {
+      rumbles: ig.Rumble.RumbleHandle[];
+      namedRumbles: Record<string, ig.Rumble.RumbleHandle>;
+      offset: Vec2;
+
       onPostUpdate(this: this): void;
       onReset(this: this): void;
+      addRumble(this: this, rumble: ig.Rumble.RumbleHandle): void;
+      removeRumble(this: this, rumble: ig.Rumble.RumbleHandle): void;
+      getRumble(this: this, name: string): ig.Rumble.RumbleHandle | undefined;
     }
     interface RumbleConstructor extends ImpactClass<Rumble> {
       RumbleHandle: ig.Rumble.RumbleHandleConstructor;
