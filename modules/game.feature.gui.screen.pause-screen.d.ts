@@ -9,6 +9,7 @@ export {};
 declare global {
   namespace sc {
     interface PauseScreenGui extends ig.GuiElementBase {
+      buttonInteract: ig.ButtonInteractEntry;
       buttonGroup: sc.ButtonGroup;
       resumeButton: sc.ButtonGui;
       skipButton: sc.ButtonGui;
@@ -19,6 +20,9 @@ declare global {
       arenaRestart: sc.ButtonGui;
       arenaLobby: sc.ButtonGui;
       versionGui: sc.TextGui;
+      infoGui: sc.TextGui;
+      gfx: ig.Image;
+      _waitForMenu: boolean;
 
       updateButtons(this: this, refocus: boolean): void;
     }
