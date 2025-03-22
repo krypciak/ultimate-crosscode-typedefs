@@ -61,10 +61,13 @@ declare global {
     interface Gamepad extends ig.Class {
       buttonDeadzones: Record<ig.BUTTONS, number>;
       axesDeadzones: Record<ig.BUTTONS, number>;
-      buttonStates: Record<ig.BUTTONS, boolean>;
+      buttonStates: Record<ig.BUTTONS, number>;
       axesStates: Record<ig.BUTTONS, number>;
       pressedStates: Record<ig.BUTTONS, boolean>;
       releasedStates: Record<ig.BUTTONS, boolean>;
+
+      updateButton(this: this, buttonId: ig.BUTTONS, value: number): void
+      updateAxes(this: this, axesId: ig.AXES, value: number): void
     }
     interface GamepadConstructor extends ImpactClass<Gamepad> {
       new (): Gamepad;
