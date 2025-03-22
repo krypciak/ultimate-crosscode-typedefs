@@ -5,6 +5,9 @@
 export {};
 
 declare global {
+  namespace ig {
+    var canLeavePauseMenu: boolean;
+  }
   namespace sc {
     interface GlobalInput extends ig.GameAddon {
       onPreUpdate(this: this): void;
