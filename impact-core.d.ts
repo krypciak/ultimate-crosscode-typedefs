@@ -211,6 +211,13 @@ declare global {
     var nwjsVersion: string;
     var nwjs64: boolean;
 
+    interface Profile {
+      moveEntity: number;
+      traceEntity: number;
+      updateEntity: number;
+    }
+    var profile: Profile;
+
     interface Perf {
       update: boolean;
       deferredUpdate: boolean;
