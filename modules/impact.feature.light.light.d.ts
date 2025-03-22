@@ -38,7 +38,7 @@ declare global {
 
       setOffset(this: this, x: number, y: number, z: number): void;
       stop(this: this): void;
-      update(this: this): void;
+      update(this: this): boolean;
       draw(this: this, baseAlpha: number, sizeOffset: number): void;
     }
     interface LightHandleConstructor extends ImpactClass<LightHandle> {
@@ -54,13 +54,19 @@ declare global {
     }
     let LightHandle: LightHandleConstructor;
 
-    interface DarknessHandle extends ig.Class {}
+    interface DarknessHandle extends ig.Class {
+      update(this: this): boolean;
+      getIntensity(this: this): number;
+    }
     interface DarknessHandleConstructor extends ImpactClass<DarknessHandle> {
       new (useActualTick: boolean): DarknessHandle;
     }
     let DarknessHandle: DarknessHandleConstructor;
 
-    interface ScreenFlashHandle extends ig.Class {}
+    interface ScreenFlashHandle extends ig.Class {
+      update(this: this): boolean;
+      draw(this: this): void;
+    }
     interface ScreenFlashHandleConstructor extends ImpactClass<ScreenFlashHandle> {}
     let ScreenFlashHandle: ScreenFlashHandleConstructor;
 
