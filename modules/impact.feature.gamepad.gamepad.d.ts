@@ -34,6 +34,7 @@ declare global {
       RIGHT_STICK_Y = 3,
     }
     interface GamepadManager extends ig.GameAddon {
+      gamepads: Record<string, ig.Gamepad>;
       activeGamepads: ig.Gamepad[];
 
       onPreUpdate(this: this): void;
@@ -66,8 +67,8 @@ declare global {
       pressedStates: Record<ig.BUTTONS, boolean>;
       releasedStates: Record<ig.BUTTONS, boolean>;
 
-      updateButton(this: this, buttonId: ig.BUTTONS, value: number): void
-      updateAxes(this: this, axesId: ig.AXES, value: number): void
+      updateButton(this: this, buttonId: ig.BUTTONS, value: number): void;
+      updateAxes(this: this, axesId: ig.AXES, value: number): void;
     }
     interface GamepadConstructor extends ImpactClass<Gamepad> {
       new (): Gamepad;
