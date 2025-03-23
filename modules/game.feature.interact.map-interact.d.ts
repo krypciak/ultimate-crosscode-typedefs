@@ -21,6 +21,16 @@ declare global {
 
     interface MapInteract extends ig.GameAddon {
       entries: MapInteractEntry[]
+      focusEntry: Nullable<MapInteractEntry>
+      interacting: boolean
+      hidden: boolean
+
+      addEntry(this: this, entry: MapInteractEntry): void
+      removeEntry(this: this, entry: MapInteractEntry): void
+      onPreUpdate(this: this): void;
+      updateHideStatus(this: this): void
+      forceHide(this: this): void
+      forceShow(this: this): void
     }
     interface MapInteractConstructor extends ImpactClass<MapInteract> {
       new(): MapInteract
