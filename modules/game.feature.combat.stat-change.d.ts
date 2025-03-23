@@ -14,7 +14,7 @@ declare global {
         attack: number;
         defense: number;
         focus: number;
-        elemFactor: number[]
+        elemFactor: number[];
       }
     }
     interface StatChange extends ig.Class {
@@ -25,7 +25,7 @@ declare global {
 
       clear(this: this): void;
       getTimeFactor(this: this): number;
-      
+
       //does not exist on base class, but it is expected to exist in all uses of StatChange.
       update(this: this): boolean;
     }
@@ -35,13 +35,12 @@ declare global {
     var StatChange: StatChangeConstructor;
 
     interface ItemBuff extends sc.StatChange {
-      itemID: number
+      itemID: number;
     }
     interface ItemBuffConstructor extends ImpactClass<ItemBuff> {
-      new (effectArr: string[], duration: number, itemId: number): ItemBuff
+      new (stats: sc.StatChange.StatName[], duration: number, itemId: number): ItemBuff;
     }
-    var ItemBuff: ItemBuffConstructor
-
+    var ItemBuff: ItemBuffConstructor;
 
     interface ActionBuff extends sc.StatChange, ig.Entity.Attachable, sc.Combat.ActionAttached {
       active: boolean;
@@ -68,7 +67,7 @@ declare global {
     var STAT_PARAM_TYPE: Record<string, StatParamType>;
 
     namespace StatChangeSettings {
-        type Grade = string
+      type Grade = string;
     }
     interface StatChangeSettings {
       change: sc.STAT_CHANGE_TYPE;
