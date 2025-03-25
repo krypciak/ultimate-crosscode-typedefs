@@ -16,27 +16,27 @@ declare global {
     }
     enum INTERACT_Z_CONDITION {
       SAME_Z = 1,
-      Z_RANGE_OVERLAP = 2
+      Z_RANGE_OVERLAP = 2,
     }
 
     interface MapInteract extends ig.GameAddon {
-      entries: MapInteractEntry[]
-      focusEntry: Nullable<MapInteractEntry>
-      interacting: boolean
-      hidden: boolean
+      entries: MapInteractEntry[];
+      focusEntry: Nullable<MapInteractEntry>;
+      interacting: boolean;
+      hidden: boolean;
 
-      addEntry(this: this, entry: MapInteractEntry): void
-      removeEntry(this: this, entry: MapInteractEntry): void
+      addEntry(this: this, entry: MapInteractEntry): void;
+      removeEntry(this: this, entry: MapInteractEntry): void;
       onPreUpdate(this: this): void;
-      updateHideStatus(this: this): void
-      forceHide(this: this): void
-      forceShow(this: this): void
+      updateHideStatus(this: this): void;
+      forceHide(this: this): void;
+      forceShow(this: this): void;
     }
     interface MapInteractConstructor extends ImpactClass<MapInteract> {
-      new(): MapInteract
+      new (): MapInteract;
     }
-    var MapInteract: MapInteractConstructor
-    var mapInteract: MapInteract
+    var MapInteract: MapInteractConstructor;
+    var mapInteract: MapInteract;
 
     interface MapInteractIcon extends ig.Class {}
     interface MapInteractIconConstructor extends ImpactClass<MapInteractIcon> {
@@ -49,22 +49,28 @@ declare global {
     var MapInteractIcon: MapInteractIconConstructor;
 
     interface MapInteractEntry extends ig.Class {
-      entity: ig.Entity
-      handler: ig.Entity
-      offset: unknown
-      state: sc.INTERACT_ENTRY_STATE
-      icon: sc.MapInteractIcon
-      interrupting: boolean
-      zCondition: sc.INTERACT_Z_CONDITION
-      gui: ig.GUI.Interact
-      blockedDuringCombat: boolean
+      entity: ig.Entity;
+      handler: ig.Entity;
+      offset: unknown;
+      state: sc.INTERACT_ENTRY_STATE;
+      icon: sc.MapInteractIcon;
+      interrupting: boolean;
+      zCondition: sc.INTERACT_Z_CONDITION;
+      gui: ig.GUI.Interact;
+      blockedDuringCombat: boolean;
 
       setIcon(this: this, icon: sc.MapInteractIcon): void;
-      setState(this: this, state: sc.INTERACT_ENTRY_STATE): void
+      setSubGui(this: this, gui: ig.GUI.Interact['subGui']): void;
+      setState(this: this, state: sc.INTERACT_ENTRY_STATE): void;
     }
     interface MapInteractEntryConstructor extends ImpactClass<MapInteractEntry> {
-      new (entity: ig.Entity, handler: ig.Entity, icon: sc.MapInteractIcon,
-        zCondition: sc.INTERACT_Z_CONDITION, interrupting: boolean): MapInteractEntry
+      new (
+        entity: ig.Entity,
+        handler: ig.Entity,
+        icon: sc.MapInteractIcon,
+        zCondition: sc.INTERACT_Z_CONDITION,
+        interrupting: boolean,
+      ): MapInteractEntry;
     }
     var MapInteractEntry: MapInteractEntryConstructor;
   }
