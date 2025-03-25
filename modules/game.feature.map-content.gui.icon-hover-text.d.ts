@@ -15,7 +15,7 @@ declare global {
             remove(this: this): void
         }
         interface IconHoverTextGuiConstructor extends ImpactClass<IconHoverTextGui> {
-            new(text: ig.LangLabel, yOffset: number, showOnNear: boolean, title?: string): IconHoverTextGui
+            new(text: sc.TextLike, yOffset: number, showOnNear: boolean, title?: string): IconHoverTextGui
         }
         var IconHoverTextGui: IconHoverTextGuiConstructor
     }
