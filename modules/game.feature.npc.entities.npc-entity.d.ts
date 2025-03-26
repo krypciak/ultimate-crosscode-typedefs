@@ -48,7 +48,9 @@ declare global {
         hideHandle?: unknown;
         hideManager: ig.EntityHideManager;
 
+        updateNpcState(this: this, init: boolean, force?: boolean): void;
         setMapInteractIcon(this: this, npcState: sc.NpcState): void;
+        onInteraction(this: this): boolean | undefined;
       }
       interface NPCConstructor extends ImpactClass<NPC> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.NPC.Settings): NPC;
