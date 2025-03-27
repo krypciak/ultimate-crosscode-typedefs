@@ -136,6 +136,7 @@ declare global {
         chargeType: ig.ENTITY.Player.Charging.Type,
         level: number,
       ): string;
+      isControlBlocked(this: this): boolean;
       gatherInput(this: this): ig.ENTITY.Player.PlayerInput;
       handleStateStart(
         this: this,
