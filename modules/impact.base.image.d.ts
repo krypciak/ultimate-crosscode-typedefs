@@ -180,5 +180,47 @@ declare global {
     }
     interface ImageAtlasFragmentConstructor extends ImpactClass<ImageAtlasFragment> {}
     var ImageAtlasFragment: ImageAtlasFragmentConstructor;
+
+    interface ScreenBuffer extends ig.Class {
+      width: number;
+      height: number;
+      buffer: Nullable<HTMLCanvasElement>;
+      scroll: Vec2;
+      off: Vec2;
+      shift: Vec2 & { full: boolean };
+      redrawFull: boolean;
+      ownerMap: Nullable<ig.ChunkedMap>;
+
+      clearCached(this: this): void;
+      resetBuffer(this: this): void;
+      fetchBuffer(this: this): void;
+      update(this: this, map: ig.ChunkedMap): void;
+      draw(
+        this: this,
+        x: number,
+        y: number,
+        offX: number,
+        offfY: number,
+        width: number,
+        height: number,
+      ): void;
+      setGridTile(this: this, x: number, y: number, tile: number, map: ig.ChunkedMap): void;
+      _redrawFull(this: this, map: ig.ChunkedMap): void;
+      _redrawShift(this: this, map: ig.ChunkedMap): void;
+      _splitDraw(
+        this: this,
+        map: ig.ChunkedMap,
+        x: number,
+        y: number,
+        scrollX: number,
+        scrollY: number,
+        absX: number,
+        height: number,
+      ): void;
+    }
+    interface ScreenBufferConstructor extends ImpactClass<ScreenBuffer> {
+      new (ownerMap: ig.ChunkedMap): ScreenBuffer;
+    }
+    var ScreenBuffer: ScreenBufferConstructor;
   }
 }
