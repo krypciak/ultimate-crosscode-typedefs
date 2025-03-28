@@ -5,9 +5,30 @@ export {};
 declare global {
   namespace ig {
     interface CubeSprite extends ig.Class {
+      pos: Vec2;
       size: Vec3;
+      shadow: Vec3 & { diameter: number; scaleY: number };
+      gfxOffset: Vec2;
+      gfxCut: { top: number; bottom: number; left: number; right: number };
+      tmpOffset: Vec3;
+      wallY: number;
+      image: Nullable<ig.Drawable | ig.DoubleColor>;
+      src: Vec2;
       alpha: number;
-      
+      flip: { x: boolean; y: boolean };
+      scale: Vec2;
+      rotate: number;
+      pivot: Vec2;
+      overlay: { color: Nullable<string>; alpha: number };
+      lighterOverlay: { color: Nullable<string>; alpha: number };
+      aboveZ: number;
+      mergeTop: boolean;
+      renderData: Record<string, unknown>;
+      gui: boolean;
+      renderMode: Nullable<GlobalCompositeOperation>;
+      alwaysRender: boolean;
+      noOverlapSolving: boolean;
+
       setPos(this: this, x: number, y: number, z: number): void;
       setGfxOffset(this: this, x: number, y: number): void;
       setGfxCut(this: this, top: number, bottom: number, left: number, right: number): void;
@@ -18,8 +39,8 @@ declare global {
         z: number,
         diameter: number,
         type?: ig.COLL_SHADOW_TYPE,
-        scaleY?: number
-        ): void;
+        scaleY?: number,
+      ): void;
       setImageSrc(
         this: this,
         image: ig.Drawable | ig.DoubleColor,
@@ -41,9 +62,10 @@ declare global {
         srcX: number,
         srcY: number,
       ): void;
-
     }
-    interface CubeSpriteConstructor extends ImpactClass<CubeSprite> {}
+    interface CubeSpriteConstructor extends ImpactClass<CubeSprite> {
+      new (gui: boolean): CubeSprite;
+    }
     var CubeSprite: CubeSpriteConstructor;
   }
 }
