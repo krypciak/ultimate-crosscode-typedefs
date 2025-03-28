@@ -12,7 +12,7 @@ declare global {
       gfxCut: { top: number; bottom: number; left: number; right: number };
       tmpOffset: Vec3;
       wallY: number;
-      image: Nullable<ig.Drawable | ig.DoubleColor>;
+      image: Nullable<ig.Drawable | ig.DoubleColor | ig.TransitionColor>;
       src: Vec2;
       alpha: number;
       flip: { x: boolean; y: boolean };
@@ -29,6 +29,7 @@ declare global {
       alwaysRender: boolean;
       noOverlapSolving: boolean;
 
+      clear(this: this, guiSprites?: boolean): void
       setPos(this: this, x: number, y: number, z: number): void;
       setGfxOffset(this: this, x: number, y: number): void;
       setGfxCut(this: this, top: number, bottom: number, left: number, right: number): void;
@@ -43,7 +44,7 @@ declare global {
       ): void;
       setImageSrc(
         this: this,
-        image: ig.Drawable | ig.DoubleColor,
+        image: this['image'],
         offsetX?: Nullable<number>,
         offsetY?: Nullable<number>,
       ): void;
@@ -67,5 +68,16 @@ declare global {
       new (gui: boolean): CubeSprite;
     }
     var CubeSprite: CubeSpriteConstructor;
+
+    interface SpritePool extends ig.Class {
+      sprites: ig.CubeSprite[];
+
+      get(this: this, guiSprites: boolean): ig.CubeSprite;
+    }
+    interface SpritePoolConstructor extends ImpactClass<SpritePool> {
+      new (): SpritePool;
+    }
+    var SpritePool: SpritePoolConstructor;
+    var spritePool: SpritePool;
   }
 }
