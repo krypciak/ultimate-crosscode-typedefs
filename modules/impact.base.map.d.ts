@@ -46,7 +46,7 @@ declare global {
       enabled: boolean;
       preRender: boolean;
       screenRender: boolean;
-      screenBuffer: boolean;
+      screenBuffer?: ig.ScreenBuffer;
       preRenderedChunks: HTMLCanvasElement[][];
       chunkSizeX: number;
       chunkSizeY: number;
