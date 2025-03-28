@@ -31,7 +31,7 @@ declare global {
       mapCleared(this: this): void;
     }
     interface Renderer2dConstructor extends ImpactClass<Renderer2d> {
-      Renderer2d: ig.Renderer2d.SpriteDrawSlotConstructor;
+      SpriteDrawSlot: ig.Renderer2d.SpriteDrawSlotConstructor;
       new (): Renderer2d;
     }
     var Renderer2d: Renderer2dConstructor;
