@@ -83,8 +83,8 @@ declare global {
         offY: number,
         tile: number,
       ): void;
-      _draw(this: this, x: number, y: number, width: number, height: number): void;
-      draw(this: this, x: number, y: number, width: number, height: number): void;
+      _draw(this: this, x?: number, y?: number, width?: number, height?: number): void;
+      draw(this: this, x?: number, y?: number, width?: number, height?: number): void;
       drawFromScreenBuffer(this: this, x: number, y: number, width: number, height: number): void;
       drawPreRendered(this: this, x: number, y: number, width: number, height: number): void;
       drawTiled(this: this, x: number, y: number, width: number, height: number): void;
