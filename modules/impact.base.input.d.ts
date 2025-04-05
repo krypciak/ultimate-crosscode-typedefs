@@ -155,11 +155,11 @@ declare global {
     }
 
     interface Input extends ig.Class {
-      bindings: Record<ig.KEY, ig.Input.KnownAction> & Record<ig.KEY, string>;
-      actions: Record<ig.Input.KnownAction, boolean>;
-      presses: Record<ig.Input.KnownAction, boolean>;
-      keyups: Record<ig.Input.KnownAction, boolean>;
-      locks: Record<ig.Input.KnownAction, boolean>;
+      bindings: PartialRecord<ig.KEY, ig.Input.KnownAction> & PartialRecord<ig.KEY, string>;
+      actions: PartialRecord<ig.Input.KnownAction, boolean>;
+      presses: PartialRecord<ig.Input.KnownAction, boolean>;
+      keyups: PartialRecord<ig.Input.KnownAction, boolean>;
+      locks: PartialRecord<ig.Input.KnownAction, boolean>;
       delayedKeyup: ig.Input.KnownAction[];
       currentDevice: ig.INPUT_DEVICES;
       isUsingMouse: boolean;
@@ -194,8 +194,8 @@ declare global {
       pressed(this: this, action: ig.Input.KnownAction): boolean;
       keyupd(this: this, action: ig.Input.KnownAction): boolean;
       clearPressed(this: this): void;
-      touchStart(this: this, key: ig.KEY, action: ig.Input.KnownAction): boolean;
-      touchEnd(this: this, key: ig.KEY, action: ig.Input.KnownAction): boolean;
+      touchStart(this: this, event: TouchEvent, action: ig.Input.KnownAction): boolean;
+      touchEnd(this: this, event: TouchEvent, action: ig.Input.KnownAction): boolean;
     }
     interface InputConstructor extends ImpactClass<Input> {
       new (): Input;
