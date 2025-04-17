@@ -145,6 +145,7 @@ declare global {
         force?: boolean,
         callbackOnFinish?: boolean,
       ): void;
+      updateAnim(this: this): void;
     }
     interface AnimatedEntityConstructor extends ImpactClass<AnimatedEntity> {
       new (x: number, y: number, z: number, settings: ig.AnimatedEntity.Settings): AnimatedEntity;
