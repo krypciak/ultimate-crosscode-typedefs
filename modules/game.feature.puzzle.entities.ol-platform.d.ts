@@ -32,11 +32,7 @@ declare global {
         navBlocker: ig.NavBlocker;
         quickNavUpdate: boolean;
 
-        show(this: this): void /* this also has an "a" argument but it does nothing */;
-        onKill(this: this): void;
         updateState(this: this, immediately?: boolean): void;
-        update(this: this): void;
-        updateSprites(this: this): void;
         varsChanged(this: this): void;
       }
       interface OLPlatformConstructor extends ImpactClass<OLPlatform> {

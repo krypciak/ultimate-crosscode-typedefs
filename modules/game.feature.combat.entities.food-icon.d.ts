@@ -25,7 +25,6 @@ declare global {
       icon: number;
 
       setState(this: this, state: sc.FOOD_ICON_STATE, offset?: Nullable<Vec2>): void;
-      updateSprites(this: this): void;
     }
     interface FoodIconEntityConstructor extends ImpactClass<FoodIconEntity> {
       new (x: number, y: number, z: number, settings: FoodIconEntity.Settings): FoodIconEntity;
