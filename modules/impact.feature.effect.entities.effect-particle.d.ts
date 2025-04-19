@@ -11,7 +11,7 @@ declare global {
       timer: number;
       maxTime: number;
       postAnimTime: number;
-      pData: ig.ENTITY.Particle.Settings;
+      pData: ig.ParticleData;
       particleState: ig.ParticleState;
       startAngle: number;
       angleSync: Nullable<number>;
