@@ -67,6 +67,10 @@ declare global {
       }
     }
     interface EffectSheet extends ig.JsonLoadable {
+      animSheet: Nullable<ig.AnimationSheet>;
+      faceAnimSheet: Nullable<ig.AnimationSheet>;
+      effects: Record<string, ig.Effect>;
+
       spawnOnTarget(
         this: this,
         name: string,
