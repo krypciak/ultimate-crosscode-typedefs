@@ -57,7 +57,11 @@ declare global {
           ownerEffect?: ig.ENTITY.Effect;
         }
       }
-      interface Particle extends ig.AnimatedEntity {}
+      interface Particle extends ig.AnimatedEntity {
+        handle: ig.ParticleHandle;
+
+        _initParticle(this: this, data: ig.ENTITY.Particle.Settings): void;
+      }
       interface ParticleConstructor extends ImpactClass<Particle> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.Particle.Settings): Particle;
       }
