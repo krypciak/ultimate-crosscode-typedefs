@@ -179,7 +179,7 @@ declare global {
       _timer: number;
 
       update(this: this, effect: ig.ENTITY.Effect): boolean;
-      cancel(this: this, effect: ig.ENTITY.Effect): boolean;
+      cancel(this: this, effect: ig.ENTITY.Effect, checkDuration?: boolean): boolean;
     }
 
     interface EffectTimeRunner extends EffectRunnerBase {}

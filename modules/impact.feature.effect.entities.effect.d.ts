@@ -30,7 +30,7 @@ declare global {
         timelineIndex: number;
         timer: number;
         looped: boolean;
-        particles: unknown[];
+        particles: ig.ParticleHandle[];
         runners: (ig.EffectParticleRunner | ig.EffectTimeRunner)[];
         align: ig.ENTITY_ALIGN;
         target2: {
@@ -44,10 +44,19 @@ declare global {
         rotateFace: number;
         flipLeftFace: boolean;
         noMultiGroup: boolean;
+        actionTarget: Nullable<ig.ActorEntity>;
 
+        _initEffect(this: this, settings: ig.ENTITY.Effect.Settings): void;
+        attachToAction(this: this, actor: ig.ActorEntity): void;
+        setTimeEntity(this: this, entity: ig.Entity): void;
         setIgnoreSlowdown(this: this): void;
+        getTarget2Pos(this: this, destVec: Vec3): Vec3;
         stop(this: this): void;
         isDone(this: this): boolean;
+        getRemainingTime(this: this): number;
+        setCallback(this: this, callback: ig.EffectSheet.EventCallback): void;
+        onActionEndDetach(this: this): void;
+        onEntityKillDetach(this: this): void;
         spawnParticle<E extends ig.Entity, S extends ig.Entity.Settings>(
           this: this,
           entity: string | (new (x: number, y: number, z: number, settings: S) => E),
@@ -55,6 +64,10 @@ declare global {
           settings?: Nullable<S>,
           forceTargetPos?: Nullable<boolean>,
         ): void;
+        deferredUpdate(this: this): void;
+        updateRunners(this: this): void;
+        cancelRunners(this: this, checkDuration?: boolean): void;
+        onKill(this: this, _unused?: unknown): void;
       }
       interface EffectConstructor extends ImpactClass<Effect> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.Effect.Settings): Effect;
