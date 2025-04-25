@@ -75,10 +75,10 @@ declare global {
       var Effect: EffectConstructor;
     }
     namespace EffectTools {
-      function clearEffects(entity: ig.Entity, withTheSameGroup?: ig.ENTITY.Effect): void;
+      function clearEffects(entity: ig.Entity, withTheSameGroup?: string): void;
       function getFirstEffect(
         entity: ig.Entity,
-        withTheSameGroup?: ig.ENTITY.Effect,
+        withTheSameGroup?: string,
       ): Nullable<ig.ENTITY.Effect>;
     }
   }
