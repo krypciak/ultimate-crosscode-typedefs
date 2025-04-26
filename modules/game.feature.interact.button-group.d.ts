@@ -6,11 +6,9 @@ declare global {
   namespace sc {
     interface MouseButtonGroup extends ig.ButtonGroup {
       _counter: number;
-      onButtonTraversal: unknown;
+      onButtonTraversal?: () => void;
 
       addFocusGui(this: this, gui: ig.FocusGui): void;
-      doButtonTraversal(this: this, regainFocus: boolean): void;
-      isNonMouseMenuInput(this: this): false;
     }
     interface MouseButtonGroupConstructor extends ImpactClass<MouseButtonGroup> {
       new (): MouseButtonGroup;
@@ -18,9 +16,7 @@ declare global {
     var MouseButtonGroup: MouseButtonGroupConstructor;
 
     interface ButtonGroup extends ig.ButtonGroup {
-      onButtonTraversal?(this: this): void;
-      doButtonTraversal(this: this, inputRegainded: boolean): void;
-      isNonMouseMenuInput(this: this): boolean;
+      onButtonTraversal?: () => void;
     }
     interface ButtonGroupConstructor extends ImpactClass<ButtonGroup> {
       new (): sc.ButtonGroup;
@@ -42,8 +38,6 @@ declare global {
         ignoreSounds?: boolean,
         ignoreIfSame?: boolean,
       ): void;
-      stepRight(this: this): void;
-      stepLeft(this: this): void;
       stepDown(this: this): void;
       stepUp(this: this): void;
     }

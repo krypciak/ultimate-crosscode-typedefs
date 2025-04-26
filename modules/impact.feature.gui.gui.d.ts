@@ -232,7 +232,6 @@ declare global {
         attribute: keyof ig.GuiHook.State,
         value: number,
       ): void;
-      updateState(this: this): boolean;
     }
     interface GuiHookConstructor extends ImpactClass<GuiHook> {}
     var GuiHook: GuiHookConstructor;
