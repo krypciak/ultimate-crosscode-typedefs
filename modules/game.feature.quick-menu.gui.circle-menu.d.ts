@@ -49,7 +49,6 @@ declare global {
         button4: sc.RingMenuButton,
       ): void;
       isNonMouseMenuInput(this: this): boolean;
-      doButtonTraversal(this: this, focusRegained?: boolean): void;
       focusCurrentButton(
         this: this,
         newX: number,
