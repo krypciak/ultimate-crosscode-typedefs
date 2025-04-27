@@ -28,6 +28,9 @@ declare global {
       sortMenu: sc.SortMenu;
 
       createHelpGui(this: this): void;
+      onAddHotkeys(this: this, longTransition?: boolean): void;
+      commitHotKeysToTopBar(this: this, longTransition?: boolean): void;
+      onBackButtonPress(this: this): void;
     }
     interface ListInfoMenuConstructor extends ImpactClass<ListInfoMenu> {
       new (list: sc.ListTabbedPane, info?: ig.BoxGui, disableSorting?: boolean): ListInfoMenu;
