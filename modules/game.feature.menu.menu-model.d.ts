@@ -193,7 +193,8 @@ declare global {
       extends ig.GameAddon,
         sc.Model,
         ig.Vars.Accessor,
-        ig.Storage.Listener,
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad,
         sc.NewGamePlusModel.Applier {
       guiReference: sc.MainMenu;
       infoText: Nullable<sc.TextLike>;
@@ -317,8 +318,6 @@ declare global {
       hasNewUnlock(this: this, type: sc.MENU_SUBMENU): boolean;
       hasNewUnlockKey(this: this, type: sc.MENU_SUBMENU, newUnlock: string[]): boolean;
       clearNewUnlock(this: this, type: sc.MENU_SUBMENU, eraseInsteadOfDelete?: boolean): void;
-      onStorageSave(this: this, savefile: ig.SaveSlot.Data): void;
-      onStoragePreLoad(this: this, savefile: ig.SaveSlot.Data): void;
       onPreLoadDrops(this: this): void;
       addMapStamp(
         this: this,

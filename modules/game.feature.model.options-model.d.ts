@@ -232,7 +232,12 @@ declare global {
     }
     var KeyBinder: KeyBinderConstructor;
 
-    interface OptionModel extends ig.GameAddon, sc.Model, ig.Storage.Listener {
+    interface OptionModel
+      extends ig.GameAddon,
+        sc.Model,
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad,
+        ig.Storage.ListenerGlobalSave {
       hdMode: boolean;
       hasChanged: boolean;
       keyBinder: sc.KeyBinder;
@@ -254,7 +259,6 @@ declare global {
       get(this: this, key: string, local?: boolean): unknown;
       _setDisplaySize(this: this): void;
       _checkForKeyBindingFailure(this: this): void;
-      onStorageGlobalSave(this: this, globals: ig.Storage.GlobalsData): void;
       onStorageGlobalLoad(this: this, globals: ig.Storage.GlobalsData): void;
     }
     interface OptionModelConstructor extends ImpactClass<OptionModel> {

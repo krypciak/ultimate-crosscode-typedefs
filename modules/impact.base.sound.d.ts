@@ -83,7 +83,73 @@ declare global {
     }
     var WebAudioBuffer: WebAudioBufferConstructor;
 
-    interface Music extends ig.Class {}
+    namespace Music {
+      interface Track {
+        track: ig.Track;
+        timeOnPush: number;
+        stopOnEnd: boolean;
+        volume: number;
+      }
+    }
+    interface Music extends ig.Class {
+      inBetweenTrack: Nullable<ig.Music.Track>;
+      currentTrack: ig.Music.Track;
+      trackStack: ig.Music.Track[];
+      paused: boolean;
+      _volume: number;
+      _interval: number;
+      _timer: ig.Timer;
+      _fadeInTime: number;
+      _nextTrackReset: boolean;
+      _transitionType: number;
+
+      play(
+        this: this,
+        track: ig.Track,
+        fadeOut: number,
+        fadeIn: number,
+        volume: number,
+        stopOnEnd?: boolean,
+      ): void;
+      push(
+        this: this,
+        track: ig.Track,
+        fadeOut: number,
+        fadeIn: number,
+        volume: number,
+        stopOnEnd?: boolean,
+      ): void;
+      pop(this: this, fadeOut: number, fadeIn: number): void;
+      inbetween(
+        this: this,
+        track: ig.Track,
+        volume: boolean,
+        fadeIn: number,
+        volumeMultiplier?: number,
+      ): void;
+      pause(this: this, fadeOut?: number): void;
+      resume(this: this, fadeIn: number): void;
+      getStackSize(this: this): number;
+      isTrackPlaying(this: this, track: ig.Track, volume?: number): boolean;
+      getVolume(this: this): number;
+      setVolume(this: this, volume: number): void;
+      _checkCurrentTrackEquality(this: this): boolean;
+      _getTopTrack(this: this): Nullable<ig.Music.Track>;
+      _pushNextTrack(
+        this: this,
+        track: ig.Track,
+        stopOnEnd?: boolean,
+        mode?: ig.BGM_SWITCH_MODE,
+      ): void;
+      _setFadeOut(this: this, fadeOut: number, paused?: boolean): void;
+      _startInterval(this: this): void;
+      _intervalStep(this: this): void;
+      _playTopSong(this: this): void;
+      _endFadeIn(this: this): void;
+      _trackEnded(this: this): void;
+      onWindowFocusLost(this: this): void;
+      onWindowFocusGained(this: this): void;
+    }
     interface MusicConstructor extends ImpactClass<Music> {
       new (): Music;
     }

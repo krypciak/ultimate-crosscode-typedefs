@@ -101,7 +101,7 @@ declare global {
 
       interface MapAttributes {
         saveMode: 'ENABLED' | 'DISABLED' | '';
-        bgm: string;
+        bgm: ig.BGM_DEFAULT_TRACK;
         cameraInBounds: boolean;
         'map-sounds': string;
         mapStyle: string;

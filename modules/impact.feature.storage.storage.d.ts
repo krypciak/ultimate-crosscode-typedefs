@@ -123,12 +123,22 @@ declare global {
         options: GlobalsData.Options;
       }
 
-      interface Listener {
-        onStorageGlobalSave?(this: this, globals: ig.Storage.GlobalsData): void;
-        onStorageSave?(this: this, savefile: ig.SaveSlot.Data): void;
-        onStoragePreLoad?(this: this, savefile: ig.SaveSlot.Data): void;
-        onStoragePostLoad?(this: this, savefile: ig.SaveSlot.Data): void;
+      interface ListenerGlobalSave {
+        onStorageGlobalSave(this: this, globals: ig.Storage.GlobalsData): void;
       }
+      interface ListenerSave {
+        onStorageSave(this: this, savefile: ig.SaveSlot.Data): void;
+      }
+      interface ListenerPreLoad {
+        onStoragePreLoad(this: this, savefile: ig.SaveSlot.Data): void;
+      }
+      interface ListenerPostLoad {
+        onStoragePostLoad(this: this, savefile: ig.SaveSlot.Data): void;
+      }
+      type Listener = Partial<ListenerGlobalSave> &
+        Partial<ListenerSave> &
+        Partial<ListenerPreLoad> &
+        Partial<ListenerPostLoad>;
     }
     interface Storage extends ig.GameAddon, sc.Model {
       slots: ig.SaveSlot[];

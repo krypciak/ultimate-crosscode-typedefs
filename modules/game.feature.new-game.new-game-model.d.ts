@@ -99,7 +99,8 @@ declare global {
       extends ig.GameAddon,
         sc.Model,
         ig.Vars.Accessor,
-        ig.Storage.Listener {
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad {
       active: boolean;
       store: { level?: number };
       options: Record<sc.NEW_GAME_OPTIONS.Keys, boolean>;

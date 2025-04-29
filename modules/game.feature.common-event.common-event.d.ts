@@ -87,7 +87,10 @@ declare global {
         eventData: DataOf<T>;
       }
     }
-    interface CommonEvents extends ig.GameAddon, ig.Storage.Listener {
+    interface CommonEvents
+      extends ig.GameAddon,
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad {
       events: Record<string, sc.CommonEvent>;
       eventsByType: Record<keyof typeof sc.COMMON_EVENT_TYPE, sc.CommonEvent[]>;
       runData: sc.CommonEvents.RunData;
@@ -95,8 +98,6 @@ declare global {
       delayedTriggerTimer: number;
 
       onReset(this: this): void;
-      onStorageSave(this: this, savefile: ig.SaveSlot.Data): void;
-      onStoragePreLoad(this: this, savefile: ig.SaveSlot.Data): void;
       onDeferredUpdate(this: this): void;
       _loadCommonEvents(this: this): void;
       triggerEvent<T extends keyof typeof sc.COMMON_EVENT_TYPE>(
@@ -184,4 +185,3 @@ declare global {
     var CommonEvent: CommonEventConstructor;
   }
 }
-

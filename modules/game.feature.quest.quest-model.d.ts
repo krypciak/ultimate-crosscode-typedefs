@@ -17,7 +17,12 @@ declare global {
       ALL = 2,
     }
 
-    interface QuestModel extends ig.GameAddon, sc.Model, sc.Model.Observer, ig.Storage.Listener {
+    interface QuestModel
+      extends ig.GameAddon,
+        sc.Model,
+        sc.Model.Observer,
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad {
       _solvedTimer: number;
       _hasSolveDialogs: boolean;
 

@@ -12,11 +12,11 @@ declare global {
   namespace sc {
     /* data for sc.PLAYER_MSG.ITEM_OBTAINED */
     interface PLAYER_MSG_ITEM_OBTAINED_DATA {
-        id: ItemID
-        equipID: number
-        amount: number
-        skip: boolean
-        cutscene: boolean
+      id: ItemID;
+      equipID: number;
+      amount: number;
+      skip: boolean;
+      cutscene: boolean;
     }
 
     var ITEM_USE_TIMER: number;
@@ -99,35 +99,40 @@ declare global {
         torso: number;
         feet: number;
       }
-      
+
       type ActionKey = sc.PLAYER_ACTION | keyof typeof sc.PLAYER_ACTION;
 
       interface Data {
-        playerConfig: string
-        credit: number
-        level: number
-        exp: number
-        currentElementMode: sc.ELEMENT
-        elementLoad: number
-        hasOverload: boolean
-        hp: number
-        core: sc.PlayerModel['core']
-        skills: Nullable<boolean>[]
-        chapter: number
-        skillPoints: sc.PlayerModel['skillPoints']
-        skillPointsExtra: sc.PlayerModel['skillPointsExtra']
-        items: sc.PlayerModel['items']
-        equip: sc.PlayerModel['equip']
-        levelUpDelta: sc.PlayerModel['levelUpDelta']
-        spLevel: number
-        itemFavs: sc.PlayerModel['itemFavs']
-        itemNew: sc.PlayerModel['itemNew']
-        itemToggles: sc.PlayerModel['itemToggles']
-        skillVersion: number
+        playerConfig: string;
+        credit: number;
+        level: number;
+        exp: number;
+        currentElementMode: sc.ELEMENT;
+        elementLoad: number;
+        hasOverload: boolean;
+        hp: number;
+        core: sc.PlayerModel['core'];
+        skills: Nullable<boolean>[];
+        chapter: number;
+        skillPoints: sc.PlayerModel['skillPoints'];
+        skillPointsExtra: sc.PlayerModel['skillPointsExtra'];
+        items: sc.PlayerModel['items'];
+        equip: sc.PlayerModel['equip'];
+        levelUpDelta: sc.PlayerModel['levelUpDelta'];
+        spLevel: number;
+        itemFavs: sc.PlayerModel['itemFavs'];
+        itemNew: sc.PlayerModel['itemNew'];
+        itemToggles: sc.PlayerModel['itemToggles'];
+        skillVersion: number;
       }
     }
 
-    interface PlayerModel extends ig.Class, ig.Vars.Accessor, sc.Model, ig.Storage.Listener {
+    interface PlayerModel
+      extends ig.Class,
+        ig.Vars.Accessor,
+        sc.Model,
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad {
       core: Record<sc.PLAYER_CORE, boolean>;
       config: sc.PlayerConfig;
       loadedConfig: sc.PlayerConfig | null;
@@ -163,7 +168,7 @@ declare global {
       itemBlockTimer: number;
       chapters: ig.Database.Chapter[];
       toggleSets: Record<string, ig.Database.ToggleSet>;
-      
+
       setConfig(this: this, config: sc.PlayerConfig): void;
       updateChapter(this: this, unlock?: boolean): void;
       reset(this: this): void;
@@ -171,15 +176,26 @@ declare global {
       addElementLoad(this: this, delta: number): void;
       setElementLoad(this: this, load: number): void;
       enterElementalOverload(this: this): void;
-      onTargetHit(this: this, target: ig.ENTITY.Combatant, attackInfo: sc.AttackInfo, damageResult: sc.CombatParams.DamageResult): void;
+      onTargetHit(
+        this: this,
+        target: ig.ENTITY.Combatant,
+        attackInfo: sc.AttackInfo,
+        damageResult: sc.CombatParams.DamageResult,
+      ): void;
       increaseActionHeat(this: this, actionType: sc.PLAYER_ACTION): void;
       getCharacterName(this: this): string;
-      switchBranch(this:this, startUID: number, startSide: boolean, newUID: number): void;
-      learnSkill(this:this, id: number): void;
-      unlearnSkill(this:this, id: number): void;
+      switchBranch(this: this, startUID: number, startSide: boolean, newUID: number): void;
+      learnSkill(this: this, id: number): void;
+      unlearnSkill(this: this, id: number): void;
       hasSkill(this: this, id: number): sc.BaseSkill;
       hasSkillPoints(this: this, skillId: number): boolean;
-      addSkillPoints(this: this, points: number, element: sc.ELEMENT, all: boolean, addExtra: boolean): void;
+      addSkillPoints(
+        this: this,
+        points: number,
+        element: sc.ELEMENT,
+        all: boolean,
+        addExtra: boolean,
+      ): void;
       resetSkillTree(this: this, element: sc.ELEMENT): void;
       setSpLevel(this: this, level: number): void;
       addItem(this: this, item: sc.ItemID, amount: number, hideEffect?: boolean): void;
@@ -205,10 +221,25 @@ declare global {
       hasAnySetItem(this: this, set: ig.Database.ToggleSet): boolean;
       hasToggleSetCompleted(this: this, set: ig.Database.ToggleSet): boolean;
       hasAnyToggleItems(this: this): boolean;
-      getItemSubList(this: this, type: keyof typeof sc.ITEMS_TYPES, sort: sc.SORT_TYPE, includeFavs?: boolean): number[];
+      getItemSubList(
+        this: this,
+        type: keyof typeof sc.ITEMS_TYPES,
+        sort: sc.SORT_TYPE,
+        includeFavs?: boolean,
+      ): number[];
       getNewItemList(this: this): number[];
-      getEquipSubList(this: this, equipType: sc.ITEMS_EQUIP_TYPES, addEquipped?: boolean, sort?: sc.SORT_TYPE): number[];
-      sortItemList(this: this, list: sc.ItemID[], sortType: sc.SORT_TYPE, includeFavorites?: boolean): sc.ItemID[];
+      getEquipSubList(
+        this: this,
+        equipType: sc.ITEMS_EQUIP_TYPES,
+        addEquipped?: boolean,
+        sort?: sc.SORT_TYPE,
+      ): number[];
+      sortItemList(
+        this: this,
+        list: sc.ItemID[],
+        sortType: sc.SORT_TYPE,
+        includeFavorites?: boolean,
+      ): sc.ItemID[];
       _addNewItem(this: this, item: sc.ItemID): void;
       _removeIDFromNewList(this: this, item: sc.ItemID): void;
       _sortOrderFavorite(this: this, item1: sc.ItemID, item2: sc.ItemID): number;
@@ -224,7 +255,7 @@ declare global {
       isEquipped(this: this, itemID: sc.ItemID): void;
       getAvgEquipLevel(this: this): number;
       setCore(this: this, core: sc.PLAYER_CORE, state: boolean): void;
-      setCoreAll(this: this, ): boolean;
+      setCoreAll(this: this): boolean;
       getCore(this: this, core: sc.PLAYER_CORE): boolean;
       getCombatCooldownTime(this: this): number;
       hasElement(this: this, element: sc.ELEMENT): boolean;
@@ -235,11 +266,16 @@ declare global {
         baseLevel: number,
         bonus: number,
         ignoreModifier: boolean,
-        levelCurve: sc.LevelCurve
+        levelCurve: sc.LevelCurve,
       ): number;
       addCredit(this: this, amount: number): void;
       removeCredit(this: this, amount: number): void;
-      getRawExpGain(this: this, exp: number, baseLevel: number, ignoreGlobalLevelCurve: boolean): number;
+      getRawExpGain(
+        this: this,
+        exp: number,
+        baseLevel: number,
+        ignoreGlobalLevelCurve: boolean,
+      ): number;
       regenerate(this: this): void;
       setElementMode(
         this: this,
@@ -251,9 +287,17 @@ declare global {
       getCurrentElementMode(this: this): sc.PlayerSubConfig;
       getCombatArt(this: this, element: sc.ELEMENT, actionType: sc.PLAYER_ACTION): ig.Action;
       getCombatArtName(this: this, actionType: PlayerModel.ActionKey): string;
-      getActiveCombatArt(this: this, element: sc.ELEMENT, actionType: PlayerModel.ActionKey): ig.Action;
+      getActiveCombatArt(
+        this: this,
+        element: sc.ELEMENT,
+        actionType: PlayerModel.ActionKey,
+      ): ig.Action;
       getAction(this: this, action: sc.PLAYER_ACTION): ig.Action;
-      getActionByElement(this: this, element: sc.ELEMENT, actionType: PlayerModel.ActionKey): ig.Action;
+      getActionByElement(
+        this: this,
+        element: sc.ELEMENT,
+        actionType: PlayerModel.ActionKey,
+      ): ig.Action;
       getBalls(this: this): Record<string, sc.ProxySpawnerBase>;
       getOptionFace(this: this): string;
       updateStats(this: this): void;
@@ -265,7 +309,7 @@ declare global {
       getParamAvgLevel(this: this, level: number): number;
       usedSkillPoints(this: this): boolean;
       getMaxSkillPoints(this: this, element: sc.ELEMENT): number;
-      getSaveData(this: this): sc.PlayerModel.Data
+      getSaveData(this: this): sc.PlayerModel.Data;
       checkBodyPart(this: this, id: sc.ItemID): boolean;
     }
     interface PlayerModelContructor extends ImpactClass<PlayerModel> {
