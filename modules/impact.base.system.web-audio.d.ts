@@ -34,7 +34,7 @@ declare global {
       disconnect(this: this, node: AudioNode): void;
       setLoop(this: this, loop: boolean): void;
       setVolume(this: this, volume: number): void;
-      play(this: this, when: number, offset: number): void;
+      play(this: this, when: number, offset?: number): void;
       stop(this: this, node: AudioNode): void;
     }
     interface WebAudioBufferGainConstructor extends ImpactClass<WebAudioBufferGain> {
