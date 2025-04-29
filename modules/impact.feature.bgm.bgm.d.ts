@@ -29,6 +29,23 @@ declare global {
     var BGM_TRACK_LIST: BGM_TRACK_LIST;
 
     type BGM_TRACK = keyof typeof ig.BGM_TRACK_LIST;
+
+    namespace BgmDefaultTrackConfig {
+      interface Track {
+        track: Nullable<string>;
+        volume: number;
+      }
+    }
+    interface BgmDefaultTrackConfig {
+      field: ig.BgmDefaultTrackConfig.Track;
+      battle: ig.BgmDefaultTrackConfig.Track;
+      rankBattle?: ig.BgmDefaultTrackConfig.Track;
+      sRankBattle?: ig.BgmDefaultTrackConfig.Track;
+    }
+
+    interface BGM_DEFAULT_TRACKS {}
+    var BGM_DEFAULT_TRACKS: BGM_DEFAULT_TRACKS;
+
     interface BgmTrack extends ig.Class {
       name: BGM_TRACK;
       track: ig.Track;
