@@ -25,6 +25,15 @@ declare global {
     }
     type BGM_SWITCH_MODE = keyof typeof BGM_SWITCH_MODE;
 
+    namespace BGM_TRACK_LIST {
+      interface Config {
+        path: string;
+        loopEnd: number;
+        volume: number;
+        introPath?: string;
+        introEnd?: string;
+      }
+    }
     interface BGM_TRACK_LIST {}
     var BGM_TRACK_LIST: BGM_TRACK_LIST;
 
