@@ -162,9 +162,56 @@ declare global {
     }
     var TrackDefault: TrackDefaultConstructor;
 
-    interface TrackWebAudio extends ig.Cacheable {}
+    interface TrackWebAudio extends ig.Cacheable {
+      cacheType: 'TrackWebAudio';
+      bufferHandle: Nullable<ig.WebAudioBuffer>;
+      introBufferHandle: Nullable<ig.WebAudioBuffer>;
+      loopEnd: number;
+      introEnd: number;
+      endCallback: Nullable<(track: ig.TrackWebAudio) => void>;
+      baseVolume: number;
+      loop: boolean;
+      playing: boolean;
+      soundBuffer: Nullable<AudioBuffer>;
+      introBuffer: Nullable<AudioBuffer>;
+      currentNode?: Nullable<ig.WebAudioBufferGain>;
+      nextNode: Nullable<ig.WebAudioBufferGain>;
+      introNode: Nullable<ig.WebAudioBufferGain>;
+      _context: ig.WebAudio;
+      _volume: number;
+      _startTime: number;
+      _pauseTime: number;
+      _loopCount: number;
+      _nextOffset: number;
+      _introBufferDuration: number;
+
+      getCacheKey(
+        this: this,
+        path: string,
+        loopEnd: number,
+        introPath: string | undefined,
+        introEnd: number | undefined,
+        volume: number,
+      ): string;
+      onCacheCleared(this: this): void;
+      _initAudioBuffers(this: this): void;
+      checkForEndCallback(this: this): void;
+      setVolume(this: this, volume: number): void;
+      getVolume(this: this): number;
+      reset(this: this): void;
+      _recreateNodes(this: this): void;
+      _clearNodes(this: this): void;
+      play(this: this): void;
+      pause(this: this): void;
+    }
     interface TrackWebAudioConstructor extends ImpactClass<TrackWebAudio> {
-      new (a: unknown, b: unknown, c: unknown, d: unknown, e: unknown): TrackWebAudio;
+      new (
+        path: string,
+        loopEnd: number,
+        introPath: string | undefined,
+        introEnd: number | undefined,
+        volume: number,
+      ): TrackWebAudio;
     }
     var TrackWebAudio: TrackWebAudioConstructor;
 
