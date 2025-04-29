@@ -92,15 +92,20 @@ declare global {
         aggressive: number;
       }
       interface Data {
-        models: Record<string, sc.PartyMemberModel.Data>
-        currentParty: sc.PartyModel['currentParty']
-        contacts: sc.PartyModel['contacts']
-        strategies: sc.PartyModel['strategyKeys']
-        dungeonBlocked: sc.PartyModel['dungeonBlocked']
-        lastAreaDungeon: sc.PartyModel['lastAreaDungeon']
+        models: Record<string, sc.PartyMemberModel.Data>;
+        currentParty: sc.PartyModel['currentParty'];
+        contacts: sc.PartyModel['contacts'];
+        strategies: sc.PartyModel['strategyKeys'];
+        dungeonBlocked: sc.PartyModel['dungeonBlocked'];
+        lastAreaDungeon: sc.PartyModel['lastAreaDungeon'];
       }
     }
-    interface PartyModel extends ig.GameAddon, sc.Model, ig.Vars.Accessor, ig.Storage.Listener {
+    interface PartyModel
+      extends ig.GameAddon,
+        sc.Model,
+        ig.Vars.Accessor,
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad {
       models: Record<string, sc.PartyMemberModel>;
       currentParty: string[];
       partyEntities: Record<string, sc.PartyMemberEntity>;
@@ -111,9 +116,20 @@ declare global {
       keepDistance: boolean;
       strategyKeys: PartyModel.StrategyKeys;
       ai: PartyModel.AI;
-      getStrategy<K extends keyof sc.PARTY_STRATEGY>(this: this, strategy: K): sc.PARTY_STRATEGY.StrategyType[K];
-      updatePartyStrategy<K extends keyof sc.PARTY_STRATEGY>(this: this, strategy: K, key: keyof sc.PARTY_STRATEGY[K]): void;
-      getStrategyKey<K extends keyof sc.PARTY_STRATEGY>(this: this, strategy: K, index: number): keyof sc.PARTY_STRATEGY[K] | void;
+      getStrategy<K extends keyof sc.PARTY_STRATEGY>(
+        this: this,
+        strategy: K,
+      ): sc.PARTY_STRATEGY.StrategyType[K];
+      updatePartyStrategy<K extends keyof sc.PARTY_STRATEGY>(
+        this: this,
+        strategy: K,
+        key: keyof sc.PARTY_STRATEGY[K],
+      ): void;
+      getStrategyKey<K extends keyof sc.PARTY_STRATEGY>(
+        this: this,
+        strategy: K,
+        index: number,
+      ): keyof sc.PARTY_STRATEGY[K] | void;
       setContactType(this: this, name: string, type: sc.PARTY_MEMBER_TYPE): void;
       setOnlineStatus(this: this, name: string, online: boolean): void;
       setLocked(this: this, name: string, locked: boolean): void;
@@ -125,7 +141,7 @@ declare global {
         npc?: Nullable<ig.ENTITY.NPC>,
         noEntityUpdate?: Nullable<boolean>,
         skipEffect?: Nullable<boolean>,
-        temporary?: Nullable<boolean>
+        temporary?: Nullable<boolean>,
       ): void;
       removePartyMember(this: this, name: string, npc?: ig.ENTITY.NPC, skipEffect?: boolean): void;
       reviveAllPartyMembers(this: this): void;
@@ -150,14 +166,27 @@ declare global {
       getPartyMemberEntityByIndex(this: this, index: number): sc.PartyMemberEntity;
       getPartyMemberIndex(this: this, name: string): number;
       getPartyMemberModelByIndex(this: this, index: number): sc.PartyMemberModel;
-      addExperience(this: this, exp: number, baseLevel: number, bonus: number, ignoreModifier: boolean, levelCurve: sc.LevelCurve): number;
+      addExperience(
+        this: this,
+        exp: number,
+        baseLevel: number,
+        bonus: number,
+        ignoreModifier: boolean,
+        levelCurve: sc.LevelCurve,
+      ): number;
       updateEquipment(this: this): void;
       resetMemberPos(this: this, name: string): void;
       resetAi(this: this): void;
       _getMemberPos(this: this, dest: Vec3, name: string, initSpawn?: number): Vec3;
       doDeferredEntityUpdate(this: this): void;
       //idx appears to be unused in modern versions
-      _spawnPartyMemberEntity(this: this, name: string, showEffects: boolean, idx?: unknown, npc?: ig.ENTITY.NPC): void;
+      _spawnPartyMemberEntity(
+        this: this,
+        name: string,
+        showEffects: boolean,
+        idx?: unknown,
+        npc?: ig.ENTITY.NPC,
+      ): void;
       _updateEntitiesOffset(this: this): void;
       _removePartyMemberEntity(this: this, name: string, npc: ig.ENTITY.NPC, d?: boolean): void;
       onReset(this: this): void;
