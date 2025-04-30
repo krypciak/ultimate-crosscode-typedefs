@@ -102,7 +102,7 @@ declare global {
         ig.Storage.ListenerSave,
         ig.Storage.ListenerPreLoad,
         ig.Storage.ListenerPostLoad {
-      defaultTrackSet: Nullable<string>;
+      defaultTrackSet: Nullable<ig.BgmTrackSet>;
       defaultTrackTypeStack: ig.BGM_DEFAULT_TRACKS.Config.Keys[];
       trackStack: ig.Bgm.Entry[];
       overloadDefault: boolean;
