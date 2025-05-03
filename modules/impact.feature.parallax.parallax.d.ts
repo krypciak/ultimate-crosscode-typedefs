@@ -26,7 +26,7 @@ declare global {
     var Parallax: ParallaxConstructor;
 
     interface ParallaxGui extends ig.SequenceGui {
-      parallax: unknown;
+      parallax: ig.Parallax;
       keepOnEnd: boolean;
 
       clearCached(this: this): void;
