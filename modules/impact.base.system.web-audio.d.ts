@@ -25,7 +25,7 @@ declare global {
     }
     var WebAudio: WebAudioConstructor;
 
-    interface WebAudioBufferGain extends ig.Class {
+    interface WebAudioBufferGain {
       context: AudioContext;
       bufferNode: AudioBufferSourceNode;
       gainNode: GainNode;
@@ -37,7 +37,7 @@ declare global {
       play(this: this, when: number, offset?: number): void;
       stop(this: this, node: AudioNode): void;
     }
-    interface WebAudioBufferGainConstructor extends ImpactClass<WebAudioBufferGain> {
+    interface WebAudioBufferGainConstructor {
       new (
         context: AudioContext,
         buffer: AudioBufferSourceNode,
