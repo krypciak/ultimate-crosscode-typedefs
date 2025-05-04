@@ -129,7 +129,6 @@ declare global {
       updateModelStats(this: this, updateFx?: boolean): void;
       showChargeEffect(this: this, level: number): void;
       clearCharge(this: this): void;
-      onKill(this: this, dontRespawn?: boolean): void;
       getMaxChargeLevel(this: this, actionKey: Player.ActionKey): 0 | 1 | 2 | 3;
       getChargeAction(
         this: this,
