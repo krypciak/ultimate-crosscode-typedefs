@@ -43,6 +43,7 @@ declare global {
         fullZHeight: number;
         variable: string;
         isOn: boolean;
+        sounds: Record<'hit' | 'bing', ig.Sound>;
         switchType: keyof typeof sc.ONE_TIME_SWITCH_TYPE;
         data: sc.ONE_TIME_SWITCH_TYPE_BASE;
         fx: Record<string, ig.EffectHandle>;
