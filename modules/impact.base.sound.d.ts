@@ -313,8 +313,8 @@ declare global {
       function playAtEntity(
         sound: ig.Sound,
         entity: ig.Entity,
-        isLooped: Nullable<boolean>,
-        settings: Nullable<SoundPlaySettings>,
+        isLooped?: Nullable<boolean>,
+        settings?: Nullable<SoundPlaySettings>,
         range?: number,
         type?: ig.SOUND_RANGE_TYPE,
       ): ig.SoundHandle;
