@@ -49,7 +49,6 @@ declare global {
       onHideRequest(this: this): void;
       update(this: this): void;
       postActionUpdate(this: this): void;
-      onKill(this: this, _unused?: unknown): void;
       updateStates(this: this, forcePlayCurrentState?: boolean): void;
       playCurrentState(this: this, setPos?: boolean): void;
       varsChanged(this: this): void;

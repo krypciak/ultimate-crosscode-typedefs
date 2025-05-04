@@ -67,7 +67,6 @@ declare global {
         deferredUpdate(this: this): void;
         updateRunners(this: this): void;
         cancelRunners(this: this, checkDuration?: boolean): void;
-        onKill(this: this, _unused?: unknown): void;
       }
       interface EffectConstructor extends ImpactClass<Effect> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.Effect.Settings): Effect;

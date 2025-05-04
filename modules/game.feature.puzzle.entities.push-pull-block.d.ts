@@ -40,7 +40,6 @@ declare global {
       resetPos(this: this, pos?: Vec3, noSpawnEffects?: boolean): void;
       onInteraction(this: this): void;
       onInteractionEnd(this: this): void;
-      onKill(this: this, dontSpawnEffects?: boolean): void;
       onMagnetStart(this: this): boolean;
       onMagnetEnd(this: this, spawnEffects?: boolean): void;
     }

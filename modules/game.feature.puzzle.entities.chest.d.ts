@@ -54,7 +54,6 @@ declare global {
       hideManager?: ig.EntityHideManager;
 
       _initGfx(this: this): void;
-      show(this: this, noEffects?: boolean): void;
       _updateIcon(this: this): void;
       onHideRequest(this: this): void;
       update(this: this): void;
@@ -62,7 +61,6 @@ declare global {
       openUp(this: this): void;
       _reallyOpenUp(this: this): void;
       isOpened(this: this): boolean;
-      animationEnded(this: this, animName?: string): void;
       varsChanged(this: this): void;
     }
     interface ChestConstructor extends ImpactClass<Chest> {

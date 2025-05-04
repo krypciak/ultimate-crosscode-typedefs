@@ -68,12 +68,13 @@ declare global {
         this: this,
         conditionCallback?: (attachable: ig.Entity.Attachable) => boolean,
       ): void;
-      show(this: this): void;
+      show(this: this, noShowFx?: boolean): void;
       hide(this: this): void;
       kill(this: this, levelChange?: Nullable<boolean>): void;
-      onKill(this: this): void;
+      onKill(this: this, levelChange?: boolean): void;
       erase(this: this): void;
       collideWith(this: this, entity: ig.Entity, dir: Vec2): void;
+      animationEnded(this: this, animation: string): void
 
       // below are functions and variables not formally defined in ig.Entity,
       // but other relevant classes do check for them.

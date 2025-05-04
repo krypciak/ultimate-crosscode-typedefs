@@ -41,7 +41,6 @@ declare global {
       resetPos(this: this, pos?: Vec3, noSpawnEffects?: boolean): void;
       onUpdate(this: this): void;
       checkLockIn(this: this): void;
-      onKill(this: this): void;
       onDeferredUpdate(this: this): void;
       updateStateFromIdle(this: this): void;
       stopSound(this: this): void;
