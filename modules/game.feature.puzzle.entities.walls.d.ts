@@ -81,13 +81,16 @@ declare global {
     interface WallBlocker extends ig.Entity {
       maxHeight: number;
       colorGfx: ig.DoubleColor;
-      maxAplha: number;
+      maxAlpha: number;
       timer: number;
-      MOVE_TIMER: number;
-      GLOW_TIMER: number;
+      MOVE_TIME: number;
+      GLOW_TIME: number;
       skipRender: boolean;
       navBlocker: ig.NavBlocker;
       noNavMapBlock: boolean;
+      effectPattern: unknown;
+      _wm: ig.Config;
+      sounds?: Record<'goUp' | 'goDown', ig.Sound>;
 
       setActive(this: this, isBaseActive: boolean, isActive?: boolean): void;
     }
