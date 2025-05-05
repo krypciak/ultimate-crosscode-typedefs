@@ -10,7 +10,7 @@ declare global {
         interface Settings {}
         interface State {
           condition: ig.VarCondition;
-          pos: Vec2;
+          pos: Vec3;
           maps: [ig.ChunkedMap];
           spline: KeySpline;
         }
