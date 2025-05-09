@@ -21,6 +21,29 @@ declare global {
         scaleY: number;
         offset: Vec2;
       }
+      interface HoleInfo {
+        mapRes: number;
+        mapDir: Vec2;
+        entryDir: Vec2;
+        entryZ: number;
+        entryDist: number;
+        entryDanger: boolean;
+      }
+      interface Data {
+        collided: boolean;
+        frameVel: Vec3;
+        blockDir: Vec2;
+        slipped: boolean;
+        zBaseUncertain: boolean;
+        zPush: boolean;
+        skipPhysics: boolean;
+        forceMoveFrameVel: boolean;
+        groundEntry: ig.CollEntry | false;
+        groundEntryOffset: Vec2;
+        overlapEntryFactor: number;
+        noSlipping: boolean;
+        holeInfo: HoleInfo;
+      }
     }
     interface CollEntry extends ig.Class {
       entity: ig.Entity;
@@ -57,28 +80,7 @@ declare global {
       totalBlockTimer: number;
       partlyBlockTimer: number;
       updated: number;
-      _collData: {
-        collided: boolean;
-        frameVel: Vec3;
-        blockDir: Vec2;
-        slipped: boolean;
-        zBaseUncertain: boolean;
-        zPush: boolean;
-        skipPhysics: boolean;
-        forceMoveFrameVel: boolean;
-        groundEntry: ig.CollEntry | false;
-        groundEntryOffset: Vec2;
-        overlapEntryFactor: number;
-        noSlipping: boolean;
-        holeInfo: {
-          mapRes: number;
-          mapDir: Vec2;
-          entryDir: Vec2;
-          entryZ: number;
-          entryDist: number;
-          entryDanger: boolean;
-        };
-      };
+      _collData: ig.CollEntry.Data;
 
       setType(this: this, type: ig.COLLTYPE): void;
       setSize(this: this, x: number, y: number, z: number): void;

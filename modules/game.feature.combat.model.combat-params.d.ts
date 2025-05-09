@@ -33,6 +33,35 @@ declare global {
       BREAK = 5,
     }
 
+    enum ATTACK_SOUND_TYPE {
+      BLUNT = 0,
+      SLASH = 1,
+    }
+
+    enum GUARDABLE {
+      AUTO = 0,
+      NEVER = 1,
+      FROM_ABOVE = 2,
+      ALWAYS = 3,
+    }
+
+    namespace ATTACK_LIMITER {
+      interface Base {
+        noDmg?: boolean;
+        onlyHitProxy?: boolean;
+        noAggro?: boolean;
+        noEffect?: boolean;
+      }
+    }
+    interface ATTACK_LIMITER {
+      NO_DAMAGE: sc.ATTACK_LIMITER.Base;
+      ONLY_HIT_PROXY: sc.ATTACK_LIMITER.Base;
+      SIGNAL: sc.ATTACK_LIMITER.Base;
+      NO_EFFECT: sc.ATTACK_LIMITER.Base;
+      NO_HIT_PROXY: sc.ATTACK_LIMITER.Base;
+    }
+    var ATTACK_LIMITER: ATTACK_LIMITER;
+
     var ELEMENT_MAX: number;
     var ELEMENT_COUNTER: Record<ELEMENT, ELEMENT>;
     var SP_REGEN_SPEED: { [maxSp: number]: number };
@@ -136,20 +165,86 @@ declare global {
     }
     var CombatParams: CombatParamsConstructor;
 
+    namespace AttackInfo {
+      type Hint = LiteralUnion<
+        | 'CHARGED'
+        | 'DUNGEON_KEY'
+        | 'DUNGEON_MASTER_KEY'
+        | 'FERRO'
+        | 'FERRO_IGNORE'
+        | 'BOMB'
+        | 'ICE_DISK'
+        | 'COMPRESSED'
+        | 'STEAM'
+        | 'STEAM_PIPE'
+        | 'LIGHTNING'
+        | 'GROUND_SHOCK'
+        | 'DISCHARGE_FISH'
+        | 'DEEP_FLAME'
+      >;
+
+      type AllCombatStunSettings = {
+        [K in keyof typeof sc.COMBAT_STUN]: {
+          type: K;
+        } & ConstructorParameters<(typeof sc.COMBAT_STUN)[K]>[0];
+      };
+      type CombatStunSetting = AllCombatStunSettings[keyof typeof sc.COMBAT_STUN];
+
+      interface AttackSettings {
+        type?: keyof typeof sc.ATTACK_TYPE;
+        visualType?: keyof typeof sc.ATTACK_TYPE;
+        damageFactor: number;
+        defenseFactor?: number;
+        element?: keyof typeof sc.ELEMENT;
+        spFactor?: number;
+        fly?: keyof typeof sc.ATTACK_TYPE;
+        reverse?: boolean;
+        critFactor?: number;
+        stunSteps?: CombatStunSetting[];
+        status?: number;
+        guardable?: keyof typeof sc.GUARDABLE | '';
+        hints?: sc.AttackInfo.Hint[];
+        skillBonus: keyof sc.MODIFIERS;
+        limiter?: keyof typeof sc.ATTACK_LIMITER;
+        hitInvincible?: boolean;
+        noIronStance?: boolean;
+        noHack?: boolean;
+      }
+    }
     interface AttackInfo extends ig.Class {
       type: sc.ATTACK_TYPE;
+      visualType: sc.ATTACK_TYPE;
+      soundType: sc.ATTACK_SOUND_TYPE;
       attackerParams: sc.CombatParams;
+      reverse: boolean;
       ballDamage: boolean;
+      hints: Nullable<sc.AttackInfo.Hint[]>;
       damageFactor: number;
       defenseFactor: number;
       statusInflict: number;
       element: sc.ELEMENT;
       critFactor: number;
       spFactor: number;
+      spRepeatFactor: number;
+      fly: Nullable<keyof typeof sc.ATTACK_TYPE>;
+      stunSteps: sc.CombatStun[];
+      skillBonus: Nullable<keyof sc.MODIFIERS>;
+      guardable: sc.GUARDABLE;
+      limiter: sc.ATTACK_LIMITER;
+      hitInvincible: boolean;
+      noIronStance: boolean;
+      noHack: boolean;
 
-      hasHint(this: this, hint: string): boolean;
+      hasHint(this: this, hint: sc.AttackInfo.Hint): boolean;
+      hasNoEffect(this: this): boolean | undefined;
     }
-    interface AttackInfoConstructor extends ImpactClass<AttackInfo> {}
+    interface AttackInfoConstructor extends ImpactClass<AttackInfo> {
+      new (
+        params: sc.CombatParams,
+        settings: sc.AttackInfo.AttackSettings,
+        fromBall?: boolean,
+      ): AttackInfo;
+    }
     var AttackInfo: AttackInfoConstructor;
 
     namespace HealInfo {
