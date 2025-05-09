@@ -11,6 +11,14 @@ declare global {
     }
     var BallBehavior: BallBehaviorConstructor;
 
+    interface BALL_BEHAVIOR {
+      FOLLOW_TARGET: sc.BALL_BEHAVIOR.FOLLOW_TARGETConstructor;
+      CLOSE_SELF_DESTRUCT: sc.BALL_BEHAVIOR.CLOSE_SELF_DESTRUCTConstructor;
+      WIRL_SIDEWAYS: sc.BALL_BEHAVIOR.WIRL_SIDEWAYSConstructor;
+      SLOW_DOWN: sc.BALL_BEHAVIOR.SLOW_DOWNConstructor;
+    }
+    var BALL_BEHAVIOR: BALL_BEHAVIOR;
+
     namespace BALL_BEHAVIOR {
       namespace FOLLOW_TARGET {
         interface Settings {
@@ -26,7 +34,6 @@ declare global {
       interface FOLLOW_TARGETConstructor extends ImpactClass<FOLLOW_TARGET> {
         new (settings: sc.BALL_BEHAVIOR.FOLLOW_TARGET.Settings): FOLLOW_TARGET;
       }
-      var FOLLOW_TARGET: FOLLOW_TARGETConstructor;
 
       namespace CLOSE_SELF_DESTRUCT {
         interface Settings {
@@ -40,7 +47,6 @@ declare global {
       interface CLOSE_SELF_DESTRUCTConstructor extends ImpactClass<CLOSE_SELF_DESTRUCT> {
         new (settings: sc.BALL_BEHAVIOR.CLOSE_SELF_DESTRUCT.Settings): CLOSE_SELF_DESTRUCT;
       }
-      var CLOSE_SELF_DESTRUCT: CLOSE_SELF_DESTRUCTConstructor;
 
       namespace WIRL_SIDEWAYS {
         interface Settings {
@@ -58,7 +64,6 @@ declare global {
       interface WIRL_SIDEWAYSConstructor extends ImpactClass<WIRL_SIDEWAYS> {
         new (settings: sc.BALL_BEHAVIOR.WIRL_SIDEWAYS.Settings): WIRL_SIDEWAYS;
       }
-      var WIRL_SIDEWAYS: WIRL_SIDEWAYSConstructor;
 
       namespace SLOW_DOWN {
         interface Settings {
@@ -85,7 +90,6 @@ declare global {
       interface SLOW_DOWNConstructor extends ImpactClass<SLOW_DOWN> {
         new (settings: sc.BALL_BEHAVIOR.SLOW_DOWN.Settings): SLOW_DOWN;
       }
-      var SLOW_DOWN: SLOW_DOWNConstructor;
     }
   }
 }
