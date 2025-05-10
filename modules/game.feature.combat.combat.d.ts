@@ -14,6 +14,11 @@ declare global {
       OTHER = 3,
     }
 
+    enum COMBATANT_MATERIAL {
+      METAL = 1,
+      ORGANIC = 2,
+    }
+
     interface AttackFrequency {
       gap: number;
     }

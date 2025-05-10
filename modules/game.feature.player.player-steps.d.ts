@@ -58,7 +58,7 @@ declare global {
           dash: number;
           charge: number;
           reaim: number;
-          move: number
+          move: number;
         }
       }
     }

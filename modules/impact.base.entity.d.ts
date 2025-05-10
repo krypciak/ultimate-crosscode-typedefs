@@ -74,7 +74,7 @@ declare global {
       onKill(this: this, levelChange?: boolean): void;
       erase(this: this): void;
       collideWith(this: this, entity: ig.Entity, dir: Vec2): void;
-      animationEnded(this: this, animation: string): void
+      animationEnded(this: this, animation: string): void;
 
       // below are functions and variables not formally defined in ig.Entity,
       // but other relevant classes do check for them.
@@ -152,5 +152,33 @@ declare global {
       new (x: number, y: number, z: number, settings: ig.AnimatedEntity.Settings): AnimatedEntity;
     }
     var AnimatedEntity: AnimatedEntityConstructor;
+
+    namespace AnimationPartEntity {
+      interface Settings extends ig.AnimatedEntity.Settings {
+        collType: ig.COLLTYPE;
+        heightShape: ig.COLL_HEIGHT_SHAPE;
+        group: string;
+        owner: ig.ENTITY.Combatant;
+        partName: string;
+        animSheet: ig.AnimationSheet;
+        persistAnim: unknown;
+        defaultCollType: ig.COLLTYPE;
+        padding?: Vec2;
+      }
+    }
+    interface AnimationPartEntity extends ig.AnimatedEntity {
+      partName: string;
+      owner: ig.ENTITY.Combatant;
+      persistAnim: unknown;
+    }
+    interface AnimationPartEntityConstructor extends ImpactClass<AnimationPartEntity> {
+      new (
+        x: number,
+        y: number,
+        z: number,
+        settings: ig.AnimationPartEntity.Settings,
+      ): AnimationPartEntity;
+    }
+    var AnimationPartEntity: AnimationPartEntityConstructor;
   }
 }

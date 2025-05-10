@@ -8,9 +8,9 @@ declare global {
       isActive(
         this: this,
         combatant: sc.PlayerBaseEntity,
-        attackingEntity: sc.BasicCombatant.DamagingEntity,
+        attackingEntity: sc.BasicCombatant,
         attackInfo: sc.AttackInfo,
-        receivingPart: Nullable<sc.BasicCombatant.DamagingEntity>,
+        receivingPart: Nullable<sc.BasicCombatant>,
         isPerfect: boolean,
       ): boolean;
     }

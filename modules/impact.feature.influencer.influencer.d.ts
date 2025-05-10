@@ -76,13 +76,12 @@ declare global {
     }
     var InfluenceEntry: InfluenceEntryConstructor;
 
-    interface InfluenceConnection extends ig.Class {
+    interface InfluenceConnection extends ig.Class, ig.ActorEntity.ActionAttachedListener {
       influencer: ig.Influencer;
       influenceEntry: ig.InfluenceEntry;
 
       updateImmediately(this: this): void;
       clear(this: this): void;
-      onActionEndDetach(this: this): void;
     }
     interface InfluenceConnectionConstructor extends ImpactClass<InfluenceConnection> {
       new (influencer: ig.Influencer, influenceEntry: ig.InfluenceEntry): InfluenceConnection;
