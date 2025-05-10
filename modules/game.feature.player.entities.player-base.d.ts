@@ -24,11 +24,18 @@ declare global {
       };
       maxJumpHeight: number;
       guard: PlayerBaseEntity.Guard;
+      stunEscapeReady: boolean;
+      playerTrack: { startedAction: Nullable<ig.Action>; trackTimer: number };
 
+      doPlayerAction(this: this, action: keyof typeof sc.PLAYER_ACTION): void;
+      startGuardEffect(this: this): void;
+      endGuardEffect(this: this): void;
       damageShield(this: this, damage: number): boolean;
+      regenShield(this: this, isGuarding?: boolean): void;
+      updateCombatMode(this: this): void;
     }
     interface PlayerBaseEntityConstructor extends ImpactClass<PlayerBaseEntity> {
-      new(x: number, y: number, z: number, settings: ig.Entity.Settings): PlayerBaseEntity
+      new (x: number, y: number, z: number, settings: ig.Entity.Settings): PlayerBaseEntity;
     }
     var PlayerBaseEntity: PlayerBaseEntityConstructor;
   }

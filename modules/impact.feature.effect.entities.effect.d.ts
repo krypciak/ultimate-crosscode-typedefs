@@ -17,7 +17,7 @@ declare global {
           target?: Nullable<ig.Entity>;
         }
       }
-      interface Effect extends ig.Entity {
+      interface Effect extends ig.Entity, ig.ActorEntity.ActionAttachedListener {
         offset: Vec3;
         rotOffset?: Nullable<Vec2>;
         angle: number;
@@ -55,7 +55,6 @@ declare global {
         isDone(this: this): boolean;
         getRemainingTime(this: this): number;
         setCallback(this: this, callback: ig.EffectSheet.EventCallback): void;
-        onActionEndDetach(this: this): void;
         onEntityKillDetach(this: this): void;
         spawnParticle<E extends ig.Entity, S extends ig.Entity.Settings>(
           this: this,

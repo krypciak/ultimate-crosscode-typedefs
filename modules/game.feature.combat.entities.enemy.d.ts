@@ -116,7 +116,7 @@ declare global {
       _checkHitReactions(
         this: this,
         hitProperties: ig.ENTITY.Combatant.HitProperties,
-        damagingEntity: sc.BasicCombatant.DamagingEntity,
+        damagingEntity: sc.BasicCombatant,
         attackInfo: sc.AttackInfo,
         strict?: boolean,
       ): boolean;
@@ -125,7 +125,6 @@ declare global {
       getEnemyAction(this: this, action: string): ig.Action;
       doEnemyAction(this: this, actionName: string, noStateReset: boolean, inline?: boolean): void;
       onNavigationFailed(this: this, count: number): void;
-      onDefeat(this: this, noResolve?: boolean): void;
       enableReactions(this: this, reactions: string[]): void;
       enableReaction(this: this, reaction: string): void;
       disableReaction(this: this, reaction: string): void;

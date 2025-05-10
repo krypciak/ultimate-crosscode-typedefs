@@ -26,7 +26,7 @@ declare global {
     var SlowMotion: SlowMotionConstructor;
     var slowMotion: SlowMotion;
 
-    interface SlowMotionHandle extends ig.Class {
+    interface SlowMotionHandle extends ig.Class, ig.ActorEntity.ActionAttachedListener {
       factor: number;
       transitionTime: number;
       name?: Nullable<string>;
@@ -38,7 +38,6 @@ declare global {
       update(this: this): boolean;
       addInverseEntity(this: this, entity: sc.ActorEntity): void;
       getFactor(this: this): number;
-      onActionEndDetach(this: this): void;
     }
     interface SlowMotionHandleConstructor extends ImpactClass<SlowMotionHandle> {
       new (factor: number, timer: number, name?: Nullable<string>): SlowMotionHandle;
