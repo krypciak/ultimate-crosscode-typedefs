@@ -86,7 +86,7 @@ declare global {
       new (name: string): sc.PlayerConfig;
 
       getElementBall(
-        combatant: sc.PlayerBaseEntity,
+        combatant: sc.PartyMemberEntity | ig.ENTITY.Player,
         element: sc.ELEMENT,
         charged: boolean,
       ): sc.ProxySpawnerBase;
