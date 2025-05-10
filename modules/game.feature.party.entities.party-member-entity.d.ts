@@ -88,6 +88,7 @@ declare global {
       throwDirData: Vec2;
       currentCombatArt: Nullable<sc.PartyMemberEntity.CombatArt>;
       charging: Record<'max' | 'current' | 'timer', number>;
+      proxies: Record<string, sc.ProxySpawnerBase>;
 
       updateDefaultConfig(this: this, aiming?: boolean): void;
       onInstantDamage(this: this, damage: number): boolean;
