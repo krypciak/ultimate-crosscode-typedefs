@@ -13,32 +13,68 @@ declare global {
       TARGET = 2,
     }
 
-    namespace CombatProxyEntity {
-      namespace Settings {
-        interface Data {
-          size?: Vec3;
-          padding?: Vec2;
-          config: ig.ActorConfig;
-          timeDisconnect?: boolean;
-          terrain?: ig.TERRAIN;
-          stickToSource?: sc.PROXY_STICK_TYPE;
-          stickFaceAlign?: boolean;
-          group: string;
-          breakType: sc.PROXY_BREAK_TYPE;
-          invisible?: boolean;
-          copyOwnerAnims?: boolean;
-          startAnim?: string;
-          faceAnims?: ig.AnimationSheet;
-          animation?: ig.AnimationSheet;
-          walkAnims?: ig.AnimationSheet;
-          action: ig.Action;
-          hp: number;
-          killEffect?: ig.EffectSheet;
+    namespace PROXY_TYPE {
+      namespace GENERIC {
+        interface DataConfig extends sc.CombatProxyEntity.DataBase {
+          animation?: ig.AnimationSheet.Settings;
+          faceAnims?: ig.AnimationSheet.Settings;
+          config?: ig.AnimationSheet.Settings;
+          action: ig.Action.Step[];
+          breakType?: keyof typeof sc.PROXY_BREAK_TYPE;
+          stickToSource?: keyof typeof sc.PROXY_STICK_TYPE;
+          killEffect?: ig.EffectHandle.Settings;
         }
       }
+      interface GENERIC extends sc.ProxySpawnerBase {
+        data: sc.CombatProxyEntity.Data;
+        _wm: ig.Config;
+
+        clearCached(this: this): void;
+        getSize(this: this, dest: Vec3): Vec3;
+        spawn(
+          this: this,
+          x: number,
+          y: number,
+          z: number,
+          entity: sc.BasicCombatant,
+          dir: Vec2,
+          noAddStats?: boolean,
+        ): sc.CombatProxyEntity;
+      }
+      interface GENERICConstructor extends ImpactClass<GENERIC> {
+        new (data: sc.PROXY_TYPE.GENERIC.DataConfig): GENERIC;
+      }
+      var GENERIC: GENERICConstructor;
+    }
+
+    namespace CombatProxyEntity {
+      interface DataBase {
+        size?: Vec3;
+        padding?: Vec2;
+        timeDisconnect?: boolean;
+        terrain?: ig.TERRAIN;
+        stickFaceAlign?: boolean;
+        group: string;
+        invisible?: boolean;
+        copyOwnerAnims?: boolean;
+        startAnim?: string;
+        hp: number;
+      }
+      interface Data extends DataBase {
+        config: ig.ActorConfig;
+        stickToSource?: sc.PROXY_STICK_TYPE;
+        breakType: sc.PROXY_BREAK_TYPE;
+        faceAnims?: ig.AnimationSheet;
+        animation?: ig.AnimationSheet;
+        walkAnims?: ig.AnimationSheet;
+        action: ig.Action;
+        killEffect?: ig.EffectHandle;
+      }
+
       interface Settings extends sc.BasicCombatant.Settings {
-        data: Settings.Data;
+        data: sc.CombatProxyEntity.Data;
         combatant: sc.BasicCombatant;
+        dir: Vec2;
       }
 
       interface DESTROY_TYPE_INTERFACE {
@@ -64,7 +100,7 @@ declare global {
       animSheet: ig.AnimationSheet;
       params: sc.CombatParams;
       group: string;
-      effects: { onKill: Nullable<ig.EffectSheet>; handle: Nullable<ig.ENTITY.Effect> };
+      effects: { onKill: Nullable<ig.EffectHandle>; handle: Nullable<ig.ENTITY.Effect> };
       stickToSource: sc.PROXY_STICK_TYPE;
       wasHit: boolean;
       isThreat: boolean;
@@ -87,6 +123,8 @@ declare global {
         z: number,
         settings: CombatProxyEntity.Settings,
       ): CombatProxyEntity;
+
+      createActorConfig(data: ig.ActorConfig.Data): ig.ActorConfig;
     }
     var CombatProxyEntity: CombatProxyEntityConstructor;
   }
