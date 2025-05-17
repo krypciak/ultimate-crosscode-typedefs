@@ -84,7 +84,7 @@ declare global {
       varsChanged?(this: this): void;
       isBallDestroyer?(this: this, collPos: Vec3, collRes: { dir: Vec2 }, c?: boolean): boolean;
       isBallAdjust?(this: this): boolean;
-      doBallAdjust?(this: this, pos: Vec3, dir: Vec2, size: Vec3, maxBounce: number): void;
+      doBallAdjust?(this: this, pos: Vec3, dir: Vec2, size: Vec3, maxBounce: number): number;
       ballHit?(this: this, ball: ig.Entity, ...args: unknown[]): boolean | void;
       isQuickMenuVisible?(this: this): boolean;
       getQuickMenuSettings?(this: this): Omit<sc.QuickMenuTypesBaseSettings, 'entity'>;

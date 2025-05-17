@@ -47,6 +47,13 @@ declare global {
     }
     var COMBAT_HIT_PROXY_CONNECT: COMBAT_HIT_PROXY_POS;
 
+    enum PROXY_BREAK_TYPE {
+      NEVER = 1,
+      ACTION = 2,
+      COMBATANT = 3,
+      COLLABORATION = 4,
+    }
+
     interface HitProxyConnect extends ig.Class {
       proxy: sc.ProxySpawnerBase;
       pos: sc.COMBAT_HIT_PROXY_POS.Func;

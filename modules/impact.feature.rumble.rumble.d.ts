@@ -31,7 +31,7 @@ declare global {
       VERTICAL = 2,
     }
     namespace Rumble {
-      interface RumbleHandle extends ig.Class {
+      interface RumbleHandle extends ig.Class, ig.Entity.Attachable {
         type: number;
         name: Nullable<string | boolean>;
         power: number;
@@ -47,7 +47,6 @@ declare global {
         _shakeTimer: number;
         ignoreSlowDown: boolean;
 
-        onEntityKillDetach(this: this): void;
         update(this: this): void;
         _updatePosition(this: this, power: Vec2): void;
         _lerp(this: this, target: number, start: number, alpha: number): number;
