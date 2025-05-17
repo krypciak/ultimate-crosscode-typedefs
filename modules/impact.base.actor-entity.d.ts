@@ -7,15 +7,19 @@ declare global {
   namespace ig {
     var ACTOR_RUN_THRESHOLD: number;
 
+    namespace ActorConfig {
+      type Data = Record<string, unknown>
+    }
     interface ActorConfig extends ig.Class {
       empty: boolean;
       data: Record<string, unknown>;
       original: unknown;
 
       clearOverwrite(this: this): void;
+      loadFromData(this: this, src: ig.ActorConfig.Data, parentConfig?: unknown): void;
     }
     interface ActorConfigConstructor extends ImpactClass<ActorConfig> {
-      new (data: unknown, parentConfig: unknown): ActorConfig;
+      new (data?: ig.ActorConfig.Data, parentConfig?: ig.ActorConfig): ActorConfig;
     }
     var ActorConfig: ActorConfigConstructor;
 

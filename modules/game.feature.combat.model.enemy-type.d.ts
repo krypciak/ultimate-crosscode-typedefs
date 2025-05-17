@@ -50,6 +50,7 @@ declare global {
         current: sc.ELEMENT;
         modes: Record<sc.ELEMENT, Record<string, number>>;
       }
+      type Data = unknown
     }
 
     interface EnemyType extends ig.JsonLoadable {
@@ -80,7 +81,7 @@ declare global {
       boostedLevel: number;
       size: Vec2;
 
-      onload(this: this, data: unknown): void;
+      onload(this: this, data: ig.ActorConfig.Data): void;
       onCacheCleared(this: this): void;
       initEntity(this: this, enemy: ig.ENTITY.Enemy): void;
       updateParams(this: this, enemy: ig.ENTITY.Enemy): void;
@@ -158,7 +159,7 @@ declare global {
       selectAction(this: this, enemy: ig.ENTITY.Enemy): Nullable<unknown>;
     }
     interface EnemyStateConstructor extends ImpactClass<EnemyState> {
-      new (name: string, b: unknown, d: unknown): EnemyState;
+      new (name: string, data: ig.ActorConfig.Data, parentConfig?: ig.ActorConfig): EnemyState;
     }
     var EnemyState: EnemyStateConstructor;
   }
