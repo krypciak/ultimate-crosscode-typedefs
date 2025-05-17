@@ -101,7 +101,11 @@ declare global {
         onBubbleBurst(this: this): void;
       }
     }
-    interface FerroEntity {
+    interface FerroEntity
+      extends ig.AnimatedEntity,
+        ig.Entity.Attachable,
+        sc.GetCombatant,
+        sc.GetCombatantRoot {
       state: sc.FerroEntity.State;
       absorbState: Nullable<sc.FerroEntity.State>;
       timer: number;
@@ -167,13 +171,10 @@ declare global {
       handleMovementTrace(this: this, coll: ig.CollEntry): void;
       setTeleportBall(this: this, teleportBall: ig.ENTITY.Ball): void;
       clearTeleportBall(this: this): void;
-      onEntityKillDetach(this: this): void;
       doTeleport(this: this): void;
       onTeleportStart(this: this, waveTeleporter: ig.ENTITY.WaveTeleport): void;
       getTeleportZOffset(this: this): number;
       getElement(this: this): sc.ELEMENT;
-      getCombatant(this: this): ig.ENTITY.Player;
-      getCombatantRoot(this: this): ig.ENTITY.Player;
       getAttackInfo(this: this): sc.AttackInfo;
       isWaterBubble(this: this): boolean;
       isIceDisk(this: this): boolean;
@@ -183,7 +184,7 @@ declare global {
       onCompressorMoveEnd(this: this, respawnOrSetIdle?: boolean): void;
       _getAssistFactor(this: this): number;
       isBallAdjust(this: this): boolean;
-      doBallAdjust(this: this, entity: ig.Entity, dest: Vec2, destSize: Vec3): boolean;
+      doBallAdjust(this: this, pos: Vec3, dir: Vec2, size: Vec3): number;
       isBallDestroyer(this: this): boolean;
       shootFromWall(this: this, vel: Vec2, combatant?: sc.BasicCombatant): void;
     }
