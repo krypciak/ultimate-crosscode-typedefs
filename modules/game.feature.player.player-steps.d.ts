@@ -35,6 +35,21 @@ declare global {
       interface SET_PLAYER_INVINCIBLE_CONSTRUCTOR extends ImpactClass<SET_PLAYER_INVINCIBLE> {}
       var SET_PLAYER_INVINCIBLE: SET_PLAYER_INVINCIBLE_CONSTRUCTOR;
 
+      namespace ADD_PLAYER_CAMERA_TARGET {
+        interface Settings {
+          speed: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+          actionDetached?: boolean;
+          onlyAfterRemove?: boolean;
+        }
+      }
+      interface ADD_PLAYER_CAMERA_TARGET extends ig.ActionStepBase {
+        _wm: ig.Config;
+      }
+      interface ADD_PLAYER_CAMERA_TARGETConstructor extends ImpactClass<ADD_PLAYER_CAMERA_TARGET> {
+        new (settings: ig.ACTION_STEP.ADD_PLAYER_CAMERA_TARGET.Settings): ADD_PLAYER_CAMERA_TARGET;
+      }
+      var ADD_PLAYER_CAMERA_TARGET: ADD_PLAYER_CAMERA_TARGETConstructor;
+
       namespace SHOW_FOOD_ICON {
         interface Settings {
           icon: keyof typeof sc.FOOD_SPRITE;
