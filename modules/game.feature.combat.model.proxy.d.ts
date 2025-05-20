@@ -45,7 +45,7 @@ declare global {
       TARGET: sc.COMBAT_HIT_PROXY_POS.Func;
       HIT_POS: sc.COMBAT_HIT_PROXY_POS.Func;
     }
-    var COMBAT_HIT_PROXY_CONNECT: COMBAT_HIT_PROXY_POS;
+    var COMBAT_HIT_PROXY_POS: COMBAT_HIT_PROXY_POS;
 
     enum PROXY_BREAK_TYPE {
       NEVER = 1,
