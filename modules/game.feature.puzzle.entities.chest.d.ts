@@ -22,50 +22,66 @@ declare global {
       GOLD = 156,
     }
   }
-  namespace ig.ENTITY {
-    namespace Chest {
-      interface Settings extends ig.Entity.Settings {
-        trigger?: string;
-        noTrack?: boolean;
-        chestType?: keyof typeof sc.CHEST_TYPE;
-        variable?: string;
-        item: number;
-        amount?: number;
-        hideCondition?: string;
-        detectCondition?: string;
+  namespace ig {
+    namespace ENTITY {
+      namespace Chest {
+        interface Settings extends ig.Entity.Settings {
+          trigger?: string;
+          noTrack?: boolean;
+          chestType?: keyof typeof sc.CHEST_TYPE;
+          variable?: string;
+          item: number;
+          amount?: number;
+          hideCondition?: string;
+          detectCondition?: string;
+        }
       }
-    }
-    interface Chest extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
-      mapIcons: sc.MapInteractIcon;
-      mapIconsKey: sc.MapInteractIcon;
-      effects: { sheet: ig.EffectSheet; handle?: ig.ENTITY.Effect };
-      interactEntry: sc.MapInteractEntry;
-      hideHandle?: ig.ENTITY.Effect;
-      isOpen: boolean;
-      chestVariable: boolean;
-      item: sc.ItemID;
-      amount: number;
-      chestType: sc.CHEST_TYPE;
-      lockedIcon: boolean;
-      _itemName: string;
-      _trigger?: string;
-      _initialized: boolean;
-      _noTrack: boolean;
-      hideManager?: ig.EntityHideManager;
+      interface Chest extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
+        mapIcons: sc.MapInteractIcon;
+        mapIconsKey: sc.MapInteractIcon;
+        effects: { sheet: ig.EffectSheet; handle?: ig.ENTITY.Effect };
+        interactEntry: sc.MapInteractEntry;
+        hideHandle?: ig.ENTITY.Effect;
+        isOpen: boolean;
+        chestVariable: boolean;
+        item: sc.ItemID;
+        amount: number;
+        chestType: sc.CHEST_TYPE;
+        lockedIcon: boolean;
+        _itemName: string;
+        _trigger?: string;
+        _initialized: boolean;
+        _noTrack: boolean;
+        hideManager?: ig.EntityHideManager;
 
-      _initGfx(this: this): void;
-      _updateIcon(this: this): void;
-      onHideRequest(this: this): void;
-      update(this: this): void;
-      onInteraction(this: this): boolean | undefined;
-      openUp(this: this): void;
-      _reallyOpenUp(this: this): void;
-      isOpened(this: this): boolean;
-      varsChanged(this: this): void;
+        _initGfx(this: this): void;
+        _updateIcon(this: this): void;
+        onHideRequest(this: this): void;
+        update(this: this): void;
+        onInteraction(this: this): boolean | undefined;
+        openUp(this: this): void;
+        _reallyOpenUp(this: this): void;
+        isOpened(this: this): boolean;
+        varsChanged(this: this): void;
+      }
+      interface ChestConstructor extends ImpactClass<Chest> {
+        new (x: number, y: number, z: number, settings: ig.ENTITY.Chest.Settings): Chest;
+      }
+      var Chest: ChestConstructor;
     }
-    interface ChestConstructor extends ImpactClass<Chest> {
-      new (x: number, y: number, z: number, settings: ig.ENTITY.Chest.Settings): Chest;
+    namespace ACTION_STEP {
+      namespace OPEN_CHEST {
+        interface Settings {
+          entity: ig.ENTITY.Chest;
+        }
+      }
+      interface OPEN_CHEST extends ig.ActionStepBase {
+        entity: ig.ENTITY.Chest;
+      }
+      interface OPEN_CHEST_CONSTRUCTOR extends ImpactClass<OPEN_CHEST> {
+        new (settings: ig.ACTION_STEP.OPEN_CHEST.Settings): OPEN_CHEST;
+      }
+      var OPEN_CHEST: OPEN_CHEST_CONSTRUCTOR;
     }
-    var Chest: ChestConstructor;
   }
 }
