@@ -19,6 +19,10 @@ declare global {
       ORGANIC = 2,
     }
 
+    enum THROW_SOUND_CLASS {
+      HEXACAST = 'Hexa',
+    }
+
     interface AttackFrequency {
       gap: number;
     }
