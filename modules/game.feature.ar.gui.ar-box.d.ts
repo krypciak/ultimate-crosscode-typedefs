@@ -13,5 +13,6 @@ declare global {
             GREEN: { rgb: string, yOff: number }
             RED: { rgb: string, yOff: number }
         }
+        var AR_COLOR: AR_COLOR
     }
 }
