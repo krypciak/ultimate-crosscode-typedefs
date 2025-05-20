@@ -21,13 +21,25 @@ declare global {
 
   namespace ig.ENTITY {
     namespace Enemy {
-      interface Settings extends ig.Entity.Settings {
+      interface Settings extends ig.ENTITY.Combatant.Settings {
         enemyInfo: sc.EnemyInfo.Settings;
       }
 
       interface Level {
         override: number | null;
         setting: number | null;
+      }
+
+      interface PreDamageModificationConfig {
+        damagingEntity: sc.BasicCombatant;
+        attackInfo: sc.AttackInfo;
+        partEntity: Nullable<sc.BasicCombatant>;
+        damageResult: sc.CombatParams.DamageResult;
+        shielded: sc.SHIELD_RESULT;
+        hpBroken: number;
+        killed: boolean;
+        weakness: number;
+        dramaticEffect: Nullable<sc.DramaticEffect>;
       }
     }
 
@@ -117,7 +129,7 @@ declare global {
         this: this,
         hitProperties: ig.ENTITY.Combatant.HitProperties,
         damagingEntity: sc.BasicCombatant,
-        attackInfo: sc.AttackInfo,
+        random: number,
         strict?: boolean,
       ): boolean;
       collabReady(this: this, collabKey: string): boolean;

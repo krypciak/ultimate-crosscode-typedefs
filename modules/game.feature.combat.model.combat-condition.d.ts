@@ -1,29 +1,36 @@
 // requires game.feature.combat.model.combat-params
 
-export {}
+export {};
 
 declare global {
-    namespace sc {
-        interface CombatCondition {
-            check(this: this, entity: ig.ENTITY.Combatant, random?: number): boolean;
+  namespace sc {
+    namespace COMBAT_CONDITION {
+      namespace RANDOM {
+        interface Settings {
+          max: number;
         }
+      }
+      interface RANDOM extends sc.CombatCondition {
+        value: number;
+      }
+      interface RANDOM_CONSTRUCTOR extends ImpactClass<RANDOM> {
+        new (settings: sc.COMBAT_CONDITION.RANDOM.Settings): RANDOM;
+      }
+      var RANDOM: COMBAT_CONDITION.RANDOM_CONSTRUCTOR;
 
-        namespace COMBAT_CONDITION {
-            interface RANDOM extends ig.Class, CombatCondition {
-                value: number;
-                check(this: this, entity: ig.ENTITY.Combatant, random: number): boolean;
-            }
-            interface RANDOM_CONSTRUCTOR extends ImpactClass<RANDOM> {}
-
-            interface HAS_SP extends ig.Class, CombatCondition {
-                min: number;
-            }
-            interface HAS_SP_CONSTRUCTOR extends ImpactClass<HAS_SP> {}
+      namespace HAS_SP {
+        interface Settings {
+          min: number;
         }
-        interface COMBAT_CONDITION {
-            RANDOM: COMBAT_CONDITION.RANDOM_CONSTRUCTOR;
-            HAS_SP: COMBAT_CONDITION.HAS_SP_CONSTRUCTOR;
-        }
-        let COMBAT_CONDITION: COMBAT_CONDITION;
+      }
+      interface HAS_SP extends sc.CombatCondition {
+        min: number;
+      }
+      interface HAS_SP_CONSTRUCTOR extends ImpactClass<HAS_SP> {
+        new (settings: sc.COMBAT_CONDITION.HAS_SP.Settings): HAS_SP;
+      }
+      var HAS_SP: COMBAT_CONDITION.HAS_SP_CONSTRUCTOR;
     }
+  }
 }
+
