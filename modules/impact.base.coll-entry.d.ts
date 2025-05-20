@@ -14,6 +14,13 @@ declare global {
       STATIC_SIZE = 1,
       RECTANGULAR = 2,
     }
+    enum COLL_GROUND_CONNECT {
+      LOOSE = 0,
+      FIXED = 1,
+      IN_EARTH = 2,
+      STRONG_FLIGHT = 3,
+    }
+
     namespace CollEntry {
       interface Shadow {
         type: ig.COLL_SHADOW_TYPE;
