@@ -7,6 +7,16 @@ export {};
 
 declare global {
   namespace ig {
+    namespace TileSheet {
+      interface Data {
+        imageSrc: string;
+        width: number;
+        height: number;
+        offX?: Nullable<number>;
+        offY?: Nullable<number>;
+        xCount?: Nullable<number>;
+      }
+    }
     interface TileSheet extends ig.Class {
       width: number;
       height: number;
@@ -28,6 +38,8 @@ declare global {
         offY?: Nullable<number>,
         xCount?: Nullable<number>,
       ): TileSheet;
+
+      createFromJson(json: ig.TileSheet.Data): ig.TileSheet;
     }
     var TileSheet: TileSheetConstructor;
 
