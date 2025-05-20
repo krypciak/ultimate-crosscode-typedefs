@@ -30,6 +30,10 @@ declare global {
         main: boolean;
       }
 
+      interface PersonConfig {
+        person: string;
+        expression: string;
+      }
       interface Person {
         side: sc.MESSAGE_SIDES;
         order: number;
