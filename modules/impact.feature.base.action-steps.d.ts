@@ -5,6 +5,22 @@ export {};
 
 declare global {
   namespace ig.ACTION_STEP {
+    namespace SELECT_RANDOM {
+      interface OptionConfig {
+        count: number;
+        weight: number;
+        activeCondition?: string;
+      }
+      interface Option {
+        count: number;
+        weight: number;
+        activeCondition: ig.VarCondition;
+      }
+      interface Settings {
+        options: ig.ACTION_STEP.SELECT_RANDOM.OptionConfig[];
+      }
+    }
+
     namespace SET_SHADOW {
       interface Settings {
         size: number;
