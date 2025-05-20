@@ -97,8 +97,20 @@ declare global {
       type NumberExpression = VarExpression<number>;
       type BooleanExpression = VarExpression<boolean>;
       type StringExpression = VarExpression<string>;
+      type Vec2Expression = VarExpression<Vec2>;
+      type Vec3Expression = VarExpression<Vec3>;
 
       type NumberVary = number | { base: number; vary?: number };
+
+      type GetEntity =
+        | ig.Entity
+        | {
+            player?: boolean;
+            self?: boolean;
+            name?: string;
+            varName?: string;
+            party?: string;
+          };
     }
     interface Event extends ig.Class {
       name: string;
@@ -129,6 +141,10 @@ declare global {
       new (settings: ig.Event.Settings): Event;
 
       getNumberVary(numberVary: ig.Event.NumberVary): number;
+      getEntity(
+        entity: Nullable<ig.Event.GetEntity>,
+        eventCall?: ig.EventCall,
+      ): Nullable<ig.Entity>;
       getVec2(input: Event.VarExpression<Vec2>, dest: Vec2): Vec2;
       getVec3(input: Event.VarExpression<Vec3>, dest: Vec3): Vec3;
       getVarName(varName: string | ig.Event.VarObject): string | null;
