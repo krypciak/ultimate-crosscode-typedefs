@@ -1626,7 +1626,19 @@ declare global {
         new (settings: ig.ACTION_STEP.SET_COLLAB_BREAK_TYPE.Settings): SET_COLLAB_BREAK_TYPE;
       }
       var SET_COLLAB_BREAK_TYPE: SET_COLLAB_BREAK_TYPE_CONSTRUCTOR;
+    }
 
+    namespace ACTOR_ATTRIB_CONNECTION {
+      type Func = (combatant: sc.BasicCombatant) => sc.BasicCombatant;
+    }
+    interface ACTOR_ATTRIB_CONNECTION {
+      PROXY_OWNER: ig.ACTOR_ATTRIB_CONNECTION.Func;
+      PROXY_SOURCE: ig.ACTOR_ATTRIB_CONNECTION.Func;
+      TARGET: ig.ACTOR_ATTRIB_CONNECTION.Func;
+    }
+    var ACTOR_ATTRIB_CONNECTION: ACTOR_ATTRIB_CONNECTION;
+
+    namespace ACTION_STEP {
       namespace ASSIGN_COLLAB_POINTS {
         interface Settings {
           targetType: unknown;
