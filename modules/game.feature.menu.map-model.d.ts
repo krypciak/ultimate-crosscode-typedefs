@@ -170,13 +170,13 @@ declare global {
       restore(this: this): void;
       addLandmark(
         this: this,
+        landmarkName: string,
         areaName: string,
-        landmarkIndex: number,
         entityToCallEventOn?: ig.Entity,
       ): void;
       startTeleport(this: this, mapName: string): void;
       getAreaType(this: this, areaName: string): sc.AREA_TYPE;
-      isLandmarkValid(this: this, areaName: string, landmarkIndex: number): boolean;
+      isLandmarkValid(this: this, landmarkName: string, areaName: string): boolean;
       getAreaItemId(this: this, areaItemType: sc.AREA_ITEM_TYPE, areaName: string): sc.ItemID;
       getAreaItemType(
         this: this,
@@ -191,13 +191,13 @@ declare global {
       ): boolean;
       isLandmarkActive(
         this: this,
-        landmarkIndex: number,
+        landmarkName: string,
         areaName?: string,
         isActiveOrJustExists?: boolean,
       ): boolean;
       setLandmarkActiveState(
         this: this,
-        landmarkIndex: number,
+        landmarkName: string,
         active: boolean,
         areaName: string,
       ): void;
@@ -206,7 +206,7 @@ declare global {
       hasAnyAreaUnlocked(this: this): boolean;
       getUnlockedAreas(this: this): string[];
       sortAreaList(this: this, areaNameList: string[]): string[];
-      getLandmarkName(this: this, landmarkIndex: number, areaName: string): ig.LangLabel | string;
+      getLandmarkName(this: this, landmarkName: string, areaName: string): ig.LangLabel | string;
       getLandmark(this: this, landmark: string, area: string): sc.MapModel.Area.Landmark;
       getCurrentAreaLandmark(this: this, landmark: string): sc.MapModel.Area.Landmark;
       getCurrentPlayerAreaName(this: this): ig.LangLabel;
