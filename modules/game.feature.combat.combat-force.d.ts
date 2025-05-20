@@ -27,11 +27,47 @@ declare global {
     interface CircleHitForceConstructor extends ImpactClass<CombatForce> {}
     var CircleHitForce: CircleHitForceConstructor;
 
+    enum DIRECT_HIT_DIR {
+      TOWARD = 1,
+      AWAY = 2,
+    }
+
     interface DirectHitForce extends sc.CombatForce {
       getHitDir(this: this, entity: ig.Entity, dest: Vec2): Vec2;
     }
     interface DirectHitForceConstructor extends ImpactClass<CombatForce> {}
     var DirectHitForce: DirectHitForceConstructor;
+
+    enum PUSH_PULL_STRENGTH {
+      EASY_ESCAPE = 40,
+      WALK_ESCAPE = 100,
+      RUN_ESCAPE = 130,
+      DASH_ESCAPE = 190,
+      NO_ESCAPE = 300,
+      SERIOUSLY_GO_AWAY = 500,
+    }
+
+    namespace PROXY_GRID_FLOW {
+      type Func = (
+        weight: number,
+        width: number,
+        height: number,
+        width1: number,
+        height1: number,
+      ) => number;
+    }
+    interface PROXY_GRID_FLOW {
+      SQUARE: sc.PROXY_GRID_FLOW.Func;
+      CIRCLE: sc.PROXY_GRID_FLOW.Func;
+    }
+    var PROXY_GRID_FLOW: PROXY_GRID_FLOW;
+
+    enum SPAWN_START_DIST_COLLIDE {
+      NONE = 0,
+      CLOSER = 1,
+      DROP = 2,
+      ALT_DIR = 3,
+    }
 
     namespace SpawnHelper {
       interface Settings {
