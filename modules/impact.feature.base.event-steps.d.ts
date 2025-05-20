@@ -63,7 +63,29 @@ declare global {
       interface CHANGE_VAR_LANG_CONSTRUCTOR
         extends ChangeVarBaseConstructor<CHANGE_VAR_LANG, ig.LangLabel.Data> {}
       var CHANGE_VAR_LANG: CHANGE_VAR_LANG_CONSTRUCTOR;
+
+      interface PLAY_SOUND extends ig.EventStepBase {
+        sound: ig.Sound;
+        position: Vec2;
+        loop: boolean;
+        settings: { offset: number; startTime: number; speed: number };
+        name: string;
+        speed: null;
+      }
+      interface PLAY_SOUNDConstructor extends ImpactClass<PLAY_SOUND> {
+        new (settings: {
+          sound: string;
+          volume?: number;
+          variance?: number;
+          position?: Vec2;
+          name?: string;
+          loop?: boolean;
+          offset?: number;
+          startTime?: number;
+          speed?: number;
+        }): PLAY_SOUND;
+      }
+      var PLAY_SOUND: PLAY_SOUNDConstructor;
     }
   }
 }
-
