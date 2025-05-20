@@ -243,7 +243,9 @@ declare global {
     }
     interface SoundWebAudioConstructor
       extends ImpactClass<SoundWebAudio>,
-        SoundConstructorCommon<ig.SoundWebAudio> {}
+        SoundConstructorCommon<ig.SoundWebAudio> {
+      new (path: string, volume?: number, variance?: number, group?: string): SoundWebAudio;
+    }
     var SoundWebAudio: SoundWebAudioConstructor;
 
     interface SoundHandleBase extends ig.Class, SoundCommon {
