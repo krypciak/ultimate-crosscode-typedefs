@@ -20,7 +20,7 @@ declare global {
       rewards: sc.QuestHubRewards;
     }
     interface QuestHubListEntryConstructor extends ImpactClass<QuestHubListEntry> {
-      new (questID: string, tab: sc.MENU_QUEST_HUB_TABS): QuestHubListEntry;
+      new (questId: sc.QuestModel.QuestId, tab: sc.MENU_QUEST_HUB_TABS): QuestHubListEntry;
     }
     var QuestHubListEntry: QuestHubListEntryConstructor;
 

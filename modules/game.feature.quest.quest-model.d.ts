@@ -17,6 +17,9 @@ declare global {
       ALL = 2,
     }
 
+    namespace QuestModel {
+      type QuestId = string
+    }
     interface QuestModel
       extends ig.GameAddon,
         sc.Model,
