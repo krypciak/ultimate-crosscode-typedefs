@@ -140,6 +140,9 @@ declare global {
       NO_TOP = 2,
     }
 
+    namespace NAV_CLOSE_POINT_SEARCH {
+      type Func = (vec: Vec2, target: ig.ActorEntity) => void;
+    }
     interface NAV_CLOSE_POINT_SERCH {
       RANDOM(vec: Vec2): void;
       BEHIND(): void;
