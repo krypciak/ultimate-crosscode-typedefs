@@ -137,6 +137,14 @@ declare global {
       start(this: this, entity: ig.ENTITY.Effect): void;
       run(this: this, entity: ig.ENTITY.Effect): boolean;
       getNext(this: this, entity: ig.ENTITY.Effect): ig.EffectStepBase;
+      getDuration(): number;
+      update?(
+        this: this,
+        entity: ig.ENTITY.Effect,
+        lastParticle: number,
+        currentParticle: number,
+        data: unknown,
+      ): void;
     }
     interface EffectStepBaseConstructor extends ImpactClass<EffectStepBase> {}
     var EffectStepBase: EffectStepBaseConstructor;
