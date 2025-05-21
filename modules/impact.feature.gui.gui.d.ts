@@ -80,6 +80,20 @@ declare global {
       X_RIGHT,
     }
 
+    interface GUI_ALIGN_X {
+      LEFT: ig.GUI_ALIGN;
+      RIGHT: ig.GUI_ALIGN;
+      CENTER: ig.GUI_ALIGN;
+    }
+    var GUI_ALIGN_X: GUI_ALIGN_X;
+
+    interface GUI_ALIGN_Y {
+      TOP: ig.GUI_ALIGN;
+      BOTTOM: ig.GUI_ALIGN;
+      CENTER: ig.GUI_ALIGN;
+    }
+    var GUI_ALIGN_Y: GUI_ALIGN_Y;
+
     namespace GuiHook {
       interface State {
         offsetX: number;
