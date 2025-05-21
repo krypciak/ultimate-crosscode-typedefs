@@ -134,7 +134,7 @@ declare global {
       _nextStep: Nullable<ig.EffectStepBase>;
       branches: Nullable<Record<string, ig.EffectStepBase>>;
 
-      start(this: this, entity: ig.ENTITY.Effect): void;
+      start(this: this, entity: ig.ENTITY.Effect): unknown | void;
       run(this: this, entity: ig.ENTITY.Effect): boolean;
       getNext(this: this, entity: ig.ENTITY.Effect): ig.EffectStepBase;
       getDuration(): number;
@@ -145,6 +145,8 @@ declare global {
         currentParticle: number,
         data: unknown,
       ): void;
+      finish?(this: this, entity: ig.ENTITY.Effect, data: unknown): void;
+      cancel?(this: this, entity: ig.ENTITY.Effect, timer: number, data: unknown): void;
     }
     interface EffectStepBaseConstructor extends ImpactClass<EffectStepBase> {}
     var EffectStepBase: EffectStepBaseConstructor;
