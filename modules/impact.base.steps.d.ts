@@ -2,6 +2,15 @@ export {};
 
 declare global {
   namespace ig {
+    namespace StepHelpers {
+      function constructSteps(
+        steps: ig.EventStepBase.Settings[],
+        stepNamespace: typeof ig.EVENT_STEP | typeof ig.ACTION_STEP,
+        labeledSteps: Record<string, ig.StepBase>,
+      ): ig.StepBase;
+      function clearStepsCache(step: ig.StepBase): void;
+    }
+
     interface StepBase extends ig.Class {
       _nextStep: Nullable<ig.StepBase>;
       _cacheIsCleared: boolean;
