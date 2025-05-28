@@ -115,6 +115,7 @@ declare global {
     interface Event extends ig.Class {
       name: string;
       rootStep: ig.EventStepBase;
+      labeledSteps: Record<string, ig.EventStepBase>;
       /* not complete */
       inputSignature: Record<
         string,
