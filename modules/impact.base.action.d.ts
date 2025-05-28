@@ -22,6 +22,8 @@ declare global {
     }
     interface Action extends ig.Class {
       name: string;
+      rootStep: ig.ActionStepBase;
+      labeledSteps: Record<string, ig.ActionStepBase>;
       parallelMove: boolean;
       repeating: boolean;
       hint?: string;
