@@ -60,12 +60,12 @@ declare global {
     let GamepadManager: GamepadManagerConstructor;
 
     interface Gamepad extends ig.Class {
-      buttonDeadzones: Record<ig.BUTTONS, number>;
-      axesDeadzones: Record<ig.BUTTONS, number>;
-      buttonStates: Record<ig.BUTTONS, number>;
-      axesStates: Record<ig.BUTTONS, number>;
-      pressedStates: Record<ig.BUTTONS, boolean>;
-      releasedStates: Record<ig.BUTTONS, boolean>;
+      buttonDeadzones: number[];
+      axesDeadzones: number[];
+      buttonStates: number[];
+      axesStates: number[];
+      pressedStates: boolean[];
+      releasedStates: boolean[];
 
       updateButton(this: this, buttonId: ig.BUTTONS, value: number): void;
       updateAxes(this: this, axesId: ig.AXES, value: number): void;
