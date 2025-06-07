@@ -51,6 +51,27 @@ declare global {
         noSlipping: boolean;
         holeInfo: HoleInfo;
       }
+      interface Float {
+        height: number;
+        variance: number;
+        maxSpeed: number;
+        accel: number;
+      }
+      interface Friction {
+        ground: number;
+        air: number;
+        terrain: number;
+        ignoreTerrain: boolean;
+      }
+      interface Time {
+        factor: number;
+        logicFactor: number;
+        moveXYFactor: number;
+        globalStatic: boolean;
+        animStatic: boolean;
+        parent: Nullable<ig.CollEntry>;
+        parentAnimToGlobal: boolean;
+      }
     }
     interface CollEntry extends ig.Class {
       entity: ig.Entity;
@@ -66,7 +87,7 @@ declare global {
       groundSlip: boolean;
       edgeSlipInward: boolean;
       weight: number;
-      friction: { ground: number; air: number; terrain: number; ignoreTerrain: boolean };
+      friction: ig.CollEntry.Friction;
       accelSpeed: number;
       maxVel: number;
       maxZVel: number;
@@ -75,7 +96,8 @@ declare global {
       zBounciness: number;
       minBounceBelocity: number;
       zGravityFactor: number;
-      float: { height: number; variance: number; maxSpeed: number; accel: number };
+      float: ig.CollEntry.Float;
+      time: ig.CollEntry.Time;
       pos: Vec3;
       level: string;
       baseZPos: number;
