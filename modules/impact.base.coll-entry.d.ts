@@ -2,6 +2,11 @@ export {};
 
 declare global {
   namespace ig {
+    enum COLL_UPDATE_TYPE {
+      STATIC = 0,
+      ON_SCREEN = 1,
+      DYNAMIC = 2,
+    }
     enum COLL_HEIGHT_SHAPE {
       NONE = 0,
       NORTH_UP = 1,
@@ -45,7 +50,7 @@ declare global {
         zPush: boolean;
         skipPhysics: boolean;
         forceMoveFrameVel: boolean;
-        groundEntry: ig.CollEntry | false;
+        groundEntry: Nullable<ig.CollEntry | false>;
         groundEntryOffset: Vec2;
         overlapEntryFactor: number;
         noSlipping: boolean;
@@ -72,6 +77,9 @@ declare global {
         parent: Nullable<ig.CollEntry>;
         parentAnimToGlobal: boolean;
       }
+      interface Dot extends Vec2 {
+        dot: number;
+      }
     }
     interface CollEntry extends ig.Class {
       entity: ig.Entity;
@@ -79,11 +87,13 @@ declare global {
       _inCollisionMap: boolean;
       _killed: boolean;
       type: COLLTYPE;
+      updateType: ig.COLL_UPDATE_TYPE;
       shape: ig.COLLSHAPE;
       heightShape: ig.COLL_HEIGHT_SHAPE;
       size: Vec3;
       alwaysRender: boolean;
       ignoreCollision: boolean;
+      groundConnect: ig.COLL_GROUND_CONNECT;
       groundSlip: boolean;
       edgeSlipInward: boolean;
       weight: number;
@@ -106,17 +116,39 @@ declare global {
       pushVel: Vec2;
       accelDir: Vec2;
       parentColl?: ig.CollEntry;
+      parentGroup: Nullable<string>;
+      subColls: ig.CollEntry[];
       totalBlockTimer: number;
       partlyBlockTimer: number;
       updated: number;
       _collData: ig.CollEntry.Data;
+      _collisionList: ig.CollEntry[];
+      _collisionListData: ig.CollEntry.Dot[];
 
+      initCollData(this: this): boolean;
+      reset(this: this): void;
       setPos(this: this, x?: number, y?: number, z?: number, moveDelta?: Nullable<boolean>): void;
       setType(this: this, type: ig.COLLTYPE): void;
+      setUpdateType(this: this, type: ig.COLL_UPDATE_TYPE): void;
       setSize(this: this, x: number, y: number, z: number): void;
       setPadding(this: this, x: number, y: number): void;
       getCenter(this: this, target?: Vec2): Vec2;
-
+      addSubCollEntry(this: this, coll: ig.CollEntry): void;
+      getTick(this: this, animFactor: boolean, noTimeLogicFactor?: boolean): number;
+      update(this: this): void;
+      contains(this: this, x: number, y: number, subtractZ?: boolean): boolean;
+      intersectsWith(
+        this: this,
+        x1: number,
+        y1: number,
+        z1: number,
+        width: number,
+        height: number,
+        zHeight: number,
+        noIgnoreCollision?: boolean,
+        shape?: Nullable<ig.COLLSHAPE>,
+        l?: boolean,
+      ): boolean;
       trace(
         this: this,
         res: ig.Physics.TraceResult,
@@ -134,6 +166,16 @@ declare global {
         onGround?: boolean,
       ): boolean;
       getOverlapCenterCords(this: this, v1: Vec3, output?: Vec3): Vec3;
+      setGroundEntry(this: this, groundEntry: Nullable<ig.CollEntry | false>): void;
+      getOverlapHeight(
+        this: this,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        ignoreExtremeSlope?: boolean,
+      ): number;
+      handleMovementTrace(this: this, data: ig.CollEntry.Data): void;
     }
     interface CollEntryConstructor extends ImpactClass<CollEntry> {
       new (entity: ig.Entity): CollEntry;
