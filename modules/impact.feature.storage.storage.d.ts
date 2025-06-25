@@ -141,16 +141,37 @@ declare global {
         Partial<ListenerPostLoad>;
     }
     interface Storage extends ig.GameAddon, sc.Model {
+      mapSaveEnabled: boolean;
+      resetAfterTeleport: boolean;
       slots: ig.SaveSlot[];
       autoSlot: ig.SaveSlot | null;
       lastUsedSlot: number;
       listeners: ig.Storage.Listener[];
+      saveObject: {};
       globalData: ig.Storage.GlobalsData;
       checkPointSave: ig.SaveSlot;
       data: ig.StorageData;
       currentLoadFile: ig.SaveSlot;
+      checkpointCondCallback: Nullable<() => boolean>;
+      autoSaveCondCallback: Nullable<() => boolean>;
+      loadHint: Nullable<ig.Game.TeleportLoadHint>;
 
+      setAutoSaveCondCallback(this: this, cond: () => boolean): void;
+      setCheckpointCondCallback(this: this, cond: () => boolean): void;
       register(this: this, listener: ig.Storage.Listener): void;
+      saveCheckpoint(
+        this: this,
+        mapName: string,
+        position: ig.TeleportPosition,
+        loadHint: Nullable<ig.Game.TeleportLoadHint>,
+      ): void;
+      getLastSlotData(this: this, mergeWith?: object): string;
+      getAutoSlotData(this: this, mergeWith?: object): string;
+      hasSaves(this: this): boolean;
+      getSlotData(this: this, slot: number, mergeWith?: object): string;
+      pushSlotData(this: this, source: string | ig.SaveSlot.Data): void;
+      saveAutoSlot(this: this, source: string | ig.SaveSlot.Data): void;
+      save(this: this, slot?: number): void;
       _saveToStorage(this: this): ig.StorageData.SaveFileData;
       _saveState(
         this: this,
@@ -158,9 +179,18 @@ declare global {
         mapName?: string,
         teleportPositionSettings?: ig.TeleportPosition.Settings,
       ): void;
+      saveGlobals(this: this): void;
       loadSlot(this: this, id?: number | ig.SaveSlot, teleportRightAway?: boolean): void;
+      deleteSlot(this: this, slot: number): void;
+      loadCheckpoint(this: this): void;
+      loadAutosave(this: this): void;
+      _isEncrypted(this: this, data: unknown): data is string;
       _encrypt(this: this, data: string, _unused?: unknown): string;
       _decrypt(this: this, data: string, _unused?: unknown): string;
+      _createCopyTeleportPosition(this: this, entity: ig.ActorEntity): ig.TeleportPosition.Settings;
+      getSlot(this: this, slot: number): ig.SaveSlot;
+      hasSaveSlotData(this: this, slot: number): boolean;
+      hasSlots(this: this): boolean;
     }
     interface StorageConstructor extends ImpactClass<Storage> {
       new (): Storage;
