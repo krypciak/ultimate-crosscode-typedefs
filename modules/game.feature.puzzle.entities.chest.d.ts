@@ -8,14 +8,21 @@ export {};
 
 declare global {
   namespace sc {
-    enum CHEST_TYPE {
-      Default,
-      Bronze,
-      Silver,
-      Gold,
-      Key,
-      MasterKey,
+    interface ChestType {
+      anim: string;
+      item?: sc.CHEST_KEY;
+      openEffect?: string;
     }
+    interface CHEST_TYPE {
+      Default: sc.ChestType;
+      Bronze: sc.ChestType;
+      Silver: sc.ChestType;
+      Gold: sc.ChestType;
+      Key: sc.ChestType;
+      MasterKey: sc.ChestType;
+    }
+    var CHEST_TYPE: CHEST_TYPE;
+
     enum CHEST_KEY {
       BRONZE = 154,
       SILVER = 155,
@@ -46,7 +53,7 @@ declare global {
         chestVariable: boolean;
         item: sc.ItemID;
         amount: number;
-        chestType: sc.CHEST_TYPE;
+        chestType: sc.ChestType;
         lockedIcon: boolean;
         _itemName: string;
         _trigger?: string;
