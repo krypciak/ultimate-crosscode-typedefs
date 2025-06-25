@@ -45,7 +45,7 @@ declare global {
       isButtonDown(this: this, button: ig.BUTTONS): boolean;
       getButtonValue(this: this, button: ig.BUTTONS): number;
 
-      getAxesValue(this: this, axis: ig.AXES, clipDeadZone?: number): number;
+      getAxesValue(this: this, axis: ig.AXES, clipDeadZone?: boolean): number;
       isAxesDown(this: this, axis: ig.AXES): boolean;
       isLeftStickDown(this: this): boolean;
       isRightStickDown(this: this): boolean;
