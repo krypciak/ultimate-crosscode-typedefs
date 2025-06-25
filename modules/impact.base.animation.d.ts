@@ -179,16 +179,15 @@ declare global {
     }
     var ColorOverlay: ColorOverlayConstructor;
 
-    // A virtual interface, common methods should go here.
-    interface BaseAnimationSet extends ig.Class {
-      animations: ig.Animation.Settings[];
+    interface SingleDirAnimationSet extends ig.Class {
+      animations: ig.Animation[];
     }
-
-    interface SingleDirAnimationSet extends ig.BaseAnimationSet {}
     interface SingleDirAnimationSetConstructor extends ImpactClass<SingleDirAnimationSet> {}
     var SingleDirAnimationSet: SingleDirAnimationSetConstructor;
 
-    interface MultiDirAnimationSet extends ig.BaseAnimationSet {}
+    interface MultiDirAnimationSet extends ig.Class {
+      animations: ig.Animation.Settings[];
+    }
     interface MultiDirAnimationSetConstructor extends ImpactClass<MultiDirAnimationSet> {}
     var MultiDirAnimationSet: MultiDirAnimationSetConstructor;
 

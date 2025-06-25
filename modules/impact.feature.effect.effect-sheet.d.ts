@@ -23,9 +23,9 @@ declare global {
     var EffectConfig: EffectConfigConstructor;
 
     interface ParticleData {
-      anim: ig.BaseAnimationSet;
-      followUpAnim?: Nullable<ig.BaseAnimationSet>;
-      postAnim?: Nullable<ig.BaseAnimationSet>;
+      anim: ig.SingleDirAnimationSet;
+      followUpAnim?: Nullable<ig.SingleDirAnimationSet>;
+      postAnim?: Nullable<ig.SingleDirAnimationSet>;
       state: ig.ParticleState;
       moveWithTarget: number;
       particleDuration: number;
