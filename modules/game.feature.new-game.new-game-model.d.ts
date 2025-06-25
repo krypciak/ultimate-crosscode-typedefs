@@ -103,7 +103,7 @@ declare global {
         ig.Storage.ListenerPreLoad {
       active: boolean;
       store: { level?: number };
-      options: Record<sc.NEW_GAME_OPTIONS.Keys, boolean>;
+      options: PartialRecord<sc.NEW_GAME_OPTIONS.Keys, boolean>;
 
       onReset(this: this): void;
       setActive(this: this, active: boolean): void;
