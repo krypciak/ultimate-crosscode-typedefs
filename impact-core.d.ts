@@ -149,6 +149,7 @@ declare global {
     function $new<K extends keyof HTMLElementTagNameMap>(tagName: K): HTMLElementTagNameMap[K];
     function $new(tagName: string): HTMLElement;
 
+    function equal<T, E>(obj1: T, obj2: E): boolean;
     function copy<T>(object: T): T;
     function merge<T, U>(original: T, extended: U, noArrayMerge?: Nullable<boolean>): T & U;
 
