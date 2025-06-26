@@ -37,6 +37,7 @@ declare global {
 
       show(this: this, dontSpawnEffects?: boolean): void;
       onHideRequest(this: this): void;
+      deferredUpdate(this: this): void;
       resetPos(this: this, pos?: Vec3, noSpawnEffects?: boolean): void;
       onInteraction(this: this): void;
       onInteractionEnd(this: this): void;
@@ -71,4 +72,3 @@ declare global {
     let WavePushPullBlock: WavePushPullBlockConstructor;
   }
 }
-
