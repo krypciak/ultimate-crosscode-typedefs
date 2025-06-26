@@ -10,19 +10,8 @@ declare global {
         dir: Vec2;
         dist: number;
         levelUp: boolean;
-        forcePushEntries: unknown;
-        forcePushDirs: unknown;
-      }
-      interface CollEntry {
-        _inCollisionMap: boolean;
-        type: ig.COLLTYPE;
-        pos: Vec2;
-        size: Vec2;
-        padding: Vec2;
-        parentColl: CollEntry;
-        ignoreCollision: boolean;
-        weight: number;
-        entity: ig.Entity;
+        forcePushEntries: ig.CollEntry[];
+        forcePushDirs: Vec2[];
       }
     }
     interface Physics extends ig.Class {
@@ -35,10 +24,39 @@ declare global {
       };
       _updateCount: number;
       _trackEntityTouch: boolean;
+      groundDangerCallback: Nullable<(coll: ig.CollEntry) => boolean>;
+      groundEntityDangerCallback: Nullable<(coll: ig.CollEntry) => boolean>;
 
+      mapCleared(this: this): void;
       mapLoaded(this: this): void;
       update(this: this): void;
       updateCollEntry(this: this, coll: ig.CollEntry, collisionList: ig.CollEntry[]): void;
+      getEntitiesInRectangle(
+        this: this,
+        x: number,
+        y: number,
+        z: number,
+        width: number,
+        height: number,
+        zHeight: number,
+        collType?: ig.COLLTYPE,
+        entryException?: Nullable<ig.CollEntry>,
+        forceSameZ?: boolean,
+      ): ig.Entity[];
+      getEntitiesInCircle(
+        this: this,
+        center: Vec3,
+        radius: number,
+        yScale: number,
+        zHeight: number,
+        dir?: Vec2,
+        startAngle?: number,
+        endAngle?: number,
+        exception?: ig.Entity,
+        moreExceptions?: ig.Entity[],
+        rectangular?: boolean,
+        checkCollision?: boolean,
+      ): ig.Entity[];
       initTraceResult(this: this, empty: { dir?: Vec2 }): ig.Physics.TraceResult;
       trace(
         this: this,
@@ -58,8 +76,52 @@ declare global {
       ): boolean;
       addCollEntry(this: this, coll: ig.CollEntry): void;
       removeCollEntry(this: this, coll: ig.CollEntry): void;
+      addToUpdateList(this: this, coll: ig.CollEntry): void;
+      removeFromUpdateList(this: this, coll: ig.CollEntry): void;
+      addToCollMap(this: this, coll: ig.CollEntry): void;
+      removeFromCollMap(this: this, coll: ig.CollEntry): void;
       moveEntity(this: this, coll: ig.CollEntry, collisionList: ig.CollEntry[]): void;
-      moveEntityZ(this: this, coll: ig.CollEntry, fVel: Vec2, prevOnGround: boolean): void;
+      moveEntityXY(
+        this: this,
+        traceResult: ig.Physics.TraceResult,
+        coll: ig.CollEntry,
+        frameVel: Vec2,
+        collisionList?: ig.CollEntry[],
+        noCollDataSet?: boolean,
+      ): boolean;
+      isGroundDanger(this: this, coll: ig.CollEntry): boolean;
+      isGroundEntityDanger(this: this, coll: ig.CollEntry): boolean;
+      moveEntityZ(this: this, coll: ig.CollEntry, frameVel: Vec2, prevOnGround: boolean): void;
+      forcePushEntry(
+        this: this,
+        coll1: ig.CollEntry,
+        coll2: ig.CollEntry,
+        dir: Vec2,
+        collisionList?: ig.CollEntry[],
+      ): void;
+      updateGroundEntity(
+        this: this,
+        coll: ig.CollEntry,
+        pushOffset: Vec2,
+        dir: Vec2,
+        zVel: number,
+        forceSetGroundEntry?: boolean,
+      ): void;
+      updateBaseZPos(
+        this: this,
+        coll: ig.CollEntry,
+        x: number,
+        y: number,
+        collData: ig.CollEntry.Data,
+      ): ig.CollEntry | undefined;
+      getBaseZPos(
+        this: this,
+        x: number,
+        y: number,
+        z: number,
+        width: number,
+        height: number,
+      ): number;
       traceOnEntryMap(
         this: this,
         res: ig.Physics.TraceResult,

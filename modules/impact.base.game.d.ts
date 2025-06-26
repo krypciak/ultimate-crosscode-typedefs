@@ -114,7 +114,20 @@ declare global {
       getLevelHeight(this: this, level: number | string): number;
       getHeightFromLevelOffset(this: this, level: sc.MapModel.MapEntity['level']): number;
       getEntityByName<E extends ig.Entity>(this: this, name: string): E;
+      getEntitiesInRectangle(
+        this: this,
+        x: number,
+        y: number,
+        z: number,
+        width: number,
+        height: number,
+        zHeight: number,
+        collType?: ig.COLLTYPE,
+        entryException?: Nullable<ig.CollEntry>,
+        forceSameZ?: boolean,
+      ): ig.Entity[];
       getEntitiesInCircle(
+        this: this,
         center: Vec3,
         radius: number,
         yScale: number,
@@ -125,6 +138,7 @@ declare global {
         exception?: ig.Entity,
         moreExceptions?: ig.Entity[],
         rectangular?: boolean,
+        checkCollision?: boolean,
       ): ig.Entity[];
       getEntitiesByType<E extends ig.Entity, S extends ig.Entity.Settings>(
         this: this,
