@@ -19,7 +19,7 @@ declare global {
 
     namespace ItemDropEntity {
       interface Settings extends ig.AnimatedEntity.Settings {
-        dropType: sc.ITEM_DROP_TYPE;
+        dropType: sc.ItemDropType;
         vel?: Vec2;
         target: ig.Entity;
         item: sc.ItemID;
@@ -49,7 +49,7 @@ declare global {
       item: number;
       amount: number;
       collected: boolean;
-      dropType: sc.ITEM_DROP_TYPE;
+      dropType: sc.ItemDropType;
       fromCombatant: boolean;
 
       collectItem(this: this, count: number): void;
