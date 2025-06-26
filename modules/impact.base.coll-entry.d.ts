@@ -147,7 +147,7 @@ declare global {
         zHeight: number,
         noIgnoreCollision?: boolean,
         shape?: Nullable<ig.COLLSHAPE>,
-        l?: boolean,
+        forceSameZ?: boolean,
       ): boolean;
       trace(
         this: this,
