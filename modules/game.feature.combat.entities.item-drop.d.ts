@@ -18,7 +18,7 @@ declare global {
     var ITEM_DROP_TYPE: ITEM_DROP_TYPE;
 
     namespace ItemDropEntity {
-      interface Settings {
+      interface Settings extends ig.AnimatedEntity.Settings {
         dropType: sc.ITEM_DROP_TYPE;
         vel?: Vec2;
         target: ig.Entity;
@@ -54,7 +54,6 @@ declare global {
 
       collectItem(this: this, count: number): void;
       onSave(this: this): void;
-      update(this: this): void;
       onTouchGround(this: this): void;
       startRegularFly(this: this): void;
       startFlying(this: this, maxTime: number, maxHeight: number): void;
