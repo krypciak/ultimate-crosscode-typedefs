@@ -18,7 +18,7 @@ declare global {
     }
 
     namespace QuestModel {
-      type QuestId = string
+      type QuestId = string;
     }
     interface QuestModel
       extends ig.GameAddon,
@@ -26,6 +26,7 @@ declare global {
         sc.Model.Observer,
         ig.Storage.ListenerSave,
         ig.Storage.ListenerPreLoad {
+      staticQuests: Record<sc.QuestModel.QuestId, sc.Quest>;
       _solvedTimer: number;
       _hasSolveDialogs: boolean;
 
