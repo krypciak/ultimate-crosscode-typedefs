@@ -287,7 +287,7 @@ declare global {
         critical: boolean,
         ignoreSounds: boolean,
         spriteFilter?: number[],
-      ): ig.ENTITY.Effect;
+      ): ig.ENTITY.Effect | ig.SoundHandle | undefined;
       showPerfectDashEffect(this: this, target: ig.ActorEntity): void;
       showHealEffect(this: this, target: ig.Entity): void;
       showCharge(
