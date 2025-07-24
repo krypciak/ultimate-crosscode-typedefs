@@ -50,6 +50,7 @@ declare global {
       ): ig.ImagePattern;
     }
     interface ImageConstructor extends ImpactClass<Image> {
+      drawCount: number;
       new (pathOrData: string): Image;
     }
     var Image: ImageConstructor;
@@ -65,7 +66,21 @@ declare global {
       type OPT = ImagePattern$OPT;
     }
     interface ImagePattern extends ig.Class, Drawable {
+      image1: Nullable<HTMLCanvasElement | HTMLImageElement>;
+      image2: Nullable<HTMLCanvasElement | HTMLImageElement>;
+      pattern: CanvasPattern;
+      sourceImage: ig.Image;
+      optMode: ig.ImagePattern.OPT;
+      sourceX: number;
+      sourceY: number;
       width: number;
+      height: number;
+      totalWidth: number;
+      totalHeight: number;
+      usePatternDraw: boolean;
+
+      initBuffer(this: this): void;
+      clearCached(this: this): void;
     }
     interface ImagePatternConstructor extends ImpactClass<ImagePattern> {
       OPT: typeof ImagePattern$OPT;
