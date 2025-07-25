@@ -8,7 +8,8 @@ export interface Manifest {
 
   title?: LocalizedString;
   description?: LocalizedString;
-  homepage?: string;
+  license?: SPDXExpression;
+  homepage?: LocalizedString;
   repository?: string;
   tags?: string[];
   authors?: Person[] | Person;
@@ -67,6 +68,12 @@ export interface ModDependencyDetails {
 
 export type SPDXExpression = string;
 
-export type Person = string;
+export type Person = PersonDetails | string;
+export interface PersonDetails {
+  name: LocalizedString;
+  email?: LocalizedString;
+  url?: LocalizedString;
+  comment?: LocalizedString;
+}
 
 export type ModIcons = Record<string, FilePath>;
