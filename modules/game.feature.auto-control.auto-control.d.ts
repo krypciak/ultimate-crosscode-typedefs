@@ -94,5 +94,6 @@ declare global {
       new (): AutoControl;
     }
     var AutoControl: AutoControlConstructor;
+    var autoControl: AutoControl;
   }
 }
