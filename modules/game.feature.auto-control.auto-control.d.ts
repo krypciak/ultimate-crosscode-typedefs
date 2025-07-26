@@ -39,10 +39,56 @@ declare global {
       'dashing',
       'guarding',
     ];
+    namespace AutoControl {
+      type KnownTypes =
+        | 'mouseX'
+        | 'mouseY'
+        | 'axisLeftX'
+        | 'axisLeftY'
+        | 'axisRightX'
+        | 'axisRightY'
+        | 'leftStickDown'
+        | 'rightStickDown';
+      type Type = LiteralUnion<KnownTypes>;
+
+      interface Mouse {
+        current: Vec2;
+        start: Vec2;
+        target: Vec2;
+        timer: number;
+        duration: number;
+      }
+      type Axis = Record<(typeof sc.AUTO_CTRL_AXIS)[number], Vec2 & { timer: number }>;
+
+      type ActionKey = (typeof sc.AUTO_CTRL_ACTION)[number];
+
+      interface Action {
+        target: undefined;
+        value: Nullable<number>;
+        hold: boolean;
+      }
+    }
     interface AutoControl extends ig.GameAddon {
-      get(this: this, type: string): boolean;
-      isActive(this: this): boolean;
+      mouse: sc.AutoControl.Mouse;
+      axis: sc.AutoControl.Axis;
+      actions: Record<sc.AutoControl.ActionKey, sc.AutoControl.Action>;
+      preUpdateOrder: number;
+      active?: boolean;
+
+      get(this: this, type: sc.AutoControl.Type): number;
+      isActive(this: this): boolean | undefined;
       setActive(this: this, value: boolean): void;
+      onPreUpdate(this: this): void;
+      setMouse(this: this, x: number, y: number, transitionTime?: number): void;
+      setStick(
+        this: this,
+        axis: keyof sc.AutoControl.Axis,
+        x: number,
+        y: number,
+        timer: number,
+      ): void;
+      setAction(this: this, type: sc.AutoControl.ActionKey, target: number, hold?: boolean): void;
+      clearAction(this: this, type: sc.AutoControl.ActionKey): void;
     }
     interface AutoControlConstructor extends ImpactClass<AutoControl> {
       new (): AutoControl;
