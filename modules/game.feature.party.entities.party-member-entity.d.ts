@@ -87,7 +87,7 @@ declare global {
       timer: Record<'action' | 'move' | 'attack' | 'noAttackTime' | 'dodge', number>;
       throwDirData: Vec2;
       currentCombatArt: Nullable<sc.PartyMemberEntity.CombatArt>;
-      charging: Record<'max' | 'current' | 'timer', number>;
+      charging: ig.ENTITY.Player.Charging;
       proxies: Record<string, sc.ProxySpawnerBase>;
 
       updateDefaultConfig(this: this, aiming?: boolean): void;
