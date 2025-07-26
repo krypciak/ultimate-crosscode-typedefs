@@ -9,6 +9,13 @@ declare global {
   namespace sc {
     var KEY_BLACK_LIST: Record<ig.KEY, boolean>;
 
+    enum DIFFICULTY {
+      CASUAL = 0,
+      NORMAL = 1,
+      HARD = 2,
+      CRUSHING = 3,
+    }
+
     enum DISPLAY_TYPE {
       ORIGINAL = 0,
       SCALE_X2 = 1,
