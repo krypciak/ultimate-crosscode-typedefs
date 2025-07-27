@@ -7,8 +7,9 @@ import * as impactModuleHooksM from './modloader-stdlib/impact-module-hooks';
 import * as patchListM from './modloader-stdlib/patch-list';
 import * as resourcesM from './modloader-stdlib/resources';
 import * as resourcesPlainM from './modloader-stdlib/resources/plain';
+import * as moduleCacheM from './modloader-stdlib/module-cache';
 
-export {};
+export { };
 
 declare global {
   namespace ccmod {
@@ -105,6 +106,11 @@ declare global {
     export import loadImage = resourcesPlainM.loadImage;
     export import loadStylesheet = resourcesPlainM.loadStylesheet;
     export import loadScript = resourcesPlainM.loadScript;
+  }
+
+  namespace ccmod.moduleCache {
+    export import prefixes = moduleCacheM.prefixes;
+    export import registerModPrefix = moduleCacheM.registerModPrefix;
   }
 
   namespace ig {
