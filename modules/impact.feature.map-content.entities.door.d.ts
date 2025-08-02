@@ -43,7 +43,7 @@ declare global {
         doorMat?: ig.DoorMat;
 
         close(this: this): void;
-        open(this: this, entity: ig.Entity, data: Vec2 & { dot: number }): void;
+        open(this: this, globalSound?: boolean, openTimer?: number): void;
       }
       interface DoorConstructor extends ImpactClass<Door> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.Door.Settings): Door;
