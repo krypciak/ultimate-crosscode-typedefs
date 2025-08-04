@@ -13,6 +13,7 @@ declare global {
     const gameVersionHotfix: number;
     const installedMods: ReadonlyMap<ModID, Mod>;
     const loadedMods: ReadonlyMap<ModID, Mod>;
+    const virtualPackages: ReadonlyMap<string, semver.SemVer>;
 
     export import ModID = modM.ModID;
 
