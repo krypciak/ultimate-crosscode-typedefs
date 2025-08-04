@@ -22,7 +22,7 @@ declare global {
       isFinished(this: this): boolean;
       isOver(this: this): boolean;
       isCombatantInPvP(this: this, combatant: ig.ENTITY.Combatant): boolean;
-      onPvpCombatantDefeat(this: this, combatant: ig.ENTITY.Combatant): boolean;
+      onPvpCombatantDefeat(this: this, combatant: ig.ENTITY.Combatant): void | false | sc.DramaticEffect;
       releaseBlocking(this: this): void;
       showKO(this: this, party: sc.COMBATANT_PARTY): sc.DramaticEffect;
       onPostKO(this: this, party: sc.COMBATANT_PARTY): void;
@@ -36,7 +36,7 @@ declare global {
       new (): PvpModel;
     }
     var PvpModel: PvpModelConstructor;
-    var pvp: sc.PvpModel
+    var pvp: sc.PvpModel;
 
     enum PVP_MESSAGE {
       STARTED = 1,
