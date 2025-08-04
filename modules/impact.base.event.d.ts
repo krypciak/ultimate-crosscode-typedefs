@@ -42,24 +42,47 @@ declare global {
         stepData: Record<any, any>;
         vars: ReturnType<ig.Event['setupInput']>;
       }
+
+      interface EventAttached {
+        onEventEndDetach(eventCall: ig.EventCall): void;
+      }
     }
     interface EventCall extends ig.Class {
       runType: ig.EventRunType;
       done: boolean;
       blocked: boolean;
       stack: ig.EventCall.StackEntry[];
+      eventAttached: ig.EventCall.EventAttached[];
       pauseParallel: boolean;
+      onStart?: Nullable<() => void>;
+      onEnd?: Nullable<() => void>;
+      callEntity?: ig.Entity;
+      data?: unknown;
 
+      hasHint(this: this, hint: string): boolean;
       callInLineEvent(
         this: this,
         event: ig.Event,
         callData: { runCount: number },
       ): ig.EventCall.StackEntry;
+      addEventAttached(this: this, eventAttached: ig.EventCall.EventAttached): void;
       setDone(this: this): void;
+      isBlocked(this: this): boolean;
       isRunning(this: this): boolean;
+      performStep(this: this, stackEntry: ig.EventCall.StackEntry): ig.EventCall.StackEntry;
       update(this: this): boolean;
     }
-    interface EventCallConstructor extends ImpactClass<EventCall> {}
+    interface EventCallConstructor extends ImpactClass<EventCall> {
+      new (
+        event: ig.Event,
+        input: unknown | undefined,
+        runType: ig.EventRunType,
+        onStart?: Nullable<() => void>,
+        onEnd?: Nullable<() => void>,
+        callEntity?: ig.Entity,
+        data?: unknown,
+      ): ig.EventCall;
+    }
     var EventCall: EventCallConstructor;
 
     namespace EventStepBase {
@@ -116,6 +139,7 @@ declare global {
       name: string;
       rootStep: ig.EventStepBase;
       labeledSteps: Record<string, ig.EventStepBase>;
+      hints: string[];
       /* not complete */
       inputSignature: Record<
         string,
@@ -135,6 +159,9 @@ declare global {
         }
       >;
 
+      addHint(this: this, hint: string): void;
+      hasHint(this: this, hint: string): void;
+      clearCached(this: this): void;
       /* i give up - krypek */
       setupInput<T extends Record<string, unknown>>(this: this, b: T): Record<keyof T, any>;
     }
