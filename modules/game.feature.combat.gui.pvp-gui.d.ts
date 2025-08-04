@@ -6,6 +6,7 @@ export {};
 declare global {
   namespace sc {
     interface PvpRoundGui extends ig.GuiElementBase {
+      gfx: ig.Image;
       timer: number;
 
       remove(this: this): void;
@@ -14,5 +15,14 @@ declare global {
       new (roundNumber: number, autoContinue?: boolean): PvpRoundGui;
     }
     var PvpRoundGui: PvpRoundGuiConstructor;
+
+    interface PvpKoGui extends ig.GuiElementBase {
+      gfx: ig.Image;
+      timer: number;
+    }
+    interface PvpKoGuiConstructor extends ImpactClass<PvpKoGui> {
+      new (): PvpKoGui;
+    }
+    var PvpKoGui: PvpKoGuiConstructor;
   }
 }
