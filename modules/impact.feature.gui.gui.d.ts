@@ -254,6 +254,7 @@ declare global {
     interface GuiDrawable extends ig.Class {
       setAlpha(this: this, alpha: number): this;
       setCompositionMode(this: this, mode: string): this;
+      setText(this: this, textBlock: ig.TextBlock, x: number, y: number): ig.GuiDrawable;
     }
     interface GuiDrawableConstructor extends ImpactClass<GuiDrawable> {}
     var GuiDrawable: GuiDrawableConstructor;
