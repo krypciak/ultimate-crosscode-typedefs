@@ -38,6 +38,7 @@ declare global {
         sizeY: number,
       ): ig.GuiDrawable;
       addText(this: this, textBlock: ig.TextBlock, posX: number, posY: number): ig.GuiDrawable;
+      addDraw(this: this): ig.GuiDrawable;
 
       addTransform(this: this): ig.GuiTransform;
       undoTransform(this: this): void;
