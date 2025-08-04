@@ -21,8 +21,8 @@ declare global {
       isBrake(this: this): boolean;
       isFinished(this: this): boolean;
       isOver(this: this): boolean;
-      isCombatantInPvP(this: this, comtatant: ig.ENTITY.Combatant): boolean;
-      onPvpCombatantDefeat(this: this, comtatant: ig.ENTITY.Combatant): boolean;
+      isCombatantInPvP(this: this, combatant: ig.ENTITY.Combatant): boolean;
+      onPvpCombatantDefeat(this: this, combatant: ig.ENTITY.Combatant): boolean;
       releaseBlocking(this: this): void;
       showKO(this: this, party: sc.COMBATANT_PARTY): sc.DramaticEffect;
       onPostKO(this: this, party: sc.COMBATANT_PARTY): void;
