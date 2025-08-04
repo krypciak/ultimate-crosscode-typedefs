@@ -320,7 +320,9 @@ declare global {
       getKillCount(this: this): void;
       getElementMode(this: this, combatant: ig.ENTITY.Combatant): sc.ELEMENT;
     }
-    interface CombatConstructor extends ImpactClass<Combat> {}
+    interface CombatConstructor extends ImpactClass<Combat> {
+      new (): Combat;
+    }
     var Combat: CombatConstructor;
     var combat: Combat;
   }
