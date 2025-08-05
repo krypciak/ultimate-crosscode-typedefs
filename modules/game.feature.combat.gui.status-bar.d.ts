@@ -22,8 +22,8 @@ declare global {
       targetHp: number;
       timer: number;
       largeTimer: number;
-      subHpHandler?: sc.BigHpBar;
-      subHpType: 'PVP' | 'BOSS';
+      subHpHandler?: Nullable<sc.BigHpBar>;
+      subHpType: Nullable<'PVP' | 'BOSS'>;
       statusEntries: Record<
         keyof typeof sc.STATUS_BAR_ENTRY,
         {
