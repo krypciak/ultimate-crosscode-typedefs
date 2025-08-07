@@ -106,7 +106,7 @@ declare global {
 
     namespace Event {
       interface Settings {
-        name: string;
+        name?: string;
         steps: ig.EventStepBase.Settings[];
       }
 
