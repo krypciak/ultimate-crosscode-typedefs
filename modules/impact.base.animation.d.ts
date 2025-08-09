@@ -213,6 +213,8 @@ declare global {
     }
     interface AnimationSheet extends ig.JsonLoadable {
       anims: Array<ig.MultiDirAnimationSet | ig.SingleDirAnimationSet>;
+
+      addAnimationSet(this: this, key: string, anim: ig.MultiDirAnimationSet | ig.SingleDirAnimationSet): void;
     }
     interface AnimationSheetConstructor extends ImpactClass<AnimationSheet> {
       new (pathOrData: string | ig.AnimationSheet.Settings): ig.AnimationSheet;
