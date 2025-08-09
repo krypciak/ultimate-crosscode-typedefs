@@ -23,7 +23,7 @@ declare global {
         onPressed(this: this, button: sc.ButtonGui & { data: { id: number } }): void;
       }
       interface BUTTON_GROUP_CONSTRUCTOR extends ImpactClass<BUTTON_GROUP> {
-        new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): BUTTON_GROUP;
+        new (optionRow: sc.OptionRow, width: number, rowGroup: sc.RowButtonGroup): BUTTON_GROUP;
       }
 
       interface ARRAY_SLIDER extends ig.GuiElementBase {
@@ -36,7 +36,7 @@ declare global {
         onLeftRight(this: this, direction: boolean): void;
       }
       interface ARRAY_SLIDER_CONSTRUCTOR extends ImpactClass<ARRAY_SLIDER> {
-        new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): ARRAY_SLIDER;
+        new (optionRow: sc.OptionRow, width: number, rowGroup: sc.RowButtonGroup): ARRAY_SLIDER;
       }
 
       interface OBJECT_SLIDER extends ig.GuiElementBase, sc.Model.Observer {
@@ -54,7 +54,7 @@ declare global {
         onLeftRight(this: this, direction: boolean): void;
       }
       interface OBJECT_SLIDER_CONSTRUCTOR extends ImpactClass<OBJECT_SLIDER> {
-        new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): OBJECT_SLIDER;
+        new (optionRow: sc.OptionRow, width: number, rowGroup: sc.RowButtonGroup): OBJECT_SLIDER;
       }
 
       interface CHECKBOX extends ig.GuiElementBase {
@@ -64,7 +64,7 @@ declare global {
         onPressed(this: this, checkbox: sc.CheckboxGui): void;
       }
       interface CHECKBOX_CONSTRUCTOR extends ImpactClass<CHECKBOX> {
-        new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): CHECKBOX;
+        new (optionRow: sc.OptionRow, width: number, rowGroup: sc.RowButtonGroup): CHECKBOX;
       }
 
       interface CONTROLS extends ig.GuiElementBase, sc.Model.Observer {
@@ -76,7 +76,7 @@ declare global {
         onPressed(this: this, button: sc.ButtonGui): void;
       }
       interface CONTROLS_CONSTRUCTOR extends ImpactClass<CONTROLS> {
-        new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): CONTROLS;
+        new (optionRow: sc.OptionRow, width: number, rowGroup: sc.RowButtonGroup): CONTROLS;
       }
 
       interface LANGUAGE extends ig.GuiElementBase {
@@ -86,7 +86,7 @@ declare global {
         onLanguageSelected(this: this, focusLost: boolean, lang: sc.LANGUAGE): void;
       }
       interface LANGUAGE_CONSTRUCTOR extends ImpactClass<LANGUAGE> {
-        new (optionRow: sc.OptionRow, x: number, rowGroup: sc.RowButtonGroup): LANGUAGE;
+        new (optionRow: sc.OptionRow, width: number, rowGroup: sc.RowButtonGroup): LANGUAGE;
       }
     }
     var OPTION_GUIS: {
