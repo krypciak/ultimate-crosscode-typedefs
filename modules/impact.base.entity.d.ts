@@ -135,14 +135,14 @@ declare global {
       animSheet: ig.AnimationSheet;
       animState: ig.AnimationState;
       animSpeedFactor: number;
-      currentAnim: string;
+      currentAnim: string | ig.MultiDirAnimationSet | ig.SingleDirAnimationSet;
 
       initAnimations(this: this, sheet?: ig.AnimationSheet | string | unknown): void;
       setCurrentAnim(
         this: this,
-        name: string,
+        anim: string | ig.MultiDirAnimationSet | ig.SingleDirAnimationSet,
         reset?: boolean,
-        followUp?: Nullable<string>,
+        followUp?: Nullable<string | ig.MultiDirAnimationSet | ig.SingleDirAnimationSet>,
         force?: boolean,
         callbackOnFinish?: boolean,
       ): void;
