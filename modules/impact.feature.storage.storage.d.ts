@@ -75,7 +75,7 @@ declare global {
         interface Vars {
           levelName: string;
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          storage: any;
+          storage: Omit<ig.Vars.Storage, 'map' | 'session'>;
         }
       }
     }
