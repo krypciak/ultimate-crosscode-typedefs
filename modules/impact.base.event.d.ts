@@ -40,7 +40,7 @@ declare global {
         event: ig.Event;
         currentStep: Nullable<ig.EventStepBase>;
         stepData: Record<any, any>;
-        vars: ReturnType<ig.Event['setupInput']>;
+        vars: ig.Event.Vars;
       }
 
       interface EventAttached {
@@ -134,6 +134,8 @@ declare global {
             varName?: string;
             party?: string;
           };
+
+      type Vars = Record<string, any>;
     }
     interface Event extends ig.Class {
       name: string;
@@ -163,7 +165,7 @@ declare global {
       hasHint(this: this, hint: string): void;
       clearCached(this: this): void;
       /* i give up - krypek */
-      setupInput<T extends Record<string, unknown>>(this: this, b: T): Record<keyof T, any>;
+      setupInput<T extends Record<string, unknown>>(this: this, b: T): ig.Event.Vars;
     }
     interface EventConstructor extends ImpactClass<Event> {
       new (settings: ig.Event.Settings): Event;
