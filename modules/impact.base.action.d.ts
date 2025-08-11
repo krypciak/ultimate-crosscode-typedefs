@@ -6,6 +6,12 @@ declare global {
   namespace ig {
     namespace ACTION_STEP {}
 
+    namespace ActionStepBase {
+      interface Settings {
+        type: keyof typeof ig.ACTION_STEP;
+        [key: string]: any;
+      }
+    }
     interface ActionStepBase extends ig.StepBase {
       _nextStep: Nullable<ig.ActionStepBase>;
       branches: Nullable<Record<string, ig.ActionStepBase>>;

@@ -87,7 +87,7 @@ declare global {
 
     namespace EventStepBase {
       interface Settings {
-        type: string;
+        type: keyof typeof ig.EVENT_STEP;
         [key: string]: any;
       }
     }
