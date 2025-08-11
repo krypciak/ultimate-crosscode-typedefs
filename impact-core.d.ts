@@ -144,6 +144,7 @@ declare global {
     }
     var modules: Record<string, ig.Module>;
     var _current: ig.Module | null;
+    var _loadQueue: ig.Module[];
     var _waitForOnload: number;
 
     function $new<K extends keyof HTMLElementTagNameMap>(tagName: K): HTMLElementTagNameMap[K];
