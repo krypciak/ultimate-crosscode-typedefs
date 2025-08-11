@@ -2,11 +2,11 @@ export {};
 
 /** RENAME: constructStepsRecursive */
 declare function b(
-  steps: ig.EventStepBase.Settings[],
+  stepSettingsList: ig.EventStepBase.Settings[],
   stepNamespace: typeof ig.EVENT_STEP | typeof ig.ACTION_STEP,
   labeledSteps: Record<string, ig.StepBase>,
   arr: ig.StepBase[],
-): ig.StepBase;
+): Nullable<ig.StepBase>;
 
 declare global {
   namespace ig {
