@@ -12,7 +12,7 @@ declare global {
   namespace ig {
     namespace StepHelpers {
       function constructSteps(
-        steps: ig.EventStepBase.Settings[],
+        steps: ig.EventStepBase.Settings[] | ig.ActionStepBase.Settings[],
         stepNamespace: typeof ig.EVENT_STEP | typeof ig.ACTION_STEP,
         labeledSteps: Record<string, ig.StepBase>,
       ): ig.StepBase;
