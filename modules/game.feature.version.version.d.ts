@@ -47,7 +47,6 @@ declare global {
       toString(this: this): string;
       toOnlyNumberString(this: this): string;
       hasVersionChanged(this: this): boolean;
-      loadInternal(this: this): void;
       onerror(this: this, error: any): void; // TODO JQueryXHR
       onload(this: this, data: sc.VerionChangeLog.ChangelogFile): void; // TODO JQueryXHR
       getLastSlotDataUpdated(this: this): string;

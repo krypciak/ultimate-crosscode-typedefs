@@ -6,7 +6,6 @@ export {};
 declare global {
   namespace sc {
     interface SavePresetData extends ig.JsonLoadable {
-      cacheType: string;
       title: any;
       sub: any;
       saveSlot: string;

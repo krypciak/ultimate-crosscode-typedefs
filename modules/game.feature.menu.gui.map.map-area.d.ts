@@ -22,7 +22,10 @@ declare global {
         floor: number;
       }
     }
-    interface MapAreaContainer extends ig.GuiElementBase, sc.Model.Observer {
+    interface MapAreaContainer
+      extends ig.GuiElementBase,
+        sc.Model.Observer,
+        ig.Loadable.LoadListener<sc.AreaLoadable> {
       gfx: ig.Image;
       background: ig.Image;
       area: sc.MapArea;
@@ -53,10 +56,15 @@ declare global {
 
       onMouseInteract(this: this, mouseOver: boolean, clicked: boolean): void;
       onLandmarkPressed(this: this, landmark: sc.LandmarkGui): void;
-      findMap(this: this, mx: number, my: number, gamepad: boolean, wait?: number): boolean | undefined;
+      findMap(
+        this: this,
+        mx: number,
+        my: number,
+        gamepad: boolean,
+        wait?: number,
+      ): boolean | undefined;
       showLandmarkName(this: this, name: string): void;
       loadNewArea(this: this, areaName: string): void;
-      onLoadableComplete(this: this, loaded: boolean, area: sc.MapModel.Area): void;
       setArea(this: this): void;
       createLandmarks(this: this, doAnything: boolean, floor: sc.MapFloor): void;
       addStamp(this: this): void;

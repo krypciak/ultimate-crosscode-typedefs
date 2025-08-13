@@ -131,7 +131,7 @@ declare global {
         lighter: boolean;
       }
     }
-    interface MapModel extends ig.GameAddon, sc.Model, ig.Vars.Accessor {
+    interface MapModel extends ig.GameAddon, sc.Model, ig.Vars.Accessor, ig.Loadable.LoadListener {
       activeLandmarks: Record<string, Record<string, { active: boolean }>>;
       areas: { [name: string]: sc.MapModel.Area };
       areasVisited: Record<string, {}>;
@@ -160,7 +160,7 @@ declare global {
       loadArea(
         this: this,
         areaName: string,
-        loadListener: { onLoadableComplete(loaded: boolean, area: sc.MapModel.Area): void },
+        loadListener: ig.Loadable.LoadListener<sc.AreaLoadable>,
       ): void;
       unloadCurrentArea(this: this): void;
       updateVisitedArea(this: this, areaName: string): void;
@@ -231,7 +231,6 @@ declare global {
       getChestCount(this: this, key: string): number;
       onStorageSave(this: this, savefile: ig.SaveSlot.Data): void;
       onStoragePreLoad(this: this, savefile: ig.SaveSlot.Data): void;
-      onLoadableComplete(this: this): void;
     }
     interface MapModelConstructor extends ImpactClass<MapModel> {
       new (): MapModel;

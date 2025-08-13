@@ -20,7 +20,7 @@ declare global {
       _convertSequence(this: this, sequence: unknown[]): void;
       _copyStateValues(this: this, state: unknown, entry: unknown): void;
     }
-    interface ParallaxConstructor extends ImpactClass<Parallax> {
+    interface ParallaxConstructor extends ImpactClass<Parallax>, ig.Loadable.LoadListener {
       new (item: string): Parallax;
     }
     var Parallax: ParallaxConstructor;
@@ -30,7 +30,6 @@ declare global {
       keepOnEnd: boolean;
 
       clearCached(this: this): void;
-      onLoadableComplete(this: this): void;
       start(this: this, keepOnEnd?: boolean): void;
     }
     interface ParallaxGuiConstructor extends ImpactClass<ParallaxGui> {

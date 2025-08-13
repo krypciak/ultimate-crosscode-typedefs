@@ -6,11 +6,10 @@ export {};
 
 declare global {
   namespace sc {
-    interface PlayerSkinBase extends ig.Class {
+    interface PlayerSkinBase extends ig.Class, ig.Loadable.LoadListener {
       skinType: string;
       name: string;
 
-      onLoadableComplete(this: this): void;
       constructSkin(this: this, settings: unknown): void;
     }
     interface PlayerSkinBaseConstructor extends ImpactClass<PlayerSkinBase> {
