@@ -8,7 +8,6 @@ declare global {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       labels: any;
 
-      loadInternal(this: this): void;
       get<T = string>(this: this, path: string): T;
       onerror(this: this): void;
       onload(this: this, labels: any): void;

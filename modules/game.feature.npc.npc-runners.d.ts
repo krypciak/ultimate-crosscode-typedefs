@@ -60,7 +60,7 @@ declare global {
         getWPConnect(this: this): Nullable<sc.WPConnection>;
       }
     }
-    interface NpcRunnerSpawner extends ig.GameAddon {
+    interface NpcRunnerSpawner extends ig.GameAddon, ig.Loadable.LoadListener<sc.Character> {
       mapGroup: Nullable<sc.NpcRunnerGroup>;
       currentGroup: Nullable<sc.NpcRunnerGroup>;
       groupData: Nullable<sc.NpcRunnerSpawner.GroupData>;
@@ -85,7 +85,6 @@ declare global {
 
       cancelSpawning(this: this): void;
       setGroup(this: this, group: sc.NpcRunnerGroup): void;
-      onLoadableComplete(this: this, success: boolean, character: sc.Character): void;
       hasGroup(this: this): boolean;
       resetToMapGroup(this: this): void;
       clearGroup(this: this): void;
