@@ -44,7 +44,7 @@ declare global {
         callEvent: string;
         _wm: ig.Config;
 
-        getInlineEvent(this: this): unknown;
+        getInlineEvent(this: this): ig.Event;
         getInlineEventInput(this: this): unknown;
       }
       interface CALL_EVENT_INLINE_CONSTRUCTOR extends ImpactClass<CALL_EVENT_INLINE> {

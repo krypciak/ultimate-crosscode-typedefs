@@ -30,7 +30,7 @@ declare global {
         _wm: ig.Config;
 
         clearCached(this: this): void;
-        getInlineEvent(this: this): Nullable<ig.Event>;
+        getInlineEvent(this: this): ig.Event;
         getInlineEventInput(this: this): ig.EVENT_STEP.CALL_EVENT_FROM_SHEET.Input;
       }
       interface CALL_EVENT_FROM_SHEET_CONSTRUCTOR extends ImpactClass<CALL_EVENT_FROM_SHEET> {
