@@ -53,7 +53,7 @@ declare global {
 
     namespace Loadable {
       interface LoadListener<T extends ig.Loadable = ig.Loadable> {
-        onLoadableCompete(this: this, success: boolean, loadable: T): void;
+        onLoadableComplete(this: this, success: boolean, loadable: T): void;
       }
     }
     interface Loadable extends ig.Cacheable, ig.Resource {
