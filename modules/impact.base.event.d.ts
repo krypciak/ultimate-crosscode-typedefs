@@ -60,7 +60,7 @@ declare global {
       data?: unknown;
 
       hasHint(this: this, hint: string): boolean;
-      callInLineEvent(
+      callInlineEvent(
         this: this,
         event: ig.Event,
         callData: { runCount: number },
