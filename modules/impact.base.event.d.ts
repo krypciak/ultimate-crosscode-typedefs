@@ -98,6 +98,8 @@ declare global {
       start(this: this, data?: unknown, eventCall?: ig.EventCall): void;
       run(this: this, data?: unknown): boolean;
       getNext(this: this, data?: unknown): Nullable<ig.EventStepBase>;
+      getInlineEvent?(this: this): ig.Event;
+      getInlineEventInput?(this: this): unknown;
     }
     interface EventStepBaseConstructor extends ImpactClass<EventStepBase> {}
     var EventStepBase: EventStepBaseConstructor;
