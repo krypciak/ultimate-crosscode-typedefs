@@ -12,7 +12,8 @@ declare global {
 
     interface EventManager extends ig.Class {
       runningEventCalls: ig.EventCall[];
-      blockingEventCall: ig.EventCall;
+      blockingEventCall: Nullable<ig.EventCall>;
+      blockedEventCallQueue: ig.EventCall[];
 
       callEvent(
         this: this,
@@ -25,7 +26,10 @@ declare global {
         data?: unknown,
       ): ig.EventCall;
       getBlockingEventCall(this: this): ig.EventCall;
+      getBlockingEventCallHint(this: this, hint: string): Nullable<boolean>;
+      isInterruptible(this: this): boolean;
       update(this: this): void;
+      clearQueue(this: this): void;
       clear(this: this): void;
       _startEventCall(this: this, event: ig.EventCall): void;
       _endEventCall(this: this, event: ig.EventCall): void;
