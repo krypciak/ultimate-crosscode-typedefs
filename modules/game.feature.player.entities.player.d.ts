@@ -123,6 +123,7 @@ declare global {
       switchedMode: boolean;
       animSheetReplace?: ig.AnimationSheet;
       overrideBall: Nullable<sc.BallInfo>;
+      params: sc.CombatParams;
 
       initModel(this: this): void;
       replaceAnimSheet(this: this, animSheet: ig.AnimationSheet): void;

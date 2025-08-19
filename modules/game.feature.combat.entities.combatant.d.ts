@@ -172,7 +172,7 @@ declare global {
       }
     }
     interface Combatant extends sc.BasicCombatant {
-      params: sc.CombatParams;
+      params: Nullable<sc.CombatParams>;
       isCombatant: true;
       party: sc.COMBATANT_PARTY;
       material: sc.COMBATANT_MATERIAL;
