@@ -127,7 +127,7 @@ declare global {
       setModifiers(this: this, modifiers: sc.ModifierList): void;
       reset(this: this, maxSp: number): void;
       setMaxSp(this: this, maxSp: number): void;
-      setBaseParams(this: this, baseParams: sc.CombatParams.BaseParams): void;
+      setBaseParams(this: this, baseParams: sc.CombatParams.BaseParams, noEffects?: boolean): void;
       getDamage(
         this: this,
         attackInfo: sc.AttackInfo,
