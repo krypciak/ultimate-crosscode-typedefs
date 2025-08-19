@@ -89,6 +89,7 @@ declare global {
       currentCombatArt: Nullable<sc.PartyMemberEntity.CombatArt>;
       charging: ig.ENTITY.Player.Charging;
       proxies: Record<string, sc.ProxySpawnerBase>;
+      params: sc.CombatParams;
 
       updateDefaultConfig(this: this, aiming?: boolean): void;
       onInstantDamage(this: this, damage: number): boolean;
