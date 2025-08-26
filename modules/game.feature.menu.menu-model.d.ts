@@ -274,7 +274,7 @@ declare global {
       loadClearFilesOnly: boolean;
       loreCurrentTab: number;
       synopInfo?: Nullable<unknown>;
-      newUnlocks: PartialRecord<sc.MENU_SUBMENU, string>;
+      newUnlocks: PartialRecord<sc.MENU_SUBMENU, string[]>;
       logEntries: sc.MenuModel.LogEntry[];
       gamepadIcons: boolean;
       menuHost: sc.MENU_SUBMENU;
