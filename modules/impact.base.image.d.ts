@@ -170,14 +170,14 @@ declare global {
         this: this,
         width: number,
         height: number,
-        fillCallback: () => void,
+        fillCallback: ig.ImageAtlasFragment.FillCallback,
       ): ig.ImageAtlasFragment;
       defragment(this: this, clearBuffers?: boolean): void;
       _getFragment(
         this: this,
         width: number,
         height: number,
-        fillCallback: () => void,
+        fillCallback: ig.ImageAtlasFragment.FillCallback,
       ): ig.ImageAtlasFragment;
     }
     interface ImageAtlasConstructor extends ImpactClass<ImageAtlas> {
@@ -186,13 +186,45 @@ declare global {
     var ImageAtlas: ImageAtlasConstructor;
     var imageAtlas: ig.ImageAtlas;
 
+    namespace ImageAtlasFragment {
+      type FillCallback = () => void;
+    }
     interface ImageAtlasFragment extends ig.Class {
+      buffer: HTMLCanvasElement;
       offX: number;
       offY: number;
       width: number;
       height: number;
+      fillCallback: ig.ImageAtlasFragment.FillCallback;
+      filled: boolean;
+      lineIdx: number;
+
+      invalidate(this: this): void;
+      release(this: this): void;
+      draw(
+        this: this,
+        targetX: number,
+        targetY: number,
+        srcX: number,
+        srcY: number,
+        width: number,
+        height: number,
+        flipX?: boolean,
+        flipY?: boolean,
+      ): void;
+      _fill(this: this): void;
     }
-    interface ImageAtlasFragmentConstructor extends ImpactClass<ImageAtlasFragment> {}
+    interface ImageAtlasFragmentConstructor extends ImpactClass<ImageAtlasFragment> {
+      new (
+        buffer: HTMLCanvasElement,
+        offX: number,
+        offY: number,
+        width: number,
+        height: number,
+        lineIdx: number,
+        fillCallback: ig.ImageAtlasFragment.FillCallback,
+      ): ImageAtlasFragment;
+    }
     var ImageAtlasFragment: ImageAtlasFragmentConstructor;
 
     interface ScreenBuffer extends ig.Class {
