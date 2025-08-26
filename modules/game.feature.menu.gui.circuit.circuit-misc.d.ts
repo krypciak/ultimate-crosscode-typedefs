@@ -40,13 +40,7 @@ declare global {
       focusOnNode(this: this, x: number, y: number): void;
       unfocus(this: this): void;
       resetFocusTimer(this: this): void;
-      moveTo(
-        this: this,
-        x: number,
-        y: number,
-        forceNoGamepad?: boolean,
-        skipTransition?: boolean,
-      ): void;
+      moveTo(this: this, x: number, y: number, smooth?: boolean, time?: boolean): void;
     }
     interface CircuitSwapCursorConstructor extends ImpactClass<CircuitSwapCursor> {
       new (): CircuitSwapCursor;
