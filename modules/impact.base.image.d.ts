@@ -163,7 +163,23 @@ declare global {
     }
     var ImagePatternSheet: ImagePatternSheetConstructor;
 
+    namespace ImageAtlas {
+      interface LineEntry {
+        offX: number;
+        width: number;
+        fragment: Nullable<ig.ImageAtlasFragment>;
+      }
+      interface Line {
+        offY: number;
+        height: number;
+        buffer: HTMLCanvasElement;
+        entries: LineEntry[];
+      }
+    }
     interface ImageAtlas extends ig.Class {
+      buffers: HTMLCanvasElement[];
+      debugActive: boolean;
+      lines: ig.ImageAtlas.Line[];
       scale: number;
 
       getFragment(
@@ -172,13 +188,23 @@ declare global {
         height: number,
         fillCallback: ig.ImageAtlasFragment.FillCallback,
       ): ig.ImageAtlasFragment;
+      fillFragments(this: this): void;
       defragment(this: this, clearBuffers?: boolean): void;
+      release(this: this, fragment: ig.ImageAtlasFragment): void;
       _getFragment(
         this: this,
         width: number,
         height: number,
         fillCallback: ig.ImageAtlasFragment.FillCallback,
       ): ig.ImageAtlasFragment;
+      _createLine(this: this, height: number): ig.ImageAtlas.Line;
+      _createBuffer(this: this): HTMLCanvasElement;
+      _splitEntry(
+        this: this,
+        entries: ig.ImageAtlas.LineEntry[],
+        id: number,
+        width: number,
+      ): ig.ImageAtlas;
     }
     interface ImageAtlasConstructor extends ImpactClass<ImageAtlas> {
       new (): ImageAtlas;
