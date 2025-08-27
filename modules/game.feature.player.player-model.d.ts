@@ -152,7 +152,7 @@ declare global {
       credit: number;
       level: number;
       exp: number;
-      skills: sc.BaseSkill[];
+      skills: Nullable<sc.BaseSkill>[];
       skillPoints: number[];
       skillPointsExtra: Record<sc.ELEMENT, number>;
       chapter: number;
