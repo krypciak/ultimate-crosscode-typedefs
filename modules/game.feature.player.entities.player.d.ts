@@ -16,7 +16,7 @@ declare global {
       interface PlayerState {
         startState: number;
         guarding: boolean;
-        applyCharge: boolean;
+        applyCharge: number;
         isCharging: boolean;
         redashReady: boolean;
       }
