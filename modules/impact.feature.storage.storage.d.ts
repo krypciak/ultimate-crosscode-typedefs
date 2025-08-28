@@ -162,7 +162,7 @@ declare global {
       saveCheckpoint(
         this: this,
         mapName: string,
-        position: ig.TeleportPosition,
+        position: Nullable<ig.TeleportPosition>,
         loadHint: Nullable<ig.Game.TeleportLoadHint>,
       ): void;
       getLastSlotData(this: this, mergeWith?: object): string;
