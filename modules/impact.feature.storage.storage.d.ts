@@ -149,9 +149,9 @@ declare global {
       listeners: ig.Storage.Listener[];
       saveObject: {};
       globalData: ig.Storage.GlobalsData;
-      checkPointSave: ig.SaveSlot;
+      checkPointSave: ig.SaveSlot.Data;
       data: ig.StorageData;
-      currentLoadFile: ig.SaveSlot;
+      currentLoadFile: ig.SaveSlot.Data;
       checkpointCondCallback: Nullable<() => boolean>;
       autoSaveCondCallback: Nullable<() => boolean>;
       loadHint: Nullable<ig.Game.TeleportLoadHint>;
