@@ -45,17 +45,31 @@ declare global {
 
     interface CrossCode extends ig.Game {
       transitionTimer: number;
+      currentTeleportColor: ig.RGBColorData;
+      teleportColor: ig.RGBColorData & { lighter: boolean; timeIn: number; timeOut: number };
       effects: Record<
         'dust' | 'teleport' | 'npc' | 'death' | 'speedlines' | 'drops',
         ig.EffectSheet
       >;
+      sounds: Record<'popup', ig.Sound>;
+      _slotToLoad: number;
+      _startMode: sc.START_MODE;
+      _teleportMessages: string[];
 
       onGameLoopStart(this: this): void;
       getVersion(this: this): string;
       addTeleportMessage(this: this, message: string): void;
       start(this: this, startMode?: sc.START_MODE, transitionTime?: number): void;
+      loadStart(this: this, slotId?: number): void;
       gotoTitle(this: this): void;
       transitionEnded(this: this): void;
+      hardReset(this: this): void;
+      reloadCheckpoint(this: this): void;
+      reloadAutosave(this: this): void;
+      respawn(this: this): void;
+      setTeleportColor(this: this, r: number, g: number, b: number, lighter: number): void;
+      setTeleportTime(this: this, timeIn: number, timeOut: number): void;
+      handleLoadingComplete(this: this): void;
     }
     interface CrossCodeConstructor extends ImpactClass<CrossCode> {
       new (): CrossCode;
