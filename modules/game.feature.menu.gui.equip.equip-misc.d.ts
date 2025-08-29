@@ -87,8 +87,6 @@ declare global {
         dontSkipAnim?: boolean,
       ): void;
       getTypeIndex(this: this, type: sc.ITEMS_EQUIP_TYPES): unknown;
-      update(this: this): void;
-      updateDrawables(this: this, a: unknown): void;
     }
     interface EquipMenuMiddleIconConstructor extends ImpactClass<EquipMenuMiddleIcon> {
       new (): EquipMenuMiddleIcon;

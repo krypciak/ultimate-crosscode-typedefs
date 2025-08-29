@@ -34,7 +34,6 @@ declare global {
       _loadSlot: number;
       _firstTime: boolean;
 
-      update(this: this): void;
       setPos(this: this, b: unknown, a: unknown): void;
       activate(this: this): void;
       deactivate(this: this): void;

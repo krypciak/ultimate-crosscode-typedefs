@@ -48,7 +48,6 @@ declare global {
         id?: Nullable<number>,
       ): void;
       popMessage(this: this): void;
-      update(this: this): void;
       clear(this: this): void;
       hide(this: this): void;
       animationEnd(this: this): void;
