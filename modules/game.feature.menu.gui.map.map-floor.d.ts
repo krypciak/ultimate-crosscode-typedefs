@@ -38,8 +38,6 @@ declare global {
       bounds: Vec2 & { width: number; height: number };
 
       onAttach(this: this): void;
-      update(this: this): void;
-      updateDrawables(this: this): void;
       showFloor(this: this): void;
       hideFloor(this: this): void;
       calculateOpacity(this: this, skipTransition: boolean, show?: boolean): void;

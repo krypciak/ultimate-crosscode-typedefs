@@ -227,9 +227,7 @@ declare global {
     var ScrollPane: ScrollPaneConstructor;
 
     namespace Slider {
-      interface Thumb extends ig.GuiElementBase {
-        updateDrawables(this: this, renderer: ig.GuiRenderer): void;
-      }
+      interface Thumb extends ig.GuiElementBase {}
     }
     interface Slider extends ig.GuiElementBase {
       offset: Vec2;

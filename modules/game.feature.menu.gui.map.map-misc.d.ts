@@ -74,7 +74,6 @@ declare global {
       looseFocus(this: this): void;
       addObservers(this: this): void;
       removeObservers(this: this): void;
-      update(this: this): void;
     }
     interface MapCursorConstructor extends ImpactClass<MapCursor> {
       new (worldmap: boolean): MapCursor;
