@@ -144,6 +144,7 @@ declare global {
         this: this,
         type: new (x: number, y: number, z: number, settings: S) => E | string,
       ): E[];
+      isEventStartReady(this: this): boolean;
       isPlayerTouch(
         this: this,
         entity: ig.Entity,
@@ -181,6 +182,7 @@ declare global {
         reloadCache?: Nullable<boolean>,
       ): void;
       isTeleporting(this: this): boolean;
+      onTeleportStart(this: this): number
       onTeleportEnd(this: this): void;
       createPlayer(this: this): void;
       preloadLevel(this: this, mapName: string): void;
