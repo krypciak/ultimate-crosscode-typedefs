@@ -94,7 +94,7 @@ declare global {
         status: number;
       }
     }
-    interface CombatParams extends ig.Class, sc.Model {
+    interface CombatParams extends ig.Class, sc.Model, ig.ActorEntity.ActionAttachedListener {
       combatant: ig.ENTITY.Combatant;
       baseParams: sc.CombatParams.BaseParams;
       modifiers: Record<keyof sc.MODIFIERS, number>;
@@ -116,18 +116,32 @@ declare global {
       lockedBy: ig.ActorEntity[];
       stats: Record<string, number>;
 
+      setCombatStat(this: this, stat: string, value: number): void;
+      getCombatStat(this: this, stat: string, orDefault?: number): number;
+      addCombatStat(this: this, stat: string, toAdd: number): void;
+      healStatus(this: this): void;
+      revive(this: this, hpFactor?: number): void;
+      setCombatant(this: this, combatant: ig.ENTITY.Combatant): void;
+      initStatusFx(this: this): void;
+      setModifiers(this: this, modifiers: sc.ModifierList): void;
+      startLock(this: this, actor: ig.ActorEntity): void;
+      endLock(this: this, actor: ig.ActorEntity): void;
+      clearLock(this: this): void;
+      isLocked(this: this): boolean;
+      isLockedBy(this: this, actor: ig.ActorEntity): boolean;
+      _decreaseLock(this: this, actor: ig.ActorEntity): void;
+      reset(this: this, maxSp: number): void;
+      resetStatusConditions(this: this): void;
+      resetSp(this: this): void;
+      setMaxSp(this: this, maxSp: number): void;
+      setBaseParams(this: this, baseParams: sc.CombatParams.BaseParams, noEffects?: boolean): void;
       getStat<K extends sc.CombatParams.ParamName>(
         this: this,
         key: K,
         noHack?: Nullable<boolean>,
       ): sc.CombatParams.Params[K];
+      getStatBuffFactor(this: this, stat: sc.StatChange.ParamName): number;
       getModifier(this: this, modifier: keyof sc.MODIFIERS): number;
-      revive(this: this, hpFactor?: number): void;
-      setCombatant(this: this, combatant: ig.ENTITY.Combatant): void;
-      setModifiers(this: this, modifiers: sc.ModifierList): void;
-      reset(this: this, maxSp: number): void;
-      setMaxSp(this: this, maxSp: number): void;
-      setBaseParams(this: this, baseParams: sc.CombatParams.BaseParams, noEffects?: boolean): void;
       getDamage(
         this: this,
         attackInfo: sc.AttackInfo,
@@ -136,17 +150,25 @@ declare global {
         shieldResult?: sc.SHIELD_RESULT,
         hitIgnore?: boolean,
       ): CombatParams.DamageResult;
+      applyDamage(
+        this: this,
+        damageResult: sc.CombatParams.DamageResult,
+        attackInfo: sc.AttackInfo,
+        combatant: ig.ENTITY.Combatant,
+      ): void;
       getHealAmount(this: this, healInfo: sc.HealInfoType): number;
+      reduceHp(this: this, amount: number): void;
+      setRelativeHp(this: this, ratio: number): void;
       setCritical(this: this): void;
       increaseHp(this: this, amount: number): void;
       getHpFactor(this: this): number;
       addSp(this: this, spAdd: number, maxSp?: number): void;
-      setRelativeSp(this: this, factor: number): void;
       consumeSp(this: this, sp: number): void;
-      setRelativeHp(this: this, ratio: number): void;
+      setRelativeSp(this: this, factor: number): void;
       getSp(this: this): number;
       getRelativeSp(this: this): number;
       notifySpConsume(this: this, sp: number): void;
+      setDefeated(this: this): void;
       isDefeated(this: this): boolean;
       addItemBuf(
         this: this,
@@ -154,10 +176,18 @@ declare global {
         duration: number,
         itemId: sc.ItemID,
       ): true;
-      setDefeated(this: this): void;
+      removeIntersectingItemBuff(this: this, buff: sc.StatChange): void;
       addBuff(this: this, buff: sc.StatChange): true;
+      modifyBuff<T extends sc.StatChange.ParamName>(
+        this: this,
+        buff: sc.StatChange,
+        param: T,
+        value: sc.StatChange.Params[T],
+      ): boolean;
       removeBuff(this: this, buff: sc.StatChange): void;
       removeAllBuffs(this: this): void;
+      getMaxBuffs(this: this): number;
+      hasMaxBuffs(this: this): boolean;
       update(this: this, inCombat: boolean): void;
     }
     interface CombatParamsConstructor extends ImpactClass<CombatParams> {

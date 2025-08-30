@@ -16,6 +16,7 @@ declare global {
       active: boolean;
       effectiveness: number;
       label?: string;
+      fxHandle: Nullable<ig.ENTITY.Effect>;
 
       getInflictValue(
         this: this,
@@ -24,10 +25,32 @@ declare global {
         attackInfo: sc.AttackInfo,
         shieldResult: sc.SHIELD_RESULT,
       ): number;
+      inflict(this: this, charge: number, params: sc.CombatParams, attackInfo: sc.AttackInfo): void;
       _getOffensiveFactor(this: this, attackInfo: sc.AttackInfo): number;
+      activate(
+        this: this,
+        combatant: ig.ENTITY.Combatant,
+        params: sc.CombatParams,
+        attackInfo: sc.AttackInfo,
+      ): void;
+      initEntity(this: this, combatant: ig.ENTITY.Combatant): void;
       getEffectiveness(this: this, params: sc.CombatParams): number;
+      clear(this: this, combatant?: ig.ENTITY.Combatant): void;
+      update(
+        this: this,
+        combatant: ig.ENTITY.Combatant,
+        params: sc.CombatParams,
+        decreaseHeal?: boolean,
+      ): void;
+      getLabel(this: this): string;
+      onUpdate(this: this, combatant: ig.ENTITY.Combatant, params: sc.CombatParams): void;
+      onInitEntity(this: this, combatant: ig.ENTITY.Combatant): void;
+      onClear(this: this, combatant: ig.ENTITY.Combatant): void;
+      onActivate(this: this, combatant: ig.ENTITY.Combatant): void;
     }
-    interface CombatStatusBaseConstructor extends ImpactClass<CombatStatusBase> {}
+    interface CombatStatusBaseConstructor extends ImpactClass<CombatStatusBase> {
+      new (): CombatStatusBase;
+    }
     var CombatStatusBase: CombatStatusBaseConstructor;
     var COMBAT_STATUS: sc.CombatStatusBase[];
 
@@ -47,7 +70,9 @@ declare global {
     interface JoltStatusConstructor extends ImpactClass<JoltStatus> {}
     var JoltStatus: JoltStatusConstructor;
 
-    interface MarkStatus extends sc.CombatStatusBase {}
+    interface MarkStatus extends sc.CombatStatusBase {
+      getValue(this: this, combatant: ig.ENTITY.Combatant): number;
+    }
     interface MarkStatusConstructor extends ImpactClass<MarkStatus> {}
     var MarkStatus: MarkStatusConstructor;
   }
