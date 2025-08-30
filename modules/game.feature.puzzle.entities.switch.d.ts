@@ -13,7 +13,7 @@ declare global {
         isOn: boolean;
         sounds: Record<'hit' | 'bing', ig.Sound>;
 
-        ballHit(this: this, ball: ig.Entity): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
         varsChanged(this: this): void;
       }
       interface SwitchConstructor extends ImpactClass<Switch> {

@@ -42,7 +42,7 @@ declare global {
         group: string;
         isOn: boolean;
 
-        ballHit(this: this, entity: ig.Entity | ig.ENTITY.Ball): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
         onGroupResolve(this: this): void;
       }
       interface BounceSwitchConstructor extends ImpactClass<BounceSwitch> {

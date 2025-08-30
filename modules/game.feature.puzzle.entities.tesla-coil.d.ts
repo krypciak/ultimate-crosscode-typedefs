@@ -33,7 +33,10 @@ declare global {
           align: ig.ENTITY_ALIGN.BOTTOM,
         ) => void;
       }
-      interface TeslaCoil extends ig.AnimatedEntity, sc.Combat.ActionAttached, ig.EffectSheet.EventCallback {
+      interface TeslaCoil
+        extends ig.AnimatedEntity,
+          sc.Combat.ActionAttached,
+          ig.EffectSheet.EventCallback {
         chargeTimer: number;
         chargeHitExceptions: Nullable<ig.ENTITY.TeslaCoil | ig.ENTITY.OneTimeSwitch>;
         source: boolean;
@@ -46,7 +49,7 @@ declare global {
         onHideRequest(this: this): void;
         extendCharge(this: this, chargeHitExceptions: this['chargeHitExceptions']): void;
         discharge(this: this, entities: (ig.ENTITY.TeslaCoil | ig.ENTITY.OneTimeSwitch)[]): void;
-        ballHit(this: this, entity: ig.Entity): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       }
       interface TeslaCoilConstructor extends ImpactClass<TeslaCoil> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.TeslaCoil.Settings): TeslaCoil;

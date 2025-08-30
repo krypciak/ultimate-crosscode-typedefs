@@ -46,7 +46,7 @@ declare global {
       group: string;
       charge: ElementPole.Charge;
 
-      ballHit(this: this, ball: ig.ENTITY.Ball): boolean;
+      ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
     }
     interface ElementPoleConstructor extends ImpactClass<ElementPole> {
       new (x: number, y: number, z: number, settings: ig.ENTITY.ElementPole.Settings): ElementPole;

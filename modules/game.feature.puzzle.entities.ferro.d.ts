@@ -101,11 +101,7 @@ declare global {
         onBubbleBurst(this: this): void;
       }
     }
-    interface FerroEntity
-      extends ig.AnimatedEntity,
-        ig.Entity.Attachable,
-        sc.GetCombatant,
-        sc.GetCombatantRoot {
+    interface FerroEntity extends ig.AnimatedEntity, ig.Entity.Attachable, ig.BallLike {
       state: sc.FerroEntity.State;
       absorbState: Nullable<sc.FerroEntity.State>;
       timer: number;
@@ -174,7 +170,6 @@ declare global {
       doTeleport(this: this): void;
       onTeleportStart(this: this, waveTeleporter: ig.ENTITY.WaveTeleport): void;
       getTeleportZOffset(this: this): number;
-      getElement(this: this): sc.ELEMENT;
       getAttackInfo(this: this): sc.AttackInfo;
       isWaterBubble(this: this): boolean;
       isIceDisk(this: this): boolean;
@@ -192,5 +187,11 @@ declare global {
       new (x: number, y: number, z: number, settings: sc.FerroEntity.Settings): FerroEntity;
     }
     var FerroEntity: FerroEntityConstructor;
+
+    interface FerroWaveAttack extends ig.Entity, ig.BallLike {}
+    interface FerroWaveAttackConstructor extends ImpactClass<FerroWaveAttack> {
+      new (x: number, y: number, z: number, settings: unknown): FerroWaveAttack;
+    }
+    var FerroWaveAttack: FerroWaveAttackConstructor;
   }
 }

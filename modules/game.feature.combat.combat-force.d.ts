@@ -21,7 +21,7 @@ declare global {
     }
     var CombatForce: CombatForceConstructor;
 
-    interface CircleHitForce extends sc.CombatForce {
+    interface CircleHitForce extends sc.CombatForce, ig.BallLike {
       getHitDir(this: this, entity: ig.Entity, dest: Vec2): Vec2;
     }
     interface CircleHitForceConstructor extends ImpactClass<CombatForce> {}

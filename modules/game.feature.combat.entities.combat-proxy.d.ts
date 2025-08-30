@@ -112,7 +112,7 @@ declare global {
       postActionUpdate(this: this): void;
       detach(this: this): void;
       destroy(this: this, type?: sc.CombatProxyEntity.DESTROY_TYPE): void;
-      ballHit(this: this, entity: ig.Entity): boolean;
+      ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       setMaxHp(this: this, hp: number): void;
       reduceHp(this: this, amount: number): void;
     }

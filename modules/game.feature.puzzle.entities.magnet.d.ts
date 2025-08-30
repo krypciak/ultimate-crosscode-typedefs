@@ -37,7 +37,7 @@ declare global {
         pullEntities(this: this): void;
         varsChanged(this: this): void;
         updateDir(this: this, forceSet?: boolean): void;
-        ballHit(this: this, entity: ig.Entity): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       }
       interface MagnetConstructor extends ImpactClass<Magnet> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.Magnet.Settings): Magnet;

@@ -56,7 +56,7 @@ declare global {
       steam(this: this, vec: Vec2, combatant?: ig.ENTITY.Combatant): void;
       circularSteam(this: this, combatant?: ig.ENTITY.Combatant): void;
       turnIce(this: this): void;
-      ballHit(this: this, ball: ig.Entity): boolean;
+      ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       isWaterBubble(this: this): boolean;
       isBallDestroyer(this: this, collPos: Vec3, collRes: { dir: Vec2 }, c?: boolean): boolean;
       isBallAdjust(this: this): boolean;

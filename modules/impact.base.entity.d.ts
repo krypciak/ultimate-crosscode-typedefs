@@ -85,7 +85,7 @@ declare global {
       isBallDestroyer?(this: this, collPos: Vec3, collRes: { dir: Vec2 }, c?: boolean): boolean;
       isBallAdjust?(this: this): boolean;
       doBallAdjust?(this: this, pos: Vec3, dir: Vec2, size: Vec3, maxBounce: number): number;
-      ballHit?(this: this, ball: ig.Entity, ...args: unknown[]): boolean | void;
+      ballHit?(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean | void;
       isQuickMenuVisible?(this: this): boolean;
       getQuickMenuSettings?(this: this): Omit<sc.QuickMenuTypesBaseSettings, 'entity'>;
       isWaterBubble?(this: this): boolean;

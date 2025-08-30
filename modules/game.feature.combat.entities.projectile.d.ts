@@ -19,7 +19,7 @@ declare global {
           combatant: sc.BasicCombatant;
         }
       }
-      interface Projectile extends ig.AnimatedEntity {
+      interface Projectile extends ig.AnimatedEntity, ig.BallLike {
         speedVary: { _type: string; _info: string };
         combatant: sc.BasicCombatant;
         hitProxy: Nullable<sc.HitProxyConnect>;
@@ -38,11 +38,6 @@ declare global {
         handleMovementTrace(this: this, coll: ig.CollEntry): void;
         clearIgnored(this: this): void;
         addIgnore(this: this, entityId: number): void;
-        getHitCenter(this: this, entity: ig.Entity, dest?: Vec3): Vec3;
-        getHitVel(this: this, entity: ig.Entity, destVec?: Vec2): Vec2;
-        getElement(this: this): sc.ELEMENT;
-        getCombatant(this: this): sc.BasicCombatant;
-        getCombatantRoot(this: this): ig.ENTITY.Combatant;
         getAttackInfo(this: this): sc.AttackInfo;
       }
       interface ProjectileConstructor extends ImpactClass<Projectile> {

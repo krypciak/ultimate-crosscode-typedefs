@@ -10,7 +10,7 @@ declare global {
 
             }
         }
-        interface IceDiskEntity extends ig.AnimatedEntity {
+        interface IceDiskEntity extends ig.AnimatedEntity, ig.BallLike {
             timer: number;
             combatant: ig.ENTITY.Combatant;
             state: number;
