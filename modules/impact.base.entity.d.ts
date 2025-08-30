@@ -88,6 +88,7 @@ declare global {
       ballHit?(this: this, ball: ig.Entity, ...args: unknown[]): boolean | void;
       isQuickMenuVisible?(this: this): boolean;
       getQuickMenuSettings?(this: this): Omit<sc.QuickMenuTypesBaseSettings, 'entity'>;
+      isWaterBubble?(this: this): boolean;
     }
     interface EntityConstructor extends ImpactClass<Entity> {
       new (x: number, y: number, z: number, settings: ig.Entity.Settings): Entity;
