@@ -167,5 +167,15 @@ declare global {
       new (entity: ig.Entity, blockType?: ig.NAV_BLOCKER_TYPE): NavBlocker;
     }
     var NavBlocker: NavBlockerConstructor;
+
+    namespace NavExternalBlockers {
+      type Blocker = (node: ig.PathNodeConnect, actor: sc.ActorEntity) => boolean;
+    }
+    interface NavExternalBlockers {
+      blockers: ig.NavExternalBlockers.Blocker[];
+      register(blocker: ig.NavExternalBlockers.Blocker): void;
+      check(node: ig.PathNodeConnect, actor: sc.ActorEntity): boolean;
+    }
+    var NavExternalBlockers: NavExternalBlockers;
   }
 }
