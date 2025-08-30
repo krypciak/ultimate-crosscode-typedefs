@@ -4,7 +4,7 @@ export {};
 
 declare global {
   namespace sc {
-    interface ONE_TIME_SWITCH_TYPE_BASE {
+    interface ONE_TIME_SWTICH_TYPE_BASE {
       size: Vec3;
       padding: Vec2;
       activeZHeight: number;
@@ -13,22 +13,23 @@ declare global {
 
       hitCondition(switchEntity: ig.ENTITY.Switch, ball: ig.ENTITY.Ball): boolean;
     }
-    var ONE_TIME_SWITCH_TYPE: {
-      default: sc.ONE_TIME_SWITCH_TYPE_BASE;
-      'turret-switch': sc.ONE_TIME_SWITCH_TYPE_BASE;
-      propeller: sc.ONE_TIME_SWITCH_TYPE_BASE;
-      steamPipe: sc.ONE_TIME_SWITCH_TYPE_BASE;
-      teslaSwitch: sc.ONE_TIME_SWITCH_TYPE_BASE;
-      arSwitch: sc.ONE_TIME_SWITCH_TYPE_BASE;
-      waveSwitch: sc.ONE_TIME_SWITCH_TYPE_BASE;
-      ferroSwitch: sc.ONE_TIME_SWITCH_TYPE_BASE;
-    };
+    interface ONE_TIME_SWTICH_TYPE {
+      default: sc.ONE_TIME_SWTICH_TYPE_BASE;
+      'turret-switch': sc.ONE_TIME_SWTICH_TYPE_BASE;
+      propeller: sc.ONE_TIME_SWTICH_TYPE_BASE;
+      steamPipe: sc.ONE_TIME_SWTICH_TYPE_BASE;
+      teslaSwitch: sc.ONE_TIME_SWTICH_TYPE_BASE;
+      arSwitch: sc.ONE_TIME_SWTICH_TYPE_BASE;
+      waveSwitch: sc.ONE_TIME_SWTICH_TYPE_BASE;
+      ferroSwitch: sc.ONE_TIME_SWTICH_TYPE_BASE;
+    }
+    var ONE_TIME_SWTICH_TYPE: ONE_TIME_SWTICH_TYPE;
   }
   namespace ig {
     namespace ENTITY {
       namespace OneTimeSwitch {
         interface Settings {
-          switchType: keyof typeof sc.ONE_TIME_SWITCH_TYPE;
+          switchType: keyof typeof sc.ONE_TIME_SWTICH_TYPE;
           variable?: string;
           addValue?: string;
           activeTime?: number;
@@ -44,8 +45,8 @@ declare global {
         variable: string;
         isOn: boolean;
         sounds: Record<'hit' | 'bing', ig.Sound>;
-        switchType: keyof typeof sc.ONE_TIME_SWITCH_TYPE;
-        data: sc.ONE_TIME_SWITCH_TYPE_BASE;
+        switchType: keyof typeof sc.ONE_TIME_SWTICH_TYPE;
+        data: sc.ONE_TIME_SWTICH_TYPE_BASE;
         fx: Record<string, ig.EffectHandle>;
         fxHandle: Nullable<ig.ENTITY.Effect>;
         fxHideHandle: Nullable<ig.ENTITY.Effect>;
