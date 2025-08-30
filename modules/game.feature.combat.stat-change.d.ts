@@ -9,6 +9,7 @@ declare global {
 
     namespace StatChange {
       type StatName = keyof typeof sc.STAT_CHANGE_SETTINGS;
+      type ParamName = keyof Params;
       interface Params {
         hp: number;
         attack: number;
@@ -23,8 +24,16 @@ declare global {
       iconString: string;
       hasTimer: boolean;
 
+      multiply(
+        this: this,
+        multiplier: number | number[],
+        stat: Exclude<sc.StatChange.ParamName, 'elemFactor'>,
+      ): number;
+      add(this: this, value: number, stat: sc.StatChange.ParamName): number;
       clear(this: this): void;
+      getStatFactor(this: this, stat: sc.StatChange.ParamName): number;
       getTimeFactor(this: this): number;
+      intersectsWith(this: this, statChange: sc.StatChange): boolean;
 
       //does not exist on base class, but it is expected to exist in all uses of StatChange.
       update(this: this): boolean;
@@ -61,7 +70,7 @@ declare global {
     }
 
     interface StatParamType {
-      key: string;
+      key: sc.StatChange.ParamName;
       index?: number;
     }
     var STAT_PARAM_TYPE: Record<string, StatParamType>;
