@@ -99,7 +99,6 @@ declare global {
       party: sc.COMBATANT_PARTY;
       target: Nullable<sc.BasicCombatant>;
       params: sc.CombatParams;
-      attackInfo: sc.AttackInfo;
       multiHit: boolean;
       maxTime: number;
       timer: number;
@@ -141,5 +140,15 @@ declare global {
       new (x: number, y: number, z: number, settings: Ball.Settings): Ball;
     }
     var Ball: BallConstructor;
+  }
+  namespace ig {
+    interface BallLike extends sc.GetCombatant, sc.GetCombatantRoot {
+      party?: sc.COMBATANT_PARTY;
+      attackInfo?: Nullable<sc.AttackInfo>;
+
+      getElement(this: this): sc.ELEMENT;
+      getHitCenter(this: this, entity: ig.Entity, dest?: Vec3): Vec3;
+      getHitVel(this: this, entity: ig.Entity, destVec?: Vec2): Vec2;
+    }
   }
 }

@@ -130,7 +130,7 @@ declare global {
         fx: { sheet: ig.EffectSheet };
 
         varsChanged(this: this): void;
-        ballHit(this: this, entity: ig.Entity): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       }
       interface BallChangerConstructor extends ImpactClass<BallChanger> {
         new (

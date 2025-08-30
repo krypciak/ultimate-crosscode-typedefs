@@ -56,7 +56,7 @@ declare global {
         fixCount: number;
 
         onHideRequest(this: this): void;
-        ballHit(this: this, ball: ig.Entity): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
         setTempOn(this: this, hasOverlap?: boolean): void;
         setOn(this: this): void;
         finalizeOn(this: this): void;

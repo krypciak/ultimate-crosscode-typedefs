@@ -51,7 +51,7 @@ declare global {
         _wm: ig.Config;
 
         onHideRequest(this: this): void;
-        ballHit(this: this, ball: ig.Entity): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
         _setAnimation(this: this): void;
       }
       interface MultiHitSwitchConstructor extends ImpactClass<MultiHitSwitch> {

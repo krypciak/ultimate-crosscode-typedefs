@@ -35,7 +35,7 @@ declare global {
         effects: unknown;
 
         onHideRequest(this: this): void;
-        ballHit(this: this, entity: ig.Entity): boolean;
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       }
       interface AntiCompressorConstructor extends ImpactClass<AntiCompressor> {
         new (
@@ -52,16 +52,13 @@ declare global {
     namespace CompressedBaseEntity {
       interface Settings extends ig.Entity.Settings {}
     }
-    interface CompressedBaseEntity extends ig.AnimatedEntity {
+    interface CompressedBaseEntity extends ig.AnimatedEntity, ig.BallLike {
       nudgeTimer: number;
       killTimer: number;
       globalCount: number;
       speedFactor: number;
       combatant: ig.ENTITY.Combatant;
-      attackInfo: sc.AttackInfo;
       fastMode: boolean;
-
-      getElement(this: this): sc.ELEMENT;
     }
     interface CompressedBaseEntityConstructor extends ImpactClass<CompressedBaseEntity> {
       new (

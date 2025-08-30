@@ -58,7 +58,7 @@ declare global {
         ig.ENTITY.WaveTeleport.Teleportable {
       phased: boolean;
 
-      ballHit(this: this, ball: ig.ENTITY.Ball): boolean;
+      ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       resetPos(this: this, pos?: Nullable<Vec3>): void;
     }
     interface WavePushPullBlockConstructor extends ImpactClass<WavePushPullBlock> {
