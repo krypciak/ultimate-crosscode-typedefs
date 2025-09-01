@@ -35,14 +35,23 @@ declare global {
   namespace ig {
     namespace ENTITY {
       namespace BounceSwitch {
-        interface Settings {}
+        interface Settings {
+          group: string;
+          variable: string;
+        }
       }
       interface BounceSwitch extends ig.AnimatedEntity {
-        effects: ig.EffectSheet;
+        variable: string;
         group: string;
         isOn: boolean;
+        effects: ig.EffectSheet;
+        sounds: Record<'hit' | 'bing' | 'fail', ig.Sound>;
+        timer: number;
+        cameraHandle: Nullable<ig.Camera.TargetHandle>;
+        _wm: ig.Config
 
         ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
+        onGroupReset(this: this): void;
         onGroupResolve(this: this): void;
       }
       interface BounceSwitchConstructor extends ImpactClass<BounceSwitch> {
