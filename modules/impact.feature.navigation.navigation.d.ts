@@ -152,6 +152,14 @@ declare global {
     }
     var NAV_CLOSE_POINT_SEARCH: NAV_CLOSE_POINT_SERCH;
 
+    interface Navigation extends ig.GameAddon {
+      getNavBlock(this: this, entity: ig.Entity): ig.NavBlocker;
+    }
+    interface NavigationConstructor extends ImpactClass<Navigation> {
+      new (): Navigation;
+    }
+    var navigation: ig.Navigation;
+
     interface NavBlocker extends ig.Class {
       entity: ig.Entity;
       pos: Vec3;
