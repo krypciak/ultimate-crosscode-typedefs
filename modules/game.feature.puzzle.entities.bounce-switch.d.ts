@@ -48,7 +48,7 @@ declare global {
         sounds: Record<'hit' | 'bing' | 'fail', ig.Sound>;
         timer: number;
         cameraHandle: Nullable<ig.Camera.TargetHandle>;
-        _wm: ig.Config
+        _wm: ig.Config;
 
         ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
         onGroupReset(this: this): void;
@@ -71,10 +71,15 @@ declare global {
         effects: ig.EffectSheet;
         group: string;
         blockState: 0 | 1 | 2;
+        maxZHeight: number;
         timer: ig.WeightTimer;
+        cameraAction: null;
         ballTime: number;
+        sounds: Record<'bing', ig.Sound>;
+        _wm: ig.Config;
 
         onGroupResolve(this: this, hide?: boolean): void;
+        onGroupReset(this: this): void;
       }
       interface BounceBlockConstructor extends ImpactClass<BounceBlock> {
         new (
