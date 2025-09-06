@@ -136,24 +136,10 @@ declare global {
       updateModelStats(this: this, updateFx?: boolean): void;
       getMaxDashes(this: this): number;
       hasCameraTarget(this: this, target: ig.Entity): boolean;
-      addCameraTarget(
-        this: this,
-        target: ig.Entity,
-        cameraSpeed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
-      ): void;
-      removeCameraTarget(
-        this: this,
-        target: ig.Entity,
-        cameraSpeed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
-      ): void;
-      removeAllCameraTargets(
-        this: this,
-        cameraSpeed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
-      ): void;
-      _updateCameraHandle(
-        this: this,
-        cameraSpeed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
-      ): void;
+      addCameraTarget(this: this, target: ig.Entity, cameraSpeed?: ig.Camera.Speed): void;
+      removeCameraTarget(this: this, target: ig.Entity, cameraSpeed?: ig.Camera.Speed): void;
+      removeAllCameraTargets(this: this, cameraSpeed?: ig.Camera.Speed): void;
+      _updateCameraHandle(this: this, cameraSpeed?: ig.Camera.Speed): void;
       onPlayerPlaced(this: this): void;
       doCombatAction(this: this, action: keyof typeof sc.PLAYER_ACTION): void;
       setActionBlocked(

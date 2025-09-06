@@ -5,6 +5,9 @@ export {};
 
 declare global {
   namespace ig {
+    namespace Camera {
+      type Speed = ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+    }
     interface Camera extends ig.GameAddon {
       targets: ig.Camera.TargetHandle[];
       namedTargets: Record<string, ig.Camera.TargetHandle>;
@@ -24,24 +27,45 @@ declare global {
       levelLoadStartOrder: number;
 
       onPostUpdate(this: this): void;
+      onLevelLoadStart(this: this, data: sc.MapModel.Map): void;
       pushTarget(
         this: this,
         target: ig.Camera.TargetHandle,
-        speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
+        speed?: ig.Camera.Speed,
         transitionFunction?: KeySpline,
         name?: string,
       ): void;
+      removeNamedTarget(
+        this: this,
+        name: string,
+        speed?: ig.Camera.Speed,
+        transitionFunction?: KeySpline,
+      ): void;
+      removeTarget(
+        this: this,
+        target: ig.Camera.TargetHandle,
+        speed?: ig.Camera.Speed,
+        transitionFunction?: KeySpline,
+      ): void;
+      popTarget(this: this, speed?: ig.Camera.Speed, transitionFunction?: KeySpline): void;
       replaceTarget(
         this: this,
         toDelete: ig.Camera.TargetHandle,
         newTarget: ig.Camera.TargetHandle,
-        speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
+        speed?: ig.Camera.Speed,
         transitionFunction?: KeySpline,
-      ): unknown;
-      _getDuration(
-        this: this,
-        speed: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS,
-      ): number;
+      ): void;
+      getTargetCount(this: this): number;
+      isTargetReached(this: this): boolean;
+      retarget(this: this, speed?: ig.Camera.Speed, transitionFunction?: KeySpline): void;
+      isActiveTarget(this: this, target: ig.Camera.TargetHandle): boolean;
+      getTimeUntilTargetReached(this: this): number;
+      _limitPos(this: this, pos: Vec2, zoom: Vec2, applyZoom: boolean): void;
+      _applyFinalState(this: this): void;
+      _saveLastPos(this: this): void;
+      _getNewZoom(this: this): number;
+      _getNewPos(this: this, destPos: Vec2, destWantedPos?: Nullable<Vec2>, destZoom?: Vec2): Vec2;
+      _getDuration(this: this, speed: ig.Camera.Speed | undefined): number;
     }
     interface CameraConstructor extends ImpactClass<Camera> {
       new (): Camera;

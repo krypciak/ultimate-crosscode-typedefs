@@ -29,7 +29,7 @@ declare global {
       namespace ADD_PLAYER_CAMERA_TARGET {
         interface Settings {
           entity: ig.Event.GetEntity;
-          speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+          speed?: ig.Camera.Speed;
         }
       }
       interface ADD_PLAYER_CAMERA_TARGET extends ig.EventStepBase {
@@ -44,13 +44,13 @@ declare global {
       namespace REMOVE_PLAYER_CAMERA_TARGET {
         interface Settings {
           entity: ig.Event.GetEntity;
-          speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+          speed?: ig.Camera.Speed;
         }
       }
       interface REMOVE_PLAYER_CAMERA_TARGET extends ig.EventStepBase {
         entity: ig.Event.GetEntity;
         _wm: ig.Config;
-        speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+        speed?: ig.Camera.Speed;
       }
       interface REMOVE_PLAYER_CAMERA_TARGET_CONSTRUCTOR
         extends ImpactClass<REMOVE_PLAYER_CAMERA_TARGET> {
@@ -62,11 +62,11 @@ declare global {
 
       namespace REMOVE_ALL_PLAYER_CAMERAS {
         interface Settings {
-          speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+          speed?: ig.Camera.Speed;
         }
       }
       interface REMOVE_ALL_PLAYER_CAMERAS extends ig.EventStepBase {
-        speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+        speed?: ig.Camera.Speed;
         _wm: ig.Config;
       }
       interface REMOVE_ALL_PLAYER_CAMERAS_CONSTRUCTOR
@@ -365,14 +365,14 @@ declare global {
 
       namespace ADD_PLAYER_CAMERA_TARGET {
         interface Settings {
-          speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+          speed?: ig.Camera.Speed;
           actionDetached?: boolean;
           onlyAfterRemove?: boolean;
         }
       }
       interface ADD_PLAYER_CAMERA_TARGET extends ig.ActionStepBase {
         _wm: ig.Config;
-        speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+        speed?: ig.Camera.Speed;
         actionDetached: boolean;
         onlyAfterRemove: boolean;
       }
@@ -383,13 +383,13 @@ declare global {
 
       namespace REMOVE_PLAYER_CAMERA_TARGET {
         interface Settings {
-          speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+          speed?: ig.Camera.Speed;
           actionDetached: boolean;
         }
       }
       interface REMOVE_PLAYER_CAMERA_TARGET extends ig.ActionStepBase {
         _wm: ig.Config;
-        speed?: ig.Camera.SPEED_OPTIONS | keyof typeof ig.Camera.SPEED_OPTIONS;
+        speed?: ig.Camera.Speed;
         actionDetached: boolean;
       }
       interface REMOVE_PLAYER_CAMERA_TARGET_CONSTRUCTOR
