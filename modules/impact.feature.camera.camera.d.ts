@@ -49,6 +49,7 @@ declare global {
       SPEED_OPTIONS: ig.Camera.SPEED_OPTIONS;
       PosTarget: ig.Camera.PosTargetConstructor;
       EntityTarget: ig.Camera.EntityTargetConstructor;
+      MultiEntityTarget: ig.Camera.MultiEntityTargetConstructor;
       TargetHandle: ig.Camera.TargetHandleConstructor;
     }
     var Camera: CameraConstructor;
@@ -90,6 +91,21 @@ declare global {
       }
       interface EntityTargetConstructor extends ImpactClass<EntityTarget> {
         new (entity: ig.Entity, lockZ?: boolean): EntityTarget;
+      }
+
+      interface MultiEntityTarget extends ig.Class {
+        entities: ig.Entity;
+        _zSlow: boolean;
+        _prevFloat: boolean;
+        _currentZ: number;
+        keepFirstTarget: boolean;
+
+        start(this: this): void;
+        _getEntitiesZ(this: this): number;
+        getPos(this: this, dest: Vec2): void;
+      }
+      interface MultiEntityTargetConstructor extends ImpactClass<MultiEntityTarget> {
+        new (entities: ig.Entity[], keepFirstTarget?: boolean): MultiEntityTarget;
       }
 
       namespace TargetHandle {
