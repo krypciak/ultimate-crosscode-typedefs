@@ -24,7 +24,10 @@ declare global {
           hideCondition?: string;
         }
       }
-      interface Door extends ig.AnimatedEntity {
+      interface Door
+        extends ig.AnimatedEntity,
+          ig.ENTITY.Marker.MarkerLike,
+          sc.NPCRunnerEntity.EnterableEntity {
         doorType: keyof typeof ig.DOOR_TYPE;
         condition: ig.VarCondition;
         map: string;

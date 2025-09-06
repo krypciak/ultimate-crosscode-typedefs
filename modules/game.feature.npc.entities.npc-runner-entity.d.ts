@@ -17,6 +17,11 @@ declare global {
         waypoints: ig.Entity[];
         partyIdx: number;
       }
+
+      interface EnterableEntity {
+        enterEntity(this: this, entity: ig.Entity): void;
+        leaveEntity(this: this, entity: ig.Entity): void;
+      }
     }
     interface NPCRunnerEntity extends sc.ActorEntity {
       npcEffects: ig.EffectSheet;

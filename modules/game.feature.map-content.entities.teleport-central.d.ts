@@ -8,6 +8,48 @@ export {};
 
 declare global {
   namespace ig.ENTITY {
+    namespace TeleportCentral {
+      interface Settings extends ig.Entity.Settings {
+        dir?: keyof typeof ig.ActorEntity.FACE4;
+        effects?: boolean;
+        landmark?: string;
+        target?: Nullable<ig.Event.GetEntity>;
+      }
+    }
+    interface TeleportCentral
+      extends ig.Entity,
+        sc.NpcRunnerSpawner.WPConnectEntity,
+        sc.NpcRunnerSpawner.RunnerDestinationEntity,
+        ig.ENTITY.Marker.MarkerLike,
+        sc.NPCRunnerEntity.EnterableEntity {
+      map: string;
+      marker: string;
+      effects: ig.EffectSheet;
+      fxHandle: Nullable<ig.ENTITY.Effect>;
+      npcRunnerEnterProb: number;
+      npcRunnerExitProb: number;
+      landmark?: string;
+      landmarkTarget?: Nullable<ig.Event.GetEntity>;
+      landmarkCondition?: ig.VarCondition;
+      landmarkDetectDelay: number;
+      hasEffects: boolean;
+      detectType: 'CIRCLE' | 'RECT_OVERLAP';
+      wpConnection: sc.WPConnection;
+      closePlayerState: { isHealing: boolean; isTeleport: boolean; fxHandles: ig.ENTITY.Effect[] };
+      _wm: ig.Config;
+
+      detectClosePlayer(this: this): boolean;
+    }
+    interface TeleportCentralConstructor extends ImpactClass<TeleportCentral> {
+      new (
+        x: number,
+        y: number,
+        z: number,
+        settings: ig.ENTITY.TeleportCentral.Settings,
+      ): TeleportCentral;
+    }
+    var TeleportCentral: TeleportCentralConstructor;
+
     namespace TeleportField {
       interface Settings extends ig.Entity.Settings {
         central?: { global: boolean; name: string };
@@ -33,7 +75,10 @@ declare global {
         teleportLabel: ig.LangLabel.Data;
       }
     }
-    interface TeleportField extends ig.AnimatedEntity {
+    interface TeleportField
+      extends ig.AnimatedEntity,
+        ig.ENTITY.Marker.MarkerLike,
+        sc.NPCRunnerEntity.EnterableEntity {
       centralName: string;
       map: string;
       marker: string;

@@ -54,10 +54,16 @@ declare global {
         enterProb: number;
         exitProb: number;
         map: string;
+        type?: sc.NPC_RUNNER_DEST_TYPE;
+        entity?: RunnerDestinationEntity;
       }
 
       interface WPConnectEntity extends ig.Entity {
         getWPConnect(this: this): Nullable<sc.WPConnection>;
+      }
+
+      interface RunnerDestinationEntity extends ig.Entity {
+        getRunnerDestination(this: this): RunnerDestination;
       }
     }
     interface NpcRunnerSpawner extends ig.GameAddon, ig.Loadable.LoadListener<sc.Character> {
