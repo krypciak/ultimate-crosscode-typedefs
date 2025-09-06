@@ -16,14 +16,19 @@ declare global {
           map: string;
           marker: string;
           spawnDistance?: number;
-          blockEvent?: ig.EventStepBase.Settings,
+          blockEvent?: ig.EventStepBase.Settings;
           blockEventCondition?: string;
           transitionType?: 'REGULAR' | 'INTER_AREA';
           npcRunnerProb?: number;
           centerWalkThrough?: boolean;
         }
       }
-      interface TeleportGround extends ig.Entity {
+      interface TeleportGround
+        extends ig.Entity,
+          sc.NpcRunnerSpawner.WPConnectEntity,
+          sc.NpcRunnerSpawner.RunnerDestinationEntity,
+          ig.ENTITY.Marker.MarkerLike,
+          sc.NPCRunnerEntity.EnterableEntity {
         map: string;
         marker: string;
         dir: keyof typeof ig.ActorEntity.FACE4;
