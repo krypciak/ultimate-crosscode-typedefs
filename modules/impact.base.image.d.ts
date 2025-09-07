@@ -80,6 +80,16 @@ declare global {
 
       initBuffer(this: this): void;
       clearCached(this: this): void;
+      draw(
+        this: this,
+        targetX: number,
+        targetY: number,
+        sourceX?: number,
+        sourceY?: number,
+        width?: number,
+        height?: number,
+        scale?: boolean,
+      ): void;
     }
     interface ImagePatternConstructor extends ImpactClass<ImagePattern> {
       OPT: typeof ImagePattern$OPT;
