@@ -48,6 +48,7 @@ declare global {
         hideHandle?: unknown;
         hideManager: ig.EntityHideManager;
 
+        postActionUpdate(this: this): void;
         updateNpcState(this: this, init: boolean, force?: boolean): void;
         setMapInteractIcon(this: this, npcState: sc.NpcState): void;
         onInteraction(this: this): boolean | undefined;
