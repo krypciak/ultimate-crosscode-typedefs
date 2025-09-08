@@ -4,6 +4,19 @@ export {};
 
 declare global {
   namespace ig {
+    interface ObjectLayerTools {
+      getSpriteCount(entity: ig.Entity, maps: ig.MAP.Background[], pos?: Vec3, size?: Vec3): number;
+      updateSprites(
+        entity: ig.Entity,
+        maps: ig.MAP.Background[],
+        wallY: number,
+        offset?: Nullable<Vec3>,
+        pos?: Vec3,
+        size?: Vec3,
+      ): boolean;
+    }
+    var ObjectLayerTools: ObjectLayerTools;
+
     interface EntityHideManager extends ig.Class {
       hideCondition: ig.VarCondition;
       hideTimer: number;
