@@ -54,6 +54,18 @@ declare global {
     }
     var Image: ImageConstructor;
 
+    interface ImageCanvasWrapper extends ig.Class, ig.Drawable {
+      data: HTMLCanvasElement;
+      width: number;
+      height: number;
+      loaded: boolean;
+      filtered: Record<string, unknown>;
+    }
+    interface ImageCanvasWrapperConstructor extends ImpactClass<ImageCanvasWrapper> {
+      new (data: HTMLCanvasElement): ImageCanvasWrapper;
+    }
+    var ImageCanvasWrapper: ImageCanvasWrapperConstructor;
+
     enum ImagePattern$OPT {
       NONE,
       REPEAT_X,
