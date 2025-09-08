@@ -117,7 +117,6 @@ declare global {
         faceDir?: keyof typeof ig.ActorEntity.FACE8;
 
         initDestinatins(this: this, destinations: ig.ENTITY.Elevator.DestinationConfig[]): void;
-        initSprites(this: this): void;
         getCurrentDest(this: this): number;
         pressSwitch(this: this): void;
         moveToDestination(this: this, destinationIndex: number): void;

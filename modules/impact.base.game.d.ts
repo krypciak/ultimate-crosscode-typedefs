@@ -114,6 +114,11 @@ declare global {
       getLevelHeight(this: this, level: number | string): number;
       getHeightFromLevelOffset(this: this, level: sc.MapModel.MapEntity['level']): number;
       getEntityByName<E extends ig.Entity>(this: this, name: string): E;
+      getEntityCount(this: this): number;
+      getObjectMaps(
+        this: this,
+        objectLayerName: ig.ENTITY.ObjectLayerView.ObjectLayerNames,
+      ): ig.MAP.Background;
       getEntitiesInRectangle(
         this: this,
         x: number,

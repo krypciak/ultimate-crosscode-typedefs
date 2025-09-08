@@ -47,7 +47,6 @@ declare global {
       alpha: number;
       zIndex: number;
 
-      initSprites(this: this): void;
       setNumber(
         this: this,
         number: number,
