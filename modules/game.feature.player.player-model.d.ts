@@ -286,7 +286,7 @@ declare global {
       scrollElementMode(this: this, a: number, force: boolean, skipEffect: boolean): boolean;
       getCurrentElementMode(this: this): sc.PlayerSubConfig;
       getCombatArt(this: this, element: sc.ELEMENT, actionType: sc.PLAYER_ACTION): ig.Action;
-      getCombatArtName(this: this, actionType: PlayerModel.ActionKey): string;
+      getCombatArtName(this: this, actionType: PlayerModel.ActionKey): ig.LangLabel;
       getActiveCombatArt(
         this: this,
         element: sc.ELEMENT,
