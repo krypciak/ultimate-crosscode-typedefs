@@ -137,7 +137,7 @@ declare global {
       config: sc.PlayerConfig;
       loadedConfig: sc.PlayerConfig | null;
       equip: PlayerModel.Equip;
-      items: number[];
+      items: (number | null)[];
       itemFavs: number[];
       itemNew: number[];
       itemToggles: Record<sc.ItemID, boolean>;
