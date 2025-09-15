@@ -75,7 +75,7 @@ declare global {
         defense: number;
         focus: number;
 
-        elemFactor: number[];
+        elemFactor?: number[];
         statusInflict?: number[];
         statusEffect?: number[];
       }
