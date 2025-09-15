@@ -76,7 +76,7 @@ declare global {
         focus: number;
 
         elemFactor: number[];
-        statusInflict: number[];
+        statusInflict?: number[];
         statusEffect?: number[];
       }
       type ParamName = keyof sc.CombatParams.Params;
