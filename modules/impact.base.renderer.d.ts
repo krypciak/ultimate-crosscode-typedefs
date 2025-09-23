@@ -3,6 +3,21 @@
 
 export {};
 
+/** RENAME: drawMaps */
+declare function b(game: ig.Game, levelName: string): void;
+
+/** RENAME: drawSpriteShadows */
+declare function a(spriteSlot: ig.Renderer2d.SpriteDrawSlot, minZ: number, maxZ: number): void;
+
+/** RENAME: createOrDeleteSpriteSlot */
+declare function d(
+  sprite: ig.CubeSprite,
+  create: boolean,
+  slotName: string,
+  ground: boolean,
+  spriteIdx: number,
+): void;
+
 declare global {
   namespace ig {
     namespace Renderer2d {
@@ -26,8 +41,22 @@ declare global {
       spriteSlots: ig.Renderer2d.SpriteDrawSlot[];
       guiSpriteSlots: ig.Renderer2d.SpriteDrawSlot[];
 
-      prepareDraw(this: this, shownEntities: ig.Entity[], forceDraw?: boolean): void
+      prepareDraw(this: this, shownEntities: ig.Entity[], forceDraw?: boolean): void;
+      drawLayers(this: this, force?: boolean, noClear?: boolean): void;
+      drawLight(this: this): void;
       drawPostLayerSprites(this: this): void;
+      drawEntities(this: this, level: number): void;
+      drawAnimation(
+        this: this,
+        anim: ig.Animation,
+        x: number,
+        y: number,
+        time: number,
+        alpha: number,
+        rotate: number,
+        scaleX: number,
+        scaleY: number,
+      ): void;
       mapCleared(this: this): void;
     }
     interface Renderer2dConstructor extends ImpactClass<Renderer2d> {
