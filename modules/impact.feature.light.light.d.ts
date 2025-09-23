@@ -71,7 +71,9 @@ declare global {
     let ScreenFlashHandle: ScreenFlashHandleConstructor;
 
     interface GlowColor extends ig.Class {}
-    interface GlowColorConstructor extends ImpactClass<GlowColor> {}
+    interface GlowColorConstructor extends ImpactClass<GlowColor> {
+      new (fillStyle: CanvasRenderingContext2D['fillStyle']): GlowColor;
+    }
     let GlowColor: GlowColorConstructor;
 
     interface CondLights extends ig.Class {}
@@ -81,17 +83,50 @@ declare global {
     namespace Light {
       interface ShadowProvider {
         shadowOrder: number;
+
+        drawShadows(this: this): void;
+        drawGlow?(this: this): void;
       }
     }
     interface Light extends ig.GameAddon {
+      lightCanvas: HTMLCanvasElement;
+      lightContext: CanvasRenderingContext2D;
+      shadowProviders: ig.Light.ShadowProvider[];
+      lightHandles: ig.LightHandle[];
+      darknessHandles: ig.DarknessHandle[];
+      screenFlashHandles: ig.ScreenFlashHandle[];
+      hasShadow: boolean;
+      lightMapDarkness: number;
+      lightMapBrightness: number;
+      lightmapGfx: ig.Image;
+      mainGlowColor: ig.GlowColor;
+      condLights: Record<string, ig.CondLights[]>;
+      condLightList: ig.CondLights[];
+      levelLoadStartOrder: number;
+      preDrawOrder: number;
+      midDrawOrder: number;
+
+      setMainGlowColor(this: this, fillStyle?: CanvasRenderingContext2D['fillStyle']): void;
+      getMainGlowGfx(this: this): ig.ImageCanvasWrapper | undefined;
       addDarknessHandle(this: this, darknessHandle: ig.DarknessHandle): void;
       removeDarknessHandle(this: this, darknessHandle: ig.DarknessHandle): void;
       addScreenFlashHandle(this: this, screenFlashHandle: ig.ScreenFlashHandle): void;
       removeScreenFlashHandle(this: this, screenFlashHandle: ig.ScreenFlashHandle): void;
+      addCondLight(
+        this: this,
+        cond: ig.VarCondition,
+        pos: Vec2,
+        size?: Nullable<ig.LIGHT_SIZE>,
+        glowSize?: Nullable<ig.LIGHT_SIZE>,
+        glowColor?: ig.GlowColor,
+      ): void;
       addLightHandle(this: this, lightHandle: ig.LightHandle): void;
       addShadowProvider(this: this, shadowProvider: ig.Light.ShadowProvider): void;
       removeShadowProvider(this: this, shadowProvider: ig.Light.ShadowProvider): void;
+      onLevelLoadStart(this: this): void;
       onDeferredUpdate(this: this): void;
+      onPreDraw(this: this): void;
+      onMidDraw(this: this): void;
     }
     interface LightConstructor extends ImpactClass<Light> {
       new (): Light;

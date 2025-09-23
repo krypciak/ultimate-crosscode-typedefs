@@ -8,16 +8,14 @@ export {};
 
 declare global {
   namespace ig.MAP {
-    interface Light extends ig.ChunkedMap {
+    interface Light extends ig.ChunkedMap, ig.Light.ShadowProvider {
       lightmapGfx: ig.Image;
       _wm: ig.Config;
       lightSources: unknown;
       glowSources: unknown;
       noMerge: boolean;
       lightCanvas: unknown;
-      shadowOrder: number;
 
-      drawShadows(this: this): void;
       drawGlow(this: this): void;
       draw(this: this): void;
       drawTiled(this: this): void;
