@@ -4,7 +4,7 @@ export {};
 
 declare global {
   namespace ig {
-    interface Clouds extends ig.Class {
+    interface Clouds extends ig.Class, ig.Light.ShadowProvider {
       gfx: ig.Image;
       currentClouds: [];
       density: number;
@@ -13,7 +13,6 @@ declare global {
       timer: number;
       maxTime: number;
       alpha: number;
-      shadowOrder: number;
 
       clearClouds(this: this, immediately?: boolean): void;
       setClouds(this: this, density: number, vel: Vec2, alpha: number, immediately?: boolean): void;
@@ -27,7 +26,6 @@ declare global {
         dontIncreaseTimer?: boolean,
       ): void;
       update(this: this): void;
-      drawShadows(this: this): void;
     }
     interface CloudsConstructor extends ImpactClass<Clouds> {
       new (): Clouds;
