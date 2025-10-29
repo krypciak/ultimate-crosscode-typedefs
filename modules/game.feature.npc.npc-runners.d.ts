@@ -118,5 +118,6 @@ declare global {
       new (): NpcRunnerSpawner;
     }
     var NpcRunnerSpawner: NpcRunnerSpawnerConstructor;
+    var npcRunner: NpcRunnerSpawner;
   }
 }
