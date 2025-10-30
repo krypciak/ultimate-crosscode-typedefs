@@ -68,7 +68,7 @@ declare global {
       hpBreakCond: ig.VarCondition;
       animSheet: ig.AnimationSheet;
       attribs: Record<string, unknown>;
-      proxies: ig.Config;
+      proxies: Record<string, sc.ProxySpawnerBase>;
       actions: Record<string, ig.Action>;
       states: Record<string, sc.EnemyState>;
       reactions: Record<string, EnemyReactionBase>;
