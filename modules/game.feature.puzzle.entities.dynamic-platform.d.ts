@@ -9,31 +9,56 @@ declare global {
       size: Vec3;
       styleKey: string;
       terrain: ig.TERRAIN;
-      anims: unknown;
+      anims: ig.AnimationSheet.Settings;
       walkAnims: {
         default?: ig.ActorEntity.WalkAnims;
         on?: ig.ActorEntity.WalkAnims;
         off?: ig.ActorEntity.WalkAnims;
       };
     }
-    var DYNAMIC_PLATFORM_TYPES: Record<
-      'Large' | 'RhombusMedium' | 'Floating' | 'FloatingBig' | 'AridBig' | 'ArWallH' | 'ArWallV',
-      DynamicPlatformTypeBase
-    >;
+    interface DYNAMIC_PLATFORM_TYPES {
+      Large: DynamicPlatformTypeBase;
+      RhombusMedium: DynamicPlatformTypeBase;
+      Floating: DynamicPlatformTypeBase;
+      FloatingBig: DynamicPlatformTypeBase;
+      AridBig: DynamicPlatformTypeBase;
+      ArWallH: DynamicPlatformTypeBase;
+      ArWallV: DynamicPlatformTypeBase;
+    }
+    var DYNAMIC_PLATFORM_TYPES: DYNAMIC_PLATFORM_TYPES;
   }
   namespace ig.ENTITY {
     namespace DynamicPlatform {
-      interface Settings extends ig.Entity.Settings {
+      interface StateConfig {
+        useAbsolute?: boolean;
+        position: Vec3;
+        keySpline: keyof typeof KEY_SPLINES;
+        duration?: number;
+        animation?: string;
+        action?: ig.Action.Step[];
+        playOnce?: boolean;
+      }
+      interface Settings extends ig.ActorEntity.Settings {
         platformType: keyof typeof sc.DYNAMIC_PLATFORM_TYPES;
-        states: unknown;
+        states: StateConfig[];
         pauseCondition: string;
         pauseAnimation: string;
         skipWait?: boolean;
       }
+
+      interface State {
+        action: Nullable<ig.Action>;
+        condition: ig.VarCondition;
+        config: ig.ActorConfig;
+        pos: Vec3;
+        startAction: ig.Action;
+        startDuration: number;
+        playOnce: boolean;
+      }
     }
     interface DynamicPlatform extends ig.ActorEntity, ig.EffectSheet.EventCallback {
-      currentState: unknown;
-      states: unknown[];
+      currentState: ig.ENTITY.DynamicPlatform.State;
+      states: ig.ENTITY.DynamicPlatform.State[];
       pauseCondition: ig.VarCondition;
       pauseAnimation: string;
       baseConfig: ig.ActorConfig;
@@ -42,8 +67,8 @@ declare global {
       _switchState: boolean;
       _stateReached: boolean;
       fx: Record<string, ig.EffectHandle>;
-      terrain: ig.TERRAIN
-      fxHideHandle?: ig.ENTITY.Effect
+      terrain: ig.TERRAIN;
+      fxHideHandle?: ig.ENTITY.Effect;
 
       show(this: this, dontSpawnFx?: boolean): void;
       onHideRequest(this: this): void;
@@ -60,7 +85,7 @@ declare global {
         y: number,
         z: number,
         settings: ig.ENTITY.DynamicPlatform.Settings,
-      ): Destructible;
+      ): DynamicPlatform;
     }
     var DynamicPlatform: DynamicPlatformConstructor;
   }
