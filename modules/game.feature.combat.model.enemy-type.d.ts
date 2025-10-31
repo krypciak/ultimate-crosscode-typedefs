@@ -184,6 +184,7 @@ declare global {
         group?: string;
         party?: keyof typeof sc.COMBATANT_PARTY;
         level?: number;
+        attribs?: Record<string, unknown>
       }
     }
     interface EnemyInfo extends ig.Class {
