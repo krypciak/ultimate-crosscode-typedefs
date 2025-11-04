@@ -6,6 +6,8 @@
 export {};
 
 declare global {
+  var testGui: sc.TopMsgHudGui;
+
   namespace sc {
     enum START_MODE {
       STORY = 0,
