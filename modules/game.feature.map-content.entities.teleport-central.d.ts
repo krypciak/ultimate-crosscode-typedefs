@@ -7,6 +7,17 @@
 export {};
 
 declare global {
+  namespace sc {
+    interface TeleportCentralMap {
+      fields: Record<string, ig.ENTITY.TeleportField[]>;
+
+      registerField(name: string, field: ig.ENTITY.TeleportField): void;
+      unregisterField(name: string, field: ig.ENTITY.TeleportField): void;
+      getField(name: string, isExit?: boolean): ig.ENTITY.TeleportField;
+      getFields(name: string): ig.ENTITY.TeleportField[];
+    }
+    var TeleportCentralMap: TeleportCentralMap;
+  }
   namespace ig.ENTITY {
     namespace TeleportCentral {
       interface Settings extends ig.Entity.Settings {
