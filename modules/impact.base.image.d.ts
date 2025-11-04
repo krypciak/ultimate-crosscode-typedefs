@@ -275,6 +275,23 @@ declare global {
     }
     var ImageAtlasFragment: ImageAtlasFragmentConstructor;
 
+    interface ScreenBufferPool {
+      handleList: ig.ScreenBuffer[];
+      freeBuffers: HTMLCanvasElement[];
+      paddingX: number;
+      paddingY: number;
+      width: number;
+      height: number;
+      updateDimensions(): void;
+      get(): HTMLCanvasElement;
+      addHandle(handle: ig.ScreenBuffer): void;
+      removeHandle(handle: ig.ScreenBuffer): void;
+      free(canvas: Nullable<HTMLCanvasElement>): void;
+      clearBuffers(): void;
+      reduceFreeBuffers(upToLen: number): void;
+    }
+    var ScreenBufferPool: ScreenBufferPool;
+
     interface ScreenBuffer extends ig.Class {
       width: number;
       height: number;
