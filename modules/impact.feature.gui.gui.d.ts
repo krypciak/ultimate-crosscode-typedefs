@@ -282,6 +282,12 @@ declare global {
     interface GuiTransformConstructor extends ImpactClass<GuiTransform> {}
     var GuiTransform: GuiTransformConstructor;
 
+    interface GuiStepPool {
+      get(clazz: ig.ClassConstructor): void;
+      free(clazz: ig.ClassConstructor): void;
+    }
+    var GuiStepPool: GuiStepPool;
+
     namespace GuiElementBase {
       namespace Annotation {
         interface Content {
