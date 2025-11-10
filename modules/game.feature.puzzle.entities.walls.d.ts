@@ -92,7 +92,7 @@ declare global {
       _wm: ig.Config;
       sounds?: Record<'goUp' | 'goDown', ig.Sound>;
 
-      setActive(this: this, isBaseActive: boolean, isActive?: boolean): void;
+      setActive(this: this, active: boolean, noEffects?: boolean): void;
     }
     interface WallBlockerConstructor extends ImpactClass<WallBlocker> {
       new (x: number, y: number, z: number, settings: WallBlocker.Settings): WallBlocker;
