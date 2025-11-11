@@ -11,39 +11,64 @@ declare global {
       VERTICAL = 3,
     }
 
+    namespace SoundManager {
+      interface Volumes {
+        sound: GainNode;
+        music: GainNode;
+        master: GainNode;
+      }
+      interface Group {
+        requests: ig.SoundHandleBase[];
+        playing: ig.SoundHandleBase[];
+      }
+    }
     interface SoundManager extends ig.Class {
-      clips: { [path: string]: HTMLAudioElement };
+      clips: { [path: string]: HTMLAudioElement[] };
       volume: number;
       format: ig.Sound.FORMAT;
       context: ig.WebAudio;
       buffers: { [path: string]: AudioBuffer };
+      volumes: ig.SoundManager.Volumes;
+      namedSounds: Record<string, ig.SoundHandle[]>;
       soundHandles: ig.SoundHandle[];
       soundStack: ig.SoundHandle[][];
       soundGroups: Record<string, { playing: ig.SoundHandle[]; requests: ig.SoundHandle[] }>;
+      requestedGroups: Record<string, ig.SoundManager.Group>;
+      tracksToUpdate: ig.TrackWebAudio[];
+      hasWebAudio: boolean;
 
-      update(this: this): void;
       reset(this: this): void;
-      playSoundHandle(
-        this: this,
-        handle: ig.SoundHandleBase,
-        group: { playing: ig.SoundHandleBase[]; requests: ig.SoundHandleBase[] },
-      ): void;
+      update(this: this): void;
+      playSoundHandle(this: this, handle: ig.SoundHandleBase, group: ig.SoundManager.Group): void;
       stopSoundHandle(this: this, handle: ig.SoundHandleBase): void;
       pushPaused(this: this, noFadeOut?: boolean): void;
       popPaused(this: this): void;
-      _solveGroupRequests(
-        this: this,
-        group: { playing: ig.SoundHandleBase[]; requests: ig.SoundHandleBase[] },
-      ): void;
-      connectSound(this: this, connectObj: { connect(gain: GainNode): void }): void;
+      _getGroup(this: this, groupName: string): ig.SoundManager.Group | undefined;
+      _solveGroupRequests(this: this, group: ig.SoundManager.Group): void;
+      requestPlaySoundHandle(this: this, groupName: string, handle: ig.SoundHandle): void;
+      getSampleRate(this: this): number;
+      _createWebAudioContext(this: this): void;
+      connectSound(this: this, obj: { connect(gain: GainNode): void } | undefined): void;
+      disconnectSound(this: this, obj: { disconnect(gain: GainNode): void } | undefined): void;
+      connectMusic(this: this, obj: { connect(gain: GainNode): void } | undefined): void;
+      disconnectMusic(this: this, obj: { disconnect(gain: GainNode): void } | undefined): void;
+      setSoundVolume(this: this, volume: number): void;
+      setMusicVolume(this: this, volume: number): void;
+      setMasterVolume(this: this, volume: number): void;
+      onWindowFocusLost(this: this): void;
+      onWindowFocusGained(this: this): void;
       addNamedSound(this: this, name: string, handle: ig.SoundHandle): void;
       getNamedSounds(this: this, name: string): ig.SoundHandle[];
       stopNamedSounds(this: this, name: string): void;
+      getBuffer(this: this, path: string): AudioBuffer;
       loadWebAudio(
         this: this,
         path: string,
         loadCallback: (path: string, success: boolean) => void,
       ): void;
+      registerTrack(this: this, track: ig.TrackWebAudio): void;
+      unregisterTrack(this: this, track: ig.TrackWebAudio): void;
+      _updateTracks(this: this): void;
       load(
         this: this,
         path: string,
@@ -55,6 +80,17 @@ declare global {
           event?: globalThis.Event,
         ) => void,
       ): void;
+      _increaseChannels(
+        this: this,
+        path: string,
+        filePath: string,
+        channelCount: number,
+        limitSoundUse?: boolean,
+      ): void;
+      get(this: this, path: string): HTMLAudioElement;
+      getChannel(this: this, path: string, index: number): HTMLAudioElement;
+      freeMultiAudio(this: this, path: string): void;
+      freeWebAudioBuffer(this: this, path: string): void;
     }
     interface SoundManagerConstructor extends ImpactClass<SoundManager> {
       new (): SoundManager;
