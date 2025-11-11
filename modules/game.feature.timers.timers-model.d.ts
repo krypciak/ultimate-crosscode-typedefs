@@ -67,7 +67,14 @@ declare global {
       millis: boolean;
       area?: Nullable<string>;
       quest?: Nullable<string>;
+      stopped: boolean;
 
+      tick(this: this): void;
+      stop(this: this): void;
+      resume(this: this): void;
+      reset(this: this, mode?: sc.TIMER_TYPES, duration?: number): void;
+      getRemainingTime(this: this): number;
+      done(this: this): boolean;
       getSaveData(this: this): sc.TimerEntry.Data;
     }
     interface TimerEntryContstructor extends ImpactClass<TimerEntry> {
@@ -81,5 +88,6 @@ declare global {
         quest?: string,
       ): TimerEntry;
     }
+    var TimerEntry: TimerEntryContstructor
   }
 }
