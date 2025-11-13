@@ -44,6 +44,7 @@ declare global {
       decreaseRef(this: this): void;
       getCacheKey(this: this, ...args: unknown[]): Nullable<string>;
       onCacheCleared?(this: this): void;
+      onInstanceReused?(this: this): void;
     }
     interface CacheableConstructor extends ImpactClass<Cacheable> {
       cache: Record<string, Nullable<Cacheable>>;
