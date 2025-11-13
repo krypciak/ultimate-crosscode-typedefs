@@ -79,6 +79,9 @@ declare global {
         foodOffset?: Nullable<Vec2>;
         foodBubbleOffset?: Nullable<Vec2>;
       }
+
+      type ActionConfig = unknown;
+
       interface JsonData {
         DOCTYPE: 'PLAYER';
         headIdx: number;
@@ -88,7 +91,10 @@ declare global {
         walkAnims: Nullable<ig.ActorEntity.WalkAnims[]>;
         autoequip: sc.PlayerConfig.AutoEquip;
         proxies: Record<string, unknown>;
-        actions: Record<keyof typeof sc.ELEMENT | 'BASE', Record<string, unknown>>;
+        actions: Record<
+          keyof typeof sc.ELEMENT | 'BASE',
+          Record<string, sc.PlayerConfig.ActionConfig>
+        >;
         skillRanking: { skill: string }[];
       }
     }
@@ -165,7 +171,12 @@ declare global {
       preSkillInit(this: this): void;
       update(this: this, config: sc.CombatParams.BaseParams, modifiers: sc.ModifierList): void;
     }
-    interface PlayerSubConfigConstructor extends ImpactClass<PlayerSubConfig> {}
+    interface PlayerSubConfigConstructor extends ImpactClass<PlayerSubConfig> {
+      new (
+        element: keyof typeof sc.ELEMENT | 'BASE',
+        actions: Record<string, sc.PlayerConfig.ActionConfig>,
+      ): PlayerSubConfig;
+    }
     var PlayerSubConfig: PlayerSubConfigConstructor;
   }
 }
