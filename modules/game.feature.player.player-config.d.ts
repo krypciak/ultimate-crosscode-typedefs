@@ -66,6 +66,31 @@ declare global {
         condition?: ig.VarCondition;
       }
       type AutoEquip = AutoEquipEntry[];
+
+      interface CombatStyle {
+        comboCount?: number;
+        throwCount?: number;
+        throwProb?: number;
+        sidewaySpeed?: number;
+        normDistance?: number;
+        meleeDistance?: number;
+        minDistance?: number;
+        foodSprites?: string[];
+        foodOffset?: Nullable<Vec2>;
+        foodBubbleOffset?: Nullable<Vec2>;
+      }
+      interface JsonData {
+        DOCTYPE: 'PLAYER';
+        headIdx: number;
+        class: string;
+        stats: sc.PlayerConfig.Stats;
+        combatStyle: sc.PlayerConfig.CombatStyle;
+        walkAnims: Nullable<ig.ActorEntity.WalkAnims[]>;
+        autoequip: sc.PlayerConfig.AutoEquip;
+        proxies: Record<string, unknown>;
+        actions: Record<keyof typeof sc.ELEMENT | 'BASE', Record<string, unknown>>;
+        skillRanking: { skill: string }[];
+      }
     }
 
     interface PlayerConfig extends ig.JsonLoadable {
@@ -81,6 +106,8 @@ declare global {
       baseConfig: sc.PlayerSubConfig;
       elementConfigs: Record<sc.ELEMENT, sc.PlayerSubConfig>;
       skillRanking: string[];
+
+      onload(this: this, data: sc.PlayerConfig.JsonData): void;
     }
     interface PlayerConfigConstructor extends ImpactClass<PlayerConfig> {
       new (name: string): sc.PlayerConfig;
