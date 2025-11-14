@@ -18,7 +18,7 @@ declare global {
           targetPlayer: boolean;
           name?: ig.Event.StringExpression;
           spawnCondition?: string;
-          startAction?: ig.Action.Step[];
+          startAction?: ig.ActionStepBase.Settings[];
           noEffects: boolean;
         }
       }

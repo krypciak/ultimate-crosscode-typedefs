@@ -333,7 +333,7 @@ declare global {
       namespace DO_ACTION {
         interface Settings {
           entity: ig.Event.GetEntity;
-          action: ig.Action.Step[];
+          action: ig.ActionStepBase.Settings[];
           repeating: boolean;
           wait: boolean;
           keepState: boolean;
