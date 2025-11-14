@@ -127,8 +127,8 @@ declare global {
         width: number,
         height: number,
         zHeight: number,
-        collType?: ig.COLLTYPE,
-        entryException?: Nullable<ig.CollEntry>,
+        exception?: Nullable<ig.Entity>,
+        exceptionArray?: Nullable<ig.Entity[]>,
         forceSameZ?: boolean,
       ): ig.Entity[];
       getEntitiesInCircle(
@@ -140,8 +140,8 @@ declare global {
         dir?: Vec2,
         startAngle?: number,
         endAngle?: number,
-        exception?: ig.Entity,
-        moreExceptions?: ig.Entity[],
+        exception?: Nullable<ig.Entity>,
+        moreExceptions?: Nullable<ig.Entity[]>,
         rectangular?: boolean,
         checkCollision?: boolean,
       ): ig.Entity[];

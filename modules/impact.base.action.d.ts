@@ -32,7 +32,11 @@ declare global {
       labeledSteps: Record<string, ig.ActionStepBase>;
       parallelMove: boolean;
       repeating: boolean;
-      hint?: string;
+      hint?: Nullable<string>;
+      
+      cleanCached(this: this): void
+      inlineStart(this: this, actor: ig.ActorEntity, a: unknown): void
+      run(this: this, b: unknown): void
     }
     interface ActionConstructor extends ImpactClass<Action> {
       new (

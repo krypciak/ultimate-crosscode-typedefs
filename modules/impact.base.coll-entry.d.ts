@@ -165,7 +165,7 @@ declare global {
         collisionList?: Nullable<ig.CollEntry[]>,
         onGround?: boolean,
       ): boolean;
-      getOverlapCenterCords(this: this, v1: Vec3, output?: Vec3): Vec3;
+      getOverlapCenterCoords(this: this, v1: Vec3, output?: Vec3): Vec3;
       setGroundEntry(this: this, groundEntry: Nullable<ig.CollEntry | false>): void;
       getOverlapHeight(
         this: this,

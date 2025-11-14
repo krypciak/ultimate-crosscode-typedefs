@@ -46,17 +46,20 @@ declare global {
       _hidden: boolean;
       _hideRequest: boolean;
       _killed: boolean;
+      _wm: ig.Config;
 
       ballDestroyer?: boolean;
       isPlayer?: boolean;
+      onHideRequest?: Nullable<() => void>;
 
       reset(this: this, x: number, y: number, z: number, settings: ig.Entity.Settings): void;
       initSprites(this: this): void;
       setPos(this: this, x?: number, y?: number, z?: number, moveDelta?: Nullable<boolean>): void;
       setZPos(this: this, z: number): void;
+      setSize(this: this, width: number, height: number, zHeight: number): void;
       getCenter(this: this, destination?: Nullable<Vec2>): Vec2;
       getAlignedPos(this: this, alignment: ig.ENTITY_ALIGN, dest?: Nullable<Vec3>): Vec3;
-      getOverlapCenterCords(this: this, v1: Vec3, output?: Vec3): Vec3;
+      getOverlapCenterCoords(this: this, v1: Vec3, output?: Vec3): Vec3;
       getHitDir(this: this, v1: Vec2, output?: Vec2): Vec2;
       getCollideSide(this: this, otherEntity: ig.Entity): ig.ActorEntity.FACE4;
       update(this: this): void;
@@ -73,8 +76,14 @@ declare global {
       kill(this: this, levelChange?: Nullable<boolean>): void;
       onKill(this: this, levelChange?: boolean): void;
       erase(this: this): void;
+      getOverlappingEntities(this: this, forceSameZ?: boolean): ig.Entity[];
+      setSpliThrough(this: this, value: boolean): void;
+      distanceTo(this: this, entity: ig.Entity): number;
+      check(this: this): void;
       collideWith(this: this, entity: ig.Entity, dir: Vec2): void;
       animationEnded(this: this, animation: string): void;
+      onFallFromEdge?(this: this, vec?: Vec2): void;
+      onTouchGround?(this: this, zVel: number): void;
 
       // below are functions and variables not formally defined in ig.Entity,
       // but other relevant classes do check for them.
@@ -137,8 +146,13 @@ declare global {
       animState: ig.AnimationState;
       animSpeedFactor: number;
       currentAnim: string | ig.MultiDirAnimationSet | ig.SingleDirAnimationSet;
+      followUpAnim: Nullable<string | ig.MultiDirAnimationSet | ig.SingleDirAnimationSet>;
+      callbackOnFinish: boolean;
+      _createdAnimSheet: boolean;
 
       initAnimations(this: this, sheet?: ig.AnimationSheet | string | unknown): void;
+      getCurrentAnimFaceCount(this: this): number;
+      rewindAnim(this: this): void
       setCurrentAnim(
         this: this,
         anim: string | ig.MultiDirAnimationSet | ig.SingleDirAnimationSet,
