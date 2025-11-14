@@ -35,7 +35,7 @@ declare global {
         keySpline: keyof typeof KEY_SPLINES;
         duration?: number;
         animation?: string;
-        action?: ig.Action.Step[];
+        action?: ig.ActionStepBase.Settings[];
         playOnce?: boolean;
       }
       interface Settings extends ig.ActorEntity.Settings {

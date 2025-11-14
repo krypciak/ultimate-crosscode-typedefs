@@ -23,9 +23,6 @@ declare global {
     interface ActionStepBaseConstructor extends ImpactClass<ActionStepBase> {}
     var ActionStepBase: ActionStepBaseConstructor;
 
-    namespace Action {
-      type Step = any;
-    }
     interface Action extends ig.Class {
       name: string;
       rootStep: ig.ActionStepBase;
@@ -41,7 +38,7 @@ declare global {
     interface ActionConstructor extends ImpactClass<Action> {
       new (
         name: string,
-        steps: ig.Action.Step[],
+        steps: ig.ActionStepBase.Settings[],
         parallelMove?: Nullable<boolean>,
         repeating?: Nullable<boolean>,
       ): Action;

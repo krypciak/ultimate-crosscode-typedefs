@@ -19,7 +19,7 @@ declare global {
           animation?: ig.AnimationSheet.Settings;
           faceAnims?: ig.AnimationSheet.Settings;
           config?: ig.AnimationSheet.Settings;
-          action: ig.Action.Step[];
+          action: ig.ActionStepBase.Settings[];
           breakType?: keyof typeof sc.PROXY_BREAK_TYPE;
           stickToSource?: keyof typeof sc.PROXY_STICK_TYPE;
           killEffect?: ig.EffectHandle.Settings;
