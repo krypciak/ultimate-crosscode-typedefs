@@ -74,7 +74,6 @@ declare global {
 
       onTerrainUpdate(this: this): void;
       onMoveEffect(this: this, type: string): void;
-      onJump(this: this, addedHeight: number, ignoreSounds?: boolean): void;
       onNavigationFailed(this: this, failTimer: number): void;
     }
     interface ActorEntityConstructor extends ImpactClass<ActorEntity> {
