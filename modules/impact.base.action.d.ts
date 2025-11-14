@@ -35,8 +35,8 @@ declare global {
       hint?: Nullable<string>;
       
       cleanCached(this: this): void
-      inlineStart(this: this, actor: ig.ActorEntity, a: unknown): void
-      run(this: this, b: unknown): void
+      inlineStart(this: this, actor: ig.ActorEntity, step: ig.ActionStepBase): void
+      run(this: this, actor: ig.ActorEntity): void
     }
     interface ActionConstructor extends ImpactClass<Action> {
       new (
