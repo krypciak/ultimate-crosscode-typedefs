@@ -95,10 +95,10 @@ declare global {
 
       namespace RESET_CAMERA {
         interface Settings {
-          speed: keyof typeof ig.Camera.SPEED_OPTIONS;
-          transition: unknown;
-          wait: boolean;
-          waitSkip: number;
+          speed?: keyof typeof ig.Camera.SPEED_OPTIONS;
+          transition?: KeySpline | keyof typeof KEY_SPLINES;
+          wait?: boolean;
+          waitSkip?: number;
           name?: string;
         }
       }
@@ -188,10 +188,10 @@ declare global {
 
       namespace RESET_CAMERA {
         interface Settings {
-          speed: keyof typeof ig.Camera.SPEED_OPTIONS;
-          transition: unknown;
-          wait: boolean;
-          waitSkip: number;
+          speed?: keyof typeof ig.Camera.SPEED_OPTIONS;
+          transition?: KeySpline | keyof typeof KEY_SPLINES;
+          wait?: boolean;
+          waitSkip?: number;
         }
       }
       interface RESET_CAMERA extends ig.EventStepBase {
