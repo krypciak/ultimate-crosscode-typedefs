@@ -138,7 +138,10 @@ declare global {
           getPos(dest: Vec2): void;
         }
       }
-      interface TargetHandle extends ig.Class {
+      interface TargetHandle
+        extends ig.Class,
+          ig.ActorEntity.ActionAttachedListener,
+          ig.EventCall.EventAttached {
         target: ig.Camera.TargetHandle.Target;
         offset: Vec2;
         zoomOffset: Vec2;

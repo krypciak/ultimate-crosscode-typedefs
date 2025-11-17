@@ -66,7 +66,7 @@ declare global {
       interface Settings extends ig.AnimatedEntity.Settings {}
 
       interface ActionAttachedListener {
-        onActionEndDetach(entity: ig.ActorEntity): void;
+        onActionEndDetach(this: this, entity: ig.ActorEntity): void;
       }
 
       interface Fly {
