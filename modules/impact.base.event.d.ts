@@ -48,7 +48,7 @@ declare global {
       }
 
       interface EventAttached {
-        onEventEndDetach(eventCall: ig.EventCall): void;
+        onEventEndDetach(this: this, eventCall: ig.EventCall): void;
       }
     }
     interface EventCall extends ig.Class {
