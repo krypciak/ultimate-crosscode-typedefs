@@ -7,10 +7,11 @@ declare global {
     namespace ACTION_STEP {}
 
     namespace ActionStepBase {
-      interface Settings {
-        type: keyof typeof ig.ACTION_STEP;
-        [key: string]: any;
-      }
+      type Settings = {
+        [TYPE in keyof typeof ig.ACTION_STEP]: {
+          type: TYPE;
+        } & ConstructorParameters<(typeof ig.ACTION_STEP)[TYPE]>[0];
+      }[keyof typeof ig.ACTION_STEP];
     }
     interface ActionStepBase extends ig.StepBase {
       _nextStep: Nullable<ig.ActionStepBase>;
@@ -30,10 +31,10 @@ declare global {
       parallelMove: boolean;
       repeating: boolean;
       hint?: Nullable<string>;
-      
-      cleanCached(this: this): void
-      inlineStart(this: this, actor: ig.ActorEntity, step: ig.ActionStepBase): void
-      run(this: this, actor: ig.ActorEntity): void
+
+      cleanCached(this: this): void;
+      inlineStart(this: this, actor: ig.ActorEntity, step: ig.ActionStepBase): void;
+      run(this: this, actor: ig.ActorEntity): void;
     }
     interface ActionConstructor extends ImpactClass<Action> {
       new (

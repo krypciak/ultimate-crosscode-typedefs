@@ -90,10 +90,11 @@ declare global {
     var EventCall: EventCallConstructor;
 
     namespace EventStepBase {
-      interface Settings {
-        type: keyof typeof ig.EVENT_STEP;
-        [key: string]: any;
-      }
+      type Settings = {
+        [TYPE in keyof typeof ig.EVENT_STEP]: {
+          type: TYPE;
+        } & ConstructorParameters<(typeof ig.EVENT_STEP)[TYPE]>[0];
+      }[keyof typeof ig.EVENT_STEP];
     }
     interface EventStepBase extends ig.StepBase {
       _nextStep: Nullable<ig.EventStepBase>;
