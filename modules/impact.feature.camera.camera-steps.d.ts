@@ -180,6 +180,8 @@ declare global {
         zoom: number;
         _wm: ig.Config;
         keepPlayerOffset: number;
+
+        start(this: this, target: ig.ActorEntity): void;
       }
       interface FOCUS_CAMERA_CONSTRUCTOR extends ImpactClass<FOCUS_CAMERA> {
         new (settings: ig.ACTION_STEP.FOCUS_CAMERA.Settings): FOCUS_CAMERA;
@@ -200,6 +202,8 @@ declare global {
         wait: boolean;
         waitSkip: number;
         _wm: ig.Config;
+
+        start(this: this, target: ig.ActorEntity): void;
       }
       interface RESET_CAMERA_CONSTRUCTOR extends ImpactClass<RESET_CAMERA> {
         new (settings: ig.ACTION_STEP.RESET_CAMERA.Settings): RESET_CAMERA;
@@ -220,6 +224,8 @@ declare global {
         waitSkip: unknown;
         _wm: ig.Config;
         zoom: number;
+
+        start(this: this, target: ig.ActorEntity): void;
       }
       interface SET_CAMERA_ZOOM_CONSTRUCTOR extends ImpactClass<SET_CAMERA_ZOOM> {
         new (settings: ig.ACTION_STEP.SET_CAMERA_ZOOM.Settings): SET_CAMERA_ZOOM;
