@@ -129,7 +129,7 @@ declare global {
       replaceAnimSheet(this: this, animSheet: ig.AnimationSheet): void;
       initIdleActions(this: this): void;
       doPetAction(this: this): void;
-      updateAnimSheet(this: this, updateFx?: boolean): void;
+      updateAnimSheet(this: this, noSpawnFx?: boolean): void;
       updateSkinStepFx(this: this): void;
       updateSkinAura(this: this): void;
       updateSkinPet(this: this, showSpawnFx?: boolean): void;
