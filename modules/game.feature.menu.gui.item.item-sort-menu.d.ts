@@ -20,7 +20,7 @@ declare global {
     }
     interface SortMenuConstructor extends ImpactClass<SortMenu> {
       new (
-        callback: (button: ig.FocusGui) => void,
+        callback: (button: sc.ButtonGui) => void,
         backCallback?: () => void,
         widthOverride?: number,
       ): sc.SortMenu;
