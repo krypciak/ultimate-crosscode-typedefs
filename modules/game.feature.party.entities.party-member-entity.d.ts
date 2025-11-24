@@ -110,7 +110,7 @@ declare global {
       reselectTarget(this: this): void;
       hasElement(this: this, element: sc.ELEMENT): boolean;
       getBestElement(this: this): sc.ELEMENT;
-      consumeSandwich(this: this, sandwitchTier: 0 | 1 | 2): void;
+      consumeSandwich(this: this, sandwichTier: 0 | 1 | 2): void;
       updateElement(this: this): void;
       updateModelStats(this: this): void;
       selectCombatArt(this: this): void;

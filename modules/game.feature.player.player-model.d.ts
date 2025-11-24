@@ -117,7 +117,7 @@ declare global {
         skillPoints: sc.PlayerModel['skillPoints'];
         skillPointsExtra: sc.PlayerModel['skillPointsExtra'];
         items: sc.PlayerModel['items'];
-        equip: sc.PlayerModel['equip'];
+        equip: sc.PlayerModel.Equip;
         levelUpDelta: sc.PlayerModel['levelUpDelta'];
         spLevel: number;
         itemFavs: sc.PlayerModel['itemFavs'];
@@ -286,7 +286,7 @@ declare global {
       scrollElementMode(this: this, a: number, force: boolean, skipEffect: boolean): boolean;
       getCurrentElementMode(this: this): sc.PlayerSubConfig;
       getCombatArt(this: this, element: sc.ELEMENT, actionType: sc.PLAYER_ACTION): ig.Action;
-      getCombatArtName(this: this, actionType: PlayerModel.ActionKey): ig.LangLabel;
+      getCombatArtName(this: this, actionType: sc.PLAYER_ACTION): ig.LangLabel;
       getActiveCombatArt(
         this: this,
         element: sc.ELEMENT,

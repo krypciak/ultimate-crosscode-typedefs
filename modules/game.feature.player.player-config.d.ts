@@ -161,15 +161,30 @@ declare global {
     }
 
     interface PlayerSubConfig extends ig.Class {
-      paramFactors?: PlayerSubConfig.Factor;
-      skillFactors: PlayerSubConfig.Factor;
+      paramFactors?: sc.PlayerSubConfig.Factor;
+      skillFactors: sc.PlayerSubConfig.Factor;
       actions: Record<string, sc.PlayerAction>;
       baseParams: sc.CombatParams.BaseParams;
       modifiers: sc.ModifierList;
-      activeActions: Record<number, sc.PlayerAction>;
+      activeBalls: {};
+      activeActions: Record<sc.PLAYER_ACTION, sc.PlayerAction>;
 
+      clearCached(this: this): void;
       preSkillInit(this: this): void;
       update(this: this, config: sc.CombatParams.BaseParams, modifiers: sc.ModifierList): void;
+      getParam<T extends keyof sc.CombatParams.BaseParams>(
+        this: this,
+        param: T,
+      ): sc.CombatParams.BaseParams[T];
+      getParamFactor<T extends keyof sc.PlayerSubConfig.Factor>(
+        this: this,
+        param: T,
+      ): sc.PlayerSubConfig.Factor[T];
+      getPlayerAction(this: this, action: string): sc.PlayerAction | undefined;
+      getActiveCombatArtName(this: this, action: sc.PLAYER_ACTION): string | undefined;
+      getAction(this: this, action: sc.PLAYER_ACTION): ig.Action | undefined;
+      getActionMaxLevel(this: this, lvl1Action: sc.PLAYER_ACTION): number;
+      getBalls(this: this): {};
     }
     interface PlayerSubConfigConstructor extends ImpactClass<PlayerSubConfig> {
       new (
