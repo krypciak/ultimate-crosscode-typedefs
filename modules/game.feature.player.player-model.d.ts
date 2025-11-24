@@ -168,6 +168,7 @@ declare global {
       itemBlockTimer: number;
       chapters: ig.Database.Chapter[];
       toggleSets: Record<string, ig.Database.ToggleSet>;
+      defaultExpression: sc.CharacterExpression;
 
       setConfig(this: this, config: sc.PlayerConfig): void;
       updateChapter(this: this, unlock?: boolean): void;

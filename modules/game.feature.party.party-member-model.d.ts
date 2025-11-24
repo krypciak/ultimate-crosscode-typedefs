@@ -59,6 +59,7 @@ declare global {
       noDie: boolean;
       currentElementMode: sc.ELEMENT;
       proxies: Record<string, sc.ProxySpawnerBase>;
+      defaultExpression: sc.CharacterExpression
 
       onLoadableComplete(this: this): void;
       getHeadIdx(this: this): number;
