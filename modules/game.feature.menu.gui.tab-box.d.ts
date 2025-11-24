@@ -85,18 +85,26 @@ declare global {
     interface ListTabbedPane extends sc.TabbedPane {
       currentList: sc.ButtonListBox;
       currentGroup: sc.ButtonGroup;
+      listPadding: number;
+      listPageSize: number;
+      defaultSortType: number;
+      containerHeightOffset: number;
+      listPosOffset: number;
+      listHeightOffset: number;
       bg: sc.MenuScanLines;
 
-      onButtonTraversal(this: this): void
-      switchTab(this: this, index: number): void
+      onButtonTraversal(this: this): void;
+      switchTab(this: this, index: number): void;
       onInitSortType(this: this): number;
       onListEntryPressed(this: this, button: sc.ListBoxButton): void;
+      onListEntrySelected(this: this, button: sc.ListBoxButton): void;
+      onListMouseFocusLost(this: this): void;
       onLeftRightPress(
         this: this,
         button: sc.ItemTabbedBox.TabButton,
         index: number,
         dir: -1 | 1,
-      ): void;
+      ): sc.TabbedPane.Settings | void;
       onCreateListEntries(
         this: this,
         list: sc.ButtonListBox,
