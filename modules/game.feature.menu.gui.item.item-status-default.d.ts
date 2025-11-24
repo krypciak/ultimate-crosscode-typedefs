@@ -14,22 +14,40 @@ declare global {
     }
 
     interface ItemStatusDefaultBar extends ig.GuiElementBase {
+      gfx: ig.Image;
+      backgroundPatch: ig.NinePatch;
+      barPatch: ig.NinePatch;
       type: sc.MENU_BAR_TYPE;
+      name: string;
       maxValue: number;
       currentValue: number;
       targetValue: number;
-      maxNumber: sc.NumberGui;
+      timer: number;
       currentNumber: sc.NumberGui;
-      barHeight: number;      
+      maxNumber: sc.NumberGui;
+      buff: sc.StatChange;
+      barHeight: number;
+      model: sc.PlayerModel;
+
+      updateValues(
+        this: this,
+        skipTransition?: boolean,
+        model?: sc.PartyMemberModel | sc.PlayerModel,
+        hpCurrValOverride?: number,
+        hpMaxValOverride?: number,
+      ): void;
+      resetValues(this: this): void;
+      _drawSpBarMinified(this: this, renderer: ig.GuiRenderer): void;
+      _drawSpBar(this: this, renderer: ig.GuiRenderer): void;
     }
     interface ItemStatusDefaultBarConstructor extends ImpactClass<ItemStatusDefaultBar> {
       new (
         text: string,
         type: sc.MENU_BAR_TYPE,
-        buff: unknown,
-        width: number,
-        barHeight: number,
-        position: number,
+        buff?: Nullable<sc.StatChange>,
+        width?: number,
+        barHeight?: number,
+        position?: number,
       ): ItemStatusDefaultBar;
     }
     var ItemStatusDefaultBar: ItemStatusDefaultBarConstructor;
