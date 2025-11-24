@@ -79,13 +79,8 @@ declare global {
       FEET = 5,
     }
 
-    enum MENU_EQUIP_BODYPART_STR {
-      HEAD = 'head',
-      LEFT_ARM = 'leftArm',
-      RIGHT_ARM = 'rightArm',
-      TORSO = 'torso',
-      FEET = 'feet',
-    }
+    type MENU_EQUIP_BODYPART_STR = 'head' | 'leftArm' | 'rightArm' | 'torso' | 'feet';
+
     enum MENU_SKILL_STATE {
       OVERVIEW = 0,
       DETAIL_VIEW = 1,

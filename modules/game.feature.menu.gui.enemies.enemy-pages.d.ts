@@ -27,10 +27,16 @@ declare global {
 
     interface EnemyBaseParamLine extends ig.GuiElementBase {
       gfx: ig.Image;
-      number: sc.NumberGui
+      number: sc.NumberGui;
+      name: string;
       icon: number;
+
+      setNumber(this: this, number: number, skipTransition?: Nullable<boolean>): void;
+      setScrambleNumbers(this: this, scramble: boolean): void;
     }
-    interface EnemyBaseParamLineConstructor extends ImpactClass<EnemyBaseParamLine> {}
+    interface EnemyBaseParamLineConstructor extends ImpactClass<EnemyBaseParamLine> {
+      new (name: string, icon: number): EnemyBaseParamLine;
+    }
     var EnemyBaseParamLine: EnemyBaseParamLineConstructor;
 
     interface EnemyDrops extends ig.GuiElementBase {
@@ -47,24 +53,28 @@ declare global {
     var EnemyDrops: EnemyDropsConstructor;
 
     interface EnemyResistence extends ig.GuiElementBase {
-      res: [sc.PercentNumber, sc.PercentNumber, sc.PercentNumber, sc.PercentNumber]
-      lines: [sc.EnemyElementSlopeLine, sc.EnemyElementSlopeLine, sc.EnemyElementSlopeLine, sc.EnemyElementSlopeLine]
-      images: [ig.ImageGui, ig.ImageGui, ig.ImageGui, ig.ImageGui]
-
+      res: [sc.PercentNumber, sc.PercentNumber, sc.PercentNumber, sc.PercentNumber];
+      lines: [
+        sc.EnemyElementSlopeLine,
+        sc.EnemyElementSlopeLine,
+        sc.EnemyElementSlopeLine,
+        sc.EnemyElementSlopeLine,
+      ];
+      images: [ig.ImageGui, ig.ImageGui, ig.ImageGui, ig.ImageGui];
     }
     interface EnemyResistenceConstructor extends ImpactClass<EnemyResistence> {
-      new(): EnemyResistence
+      new (): EnemyResistence;
     }
-    var EnemyResistence: EnemyResistenceConstructor
+    var EnemyResistence: EnemyResistenceConstructor;
 
     interface EnemyElementSlopeLine extends ig.GuiElementBase {
-      slope: sc.SlopeLine
-      line: ig.ColorGui
-      hasLine: boolean
+      slope: sc.SlopeLine;
+      line: ig.ColorGui;
+      hasLine: boolean;
     }
     interface EnemyElementSlopeLineConstructor extends ImpactClass<EnemyElementSlopeLine> {
-      new(): EnemyElementSlopeLine
+      new (): EnemyElementSlopeLine;
     }
-    var EnemyElementSlopeLine: EnemyElementSlopeLineConstructor
+    var EnemyElementSlopeLine: EnemyElementSlopeLineConstructor;
   }
 }
