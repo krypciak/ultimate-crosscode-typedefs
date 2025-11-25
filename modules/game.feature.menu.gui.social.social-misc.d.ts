@@ -49,8 +49,8 @@ declare global {
       members: sc.SocialPartyMember[];
 
       updatePartyMembers(this: this): void;
-      show(this: this, update: boolean): void;
-      hide(this: this, skip: boolean): void;
+      show(this: this, skipTransition?: Nullable<boolean>): void;
+      hide(this: this, removeAfter?: Nullable<boolean>): void;
     }
     interface SocialPartyBoxConstructor extends ImpactClass<SocialPartyBox> {
       new (): SocialPartyBox;
