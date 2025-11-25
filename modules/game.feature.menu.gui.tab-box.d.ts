@@ -69,7 +69,11 @@ declare global {
       onTabMouseFocusLost(this: this): void;
       onTabChanged(this: this, newIndex: number, prevIndex: number): void;
       onClearPrevContent(this: this, prevContent: unknown): void;
-      onContentCreation(this: this, index: number, settings: sc.TabbedPane.Settings): void;
+      onContentCreation(
+        this: this,
+        index: number,
+        settings: sc.TabbedPane.Settings,
+      ): sc.TabbedPane.Content;
       onSetCacheContent(
         this: this,
         content: sc.TabbedPane.Content,
