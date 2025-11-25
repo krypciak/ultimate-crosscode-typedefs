@@ -10,13 +10,27 @@ declare global {
       ninepatch: ig.NinePatch;
       transitions: Record<string, ig.GuiHook.Transition>;
       buttongroup: sc.ButtonGroup;
+      buttons: sc.ButtonGui[];
       active: boolean;
+      yPosition: number;
+      callback: (button: sc.ButtonGui) => void;
+      backCallback: () => void;
+      currentSortingText: Nullable<string>;
 
       addButton(key: string, enumIndex: number, buttonIndex: number): void;
+      setButtonKey(this: this, buttonIndex: number, nameId: string): void;
       //enumIndex is normally referring to an sc.SORT_TYPE, but it does not have to be (i.e. sc.QUEST_SORT_TYPE)
       showSortMenu(this: this, referenceGUI: ig.GuiElementBase): void;
       showSortMenuAt(this: this, x: number, y: number): void;
       hideSortMenu(this: this): void;
+      onBackButtonPress(this: this): void;
+      _createButton(
+        this: this,
+        nameId: string,
+        sortType: number,
+        buttonY: number,
+        buttonGroupY: number,
+      ): number;
     }
     interface SortMenuConstructor extends ImpactClass<SortMenu> {
       new (
@@ -39,4 +53,3 @@ declare global {
     var ItemSortMenu: ItemSortMenuConstructor;
   }
 }
-
