@@ -111,7 +111,7 @@ declare global {
 
       updateMemberStatus(this: this): void;
       keepButtonPressed(this: this): void;
-      upPressButton(this: this): void;
+      unPressButton(this: this): void;
       getMemberName(this: this, orDefault: string, model: sc.PartyMemberModel): string;
     }
     interface SocialEntryButtonConstructor extends ImpactClass<SocialEntryButton> {
