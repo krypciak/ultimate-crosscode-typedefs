@@ -16,7 +16,7 @@ declare global {
       optionsContacts: sc.SortMenu;
       _keepButtonFocused: Nullable<sc.SocialEntryButton>;
 
-      openOptionsMenu(this: this, button: sc.SocialEntryButton, isFriend?: boolean): void;
+      openOptionsMenu(this: this, button: sc.SocialEntryButton, isNotFriend?: boolean): void;
       contactMember(this: this, member: string): void;
       inviteMember(this: this, member: string): void;
       removeMember(this: this, member: string): void;
