@@ -193,10 +193,10 @@ declare global {
       doStateTransition(
         this: this,
         name: string,
-        skipTransition?: boolean,
-        removeAfter?: boolean,
+        skipTransition?: Nullable<boolean>,
+        removeAfter?: Nullable<boolean>,
         callback?: Nullable<() => void>,
-        initDelay?: number,
+        initDelay?: Nullable<number>,
       ): void;
       getStateTransitionProgress(this: this): unknown;
       doTempStateTransition(
@@ -358,10 +358,10 @@ declare global {
       doStateTransition(
         this: this,
         name: string,
-        skipTransition?: boolean,
-        removeAfter?: boolean,
+        skipTransition?: Nullable<boolean>,
+        removeAfter?: Nullable<boolean>,
         callback?: Nullable<() => void>,
-        initDelay?: number,
+        initDelay?: Nullable<number>,
       ): void;
       doTempStateTransition(
         this: this,
