@@ -63,6 +63,8 @@ declare global {
       info: sc.SocialBaseInfoBox;
       name: Nullable<string>;
       isLea: boolean;
+      maxValue?: sc.NumberGui;
+      currentValue?: sc.NumberGui;
 
       show(this: this, skipTransition?: Nullable<boolean>): void;
       hide(this: this, removeAfter?: Nullable<boolean>): void;
