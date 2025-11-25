@@ -97,6 +97,9 @@ declare global {
       listHeightOffset: number;
       bg: sc.MenuScanLines;
 
+      onContentCreation(this: this): sc.TabbedPane.Content;
+      sort(this: this, sort: number): void
+      isNonMouseMenuInput(this: this): boolean
       onButtonTraversal(this: this): void;
       switchTab(this: this, index: number): void;
       onInitSortType(this: this): number;
