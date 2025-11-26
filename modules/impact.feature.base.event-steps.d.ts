@@ -334,10 +334,10 @@ declare global {
         interface Settings {
           entity: ig.Event.GetEntity;
           action: ig.ActionStepBase.Settings[];
-          repeating: boolean;
-          wait: boolean;
-          keepState: boolean;
-          immediately: boolean;
+          repeating?: boolean;
+          wait?: boolean;
+          keepState?: boolean;
+          immediately?: boolean;
         }
       }
       interface DO_ACTION extends ig.EventStepBase {
