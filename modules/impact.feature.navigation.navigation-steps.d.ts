@@ -195,11 +195,11 @@ declare global {
       namespace NAVIGATE_TO_POINT {
         interface Settings {
           target: Vec3Lvl;
-          maxTime: number;
-          distance: number;
-          precise: boolean;
-          planOnly: boolean;
-          teleportOnFail: boolean;
+          maxTime?: number;
+          distance?: number;
+          precise?: boolean;
+          planOnly?: boolean;
+          teleportOnFail?: boolean;
         }
       }
       interface NAVIGATE_TO_POINT extends ig.ActionStepBase {
