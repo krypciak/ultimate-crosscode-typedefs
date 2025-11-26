@@ -82,7 +82,7 @@ declare global {
       namespace WAIT {
         interface Settings {
           time: ig.Event.NumberExpression;
-          ignoreSlowDown: boolean;
+          ignoreSlowDown?: boolean;
         }
       }
       interface WAIT extends ig.EventStepBase {
