@@ -178,12 +178,12 @@ declare global {
       namespace SET_ENTITY_POS {
         interface Settings {
           entity: ig.Event.GetEntity;
-          position: Vec3;
+          position: Vec3Lvl;
         }
       }
       interface SET_ENTITY_POS extends ig.EventStepBase {
         entity: ig.Event.GetEntity;
-        position: Vec3;
+        position: Vec3Lvl;
         _wm: ig.Config;
       }
       interface SET_ENTITY_POS_CONSTRUCTOR extends ImpactClass<SET_ENTITY_POS> {
@@ -195,7 +195,7 @@ declare global {
         interface Settings {
           entity: ig.Event.GetEntity;
           refEntity: ig.Event.GetEntity;
-          offset: Vec3;
+          offset: Vec3Lvl;
         }
       }
       interface SET_ENTITY_POS_TO_ENTITY extends ig.EventStepBase {
@@ -203,7 +203,7 @@ declare global {
         position: unknown;
         _wm: ig.Config;
         refEntity: ig.Event.GetEntity;
-        offset: Vec3;
+        offset: Vec3Lvl;
       }
       interface SET_ENTITY_POS_TO_ENTITY_CONSTRUCTOR extends ImpactClass<SET_ENTITY_POS_TO_ENTITY> {
         new (settings: ig.EVENT_STEP.SET_ENTITY_POS_TO_ENTITY.Settings): SET_ENTITY_POS_TO_ENTITY;
@@ -229,12 +229,12 @@ declare global {
       namespace ADJUST_ENTITY_POS {
         interface Settings {
           entity: ig.Event.GetEntity;
-          offset: Vec3;
+          offset: Vec3Lvl;
         }
       }
       interface ADJUST_ENTITY_POS extends ig.EventStepBase {
         entity: ig.Event.GetEntity;
-        offset: Vec3;
+        offset: Vec3Lvl;
         _wm: ig.Config;
       }
       interface ADJUST_ENTITY_POS_CONSTRUCTOR extends ImpactClass<ADJUST_ENTITY_POS> {
@@ -397,8 +397,8 @@ declare global {
 
       namespace MASS_AVATAR_MOVE {
         interface Settings {
-          pointA: Vec3;
-          pointB: Vec3;
+          pointA: Vec3Lvl;
+          pointB: Vec3Lvl;
           relativeSpeed: number;
           postFace: Vec2;
           forwardTime: number;
@@ -406,8 +406,8 @@ declare global {
         }
       }
       interface MASS_AVATAR_MOVE extends ig.EventStepBase {
-        pointA: Vec3;
-        pointB: Vec3;
+        pointA: Vec3Lvl;
+        pointB: Vec3Lvl;
         relativeSpeed: number;
         postFace: Vec2;
         forwardTime: number;

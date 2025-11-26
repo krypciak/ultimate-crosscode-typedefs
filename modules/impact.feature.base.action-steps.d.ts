@@ -289,14 +289,14 @@ declare global {
 
       namespace MOVE_TO_POINT {
         interface Settings {
-          target: Vec3;
+          target: Vec3Lvl;
           precise: boolean;
           maxTime?: number;
           forceTime: boolean;
         }
       }
       interface MOVE_TO_POINT extends ig.ActionStepBase {
-        target: Vec3;
+        target: Vec3Lvl;
         precise: boolean;
         _wm: ig.Config;
         maxTime: number;
@@ -467,7 +467,7 @@ declare global {
 
       namespace FLY_TO_POINT {
         interface Settings {
-          target: Vec3;
+          target: Vec3Lvl;
           maxFlySpeed: number;
           flyVariance: number;
           precise: boolean;
@@ -475,7 +475,7 @@ declare global {
         }
       }
       interface FLY_TO_POINT extends ig.ActionStepBase {
-        target: Vec3;
+        target: Vec3Lvl;
         precise: boolean;
         maxFlySpeed: number;
         flyVariance: number;
@@ -601,7 +601,7 @@ declare global {
 
       namespace JUMP_TO_POINT {
         interface Settings {
-          target: Vec3;
+          target: Vec3Lvl;
           forceDuration?: number;
           forceHeight?: number;
           ignoreSounds: boolean;
@@ -611,7 +611,7 @@ declare global {
         adjustAbove: unknown;
         offset: unknown;
         _wm: ig.Config;
-        target: Vec3;
+        target: Vec3Lvl;
         forceDuration: number;
         forceHeight: number;
         ignoreSounds: boolean;
@@ -1451,11 +1451,11 @@ declare global {
 
       namespace SET_POS {
         interface Settings {
-          newPos: Vec3;
+          newPos: Vec3Lvl;
         }
       }
       interface SET_POS extends ig.ActionStepBase {
-        newPos: Vec3;
+        newPos: Vec3Lvl;
         _wm: ig.Config;
       }
       interface SET_POS_CONSTRUCTOR extends ImpactClass<SET_POS> {
@@ -1507,14 +1507,14 @@ declare global {
 
       namespace INTERPOLATE_POSITION {
         interface Settings {
-          newPos: Vec3;
+          newPos: Vec3Lvl;
           duration: number;
           keySpline: unknown;
           timePerTile?: boolean;
         }
       }
       interface INTERPOLATE_POSITION extends ig.ActionStepBase {
-        newPos: Vec3;
+        newPos: Vec3Lvl;
         duration: number;
         keySpline: KeySpline;
         timePerTile: boolean;
