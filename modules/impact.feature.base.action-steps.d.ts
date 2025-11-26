@@ -290,9 +290,9 @@ declare global {
       namespace MOVE_TO_POINT {
         interface Settings {
           target: Vec3Lvl;
-          precise: boolean;
+          precise?: boolean;
           maxTime?: number;
-          forceTime: boolean;
+          forceTime?: boolean;
         }
       }
       interface MOVE_TO_POINT extends ig.ActionStepBase {
