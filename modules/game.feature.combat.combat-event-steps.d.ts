@@ -13,7 +13,7 @@ declare global {
     namespace EVENT_STEP {
       namespace SPAWN_ENEMY {
         interface Settings {
-          position: Vec3;
+          position: Vec3Lvl;
           enemyInfo: string;
           targetPlayer: boolean;
           name?: ig.Event.StringExpression;
@@ -23,7 +23,7 @@ declare global {
         }
       }
       interface SPAWN_ENEMY extends ig.EventStepBase {
-        position: Vec3;
+        position: Vec3Lvl;
         enemyInfo: unknown;
         enemyType: unknown;
         targetPlayer: boolean;
@@ -41,7 +41,7 @@ declare global {
 
       namespace SPAWN_DESTRUCTIBLE {
         interface Settings {
-          position: Vec3;
+          position: Vec3Lvl;
           desType: keyof typeof sc.DESTRUCTIBLE_TYPE;
           onDestructIncrease?: string;
           onPreDestructIncrease?: string;
@@ -50,7 +50,7 @@ declare global {
       }
       interface SPAWN_DESTRUCTIBLE extends ig.EventStepBase {
         _wm: ig.Config;
-        position: Vec3;
+        position: Vec3Lvl;
         desType: keyof typeof sc.DESTRUCTIBLE_TYPE;
         onDestructIncrease?: string;
         onPreDestructIncrease?: string;

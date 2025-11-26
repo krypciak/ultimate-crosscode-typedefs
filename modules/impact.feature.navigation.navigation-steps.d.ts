@@ -194,7 +194,7 @@ declare global {
 
       namespace NAVIGATE_TO_POINT {
         interface Settings {
-          target: Vec3;
+          target: Vec3Lvl;
           maxTime: number;
           distance: number;
           precise: boolean;
@@ -203,7 +203,7 @@ declare global {
         }
       }
       interface NAVIGATE_TO_POINT extends ig.ActionStepBase {
-        target: Vec3;
+        target: Vec3Lvl;
         maxTime: number;
         distance: number;
         precise: boolean;
