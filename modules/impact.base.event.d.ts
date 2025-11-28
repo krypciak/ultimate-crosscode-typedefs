@@ -127,8 +127,8 @@ declare global {
       type NumberExpression = VarExpression<number>;
       type BooleanExpression = VarExpression<boolean>;
       type StringExpression = VarExpression<string>;
-      type Vec2Expression = VarExpression<Vec2>;
-      type Vec3Expression = VarExpression<Vec3>;
+      interface Vec2Expression extends Vec2, VarObject {}
+      interface Vec3Expression extends Vec3Lvl, VarObject {}
 
       type NumberVary = number | { base: number; vary?: number };
 
@@ -182,8 +182,8 @@ declare global {
         entity: Nullable<ig.Event.GetEntity>,
         eventCall?: ig.EventCall,
       ): Nullable<ig.Entity>;
-      getVec2(input: Event.VarExpression<Vec2>, dest: Vec2): Vec2;
-      getVec3(input: Event.VarExpression<Vec3>, dest: Vec3): Vec3;
+      getVec2(input: ig.Event.Vec2Expression, dest: Vec2): Vec2;
+      getVec3(input: ig.Event.Vec3Expression, dest: Vec3): Vec3;
       getVarName(varName: string | ig.Event.VarObject): string | null;
       getExpressionValue<T>(expression: ig.Event.VarExpression<T>): T;
     }
