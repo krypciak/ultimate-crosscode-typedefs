@@ -400,7 +400,7 @@ declare global {
           pointA: ig.Event.Vec3Expression;
           pointB: ig.Event.Vec3Expression;
           relativeSpeed: number;
-          postFace: Vec2;
+          postFace: ig.Action.Face;
           forwardTime: number;
           waitPerDistance: number;
         }

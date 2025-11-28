@@ -24,6 +24,9 @@ declare global {
     interface ActionStepBaseConstructor extends ImpactClass<ActionStepBase> {}
     var ActionStepBase: ActionStepBaseConstructor;
 
+    namespace Action {
+      type Face = keyof typeof ig.ActorEntity.FACE8 | { actorAttrib?: string };
+    }
     interface Action extends ig.Class {
       name: string;
       rootStep: ig.ActionStepBase;
@@ -45,6 +48,7 @@ declare global {
       ): Action;
 
       getVec3(value: ig.Event.Vec3Expression, actor: ig.ActorEntity, dest: Vec3): Vec3;
+      getFace(value: ig.Action.Face, dest: Vec2): void;
     }
     var Action: ActionConstructor;
   }
