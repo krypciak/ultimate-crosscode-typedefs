@@ -38,13 +38,13 @@ declare global {
       namespace RESET_PUSH_PULL_POS {
         interface Settings {
           entity: ig.Event.GetEntity;
-          pos?: Vec3Lvl;
+          pos?: ig.Event.Vec3Expression;
         }
       }
       interface RESET_PUSH_PULL_POS extends ig.EventStepBase {
         _wm: ig.Config;
         entity: ig.Event.GetEntity;
-        pos: Nullable<Vec3Lvl>;
+        pos: Nullable<ig.Event.Vec3Expression>;
       }
       interface RESET_PUSH_PULL_POS_CONSTRUCTOR extends ImpactClass<RESET_PUSH_PULL_POS> {
         new (settings: ig.EVENT_STEP.RESET_PUSH_PULL_POS.Settings): RESET_PUSH_PULL_POS;
@@ -116,7 +116,7 @@ declare global {
     namespace EVENT_STEP {
       namespace SPAWN_BOMB {
         interface Settings {
-          point: Vec3Lvl;
+          point: ig.Event.Vec3Expression;
           zHeight: number;
           zVary: number;
         }
@@ -129,7 +129,7 @@ declare global {
         area: unknown;
         zVary: number;
         _wm: ig.Config;
-        point: Vec3Lvl;
+        point: ig.Event.Vec3Expression;
         zHeight: number;
 
         clearCached(this: this): void;
@@ -141,13 +141,13 @@ declare global {
 
       namespace SPAWN_BUBBLE {
         interface Settings {
-          point: Vec3Lvl;
+          point: ig.Event.Vec3Expression;
         }
       }
       interface SPAWN_BUBBLE extends ig.EventStepBase {
         offset: unknown;
         _wm: ig.Config;
-        point: Vec3Lvl;
+        point: ig.Event.Vec3Expression;
       }
       interface SPAWN_BUBBLE_CONSTRUCTOR extends ImpactClass<SPAWN_BUBBLE> {
         new (settings: ig.EVENT_STEP.SPAWN_BUBBLE.Settings): SPAWN_BUBBLE;
@@ -325,16 +325,16 @@ declare global {
     namespace EVENT_STEP {
       namespace FIX_SHOCKWAVE_PLATFORMS {
         interface Settings {
-          pointA: Vec3Lvl;
-          pointB?: Vec3Lvl;
+          pointA: ig.Event.Vec3Expression;
+          pointB?: ig.Event.Vec3Expression;
           height: number;
           minHeight?: number;
         }
       }
       interface FIX_SHOCKWAVE_PLATFORMS extends ig.EventStepBase {
         _wm: ig.Config;
-        pointA: Nullable<Vec3Lvl>;
-        pointB: Nullable<Vec3Lvl>;
+        pointA: Nullable<ig.Event.Vec3Expression>;
+        pointB: Nullable<ig.Event.Vec3Expression>;
         height: number;
         minHeight: Nullable<number>;
       }
