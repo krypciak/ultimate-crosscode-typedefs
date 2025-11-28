@@ -882,13 +882,13 @@ declare global {
 
       namespace SET_FACE {
         interface Settings {
-          face: Vec2;
+          face: ig.Action.Face;
           rotate?: boolean;
           rotateSpeed?: number;
         }
       }
       interface SET_FACE extends ig.ActionStepBase {
-        face: Vec2;
+        face: ig.Action.Face;
         rotate: boolean;
         rotateSpeed: number;
         _wm: ig.Config;
@@ -907,11 +907,11 @@ declare global {
         }
       }
       interface SET_CLOSEST_FACE extends ig.ActionStepBase {
-        face: unknown;
+        face: null;
         rotate: boolean;
         rotateSpeed: number;
         _wm: ig.Config;
-        faces: Vec2[];
+        faces: ig.Action.Face[];
       }
       interface SET_CLOSEST_FACE_CONSTRUCTOR extends ImpactClass<SET_CLOSEST_FACE> {
         new (settings: ig.ACTION_STEP.SET_CLOSEST_FACE.Settings): SET_CLOSEST_FACE;
