@@ -44,7 +44,7 @@ declare global {
 
       type TeleportLoadHint = Nullable<'NEW' | 'LOAD'>;
     }
-    interface Game extends ig.Class {
+    interface Game extends ig.Class, ig.Vars.Accessor {
       clearColor: string;
       gravity: number;
       screen: Vec2;
