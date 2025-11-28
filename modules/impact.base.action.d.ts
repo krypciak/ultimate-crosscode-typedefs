@@ -3,11 +3,6 @@
 export {};
 
 declare global {
-  interface Vec3Lvl extends Vec2 {
-    z?: number;
-    lvl?: Nullable<number | string>;
-  }
-
   namespace ig {
     namespace ACTION_STEP {}
 
@@ -49,7 +44,7 @@ declare global {
         repeating?: Nullable<boolean>,
       ): Action;
 
-      getVec3(value: Vec3Lvl, actor: ig.ActorEntity, dest: Vec3): Vec3;
+      getVec3(value: ig.Event.Vec3Expression, actor: ig.ActorEntity, dest: Vec3): Vec3;
     }
     var Action: ActionConstructor;
   }
