@@ -178,15 +178,15 @@ declare global {
     interface EventConstructor extends ImpactClass<Event> {
       new (settings: ig.Event.Settings): Event;
 
-      getNumberVary(numberVary: ig.Event.NumberVary): number;
+      getNumberVary(numberVary: Nullable<ig.Event.NumberVary> | undefined): number;
       getEntity(
-        entity: Nullable<ig.Event.GetEntity>,
+        entity: Nullable<ig.Event.GetEntity> | undefined,
         eventCall?: ig.EventCall,
       ): Nullable<ig.Entity>;
-      getVec2(input: ig.Event.Vec2Expression, dest: Vec2): Vec2;
-      getVec3(input: ig.Event.Vec3Expression, dest: Vec3): Vec3;
-      getVarName(varName: ig.Event.VariableExpression): string | null;
-      getExpressionValue<T>(expression: ig.Event.VarExpression<T>): T;
+      getVec2(input: Nullable<ig.Event.Vec2Expression> | undefined, dest: Vec2): Vec2;
+      getVec3(input: Nullable<ig.Event.Vec3Expression> | undefined, dest: Vec3): Vec3;
+      getVarName(varName: Nullable<ig.Event.VariableExpression> | undefined): string | null;
+      getExpressionValue<T>(expression: Nullable<ig.Event.VarExpression<T>> | undefined): T;
     }
     var Event: EventConstructor;
   }
