@@ -497,13 +497,13 @@ declare global {
         interface Settings<T extends ig.VarValue> {
           varName: ig.Event.VariableExpression;
           changeType: ChangeVarBase.ChangeType;
-          value: T;
+          value: ig.Event.VarExpression<T>;
         }
       }
       interface ChangeVarBase<T extends ig.VarValue> {
         varName: ig.Event.VariableExpression;
         changeType: ChangeVarBase.ChangeType;
-        value: T;
+          value: ig.Event.VarExpression<T>;
       }
       interface ChangeVarBaseConstructor<Instance, Type extends ig.VarValue>
         extends ImpactClass<Instance> {
