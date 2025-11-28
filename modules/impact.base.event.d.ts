@@ -124,6 +124,7 @@ declare global {
 
       type VarExpression<T = ig.VarValue> = T | VarObject;
 
+      type VariableExpression = string | { indirect?: string };
       type NumberExpression = VarExpression<number>;
       type BooleanExpression = VarExpression<boolean>;
       type StringExpression = VarExpression<string>;
@@ -184,7 +185,7 @@ declare global {
       ): Nullable<ig.Entity>;
       getVec2(input: ig.Event.Vec2Expression, dest: Vec2): Vec2;
       getVec3(input: ig.Event.Vec3Expression, dest: Vec3): Vec3;
-      getVarName(varName: string | ig.Event.VarObject): string | null;
+      getVarName(varName: ig.Event.VariableExpression): string | null;
       getExpressionValue<T>(expression: ig.Event.VarExpression<T>): T;
     }
     var Event: EventConstructor;
