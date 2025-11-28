@@ -495,13 +495,13 @@ declare global {
       namespace ChangeVarBase {
         type ChangeType = 'set' | 'add' | 'sub' | 'mul' | 'div' | 'mod' | 'and' | 'or' | 'xor';
         interface Settings<T extends ig.VarValue> {
-          varName: ig.Event.VarExpression<T>;
+          varName: ig.Event.VariableExpression;
           changeType: ChangeVarBase.ChangeType;
           value: T;
         }
       }
       interface ChangeVarBase<T extends ig.VarValue> {
-        varName: ig.Event.VarExpression<T>;
+        varName: ig.Event.VariableExpression;
         changeType: ChangeVarBase.ChangeType;
         value: T;
       }
