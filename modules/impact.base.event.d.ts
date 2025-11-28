@@ -128,11 +128,15 @@ declare global {
       type NumberExpression = VarExpression<number>;
       type BooleanExpression = VarExpression<boolean>;
       type StringExpression = VarExpression<string>;
-      interface Vec2Expression extends Vec2, VarObject {}
-      interface Vec3Expression extends Vec2, VarObject {
+
+      interface Vec2ExpressionVarObject extends VarObject {}
+      type Vec2Expression = Vec2 | Vec2ExpressionVarObject;
+
+      interface Vec3ExpressionVarObject extends VarObject {}
+      type Vec3Expression = (Vec2 | Vec3ExpressionVarObject) & {
         z?: number;
         lvl?: Nullable<number | string>;
-      }
+      };
 
       type NumberVary = number | { base: number; vary?: number };
 
