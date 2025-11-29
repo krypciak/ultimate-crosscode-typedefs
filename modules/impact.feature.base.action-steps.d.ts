@@ -138,12 +138,14 @@ declare global {
       namespace IF {
         interface Settings {
           condition: string;
-          withElse: boolean;
+          withElse?: boolean;
+          thenStep: ig.ActionStepBase.Settings[];
+          elseStep?: ig.ActionStepBase.Settings[];
         }
       }
       interface IF extends ig.ActionStepBase {
         condition: ig.VarCondition;
-        withElse: boolean;
+        withElse?: boolean;
         _wm: ig.Config;
       }
       interface IF_CONSTRUCTOR extends ImpactClass<IF> {
