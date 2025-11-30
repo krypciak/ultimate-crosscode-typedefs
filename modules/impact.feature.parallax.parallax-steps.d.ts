@@ -13,7 +13,7 @@ declare global {
         }
       }
       interface SHOW_PARALLAX extends ig.EventStepBase {
-        parallaxGui: unknown;
+        parallaxGui: ig.GUI.Parallax;
         _wm: ig.Config;
 
         clearCached(this: this): void;
