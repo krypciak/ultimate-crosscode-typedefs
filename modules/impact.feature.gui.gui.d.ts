@@ -54,13 +54,13 @@ declare global {
       controlModule: sc.Control;
 
       onDeferredUpdate(this: this): void;
-      createEventGui<K extends keyof typeof ig.GUI, S>(
+      createEventGui<K extends keyof typeof ig.GUI>(
         this: this,
         name: string,
         type: K,
         settings: ConstructorParameters<(typeof ig.GUI)[K]>[0],
         free?: boolean,
-      ): (typeof ig.GUI)[K];
+      ): InstanceType<(typeof ig.GUI)[K]>;
       spawnEventGui(this: this, gui: ig.GuiElementBase): void;
       freeEventGui(this: this, gui: ig.GuiElementBase): void;
       addGuiElement(this: this, guiElement: ig.GuiElementBase): void;
