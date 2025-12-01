@@ -159,7 +159,7 @@ declare global {
       isDefeated(this: this): boolean;
       getCurrentPartyIndex(this: this, name: string): number;
       getPartySize(this: this): number;
-      getPartySizeAlive(this: this, a?: boolean): number;
+      getPartySizeAlive(this: this, unused?: boolean): number;
       getDmgFactor(this: this): number;
       getPartyMemberModel(this: this, name: string): sc.PartyMemberModel;
       getPartyMemberEntity(this: this, name: string): sc.PartyMemberEntity;
