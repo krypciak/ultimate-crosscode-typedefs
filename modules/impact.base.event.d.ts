@@ -190,6 +190,11 @@ declare global {
         entity: Nullable<ig.Event.GetEntity> | undefined,
         eventCall?: ig.EventCall,
       ): Nullable<ig.Entity>;
+      registerEntityFetchType(
+        name: string,
+        fetchFunction: (obj: unknown) => Nullable<ig.Entity> | undefined,
+        wmInfo?: { _type: string; _info: string },
+      ): void;
       getVec2(input: Nullable<ig.Event.Vec2Expression> | undefined, dest: Vec2): Vec2;
       getVec3(input: Nullable<ig.Event.Vec3Expression> | undefined, dest: Vec3): Vec3;
       getVarName(varName: Nullable<ig.Event.VariableExpression> | undefined): string | null;
