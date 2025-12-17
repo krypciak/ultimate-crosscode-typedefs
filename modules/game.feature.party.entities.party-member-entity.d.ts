@@ -71,7 +71,7 @@ declare global {
         DASH: CombatArt;
       }
 
-      interface Settings extends ig.Entity.Settings {
+      interface Settings extends sc.PlayerBaseEntity.Settings {
         partyMemberName: string;
         posOffset?: Vec2;
       }
