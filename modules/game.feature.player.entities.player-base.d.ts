@@ -16,6 +16,7 @@ declare global {
         fxHandle: ig.ENTITY.Effect;
         currentKey: string;
       }
+      interface Settings extends ig.ENTITY.Combatant.Settings {}
     }
     interface PlayerBaseEntity extends ig.ENTITY.Combatant {
       configs: {
@@ -35,7 +36,12 @@ declare global {
       updateCombatMode(this: this): void;
     }
     interface PlayerBaseEntityConstructor extends ImpactClass<PlayerBaseEntity> {
-      new (x: number, y: number, z: number, settings: ig.Entity.Settings): PlayerBaseEntity;
+      new (
+        x: number,
+        y: number,
+        z: number,
+        settings: sc.PlayerBaseEntity.Settings,
+      ): PlayerBaseEntity;
     }
     var PlayerBaseEntity: PlayerBaseEntityConstructor;
   }
