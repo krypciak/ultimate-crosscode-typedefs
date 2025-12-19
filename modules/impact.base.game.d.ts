@@ -151,6 +151,7 @@ declare global {
           | keyof typeof ig.ENTITY
           | (new (x: number, y: number, z: number, settings: S) => E | string),
       ): E[];
+      getEntitiesOnTop(this: this, entity: ig.Entity): ig.Entity[];
       isEventStartReady(this: this): boolean;
       isPlayerTouch(
         this: this,
