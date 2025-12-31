@@ -97,7 +97,7 @@ declare global {
       }
 
       interface Listener {
-        onCombatEvent?(combatant: ig.ENTITY.Combatant, type: sc.COMBAT_EVENT): Listener;
+        onCombatEvent(this: this, combatant: ig.ENTITY.Combatant, type: sc.COMBAT_EVENT): Listener | undefined;
       }
     }
     interface Combat extends ig.GameAddon, sc.Model, ig.Vars.Accessor, sc.Model.Observer {
