@@ -11,24 +11,20 @@ declare global {
         type AllGuiInfo = {
           [K in keyof typeof ig.GUI]: {
             type: K;
-          } & ConstructorParameters<(typeof ig.GUI)[K]>[0];
+            settings: ConstructorParameters<(typeof ig.GUI)[K]>[0];
+          };
         };
         type GuiInfo = AllGuiInfo[keyof typeof ig.GUI];
 
-        interface GUI {
-          name?: string;
-          guiInfo: GuiInfo;
-        }
-
         interface Settings {
           name?: string;
-          guiInfo: ig.EVENT_STEP.ADD_GUI.GUI;
+          guiInfo: ig.EVENT_STEP.ADD_GUI.GuiInfo;
         }
       }
       interface ADD_GUI extends ig.EventStepBase {
         name?: string;
-        guiInfo: ig.EVENT_STEP.ADD_GUI.GUI;
-        guiElement: unknown;
+        guiInfo: ig.EVENT_STEP.ADD_GUI.GuiInfo;
+        guiElement: ig.GuiElementBase;
         _wm: ig.Config;
 
         clearCached(this: this): void;
