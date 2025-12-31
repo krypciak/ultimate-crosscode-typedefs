@@ -15,7 +15,10 @@ declare global {
         shuffleCondition?: string;
       }
     }
-    interface EnemyCounter extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
+    interface EnemyCounter
+      extends ig.AnimatedEntity,
+        ig.EffectSheet.EventCallback,
+        sc.Combat.Listener {
       enemyGroup: string;
       enemyCount: number;
       preCount: number;
