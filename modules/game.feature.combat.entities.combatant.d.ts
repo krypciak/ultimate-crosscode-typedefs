@@ -98,7 +98,7 @@ declare global {
       spawnHitProxy(
         this: this,
         target: sc.BasicCombatant,
-        entity: Nullable<sc.BasicCombatant>,
+        damageResult: Nullable<sc.CombatParams.DamageResult>,
         dir: Vec2,
       ): void;
     }

@@ -65,7 +65,7 @@ declare global {
         target: sc.BasicCombatant,
         combatant: sc.BasicCombatant,
         face: Vec2,
-        entity: Nullable<sc.BasicCombatant>,
+        damageResult: Nullable<sc.BasicCombatant>,
         dir: Vec2,
       ): void;
     }
