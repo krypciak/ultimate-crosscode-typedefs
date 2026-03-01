@@ -234,7 +234,7 @@ declare global {
         attackInfo: sc.AttackInfo,
         animPart: sc.CombatantAnimPartEntity,
         hitProperties: ig.ENTITY.Combatant.HitProperties,
-      ): boolean;
+      ): sc.SHIELD_RESULT;
       getSpikeShieldFactor(this: this): number;
       onPreDamageModification(
         this: this,

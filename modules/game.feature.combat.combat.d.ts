@@ -283,7 +283,7 @@ declare global {
         hitPos: Vec3,
         hitDegree: sc.ATTACK_TYPE,
         hitElement: sc.ELEMENT,
-        shielded: boolean,
+        shieldResult: sc.SHIELD_RESULT,
         critical: boolean,
         ignoreSounds: boolean,
         spriteFilter?: number[],
