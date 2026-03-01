@@ -136,7 +136,7 @@ declare global {
       getFaceOffset(this: this): Nullable<Vec3>;
       setAction(
         this: this,
-        action: ig.Action,
+        action?: ig.Action,
         keepState?: Nullable<boolean>,
         noStateReset?: Nullable<boolean>,
       ): void;
