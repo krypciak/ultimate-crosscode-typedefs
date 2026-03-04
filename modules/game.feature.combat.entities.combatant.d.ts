@@ -204,7 +204,7 @@ declare global {
       setRespawnPoint(this: this, pos: Vec3): void;
       isDefeated(this: this): boolean;
       cancelStun(this: this): void;
-      setTarget(this: this, combatant: sc.BasicCombatant, fixed?: Nullable<boolean>): void;
+      setTarget(this: this, combatant: Nullable<sc.BasicCombatant>, fixed?: Nullable<boolean>): void;
       setReplaceTarget(this: this, combatant: sc.BasicCombatant): sc.ReplaceTargetHandle;
       _addTargetedBy(this: this, combatant: ig.ENTITY.Combatant): void;
       _removeTargetedBy(this: this, combatant: ig.ENTITY.Combatant): void;
