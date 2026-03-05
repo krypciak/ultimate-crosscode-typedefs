@@ -43,5 +43,6 @@ declare global {
       new (): Weather;
     }
     var Weather: WeatherConstructor;
+    var weather: Weather;
   }
 }
