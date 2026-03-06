@@ -16,7 +16,7 @@ declare global {
           map: string;
           marker: string;
           spawnDistance?: number;
-          blockEvent?: ig.EventStepBase.Settings;
+          blockEvent?: ig.EventStepBase.Settings[];
           blockEventCondition?: string;
           transitionType?: 'REGULAR' | 'INTER_AREA';
           npcRunnerProb?: number;
@@ -32,7 +32,15 @@ declare global {
         map: string;
         marker: string;
         dir: keyof typeof ig.ActorEntity.FACE4;
-        blockEventCondition: string;
+        blockEvent: Nullable<ig.Event>;
+        blockEventCondition: Nullable<ig.VarCondition>;
+        spawnDistance: number;
+        transitionType: number;
+        npcRunnerProb: number;
+        centerWalkThrough: boolean;
+        wpConnection: sc.WPConnection;
+
+        getEnterActionData(this: this): ig.EventStepBase.Settings[];
       }
       interface TeleportGroundConstructor extends ImpactClass<TeleportGround> {
         new (
