@@ -295,18 +295,22 @@ declare global {
       var SHOW_ANIMATION: SHOW_ANIMATION_CONSTRUCTOR;
 
       namespace SHOW_EXTERN_ANIM {
+        interface SheetAndName {
+          sheet: ConstructorParameters<typeof ig.AnimationSheet>[0];
+          name: string;
+        }
         interface Settings {
           entity: ig.Event.GetEntity;
-          anim: ig.EffectHandle.Settings;
-          followUp?: ig.EffectHandle.Settings;
+          anim: ig.EVENT_STEP.SHOW_EXTERN_ANIM.SheetAndName;
+          followUp?: ig.EVENT_STEP.SHOW_EXTERN_ANIM.SheetAndName;
         }
       }
       interface SHOW_EXTERN_ANIM extends ig.EventStepBase {
         entity: ig.Event.GetEntity;
         animSheet: ig.AnimationSheet;
-        animName: unknown;
-        followUpSheet: unknown;
-        followUpName: unknown;
+        animName: string;
+        followUpSheet: Nullable<ig.AnimationSheet>;
+        followUpName: Nullable<string>;
         _wm: ig.Config;
 
         clearCached(this: this): void;

@@ -1093,16 +1093,16 @@ declare global {
 
       namespace SHOW_EXTERN_ANIM {
         interface Settings {
-          anim: ig.EffectHandle.Settings;
-          followUp?: ig.EffectHandle.Settings;
-          wait: boolean;
+          anim: ig.EVENT_STEP.SHOW_EXTERN_ANIM.SheetAndName;
+          followUp?: ig.EVENT_STEP.SHOW_EXTERN_ANIM.SheetAndName;
+          wait?: boolean;
         }
       }
       interface SHOW_EXTERN_ANIM extends ig.ActionStepBase {
         animSheet: ig.AnimationSheet;
-        animName: unknown;
-        followUpSheet: unknown;
-        followUpName: unknown;
+        animName: string;
+        followUpSheet: Nullable<ig.AnimationSheet>;
+        followUpName: Nullable<string>;
         wait: boolean;
         _wm: ig.Config;
 
