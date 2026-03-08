@@ -113,7 +113,11 @@ declare global {
     namespace EntityTools {
       function getGroundEntity(entity: ig.Entity): Nullable<ig.Entity>;
       function isInScreen(entity: ig.Entity, x?: number, y?: number): boolean;
-      function addEntityColorOverlay(entity: ig.AnimatedEntity, overlay: ig.ColorOverlay, noMultiGroup: boolean): void;
+      function addEntityColorOverlay(
+        entity: ig.AnimatedEntity,
+        overlay: ig.ColorOverlay,
+        noMultiGroup: boolean,
+      ): void;
     }
 
     enum COLLTYPE {
@@ -153,7 +157,7 @@ declare global {
 
       initAnimations(this: this, sheet?: ig.AnimationSheet | string | unknown): void;
       getCurrentAnimFaceCount(this: this): number;
-      rewindAnim(this: this): void
+      rewindAnim(this: this): void;
       setCurrentAnim(
         this: this,
         anim: string | ig.MultiDirAnimationSet | ig.SingleDirAnimationSet,
@@ -177,7 +181,7 @@ declare global {
         owner: ig.ENTITY.Combatant;
         partName: string;
         animSheet: ig.AnimationSheet;
-        persistAnim: unknown;
+        persistAnim: boolean;
         defaultCollType: ig.COLLTYPE;
         padding?: Vec2;
       }
@@ -185,7 +189,9 @@ declare global {
     interface AnimationPartEntity extends ig.AnimatedEntity {
       partName: string;
       owner: ig.ENTITY.Combatant;
-      persistAnim: unknown;
+      persistAnim: boolean;
+      animSheet: ig.AnimationSheet;
+      defaultCollType: unknown;
     }
     interface AnimationPartEntityConstructor extends ImpactClass<AnimationPartEntity> {
       new (

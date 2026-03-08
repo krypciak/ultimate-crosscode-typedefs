@@ -212,9 +212,26 @@ declare global {
       };
     }
     interface AnimationSheet extends ig.JsonLoadable {
-      anims: Array<ig.MultiDirAnimationSet | ig.SingleDirAnimationSet>;
+      namedSheets: Record<string, ig.TileSheet>;
+      createdSheets: ig.TileSheet[];
+      anims: Record<string, ig.MultiDirAnimationSet | ig.SingleDirAnimationSet>;
+      sharedAnimData: Nullable<{ baseSize: Vec3; parts: unknown }>;
 
-      addAnimationSet(this: this, key: string, anim: ig.MultiDirAnimationSet | ig.SingleDirAnimationSet): void;
+      replaceAnimationSet(
+        this: this,
+        name: string,
+        anim: ig.MultiDirAnimationSet | ig.SingleDirAnimationSet,
+      ): void;
+      removeAnimSet(this: this, name: string): void;
+      hasAnimation(this: this, name: string): boolean;
+      addAnimationSet(
+        this: this,
+        key: string,
+        anim: ig.MultiDirAnimationSet | ig.SingleDirAnimationSet,
+      ): void;
+      clearCached(this: this): void;
+      onload(this: this, b: unknown): void;
+      _getSheet(this: this, name: string | ig.TileSheet): ig.TileSheet;
     }
     interface AnimationSheetConstructor extends ImpactClass<AnimationSheet> {
       new (pathOrData: string | ig.AnimationSheet.Settings): ig.AnimationSheet;
