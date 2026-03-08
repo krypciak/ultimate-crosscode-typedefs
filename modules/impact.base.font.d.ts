@@ -159,7 +159,7 @@ declare global {
     var TextBlock: TextBlockConstructor;
 
     interface TextParser {
-      baseVars(text: string): string;
+      bakeVars(text: string): string;
       parse(
         text: string,
         commands: ig.TextCommand[] | null,
