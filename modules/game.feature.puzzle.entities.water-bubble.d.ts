@@ -58,7 +58,7 @@ declare global {
       turnIce(this: this): void;
       ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       isWaterBubble(this: this): boolean;
-      isBallDestroyer(this: this, collPos: Vec3, collRes: { dir: Vec2 }, c?: boolean): boolean;
+      isBallDestroyer(this: this, collPos: Vec3, collRes: ig.Physics.TraceResult, isThrowCharged?: boolean): boolean;
       isBallAdjust(this: this): boolean;
       doBallAdjust(this: this, pos: Vec3, dir: Vec2, size: Vec3, maxBounce: number): number;
     }

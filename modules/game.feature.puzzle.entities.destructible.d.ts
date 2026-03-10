@@ -98,7 +98,7 @@ declare global {
       invokeRangeKill(this: this, killTimer: number): void;
       onRangeKill(this: this, rangeKey: string, killTimer: number): void;
       throwDebris(this: this): void;
-      isBallDestroyer(this: this, collPos: Vec3, collRes: { dir: Vec2 }): boolean;
+      isBallDestroyer(this: this, collPos: Vec3, collRes: ig.Physics.TraceResult): boolean;
     }
     interface DestructibleConstructor extends ImpactClass<Destructible> {
       new (

@@ -78,7 +78,12 @@ declare global {
         destroy(this: this, spawnEffects?: boolean, startRegen?: boolean): void;
         varsChanged(this: this): void;
         throwDebris(this: this): void;
-        isBallDestroyer(this: this, collPos: Vec3, collRes: { dir: Vec2 }, c?: boolean): boolean;
+        isBallDestroyer(
+          this: this,
+          collPos: Vec3,
+          collRes: ig.Physics.TraceResult,
+          isThrowCharged?: boolean,
+        ): boolean;
       }
       interface RegenDestructConstructor extends ImpactClass<RegenDestruct> {
         new (

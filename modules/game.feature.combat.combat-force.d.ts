@@ -24,7 +24,9 @@ declare global {
     interface CircleHitForce extends sc.CombatForce, ig.BallLike {
       getHitDir(this: this, entity: ig.Entity, dest: Vec2): Vec2;
     }
-    interface CircleHitForceConstructor extends ImpactClass<CombatForce> {}
+    interface CircleHitForceConstructor extends ImpactClass<CombatForce> {
+      new (combatant: sc.BasicCombatant, settings: unknown): CombatForce;
+    }
     var CircleHitForce: CircleHitForceConstructor;
 
     enum DIRECT_HIT_DIR {
