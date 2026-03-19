@@ -48,7 +48,7 @@ declare global {
         ignoreSlowDown: boolean;
 
         update(this: this): void;
-        _updatePosition(this: this, power: Vec2): void;
+        _updatePosition(this: this, power: number): void;
         _lerp(this: this, target: number, start: number, alpha: number): number;
         stop(this: this): void;
         isDone(this: this): boolean;
