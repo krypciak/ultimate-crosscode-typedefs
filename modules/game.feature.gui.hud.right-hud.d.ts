@@ -26,7 +26,6 @@ declare global {
     }
     var RightHudGui: RightHudGuiConstructor;
 
-    /* game.feature.gui.hud.right-hud */
     interface RightHudBoxGui extends sc.SideBoxGui {
       hidden: boolean;
       justAdded: boolean;
