@@ -74,6 +74,7 @@ declare global {
       resume(this: this): void;
       reset(this: this, mode?: sc.TIMER_TYPES, duration?: number): void;
       getRemainingTime(this: this): number;
+      getPassedTime(this: this): number;
       done(this: this): boolean;
       getSaveData(this: this): sc.TimerEntry.Data;
     }
@@ -88,6 +89,6 @@ declare global {
         quest?: string,
       ): TimerEntry;
     }
-    var TimerEntry: TimerEntryContstructor
+    var TimerEntry: TimerEntryContstructor;
   }
 }
