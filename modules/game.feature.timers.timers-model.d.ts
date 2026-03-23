@@ -90,5 +90,11 @@ declare global {
       ): TimerEntry;
     }
     var TimerEntry: TimerEntryContstructor;
+
+    enum TIMER_EVENT {
+      COUNTDOWN_DONE = 0,
+      DELETED = 1,
+      ADD_GUI = 2,
+    }
   }
 }
