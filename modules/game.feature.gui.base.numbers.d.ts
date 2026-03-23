@@ -40,18 +40,43 @@ declare global {
         signed?: Nullable<boolean>;
         transitionTime?: Nullable<number>;
         transitionScale?: Nullable<number>;
+        showPlus?: Nullable<boolean>;
+        noZero?: Nullable<boolean>;
+        leadingZeros?: Nullable<boolean>;
+        scramble?: Nullable<boolean>;
+        dots?: Nullable<boolean>;
         zeroAsGrey?: Nullable<boolean>;
       }
     }
+    // @ts-expect-error NumberGui#setSize overrides ig.GuiElementBase#setSize
+    // and does something different with different arguemnts
     interface NumberGui extends ig.GuiElementBase {
+      gfx: ig.Image;
       maxNumber: number;
+      digits: number;
+      realDigits: number;
+      signed: boolean;
       showPlus: boolean;
+      metrics: sc.NumberSize;
+      color: sc.GUI_NUMBER_COLOR;
       targetNumber: number;
+      initNumber: number;
+      numTransitionTime: number;
+      numTransitionScale: number;
+      timer: ig.WeightTimer;
+      noZero: boolean;
+      leadingZeros: number;
+      showPlusOnZero: boolean;
       scramble: boolean;
+      dots: boolean;
+      zeroAsGrey: boolean;
 
+      setSize(this: this, size: sc.NumberSize): void;
       setNumber(this: this, number: number, skipTransition?: Nullable<boolean>): void;
+      getNumber(this: this): number;
       setMaxNumber(this: this, number: number): void;
       setColor(this: this, color: sc.GUI_NUMBER_COLOR): void;
+      _getCurrentNumber(this: this): number;
     }
     interface NumberGuiConstructor extends ImpactClass<NumberGui> {
       new (maxValue: number, settings?: sc.NumberGui.Settings): sc.NumberGui;
