@@ -240,6 +240,17 @@ declare global {
       prefWidth: number;
       prefHeight: number;
       thumb: sc.Slider.Thumb;
+
+      range(this: this, valueToClamp: number): number;
+      calcThumbArea(this: this): number;
+      setThumbPos(this: this, skipTransition?: boolean): void;
+      setPreferredThumbSize(this: this, width: Nullable<number>, height: Nullable<number>): void;
+      addValue(this: this, value: number, forceThumbUpdate?: boolean): void;
+      setValue(this: this, value: number, forceThumbUpdate?: boolean): void;
+      setMinMaxValue(this: this, min: number, max: number, skipThumbTransition?: boolean): void;
+      getRange(this: this): number;
+      getWidth(this: this): number;
+      getHeight(this: this): number;
     }
     interface SliderConstructor extends ImpactClass<Slider> {
       new (vertical?: boolean, thumb?: sc.Slider.Thumb, scaleThumb?: boolean): sc.Slider;
