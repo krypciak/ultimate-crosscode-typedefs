@@ -256,6 +256,7 @@ declare global {
         this: this,
         key: K,
         value: sc.OPTIONS_DEFINITION.KnownTypesMap[K]['init'],
+        local?: boolean,
       ): void;
       set(this: this, key: string, value: any): void;
       get<K extends keyof sc.OPTIONS_DEFINITION.KnownTypesMap>(
