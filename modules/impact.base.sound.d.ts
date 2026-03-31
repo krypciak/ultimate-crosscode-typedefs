@@ -121,7 +121,7 @@ declare global {
 
     namespace Music {
       interface Track {
-        track: ig.Track;
+        track: Nullable<ig.Track>;
         timeOnPush: number;
         stopOnEnd: boolean;
         volume: number;
@@ -173,7 +173,7 @@ declare global {
       _getTopTrack(this: this): Nullable<ig.Music.Track>;
       _pushNextTrack(
         this: this,
-        track: ig.Track,
+        track: Nullable<ig.Track>,
         stopOnEnd?: boolean,
         mode?: ig.BGM_SWITCH_MODE,
       ): void;
