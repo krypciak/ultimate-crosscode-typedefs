@@ -244,13 +244,15 @@ declare global {
         sc.Model,
         ig.Storage.ListenerSave,
         ig.Storage.ListenerPreLoad,
-        ig.Storage.ListenerGlobalSave {
+        ig.Storage.ListenerGlobalSave,
+        ig.Vars.Accessor {
       hdMode: boolean;
       hasChanged: boolean;
       keyBinder: sc.KeyBinder;
       values: ig.Storage.GlobalsData.Options;
 
       persistOptions(this: this): void;
+      resetDefaultValues(this: this, local?: boolean): void;
       dispatchKeySwappedEvent(this: this): void;
       set<K extends keyof sc.OPTIONS_DEFINITION.KnownTypesMap>(
         this: this,
@@ -265,6 +267,11 @@ declare global {
         local?: boolean,
       ): sc.OPTIONS_DEFINITION.KnownTypesMap[K]['init'];
       get(this: this, key: string, local?: boolean): unknown;
+      hasLocal(this: this, key: LiteralUnion<keyof sc.OPTIONS_DEFINITION.KnownTypesMap>): boolean;
+      _checkSystemSettings(
+        this: this,
+        key: LiteralUnion<keyof sc.OPTIONS_DEFINITION.KnownTypesMap>,
+      ): void;
       _setDisplaySize(this: this): void;
       _setFullscreen(this: this): void;
       _checkForKeyBindingFailure(this: this): void;
