@@ -24,8 +24,7 @@
     "check": "tsc --noEmit",
     "watch": "tsc --noEmit --watch",
     "lint": "eslint . --ext .ts",
-    "check-fmt": "prettier --check '**/*.ts'",
-    "prepare": "tsc"
+    "check-fmt": "prettier --check '**/*.ts'"
   },
   "exports": {
     ".": "./index-crosscode-ccloader-all.js",
