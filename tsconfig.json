@@ -1,10 +1,11 @@
 {
   "include": ["*.ts", "modules", "modloader", "file-types", "modloader-stdlib", "mods"],
   "compilerOptions": {
-    "module": "ES2015",
+    "module": "ES2020",
+    "types": ["node", "jquery", "semver"],
     "lib": ["ES6"],
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     // "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   }
