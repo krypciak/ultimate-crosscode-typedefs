@@ -17,6 +17,7 @@ declare global {
       new (): GlobalInput;
     }
     var GlobalInput: GlobalInputConstructor;
+    var globalInput: GlobalInput
 
     interface Control extends ig.Class {
       autoControl: sc.AutoControl;
