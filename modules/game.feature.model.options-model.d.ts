@@ -23,6 +23,13 @@ declare global {
       CRUSHING = 3,
     }
 
+    enum PIXEL_SIZE {
+      ONE = 0,
+      TWO = 1,
+      THREE = 2,
+      FOUR = 3,
+    }
+
     enum LANGUAGE {
       ENGLISH = 0,
       GERMAN = 1,
