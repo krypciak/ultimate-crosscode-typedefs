@@ -158,6 +158,7 @@ declare global {
     interface NavigationConstructor extends ImpactClass<Navigation> {
       new (): Navigation;
     }
+    var Navigation: NavigationConstructor
     var navigation: ig.Navigation;
 
     interface NavBlocker extends ig.Class {
