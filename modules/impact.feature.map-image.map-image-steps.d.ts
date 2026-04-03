@@ -10,7 +10,7 @@ declare global {
         interface Settings {
           name: string;
           tileSheet: ig.TileSheet.Data;
-          position: Vec3;
+          position: ig.Event.Vec3Expression;
           guiSprite: boolean;
           size?: Vec3;
         }
