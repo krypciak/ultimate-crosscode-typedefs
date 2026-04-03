@@ -14,5 +14,6 @@ declare global {
       new (): GameSense;
     }
     var GameSense: GameSenseConstructor;
+    var gamesense: GameSense;
   }
 }
