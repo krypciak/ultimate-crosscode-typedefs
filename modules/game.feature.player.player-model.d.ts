@@ -186,7 +186,7 @@ declare global {
       increaseActionHeat(this: this, actionType: sc.PLAYER_ACTION): void;
       getCharacterName(this: this): string;
       switchBranch(this: this, startUID: number, startSide: boolean, newUID: number): void;
-      learnSkill(this: this, id: number): void;
+      learnSkill(this: this, id: number, noRemoveCp?: boolean): void;
       unlearnSkill(this: this, id: number): void;
       hasSkill(this: this, id: number): sc.BaseSkill;
       hasSkillPoints(this: this, skillId: number): boolean;
