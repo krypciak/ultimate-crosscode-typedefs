@@ -30,6 +30,46 @@ declare global {
       FOUR = 3,
     }
 
+    enum EFFECT_DETAILS {
+      LOW = 0,
+      MEDIUM = 1,
+      HIGH = 2,
+    }
+    enum RUMBLE_STRENGTH {
+      OFF = 0,
+      WEAK = 1,
+      NORMAL = 2,
+      STRONG = 3,
+    }
+    enum ASSIST_DAMAGE {
+      LOW5 = 0.2,
+      LOW4 = 0.3,
+      LOW3 = 0.4,
+      LOW2 = 0.6,
+      LOW1 = 0.8,
+      NORM = 1,
+    }
+    enum ASSIST_ATTACK_FREQUENCY {
+      LOW5 = 0.5,
+      LOW4 = 0.6,
+      LOW3 = 0.7,
+      LOW2 = 0.8,
+      LOW1 = 0.9,
+      NORM = 1,
+    }
+    enum ASSIST_PUZZLE_SPEED {
+      LOW5 = 0.5,
+      LOW4 = 0.6,
+      LOW3 = 0.7,
+      LOW2 = 0.8,
+      LOW1 = 0.9,
+      NORM = 1,
+    }
+    enum QUICK_MENU_ACCESS {
+      HOLD = 0,
+      PRESS = 1,
+    }
+
     enum LANGUAGE {
       ENGLISH = 0,
       GERMAN = 1,
@@ -38,6 +78,64 @@ declare global {
       KOREAN = 4,
       CHINESE_TRAD = 5,
     }
+
+    enum MESSAGE_PADDING {
+      NORMAL = 0,
+      WIDE = 1,
+    }
+    enum QUEST_SOLVED_STYLE {
+      IMMEDIATE = 0,
+      PRESS = 1,
+    }
+    enum UPDATE_QUEST_STYLE {
+      LARGE = 0,
+      SMALL = 1,
+      NONE = 2,
+    }
+    enum UPDATE_LANDMARK_STYLE {
+      LARGE = 0,
+      SMALL = 1,
+      NONE = 2,
+    }
+    enum UPDATE_LORE_STYLE {
+      LARGE = 0,
+      SMALL = 1,
+      NONE = 2,
+    }
+    enum UPDATE_TROPHY_STYLE {
+      LARGE = 0,
+      SMALL = 1,
+      NONE = 2,
+    }
+    enum UPDATE_DROP_STYLE {
+      LARGE = 0,
+      SMALL = 1,
+      NONE = 2,
+    }
+    enum HP_BARS {
+      LEA = 0,
+      PARTY = 1,
+      NONE = 2,
+    }
+    enum PARTY_COMBAT_ARTS {
+      FULL = 0,
+      NO_NAME = 1,
+      NONE = 2,
+    }
+    enum GAMEPAD_BUTTON_OPTION {
+      BUMPER = 0,
+      TRIGGER = 1,
+    }
+    enum GAMEPAD_ICON_OPTION {
+      XBOX = 0,
+      PS4 = 1,
+    }
+    enum QUICK_LOCATION_OPTION {
+      QUICK = 0,
+      MAP = 1,
+      NONE = 2,
+    }
+
     var LANGUAGE_MAP: Record<sc.LANGUAGE, ig.LANGUAGE_UNION>;
 
     enum ITEM_HUD_SIZE {
