@@ -59,5 +59,19 @@ declare global {
     }
     var VerionChangeLog: VerionChangeLogConstructor;
     var version: VerionChangeLog;
+
+    interface VersionTracker
+      extends ig.GameAddon,
+        ig.Storage.ListenerSave,
+        ig.Storage.ListenerPreLoad {
+      loadedVersion: unknown;
+      loadedSaveVersion: unknown;
+
+      onReset(this: this): void;
+    }
+    interface VersionTrackerConstructor extends ImpactClass<VersionTracker> {
+      new (): VersionTracker;
+    }
+    var VersionTracker: VersionTrackerConstructor;
   }
 }
