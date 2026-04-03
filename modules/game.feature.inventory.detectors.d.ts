@@ -14,5 +14,6 @@ declare global {
       new (): Detectors;
     }
     var Detectors: DetectorsConstructor;
+    var detectors: Detectors;
   }
 }
