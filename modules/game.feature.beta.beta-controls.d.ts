@@ -11,5 +11,6 @@ declare global {
       new (): BetaControls;
     }
     var BetaControls: BetaControlsConstructor;
+    var betaControls: BetaControls;
   }
 }
