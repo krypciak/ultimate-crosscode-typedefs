@@ -7,10 +7,10 @@ declare global {
   namespace ig {
     namespace Database {
       interface Data {
-        // achivments
+        achievements: sc.TrophyManager['trophies'];
         areas: { [name: string]: sc.MapModel.Area };
         chapters: Chapter[];
-        commonEvents: Record<string, sc.CommonEvent.Data>
+        commonEvents: Record<string, sc.CommonEvent.Data>;
         drops: Record<DropKey, Drop>;
         enemies: { [id: string]: EnemyData };
         leawords: string[];
