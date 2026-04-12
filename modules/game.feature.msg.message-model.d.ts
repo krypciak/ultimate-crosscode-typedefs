@@ -170,7 +170,9 @@ declare global {
       hasChoice(this: this): boolean;
       _checkActivePerson(this: this, personName: string): void;
     }
-    interface MessageModelConstructor extends ImpactClass<MessageModel> {}
+    interface MessageModelConstructor extends ImpactClass<MessageModel> {
+      new (): MessageModel;
+    }
     var MessageModel: MessageModelConstructor;
     var message: sc.MessageModel;
 
