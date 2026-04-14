@@ -292,18 +292,23 @@ declare global {
         align: ig.ENTITY_ALIGN | null;
         offset: null;
         range: number;
-        rangeType: ig.SOUND_RANGE_TYPE;
+        rangeType: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE;
       };
       offset: Vec2;
 
-      setFixPosition(this: this, point: Vec3, range?: number, type?: ig.SOUND_RANGE_TYPE): void;
+      setFixPosition(
+        this: this,
+        point: Vec3,
+        range?: number,
+        type?: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE,
+      ): void;
       setEntityPosition(
         this: this,
         entity: ig.Entity,
         align: ig.ENTITY_ALIGN,
         offset: null,
         range?: number,
-        type?: ig.SOUND_RANGE_TYPE,
+        type?: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE,
       ): void;
       _updateEntityPos(this: this, force?: boolean): void;
       isLooping(this: this): boolean;
