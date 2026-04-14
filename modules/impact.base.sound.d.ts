@@ -5,11 +5,12 @@ export {};
 
 declare global {
   namespace ig {
-    enum SOUND_RANGE_TYPE {
-      CIRULAR = 1 /* typo */,
-      HORIZONTAL = 2,
-      VERTICAL = 3,
+    interface SOUND_RANGE_TYPE {
+      CIRULAR: 1 /* typo */;
+      HORIZONTAL: 2;
+      VERTICAL: 3;
     }
+    var SOUND_RANGE_TYPE: SOUND_RANGE_TYPE;
 
     namespace SoundManager {
       interface Volumes {
