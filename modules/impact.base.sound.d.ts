@@ -5,12 +5,11 @@ export {};
 
 declare global {
   namespace ig {
-    interface SOUND_RANGE_TYPE {
-      CIRULAR: 1 /* typo */;
-      HORIZONTAL: 2;
-      VERTICAL: 3;
+    enum SOUND_RANGE_TYPE {
+      CIRULAR = 1 /* typo */,
+      HORIZONTAL = 2,
+      VERTICAL = 3,
     }
-    var SOUND_RANGE_TYPE: SOUND_RANGE_TYPE;
 
     namespace SoundManager {
       interface Volumes {
@@ -292,7 +291,7 @@ declare global {
         align: ig.ENTITY_ALIGN | null;
         offset: null;
         range: number;
-        rangeType: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE;
+        rangeType: ig.SOUND_RANGE_TYPE | keyof typeof ig.SOUND_RANGE_TYPE;
       };
       offset: Vec2;
 
@@ -300,7 +299,7 @@ declare global {
         this: this,
         point: Vec3,
         range?: number,
-        type?: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE,
+        type?: ig.SOUND_RANGE_TYPE | keyof typeof ig.SOUND_RANGE_TYPE,
       ): void;
       setEntityPosition(
         this: this,
@@ -308,7 +307,7 @@ declare global {
         align: ig.ENTITY_ALIGN,
         offset: null,
         range?: number,
-        type?: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE,
+        type?: ig.SOUND_RANGE_TYPE | keyof typeof ig.SOUND_RANGE_TYPE,
       ): void;
       _updateEntityPos(this: this, force?: boolean): void;
       isLooping(this: this): boolean;

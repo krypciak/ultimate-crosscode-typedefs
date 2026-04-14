@@ -11,7 +11,7 @@ declare global {
           sound: string;
           volume?: number;
           radius?: number;
-          rangeType?: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE;
+          rangeType?: ig.SOUND_RANGE_TYPE | keyof typeof ig.SOUND_RANGE_TYPE;
           speed?: number;
           faceDuration?: number;
         }
@@ -20,7 +20,7 @@ declare global {
         sound: ig.Sound;
         soundHandle: unknown;
         radius: number;
-        rangeType: ig.SOUND_RANGE_TYPE | keyof ig.SOUND_RANGE_TYPE;
+        rangeType: ig.SOUND_RANGE_TYPE | keyof typeof ig.SOUND_RANGE_TYPE;
         _wm: ig.Config;
 
         stop(this: this): void;
