@@ -178,7 +178,7 @@ declare global {
       ): void;
       doFloatJump(this: this, floatJump: number, jumping: boolean | number, maxVel: number): void;
       onFallFromEdge(this: this, vec?: Vec2): void;
-      onJump(addedHeight: number, ignoreSounds?: boolean): void;
+      onJump(this: this, addedHeight: number, ignoreSounds?: boolean): void;
     }
     interface ActorEntityConstructor extends ImpactClass<ActorEntity> {
       FACE4: typeof ActorEntity$FACE4;
