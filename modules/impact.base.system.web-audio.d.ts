@@ -5,12 +5,21 @@ export {};
 declare global {
   namespace ig {
     interface WebAudio extends ig.Class {
-      context: null | AudioContext;
+      context: Nullable<AudioContext>;
       timeOffset: number;
 
+      getDestination(this: this): AudioDestinationNode;
       getSampleRate(this: this): number;
+      decodeAudioData(
+        this: this,
+        audioData: ArrayBuffer,
+        successCallback?: DecodeSuccessCallback | null,
+        errorCallback?: DecodeErrorCallback | null,
+      ): void;
       getCurrentTime(this: this): number;
       getCurrentTimeRaw(this: this): number;
+      createGain(this: this): GainNode;
+      createDynamicCompressor(this: this): Nullable<DynamicsCompressorNode>;
       createPanner(this: this): PannerNode;
       createBufferGain(
         this: this,
