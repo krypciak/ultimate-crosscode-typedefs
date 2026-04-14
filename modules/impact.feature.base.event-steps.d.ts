@@ -668,10 +668,10 @@ declare global {
           volume?: number;
           variance?: number;
           position?: Vec2;
-          name: string;
-          loop: boolean;
-          offset: number;
-          startTime: number;
+          name?: string;
+          loop?: boolean;
+          offset?: number;
+          startTime?: number;
           speed?: number;
         }
       }
