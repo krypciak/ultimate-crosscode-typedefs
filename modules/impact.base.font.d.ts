@@ -18,11 +18,35 @@ declare global {
     namespace Font {
       type ALIGN = Font$ALIGN;
     }
+    // @ts-expect-error onload
     interface Font extends ig.Image {
       widthMap: number[];
       indicesX: number[];
       indicesY: number[];
+      firstChar: number;
       charHeight: number;
+      sizeIndex: number;
+      color: string;
+
+      onload(this: this, event: Event): void;
+      widthForString(this: this, text: string): number;
+      getSystemFont(this: this, additionalSize?: number): string;
+      _drawChar(
+        this: this,
+        charCode: number,
+        x: number,
+        y: number,
+        imageOverride?: HTMLImageElement,
+      ): number;
+      _drawSystemChar(
+        this: this,
+        charCode: number,
+        x: number,
+        y: number,
+        fillStyle: CanvasFillStrokeStyles['fillStyle'],
+      ): number;
+      getSystemCharWidth(this: this, text: string): number;
+      _loadMetrics(this: this, img: HTMLImageElement): void;
     }
     interface FontConstructor extends ImpactClass<Font> {
       new (
@@ -85,6 +109,13 @@ declare global {
       getCharWidth(this: this, code: number): number;
     }
     interface MultiFontConstructor extends ImpactClass<MultiFont> {
+      new (
+        path: string,
+        charHeight: number,
+        sizeIndex?: Nullable<number>,
+        color?: Nullable<string>,
+      ): Font;
+
       ICON_START: number;
       ICON_END: number;
     }
