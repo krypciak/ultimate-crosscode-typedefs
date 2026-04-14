@@ -75,7 +75,7 @@ declare global {
       preUpdateOrder: number;
       active?: boolean;
 
-      get(this: this, type: sc.AutoControl.Type): number;
+      get(this: this, type: sc.AutoControl.Type): number | boolean;
       isActive(this: this): boolean | undefined;
       setActive(this: this, value: boolean): void;
       onPreUpdate(this: this): void;
