@@ -115,8 +115,17 @@ declare global {
       new (name: keyof typeof ig.MAP_SOUNDS): MapSoundEntry;
     }
     var MapSoundEntry: MapSoundEntryConstructor;
+
     interface MapSounds extends ig.GameAddon {
+      mapEntry: ig.MapSoundEntry;
+      currentEntry: ig.MapSoundEntry;
+      levelLoadStartOrder: number;
+      levelLoadedOrder: number;
+      deferredUpdateOrder: number;
+
+      setEntry(this: this, entry: Nullable<ig.MapSoundEntry>): void;
       onReset(this: this): void;
+      onLevelLoadStart(this: this, data: sc.MapModel.Map): void;
       onLevelLoaded(this: this): void;
       onDeferredUpdate(this: this): void;
     }
@@ -124,6 +133,6 @@ declare global {
       new (): MapSounds;
     }
     var MapSounds: MapSoundsConstructor;
-    var mapSounds: MapSounds
+    var mapSounds: MapSounds;
   }
 }
