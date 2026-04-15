@@ -326,14 +326,14 @@ declare global {
     var SoundHandleDefault: ig.SoundHandleDefault;
 
     interface SoundHandleWebAudio extends ig.SoundHandleBase {
-      _buffer: null | AudioBufferSourceNode;
+      _buffer: Nullable<AudioBufferSourceNode>;
       _volume: number;
       _speed: number;
       _time: number;
       _duration: number;
       _offset: number;
       _startTime: number;
-      _nodeSource: null | ig.WebAudioBufferGain;
+      _nodeSource: Nullable<ig.WebAudioBufferGain>;
       _nodePosition: PannerNode;
       _loop: boolean;
       _playing: boolean;
@@ -348,7 +348,15 @@ declare global {
       pause(this: this, noFadeOut?: boolean): void;
     }
     interface SoundHandleWebAudioConstructor extends ImpactClass<ig.SoundHandleWebAudio> {
-      new (): ig.SoundHandleWebAudio;
+      new (
+        buffer: Nullable<AudioBufferSourceNode>,
+        offset?: number,
+        startTime?: number,
+        loop?: boolean,
+        volume?: number,
+        speed?: number,
+        fadeDuration?: number,
+      ): SoundHandleWebAudio;
     }
     var SoundHandleWebAudio: ig.SoundHandleWebAudioConstructor;
 
