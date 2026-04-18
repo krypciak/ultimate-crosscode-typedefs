@@ -370,7 +370,7 @@ declare global {
         type?: ig.SOUND_RANGE_TYPE,
       ): ig.SoundHandle;
     }
-    type SoundHandle = ig.SoundHandleWebAudio | ig.SoundHandleDefault;
+    type SoundHandle = ig.SoundHandleWebAudio /* | ig.SoundHandleDefault */;
 
     namespace Sound {
       interface FORMAT {
@@ -397,16 +397,18 @@ declare global {
       var WEBM: ig.Sound.FORMAT;
       var CAF: ig.Sound.FORMAT;
     }
-    interface SoundConstructorCommon<T extends ig.Sound> {
+    interface SoundConstructorCommon<T> {
       new (path: string, volume?: number, variance?: number, group?: string): T;
       FORMAT: typeof Sound$FORMAT;
       use: ig.Sound.FORMAT[];
     }
 
-    type Sound = SoundDefault | SoundWebAudio;
-    type SoundConstructor = SoundDefaultConstructor | SoundWebAudioConstructor;
-    type Track = TrackDefault | TrackWebAudio;
-    type TrackConstructor = TrackDefaultConstructor | TrackWebAudioConstructor;
+    /* don't include SoundDefault types in union because it is not used anyways,
+     * it screws up function this types, and it is annyoing to cast it to ig.SoundWebAudio everywhere */
+    type Sound = /* SoundDefault | */ SoundWebAudio;
+    type SoundConstructor = /* SoundDefaultConstructor | */ SoundWebAudioConstructor;
+    type Track = /* TrackDefault | */ TrackWebAudio;
+    type TrackConstructor = /* TrackDefaultConstructor | */ TrackWebAudioConstructor;
     var Sound: SoundConstructor;
   }
 
