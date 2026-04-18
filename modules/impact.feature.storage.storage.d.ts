@@ -101,13 +101,28 @@ declare global {
       }
     }
     interface StorageData extends ig.Class {
+      loaded: boolean;
       data: ig.StorageData.SaveFileData | null;
+      saveDataStack: string[];
+      path: string;
+      cacheType: string;
+      ioState: unknown;
+      loadPathStack: string[];
 
+      load(this: this, loadCallback: ig.Resource.LoadCallback): void;
+      _loadFromList(this: this): void;
+      _loadResponse(this: this, err: Error, data: string): void;
       save(this: this, data: string): void;
+      _saveToFile(this: this): void;
+      _doIoStep(this: this, ioState: unknown): void;
+      _saveResponse(this: this, err: Error): void;
+      _resolveSave(this: this): void;
+      _getSaveFilePathList(this: this): string[];
+      _loadStorageFromData(this: this, data: string): boolean;
       getData(this: this): this['data'];
     }
     interface StorageDataConstructor extends ImpactClass<StorageData> {
-      new (): StorageData;
+      new (path: string): StorageData;
     }
     var StorageData: StorageDataConstructor;
 
