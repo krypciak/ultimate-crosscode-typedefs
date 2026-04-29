@@ -7,41 +7,63 @@ export {};
 declare global {
   namespace ig {
     interface GuiRenderer extends ig.Class {
+      drawSteps: (ig.GuiDrawable | ig.GuiTransform)[],
       addGfx(
         this: this,
-        gfx: ig.Image | ig.ImageAtlasFragment,
-        posX: number,
-        posY: number,
+        gfxSource: ig.Drawable,
+        x: number,
+        y: number,
         srcX: number,
         srcY: number,
-        sizeX: number,
-        sizeY: number,
+        width: number,
+        height: number,
         flipX?: boolean,
         flipY?: boolean,
       ): ig.GuiDrawable;
+      addGfxTile(
+        this: this,
+        gfxSource: ig.Drawable,
+        x: number,
+        y: number,
+        tile: number,
+        tileWidth: number,
+        tileHeight: number,
+        flipX?: boolean,
+        flipY?: boolean,
+      ): ig.GuiDrawable;
+      addVideo(
+        this: this,
+        video: unknown,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+      ): ig.GuiDrawable;
+      addGameStateDraw(this: this, gameState: ig.GameState, x: number, y: number): ig.GuiDrawable;
       addColor(
         this: this,
-        color: string,
-        posX: number,
-        posY: number,
-        sizeX: number,
-        sizeY: number,
+        color: CanvasRenderingContext2D['fillStyle'],
+        x: number,
+        y: number,
+        width: number,
+        height: number,
       ): ig.GuiDrawable;
       addPattern(
         this: this,
         pattern: ig.ImagePattern,
-        posX: number,
-        posY: number,
         srcX: number,
         srcY: number,
-        sizeX: number,
-        sizeY: number,
+        width: number,
+        height: number,
+        flipX?: boolean,
+        flipY?: boolean,
       ): ig.GuiDrawable;
       addText(this: this, textBlock: ig.TextBlock, posX: number, posY: number): ig.GuiDrawable;
+      clearDrawSteps(this: this): void;
       addDraw(this: this): ig.GuiDrawable;
-
       addTransform(this: this): ig.GuiTransform;
       undoTransform(this: this): void;
+      draw(this: this): void
     }
     interface GuiRendererConstructor extends ImpactClass<GuiRenderer> {
       new (): GuiRenderer;
@@ -251,10 +273,77 @@ declare global {
     interface GuiHookConstructor extends ImpactClass<GuiHook> {}
     var GuiHook: GuiHookConstructor;
 
-    interface GuiDrawable extends ig.Class {
+    interface GuiDrawable extends ig.Class, ig.Drawable {
+      pos: Vec2;
+      size: Vec2;
+      src: Vec2;
+      gfxSource: Nullable<CanvasRenderingContext2D['fillStyle'] | ig.Drawable>;
+      gfxType: number;
+      flip: { x: boolean; y: boolean };
+      alpha: number;
+      compositionMode: CanvasRenderingContext2D['globalCompositeOperation'];
+
+      setPos(this: this, x: number, y: number): this;
+      setSize(this: this, width: number, height: number): this;
+      setSrc(this: this, x: number, y: number): this;
       setAlpha(this: this, alpha: number): this;
-      setCompositionMode(this: this, mode: string): this;
-      setText(this: this, textBlock: ig.TextBlock, x: number, y: number): ig.GuiDrawable;
+      setColor(
+        this: this,
+        color: CanvasRenderingContext2D['fillStyle'],
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+      ): this;
+      setCompositionMode(
+        this: this,
+        mode: CanvasRenderingContext2D['globalCompositeOperation'],
+      ): this;
+      setGfx(
+        this: this,
+        gfxSource: ig.Drawable,
+        x: number,
+        y: number,
+        srcX: number,
+        srcY: number,
+        width: number,
+        height: number,
+        flipX?: boolean,
+        flipY?: boolean,
+      ): this;
+      setGfxTile(
+        this: this,
+        gfxSource: ig.Drawable,
+        x: number,
+        y: number,
+        tile: number,
+        tileWidth: number,
+        tileHeight: number,
+        flipX?: boolean,
+        flipY?: boolean,
+      ): this;
+      setVideo(
+        this: this,
+        video: unknown,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+      ): this;
+      setGameStateDraw(this: this, gameState: ig.GameState, x: number, y: number): this;
+      setPattern(
+        this: this,
+        pattern: ig.ImagePattern,
+        srcX: number,
+        srcY: number,
+        width: number,
+        height: number,
+        flipX?: boolean,
+        flipY?: boolean,
+      ): this;
+      setText(this: this, textBlock: ig.TextBlock, x: number, y: number): this;
+      kill(this: this): void;
+      clear(this: this): void;
     }
     interface GuiDrawableConstructor extends ImpactClass<GuiDrawable> {}
     var GuiDrawable: GuiDrawableConstructor;
@@ -283,7 +372,7 @@ declare global {
     var GuiTransform: GuiTransformConstructor;
 
     interface GuiStepPool {
-      get(clazz: ig.ClassConstructor): void;
+      get(clazz: ig.ClassConstructor): ig.Class;
       free(clazz: ig.ClassConstructor): void;
     }
     var GuiStepPool: GuiStepPool;
