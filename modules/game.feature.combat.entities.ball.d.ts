@@ -145,6 +145,7 @@ declare global {
     interface BallLike extends sc.GetCombatant, sc.GetCombatantRoot {
       party?: sc.COMBATANT_PARTY;
       attackInfo?: Nullable<sc.AttackInfo>;
+      isBall?: boolean
 
       getElement(this: this): sc.ELEMENT;
       getHitCenter(this: this, entity: ig.Entity, dest?: Vec3): Vec3;
