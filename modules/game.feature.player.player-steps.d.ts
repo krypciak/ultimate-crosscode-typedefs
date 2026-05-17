@@ -488,4 +488,14 @@ declare global {
       var PLAY_PET_SOUND: PLAY_PET_SOUND_CONSTRUCTOR;
     }
   }
+  namespace sc {
+    interface PlayerCameraFocusHandle extends ig.Class, ig.ActorEntity.ActionAttachedListener {
+      add: boolean;
+      speed: ig.Camera.Speed;
+    }
+    interface PlayerCameraFocusHandleConstructor extends ImpactClass<PlayerCameraFocusHandle> {
+      new (add: boolean, speed: ig.Camera.Speed): PlayerCameraFocusHandle;
+    }
+    var PlayerCameraFocusHandle: PlayerCameraFocusHandleConstructor;
+  }
 }
