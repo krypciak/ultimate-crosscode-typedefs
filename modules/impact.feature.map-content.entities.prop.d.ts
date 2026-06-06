@@ -43,7 +43,10 @@ declare global {
       namespace Prop {
         interface Settings extends ig.Entity.Settings {}
       }
-      interface Prop extends ig.AnimatedEntity {
+      interface Prop
+        extends ig.AnimatedEntity,
+          ig.Loadable.LoadListener,
+          ig.EffectSheet.EventCallback {
         terrain: ig.TERRAIN;
         face: Vec2;
         propSet: unknown;
@@ -64,9 +67,20 @@ declare global {
         currentInteract: unknown;
         ballKill: { fx?: ig.EffectHandle };
         hideManager?: ig.EntityHideManager;
+
+        initPermaEffects(this: this): void;
+        onHideRequest(this: this): void;
+        onGroundAdd(this: this, entity: ig.Entity): void;
+        nudge(this: this, entity: ig.Entity, fallen?: boolean): void;
+        untriggerProp(this: this): void;
+        varsChanged(this: this): void;
+        changeInteract(this: this, interact: sc.PropInteract): void;
+        _updateAnimations(this: this): void;
       }
       interface PropConstructor extends ImpactClass<Prop> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.Prop.Settings): Prop;
+
+        staticNavBlock: boolean;
       }
       var Prop: PropConstructor;
     }
