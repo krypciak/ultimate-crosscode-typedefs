@@ -35,7 +35,7 @@ declare global {
       addFocusGui(this: this, gui: ig.FocusGui, x: number, y: number, asBackButton?: boolean): void;
       fillEmptySpace(this: this): void;
       insertFocusGui(this: this, gui: ig.FocusGui, x: number, y: number): void;
-      removeFocusGui(this: this, x: number, y: number): void;
+      removeFocusGui(this: this, x: number, y: number): Nullable<ig.FocusGui>;
       addNull(this: this, x: number, y: number): void;
       makeEmptyGrid(this: this, toX: number, toY: number): void;
       invokeCurrentButton(this: this): void;
