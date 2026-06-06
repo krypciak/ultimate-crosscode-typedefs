@@ -7,7 +7,7 @@ export {};
 declare global {
   namespace ig {
     interface GuiRenderer extends ig.Class {
-      drawSteps: (ig.GuiDrawable | ig.GuiTransform)[],
+      drawSteps: (ig.GuiDrawable | ig.GuiTransform)[];
       addGfx(
         this: this,
         gfxSource: ig.Drawable,
@@ -53,17 +53,17 @@ declare global {
         pattern: ig.ImagePattern,
         srcX: number,
         srcY: number,
+        x: number,
+        y: number,
         width: number,
         height: number,
-        flipX?: boolean,
-        flipY?: boolean,
       ): ig.GuiDrawable;
       addText(this: this, textBlock: ig.TextBlock, posX: number, posY: number): ig.GuiDrawable;
       clearDrawSteps(this: this): void;
       addDraw(this: this): ig.GuiDrawable;
       addTransform(this: this): ig.GuiTransform;
       undoTransform(this: this): void;
-      draw(this: this): void
+      draw(this: this): void;
     }
     interface GuiRendererConstructor extends ImpactClass<GuiRenderer> {
       new (): GuiRenderer;
@@ -336,10 +336,10 @@ declare global {
         pattern: ig.ImagePattern,
         srcX: number,
         srcY: number,
+        x: number,
+        y: number,
         width: number,
         height: number,
-        flipX?: boolean,
-        flipY?: boolean,
       ): this;
       setText(this: this, textBlock: ig.TextBlock, x: number, y: number): this;
       kill(this: this): void;
