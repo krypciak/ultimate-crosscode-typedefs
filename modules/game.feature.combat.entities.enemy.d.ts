@@ -21,8 +21,23 @@ declare global {
 
   namespace ig.ENTITY {
     namespace Enemy {
+      interface EnemyInfoSettings extends sc.EnemyInfo.Settings {
+        group?: string;
+        level?: number;
+        state?: string;
+        dropHealOrb?: number;
+        varIncrease?: string;
+        targetOnSpawn?: boolean;
+        disableNoScale?: boolean;
+        party?: keyof typeof sc.COMBATANT_PARTY;
+        attribs?: Record<string, unknown>;
+        face?: keyof typeof ig.ActorEntity.FACE8;
+      }
       interface Settings extends ig.ENTITY.Combatant.Settings {
-        enemyInfo: sc.EnemyInfo.Settings;
+        enemyInfo: EnemyInfoSettings;
+        manualKill?: Nullable<string>;
+        ownerEnemy?: Nullable<ig.ENTITY.Enemy>;
+        startAction?: ig.Action;
       }
 
       interface Level {

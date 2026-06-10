@@ -181,10 +181,8 @@ declare global {
     namespace EnemyInfo {
       interface Settings {
         type: string;
-        group?: string;
-        party?: keyof typeof sc.COMBATANT_PARTY;
-        level?: number;
-        attribs?: Record<string, unknown>
+        startEffect?: ig.EffectHandle.Settings;
+        hideEffect?: ig.EffectHandle.Settings;
       }
     }
     interface EnemyInfo extends ig.Class {
