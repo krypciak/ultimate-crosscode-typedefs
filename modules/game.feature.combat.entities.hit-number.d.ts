@@ -125,7 +125,7 @@ declare global {
           strength: number,
           shieldResult?: sc.SHIELD_RESULT,
           isCrit?: boolean,
-          appenix?: sc.HIT_NUMBER_APPENDIX[],
+          appendix?: sc.HIT_NUMBER_APPENDIX[],
         ): void;
         spawnHealingNumber(pos: Vec3, combatant: ig.ENTITY.Combatant, healAmount: number): void;
       }
