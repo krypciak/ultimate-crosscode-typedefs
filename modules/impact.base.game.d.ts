@@ -179,7 +179,7 @@ declare global {
         z: number,
         settings: sc.MapModel.MapEntity<T>['settings'],
         showAppearEffects?: Nullable<boolean>,
-      ): (typeof ig.ENTITY)[T];
+      ): InstanceType<(typeof ig.ENTITY)[T]>;
       reset(this: this): void;
       teleport(
         this: this,
