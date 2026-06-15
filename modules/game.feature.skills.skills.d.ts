@@ -34,15 +34,19 @@ declare global {
     var BaseSkill: BaseSkillConstructor;
 
     interface StatSkill extends sc.BaseSkill {
-      statType: sc.CombatParams.ParamName;
+      statType: keyof sc.MODIFIERS;
     }
-    interface StatSkillConstructor extends ImpactClass<StatSkill> {}
+    interface StatSkillConstructor extends ImpactClass<StatSkill> {
+      new (type: string, stats: sc.SkillTree.Stats): StatSkill;
+    }
     var StatSkill: StatSkillConstructor;
 
     interface ElementSkill extends sc.BaseSkill {
       counter: boolean;
     }
-    interface ElementSkillConstructor extends ImpactClass<ElementSkill> {}
+    interface ElementSkillConstructor extends ImpactClass<ElementSkill> {
+      new (type: string, stats: sc.SkillTree.Stats): ElementSkill;
+    }
     var ElementSkill: ElementSkillConstructor;
 
     namespace SpecialSkill {
@@ -56,8 +60,9 @@ declare global {
       getCombatArtLevel(this: this, type: SpecialSkill.SkillType, element: sc.ELEMENT): number;
       _getElementName(this: this): keyof typeof sc.ELEMENT;
     }
-    interface SpecialSkillConstructor extends ImpactClass<SpecialSkill> {}
+    interface SpecialSkillConstructor extends ImpactClass<SpecialSkill> {
+      new (type: string, stats: sc.SkillTree.Stats): SpecialSkillConstructor;
+    }
     var SpecialSkill: SpecialSkillConstructor;
   }
 }
-
