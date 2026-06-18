@@ -53,4 +53,15 @@ declare global {
     }
     let ElementPole: ElementPoleConstructor;
   }
+  namespace sc {
+    namespace COMBAT_POI {
+      namespace ELEMENT_POLE {
+        interface Settings {}
+      }
+      interface ELEMENT_POLE extends sc.COMBAT_POI.Base<sc.COMBAT_POI.ELEMENT_POLE.Settings> {
+        _wm: ig.Config;
+      }
+      var ELEMENT_POLE: ELEMENT_POLE;
+    }
+  }
 }

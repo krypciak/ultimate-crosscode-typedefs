@@ -73,5 +73,17 @@ declare global {
       new (x: number, y: number, z: number, settings: sc.BombEntity.Settings): BombEntity;
     }
     var BombEntity: BombEntityConstructor;
+
+    namespace COMBAT_POI {
+      namespace BOMB_PANEL {
+        interface Settings {
+          ready?: boolean;
+        }
+      }
+      interface BOMB_PANEL extends sc.COMBAT_POI.Base<sc.COMBAT_POI.BOMB_PANEL.Settings> {
+        _wm: ig.Config;
+      }
+      var BOMB_PANEL: BOMB_PANEL;
+    }
   }
 }

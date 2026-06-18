@@ -51,4 +51,16 @@ declare global {
     }
     var FloorSwitch: FloorSwitchConstructor;
   }
+
+  namespace sc {
+    namespace COMBAT_POI {
+      namespace FLOOR_SWITCH {
+        interface Settings {}
+      }
+      interface FLOOR_SWITCH extends sc.COMBAT_POI.Base<sc.COMBAT_POI.FLOOR_SWITCH.Settings> {
+        _wm: ig.Config;
+      }
+      var FLOOR_SWITCH: FLOOR_SWITCH;
+    }
+  }
 }

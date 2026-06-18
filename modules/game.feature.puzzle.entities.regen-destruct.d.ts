@@ -69,6 +69,7 @@ declare global {
         zHeight: number;
         onDestroyIncrease?: string;
         _wm: ig.Config;
+        desTypeName: keyof sc.REGEN_DESTRUCT_TYPE;
 
         onHideRequest(this: this): void;
         startRegen(this: this): void;
@@ -94,6 +95,20 @@ declare global {
         ): RegenDestruct;
       }
       var RegenDestruct: RegenDestructConstructor;
+    }
+  }
+  namespace sc {
+    namespace COMBAT_POI {
+      namespace REGEN_DESTRUCT {
+        interface Settings {
+          destructType: keyof sc.REGEN_DESTRUCT_TYPE;
+          active?: boolean;
+        }
+      }
+      interface REGEN_DESTRUCT extends sc.COMBAT_POI.Base<sc.COMBAT_POI.REGEN_DESTRUCT.Settings> {
+        _wm: ig.Config;
+      }
+      var REGEN_DESTRUCT: REGEN_DESTRUCT;
     }
   }
 }

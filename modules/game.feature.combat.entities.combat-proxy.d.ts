@@ -127,5 +127,17 @@ declare global {
       createActorConfig(data: ig.ActorConfig.Data): ig.ActorConfig;
     }
     var CombatProxyEntity: CombatProxyEntityConstructor;
+
+    namespace COMBAT_POI {
+      namespace PROXY {
+        interface Settings {
+          group: string;
+        }
+      }
+      interface PROXY extends sc.COMBAT_POI.Base<sc.COMBAT_POI.PROXY.Settings> {
+        _wm: ig.Config;
+      }
+      var PROXY: PROXY;
+    }
   }
 }
