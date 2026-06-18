@@ -7,7 +7,7 @@ declare global {
     namespace COMBAT_POI {
       interface Base<T extends object> {
         initSettings?(settings: T): void;
-        getEntities(a: unknown, settings: T): void;
+        getEntities(a: unknown, settings: T, combatant: sc.BasicCombatant): void;
       }
       type Union = keyof typeof sc.COMBAT_POI;
 
@@ -39,7 +39,7 @@ declare global {
       var NAMED_ENTITIES: NAMED_ENTITIES;
     }
 
-    namespace CombatPoi {
+    namespace CombatPoI {
       function initPoiFilter(settings: null): null;
       function initPoiFilter<T extends sc.COMBAT_POI.Union>(
         settings: { type: T } & sc.COMBAT_POI.Setting,
