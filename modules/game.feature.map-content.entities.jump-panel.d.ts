@@ -76,6 +76,51 @@ declare global {
                 new (x: number, y: number, z: number, settings: ig.ENTITY.JumpPanelFar.Settings): JumpPanelFar
             }
             var JumpPanelFar: JumpPanelFarConstructor
+
+            namespace JumpPanelFloat {
+                interface PanelType {
+                    size: Vec2
+                    dir: Vec2
+                    tileOffset: number
+                }
+                interface PANEL_TYPES {
+                    DEFAULT: PanelType
+                    NORTH: PanelType
+                    EAST: PanelType
+                    SOUTH: PanelType
+                    WEST: PanelType
+                }
+
+                interface JumpHeight {
+                    zVel: number
+                    height: number
+                    effectDuration: number
+                }
+                interface JUMP_HEIGHT {
+                    4: JumpHeight
+                    '4_2': JumpHeight
+                    8: JumpHeight
+                }
+
+                interface Settings extends ig.AnimatedEntity {
+                    panelType?: keyof PANEL_TYPES
+                    jumpDistance?: keyof JUMP_HEIGHT
+                }
+            }
+            interface JumpPanelFloat extends ig.AnimatedEntity, ig.Navigation.Influencer {
+                panelType: ig.ENTITY.JumpPanelFloat.PanelType
+                effects: ig.EffectSheet
+                jumpHeightData: ig.ENTITY.JumpPanelFloat.JumpHeight
+                condition: ig.VarCondition
+                dir: null
+                _wm: ig.Config
+
+                varsChanged(this: this): void
+            }
+            interface JumpPanelFloatConstructor extends ImpactClass<JumpPanelFloat> {
+                new (x: number, y: number, z: number, settings: ig.ENTITY.JumpPanelFloat.Settings): JumpPanelFloat
+            }
+            var JumpPanelFloat: JumpPanelFloatConstructor
         }
     }
 }
