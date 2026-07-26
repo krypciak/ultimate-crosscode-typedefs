@@ -15,9 +15,17 @@ declare global {
     }
 
     interface ElementPoleGroups {
+      groups: Record<string, sc.ElementPoleGroups.Group>;
+
+      registerDest(pole: ig.ENTITY.ElementPole, active: boolean): unknown;
+      registerPole(pole: ig.ENTITY.ElementPole): void;
       getGroup(group: string): ElementPoleGroups.Group;
+      deleteGroup(group: string): void;
       onPoleHit(pole: ig.ENTITY.ElementPole, ball: ig.ENTITY.Ball, alreadyHit: boolean): boolean;
+      getChargeState(pole: ig.ENTITY.ElementPole): ig.ENTITY.ElementPole.State;
+      onFinalizeGroup(pole: ig.ENTITY.ElementPole): void;
       onCancelCheck(pole: ig.ENTITY.ElementPole): boolean;
+      onGroupChargeCancel(pole: ig.ENTITY.ElementPole): void;
     }
     let ElementPoleGroups: ElementPoleGroups;
 
