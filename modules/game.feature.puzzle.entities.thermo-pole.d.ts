@@ -8,16 +8,18 @@ declare global {
   namespace sc {
     namespace ElementPoleGroups {
       interface Group {
-        currentBall: ig.ENTITY.Ball | null;
-        hitCount: number;
+        dests: PartialRecord<sc.ELEMENT, ig.ENTITY.ElementPoleDest>;
         poles: ig.ENTITY.ElementPole[];
+        currentBall: Nullable<ig.ENTITY.Ball>;
+        currentDest: Nullable<ig.ENTITY.ElementPoleDest>;
+        hitCount: number;
       }
     }
 
     interface ElementPoleGroups {
       groups: Record<string, sc.ElementPoleGroups.Group>;
 
-      registerDest(pole: ig.ENTITY.ElementPole, active: boolean): unknown;
+      registerDest(pole: ig.ENTITY.ElementPoleDest, active: boolean): unknown;
       registerPole(pole: ig.ENTITY.ElementPole): void;
       getGroup(group: string): ElementPoleGroups.Group;
       deleteGroup(group: string): void;
@@ -52,7 +54,7 @@ declare global {
         state: State;
         element: sc.ELEMENT;
         prevElement: sc.ELEMENT;
-        timer: number;
+        timer: ig.WeightTimer;
         lightHandles: ig.LightHandle[];
       }
       interface Settings extends ig.Entity.Settings {
@@ -98,6 +100,47 @@ declare global {
       new (x: number, y: number, z: number, settings: ig.ENTITY.ElementPole.Settings): ElementPole;
     }
     let ElementPole: ElementPoleConstructor;
+
+    namespace ElementPoleDest {
+      interface Settings extends ig.AnimatedEntity.Settings {
+        group: string;
+        element?: 'HEAT' | 'COLD' | 'SHOCK' | 'WAVE';
+        variable?: string;
+        activeTime?: number;
+      }
+
+      interface State {
+        OFF: 1;
+        CHARGING: 2;
+        ON: 3;
+      }
+      type StateValue = State[keyof State];
+    }
+    interface ElementPoleDest extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
+      group: string;
+      element: sc.ELEMENT;
+      state: ig.ENTITY.ElementPoleDest.StateValue;
+      _wm: ig.Config;
+      effects: { sheet: ig.EffectSheet; handle: ig.EffectHandle; lightHandle: ig.LightHandle };
+      variable?: string;
+      activeTime?: number;
+
+      isOn(this: this): boolean;
+      onPoleHit(pole: ig.ENTITY.ElementPole, ball: ig.ENTITY.Ball, alreadyHit: boolean): boolean;
+      onCancel(this: this): void;
+      turnOn(this: this): void;
+      turnOnGfx(this: this): void;
+      turnOff(this: this): void;
+    }
+    interface ElementPoleDestConstructor extends ImpactClass<ElementPoleDest> {
+      new (
+        x: number,
+        y: number,
+        z: number,
+        settings: ig.ENTITY.ElementPoleDest.Settings,
+      ): ElementPoleDest;
+    }
+    var ElementPoleDest: ElementPoleDestConstructor;
   }
   namespace sc {
     namespace COMBAT_POI {
