@@ -21,32 +21,70 @@ declare global {
     }
     let ElementPoleGroups: ElementPoleGroups;
 
-    enum TERMO_POLE_TYPE {
-      LONG,
-      LONG64,
-      SHORT,
+    interface TermoPoleType {
+      size: Vec3;
+      src: Vec2;
+      changeHeight?: number;
     }
+    interface TERMO_POLE_TYPE {
+      LONG: TermoPoleType;
+      LONG64: TermoPoleType;
+      SHORT: TermoPoleType;
+    }
+    var TERMO_POLE_TYPE: TERMO_POLE_TYPE;
   }
 
   namespace ig.ENTITY {
-    namespace ElementPole {}
-  }
-  namespace ig.ENTITY {
     namespace ElementPole {
+      interface State {
+        timed: boolean;
+        blink?: boolean;
+      }
       interface Charge {
+        state: State;
         element: sc.ELEMENT;
+        prevElement: sc.ELEMENT;
+        timer: number;
+        lightHandles: ig.LightHandle[];
       }
       interface Settings extends ig.Entity.Settings {
-        group: string;
-        spawnCondition?: string;
+        group?: string;
         poleType?: keyof typeof sc.TERMO_POLE_TYPE;
       }
     }
-    interface ElementPole extends ig.AnimatedEntity {
+    interface ElementPole extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
+      data: sc.TermoPoleType;
+      gfx?: ig.Image;
       group: string;
+      active: boolean;
       charge: ElementPole.Charge;
+      effects: { sheet: ig.EffectSheet; handle: ig.EffectHandle; hideHandle: ig.EffectHandle };
 
+      onHideRequest(this: this): void;
+      chargeElement(
+        this: this,
+        element: sc.ELEMENT,
+        top: boolean,
+        state: ig.ENTITY.ElementPole.Charge,
+        ignoreEffects?: boolean,
+      ): void;
+      resetTimer(this: this, remainingTime: number): void;
+      addLight(this: this, z: number): void;
+      discharge(this: this, noShowFx?: boolean): void;
+      showEffect(
+        this: this,
+        effectPrefix: string,
+        down: boolean,
+        state: ig.ENTITY.ElementPole.State,
+      ): void;
       ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
+      onComplete(this: this): void;
+      onDestInit(this: this, element: sc.ELEMENT): void;
+      onFinalize(this: this): void;
+      onCancel(this: this): void;
+      isBallAdjust(this: this): boolean;
+      doBallAdjust(this: this, pos: Vec3, dir: Vec2, size: Vec3, maxBounce: number): number;
+      isBallDestroyer(this: this): boolean;
     }
     interface ElementPoleConstructor extends ImpactClass<ElementPole> {
       new (x: number, y: number, z: number, settings: ig.ENTITY.ElementPole.Settings): ElementPole;
