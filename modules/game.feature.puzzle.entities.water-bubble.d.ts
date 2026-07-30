@@ -10,7 +10,18 @@ declare global {
         coalCoolTime?: number;
       }
     }
-    interface WaterBubblePanel extends ig.AnimatedEntity {}
+    interface WaterBubblePanel extends ig.AnimatedEntity, ig.EffectSheet.EventCallback {
+      respawnTimer: number;
+      currentBubble: Nullable<sc.WaterBubbleEntity>;
+      active: boolean;
+      _wm: ig.Config;
+      effects: { sheet: ig.EffectSheet };
+
+      onHideRequest(this: this): void;
+      spawnBubble(this: this, noEffects?: boolean): void;
+      onBubbleStart(this: this): void;
+      onBubbleBurst(this: this): void;
+    }
     interface WaterBubblePanelConstructor extends ImpactClass<WaterBubblePanel> {
       new (
         x: number,
@@ -58,7 +69,12 @@ declare global {
       turnIce(this: this): void;
       ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
       isWaterBubble(this: this): boolean;
-      isBallDestroyer(this: this, collPos: Vec3, collRes: ig.Physics.TraceResult, isThrowCharged?: boolean): boolean;
+      isBallDestroyer(
+        this: this,
+        collPos: Vec3,
+        collRes: ig.Physics.TraceResult,
+        isThrowCharged?: boolean,
+      ): boolean;
       isBallAdjust(this: this): boolean;
       doBallAdjust(this: this, pos: Vec3, dir: Vec2, size: Vec3, maxBounce: number): number;
     }
