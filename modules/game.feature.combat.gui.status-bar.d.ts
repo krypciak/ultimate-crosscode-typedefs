@@ -10,8 +10,7 @@ declare global {
       barY: number;
       half?: boolean;
     }
-    var STATUS_BAR_ENTRY: Record<string, StatusBarEntry> &
-      Record<'BREAK' | 'BURN' | 'CHILL' | 'WEAK' | 'BRITTLE', StatusBarEntry>;
+    var STATUS_BAR_ENTRY: Record<'BREAK' | 'BURN' | 'CHILL' | 'WEAK' | 'BRITTLE', StatusBarEntry>;
   }
   namespace ig.GUI {
     interface StatusBar extends ig.GuiElementBase, sc.Model.Observer {
