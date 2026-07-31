@@ -78,7 +78,12 @@ declare global {
     var SideBoxGui: SideBoxGuiConstructor;
 
     type SmallBoxAlign = (dest: Vec2, coll: ig.CollEntry) => void;
-    let SMALL_BOX_ALIGN: Record<string, SmallBoxAlign>;
+    interface SMALL_BOX_ALIGN {
+      BOTTOM: SmallBoxAlign;
+      CENTER: SmallBoxAlign;
+      TOP: SmallBoxAlign;
+    }
+    let SMALL_BOX_ALIGN: SMALL_BOX_ALIGN;
 
     interface SmallEntityBox extends ig.GuiElementBase {
       ninepatch: ig.NinePatch;
@@ -91,6 +96,7 @@ declare global {
       offY: number;
       fixedPos?: Vec3;
       hideSmall: boolean;
+      align: sc.SmallBoxAlign;
 
       setFixedPos(this: this): void;
       stopRumble(this: this): void;
