@@ -44,7 +44,11 @@ declare global {
     var StatChange: StatChangeConstructor;
 
     interface ItemBuff extends sc.StatChange {
+      timer: number;
+      time: number;
       itemID: number;
+
+      reset(this: this, time: number): void;
     }
     interface ItemBuffConstructor extends ImpactClass<ItemBuff> {
       new (stats: sc.StatChange.StatName[], duration: number, itemId: number): ItemBuff;
