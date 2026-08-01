@@ -72,9 +72,10 @@ declare global {
       }
 
       interface Settings extends sc.BasicCombatant.Settings {
-        data: sc.CombatProxyEntity.Data;
         combatant: sc.BasicCombatant;
+        noFallDestroy?: boolean
         dir: Vec2;
+        data: sc.CombatProxyEntity.Data;
       }
 
       interface DESTROY_TYPE_INTERFACE {
