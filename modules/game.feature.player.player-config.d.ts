@@ -146,8 +146,16 @@ declare global {
       dmgType?: Nullable<sc.ACTION_DMG_TYPE>;
       stunType?: sc.ACTION_STUN_TYPE | false;
       icon?: ig.Image;
+
+      clearCached(this: this): void;
     }
-    interface PlayerActionConstructor extends ImpactClass<PlayerAction> {}
+    interface PlayerActionConstructor extends ImpactClass<PlayerAction> {
+      new (
+        key: string,
+        config: sc.PlayerConfig.ActionConfig,
+        element: sc.ELEMENT | -1,
+      ): PlayerAction;
+    }
     var PlayerAction: PlayerActionConstructor;
 
     namespace PlayerSubConfig {
