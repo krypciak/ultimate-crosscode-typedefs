@@ -34,6 +34,7 @@ declare global {
       parallelMove: boolean;
       repeating: boolean;
       hint?: Nullable<string>;
+      eventAction?: boolean
 
       cleanCached(this: this): void;
       inlineStart(this: this, actor: ig.ActorEntity, step: ig.ActionStepBase): void;
