@@ -25,9 +25,7 @@ declare global {
         }
       }
       interface Door
-        extends ig.AnimatedEntity,
-          ig.ENTITY.Marker.MarkerLike,
-          sc.NPCRunnerEntity.EnterableEntity {
+        extends ig.AnimatedEntity, ig.ENTITY.Marker.MarkerLike, sc.NPCRunnerEntity.EnterableEntity {
         doorType: keyof typeof ig.DOOR_TYPE;
         condition: ig.VarCondition;
         map: string;
@@ -43,6 +41,7 @@ declare global {
         openEffect: ig.EffectHandle;
         sounds: { activate: ig.Sound; deactivate: ig.Sound };
         fx: { sheet: ig.EffectSheet };
+        openSound: Nullable<ig.Sound>;
         doorMat?: ig.DoorMat;
 
         close(this: this): void;
