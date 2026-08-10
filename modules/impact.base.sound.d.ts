@@ -362,7 +362,7 @@ declare global {
 
     namespace SoundHelper {
       function playAtEntity(
-        sound: ig.Sound,
+        sound: Nullable<ig.Sound> | undefined,
         entity: ig.Entity,
         isLooped?: Nullable<boolean>,
         settings?: Nullable<SoundPlaySettings>,
