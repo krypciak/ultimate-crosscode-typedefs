@@ -94,6 +94,7 @@ declare global {
         sounds: Record<'bing', ig.Sound>;
         _wm: ig.Config;
 
+        ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
         onGroupResolve(this: this, hide?: boolean): void;
         onGroupReset(this: this): void;
       }
