@@ -7,11 +7,21 @@ export {};
 declare global {
   namespace sc {
     interface AreaButton extends ig.FocusGui {
-      gfx: ig.Image
+      gfx: ig.Image;
       key: string;
       area: sc.MapModel.Area;
+      icon: number;
+      activeArea: boolean;
+      focusCount: number;
+      description: ig.LangLabel;
+
+      onButtonPress(this: this): void;
+      isMouseOver(this: this): boolean;
+      getDistanceToCursor(this: this): number;
     }
-    interface AreaButtonConstructor extends ImpactClass<AreaButton> {}
+    interface AreaButtonConstructor extends ImpactClass<AreaButton> {
+      new (key: string, area: sc.MapModel.Area): AreaButton;
+    }
     var AreaButton: AreaButtonConstructor;
 
     interface MapWorldMap extends ig.GuiElementBase {
