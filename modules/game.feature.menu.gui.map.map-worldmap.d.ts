@@ -7,6 +7,7 @@ export {};
 declare global {
   namespace sc {
     interface AreaButton extends ig.FocusGui {
+      gfx: ig.Image
       key: string;
       area: sc.MapModel.Area;
     }
