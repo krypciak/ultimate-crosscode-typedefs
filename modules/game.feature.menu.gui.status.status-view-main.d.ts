@@ -31,8 +31,27 @@ declare global {
     }
     interface StatusViewMainParameters extends sc.MenuPanel {
       menuGfx: ig.Image;
+      statusGfx: ig.Image;
       level: sc.NumberGui;
+      hpBar: sc.ItemStatusDefaultBar;
+      spBar: sc.ItemStatusDefaultBar;
+      expBar: sc.ItemStatusDefaultBar;
       baseParams: sc.StatusViewMainParameters.BaseParams;
+      skinGfx: Nullable<ig.GuiImage>;
+      bounds: Nullable<sc.MainMenu.Bounds>;
+
+      checkSkin(this: this): void;
+      createStatusDisplay(
+        this: this,
+        x: number,
+        y: number,
+        type: 'maxhp' | 'atk' | 'def' | 'foc' | 'res',
+        lineID: number,
+        iconID: number,
+        usePercent: boolean,
+        maxValue: number,
+      ): sc.SimpleStatusDisplay;
+      updateValues(this: this, skipTransition?: boolean): void;
     }
     interface StatusViewMainParametersConstructor extends ImpactClass<StatusViewMainParameters> {
       new (): StatusViewMainParameters;
