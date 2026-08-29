@@ -52,9 +52,22 @@ declare global {
     }
     var ItemStatusDefaultBar: ItemStatusDefaultBarConstructor;
 
-    interface ItemStatusDefault extends sc.MenuPanel {
+    interface ItemStatusDefault extends sc.MenuPanel, sc.Model.Observer {
       menuGfx: ig.Image;
+      statusGfx: ig.Image;
       level: sc.NumberGui;
+      hpBar: sc.ItemStatusDefaultBar;
+      spBar: sc.ItemStatusDefaultBar;
+      expBar: sc.ItemStatusDefaultBar;
+      skinGfx: Nullable<ig.GuiImage>;
+      bounds: Nullable<sc.MainMenu.Bounds>;
+
+      addObservers(this: this): void;
+      removeObservers(this: this): void;
+      showMenu(this: this): void;
+      exitMenu(this: this): void;
+      checkSkin(this: this): void;
+      _updateElements(this: this, skipTransition?: boolean): void;
     }
     interface ItemStatusDefaultConstructor extends ImpactClass<ItemStatusDefault> {
       new (): ItemStatusDefault;
