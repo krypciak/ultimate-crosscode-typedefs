@@ -89,5 +89,50 @@ declare global {
       new (): MapChestDisplay;
     }
     var MapChestDisplay: MapChestDisplayConstructor;
+
+    interface MapFloorButton extends ig.FocusGui {
+      gfx: ig.Image;
+      textGui: sc.TextGui;
+      name: string;
+      level: number;
+      alpha: number;
+      alphaTimer: number;
+    }
+    interface MapFloorButtonConstructor extends ImpactClass<MapFloorButton> {
+      new (name: string, level: number): MapFloorButton;
+    }
+    var MapFloorButton: MapFloorButtonConstructor;
+
+    interface MapFloorButtonContainer extends ig.GuiElementBase, sc.Model.Observer {
+      gfx: ig.Image;
+      buttongroup: sc.ButtonGroup;
+      leaIcon: ig.ImageGui;
+      hasVisitedRooms: [];
+      _floors: Nullable<sc.AreaLoadable.Floor[]>;
+      _selfUpdate: boolean;
+      _submitSound: ig.Sound;
+      _minFloor: number;
+      _maxFloor: number;
+
+      showMenu(this: this): void;
+      exitMenu(this: this): void;
+      addObservers(this: this): void;
+      removeObservers(this: this): void;
+      centerMap(this: this): void;
+      update(this: this): void;
+      pressed(
+        this: this,
+        inputAction: ig.Input.KnownAction,
+        gamepadButton1: ig.BUTTONS,
+        gamepadButton2: ig.BUTTONS,
+      ): boolean;
+      onFloorPress(this: this, button: sc.MapFloorButton): void;
+      _createButtons(this: this, skipTransition?: boolean): void;
+      _getFloorName(this: this, floorLevel: number, floorIndex: number): string;
+    }
+    interface MapFloorButtonContainerConstructor extends ImpactClass<MapFloorButtonContainer> {
+      new (): MapFloorButtonContainer;
+    }
+    var MapFloorButtonContainer: MapFloorButtonContainerConstructor;
   }
 }
