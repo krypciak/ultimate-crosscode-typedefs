@@ -109,16 +109,26 @@ declare global {
       _deferredVarChanged: boolean;
       mapLoader?: ig.LoaderConstructor;
 
+      pushState(this: this, state: ig.GameState): void;
       popState(this: this): void;
       printGameAddonsString(this: this): void;
+      printGameAddonsStringFromArray(
+        this: this,
+        addon: ig.GameAddon,
+        eventType: keyof ig.Game.Addons,
+      ): void;
+      getLevelIdx(this: this, level: number): number;
       getLevelHeight(this: this, level: number | string): number;
       getHeightFromLevelOffset(this: this, level: sc.MapModel.MapEntity['level']): number;
       getEntityByName<E extends ig.Entity>(this: this, name: string): E;
+      getEntityByMapId<E extends ig.Entity>(this: this, mapId: number): E;
+      swapNamedEntities(this: this, entityA: ig.Entity, entityB: ig.Entity): void;
       getEntityCount(this: this): number;
       getObjectMaps(
         this: this,
         objectLayerName: ig.ENTITY.ObjectLayerView.ObjectLayerNames,
       ): ig.MAP.Background;
+      isMapTileEmpty(this: this, tileX: number, tileY: number): boolean;
       getEntitiesInRectangle(
         this: this,
         x: number,
@@ -131,6 +141,7 @@ declare global {
         exceptionArray?: Nullable<ig.Entity[]>,
         forceSameZ?: boolean,
       ): ig.Entity[];
+      getOverlapEntities(this: this, entity: ig.Entity): ig.Entity[];
       getEntitiesInCircle(
         this: this,
         center: Vec3,
@@ -152,6 +163,7 @@ declare global {
           | (new (x: number, y: number, z: number, settings: S) => E | string),
       ): E[];
       getEntitiesOnTop(this: this, entity: ig.Entity): ig.Entity[];
+      isInterruptible(this: this): boolean;
       isEventStartReady(this: this): boolean;
       isPlayerTouch(
         this: this,
@@ -161,6 +173,9 @@ declare global {
       ): boolean;
       isControlBlocked(this: this): boolean;
       getErrorData(this: this, gameInfo: Record<string, unknown>): void;
+      onExternalMessageReceived(this: this, type: string, message: unknown): void;
+      sendExternalMessage(this: this, key: string, message: unknown): void;
+      setWindowFocus(this: this, focus: boolean): void;
       setPaused(this: this, paused: boolean): void;
       spawnEntity<E extends ig.Entity, S extends ig.Entity.Settings>(
         this: this,
@@ -180,6 +195,11 @@ declare global {
         settings: sc.MapModel.MapEntity<T>['settings'],
         showAppearEffects?: Nullable<boolean>,
       ): InstanceType<(typeof ig.ENTITY)[T]>;
+      showEntity(this: this, entity: ig.Entity): void;
+      hideEntity(this: this, entity: ig.Entity): void;
+      requestEntityHide(this: this, entity: ig.Entity): void;
+      removeEntity(this: this, entity: ig.Entity): void;
+      detachEntity(this: this, entity: ig.Entity): void;
       reset(this: this): void;
       teleport(
         this: this,
@@ -193,7 +213,9 @@ declare global {
       onTeleportStart(this: this): number;
       onTeleportEnd(this: this): void;
       createPlayer(this: this): void;
+      getVersion(this: this): string;
       preloadLevel(this: this, mapName: string): void;
+      clearMap(this: this, clearCache?: boolean): void;
       loadLevel(
         this: this,
         data: sc.MapModel.Map,
@@ -201,8 +223,10 @@ declare global {
         reloadCache?: boolean,
       ): void;
       loadingComplete(this: this): void;
+      hasLightLayer(this: this): boolean;
       update(this: this): void;
       preDrawMaps(this: this): void;
+      preDrawLevel(this: this, layer: string | number, isObjectLayer?: boolean): void;
       run(this: this): void;
       deferredUpdate(this: this): void;
       deferredMapEntityUpdate(this: this): void;
@@ -210,7 +234,26 @@ declare global {
       finalDraw(this: this): void;
       varsChanged(this: this): void;
       varsChangedDeferred(this: this): void;
-
+      isAreaBlocked(
+        this: this,
+        entityX: number,
+        entityY: number,
+        entityZ: number,
+        width: number,
+        height: number,
+        zHeight: number,
+        checkEntities?: boolean,
+      ): unknown;
+      isOverHole(
+        this: this,
+        entityX: number,
+        entityY: number,
+        entityZ: number,
+        width: number,
+        height: number,
+        checkEntities?: boolean,
+        checkHeight?: boolean,
+      ): unknown;
       traceEntity(
         this: this,
         res: ig.Physics.TraceResult,
