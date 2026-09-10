@@ -21,6 +21,8 @@ declare global {
       FACE_BASE = 7,
     }
 
+    var ENTITY_KILL_CALL: boolean;
+
     namespace Entity {
       interface Settings {
         name?: string;
