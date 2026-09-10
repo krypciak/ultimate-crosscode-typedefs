@@ -45,7 +45,10 @@ declare global {
   }
   namespace sc {
     namespace CompressedBaseEntity {
-      interface Settings extends ig.Entity.Settings {}
+      interface Settings extends ig.Entity.Settings {
+        speed?: number
+        fastMode?: boolean
+      }
     }
     interface CompressedBaseEntity
       extends ig.AnimatedEntity, ig.BallLike, sc.GetCombatant, sc.GetCombatantRoot {
