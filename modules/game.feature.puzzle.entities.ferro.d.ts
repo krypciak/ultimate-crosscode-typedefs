@@ -164,7 +164,6 @@ declare global {
       killCloseRegenDestruct(this: this, radius: number, exception?: ig.Entity): void;
       onPhysicsSquish(this: this): void;
       onTouchGround(this: this, num: number): void;
-      handleMovementTrace(this: this, coll: ig.CollEntry): void;
       setTeleportBall(this: this, teleportBall: ig.ENTITY.Ball): void;
       clearTeleportBall(this: this): void;
       doTeleport(this: this): void;

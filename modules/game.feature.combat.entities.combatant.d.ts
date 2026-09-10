@@ -28,7 +28,6 @@ declare global {
       NEUTRALIZE = 3,
     }
 
-    // TODO: What is the difference between getCombatant and getCombatantRoot?
     interface GetCombatant {
       // This can return an sc.CombatProxyEntity, the type must be more general.
       getCombatant(this: this): sc.BasicCombatant;
@@ -204,7 +203,11 @@ declare global {
       setRespawnPoint(this: this, pos: Vec3): void;
       isDefeated(this: this): boolean;
       cancelStun(this: this): void;
-      setTarget(this: this, combatant: Nullable<sc.BasicCombatant>, fixed?: Nullable<boolean>): void;
+      setTarget(
+        this: this,
+        combatant: Nullable<sc.BasicCombatant>,
+        fixed?: Nullable<boolean>,
+      ): void;
       setReplaceTarget(this: this, combatant: sc.BasicCombatant): sc.ReplaceTargetHandle;
       _addTargetedBy(this: this, combatant: ig.ENTITY.Combatant): void;
       _removeTargetedBy(this: this, combatant: ig.ENTITY.Combatant): void;
@@ -334,9 +337,7 @@ declare global {
       interface Settings extends ig.AnimationPartEntity.Settings {}
     }
     interface CombatantAnimPartEntity
-      extends ig.AnimationPartEntity,
-        sc.GetCombatant,
-        sc.GetCombatantRoot {
+      extends ig.AnimationPartEntity, sc.GetCombatant, sc.GetCombatantRoot {
       isCombatant: boolean;
       party: sc.COMBATANT_PARTY;
 

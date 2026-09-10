@@ -35,7 +35,6 @@ declare global {
           entity: Nullable<sc.BasicCombatant>,
           dir: Vec2,
         ): void;
-        handleMovementTrace(this: this, coll: ig.CollEntry): void;
         clearIgnored(this: this): void;
         addIgnore(this: this, entityId: number): void;
         getAttackInfo(this: this): sc.AttackInfo;

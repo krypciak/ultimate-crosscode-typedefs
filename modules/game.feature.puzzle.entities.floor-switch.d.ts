@@ -41,7 +41,6 @@ declare global {
       activate(this: this, noDelay?: boolean): void;
       deactivate(this: this): void;
       varsChanged(this: this): void;
-      collideWith(this: this, entity: ig.Entity): void;
       onGroundAdd(this: this, entity: ig.Entity): void;
       checkEntityArraySupport(this: this, entities: ig.Entity[]): boolean;
       isEntitySupported(this: this, entity: ig.Entity): boolean;

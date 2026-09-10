@@ -63,6 +63,7 @@ declare global {
       getHitDir(this: this, v1: Vec2, output?: Vec2): Vec2;
       getCollideSide(this: this, otherEntity: ig.Entity): ig.ActorEntity.FACE4;
       update(this: this): void;
+      handleMovementTrace(this: this, data: ig.CollEntry.Data): void;
       setSpriteCount(this: this, count: number, guiSprites?: boolean): void;
       updateSprites(this: this): void;
       addEntityAttached(this: this, attachable: ig.Entity.Attachable): void;
