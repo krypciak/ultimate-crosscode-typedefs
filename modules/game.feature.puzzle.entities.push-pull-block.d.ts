@@ -53,13 +53,28 @@ declare global {
       interface Settings extends ig.Entity.Settings {}
     }
     interface WavePushPullBlock
-      extends ig.AnimatedEntity,
+      extends
+        ig.AnimatedEntity,
         ig.Entity.Attachable,
+        ig.EffectSheet.EventCallback,
         ig.ENTITY.WaveTeleport.Teleportable {
+      _wm: ig.Config;
+      pushPullable: sc.PushPullable;
       phased: boolean;
+      squishRespawn: boolean;
+      compressorSlow: number;
+      bombSnap: boolean;
+      effects: { sheet: ig.EffectSheet; hideHandle: Nullable<ig.EffectHandle> };
 
-      ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
+      onHideRequest(this: this): void;
+      deferredUpdate(this: this): void;
+      onInteraction(this: this): void;
+      onInteractionEnd(this: this): void;
       resetPos(this: this, pos?: Nullable<Vec3>): void;
+      onEntityKillDetach(this: this): void;
+      ballHit(this: this, ballLike: ig.BallLike, blockDir?: Vec2): boolean;
+      onMagnetStart(this: this): boolean;
+      onMagnetEnd(this: this, spawnEffects?: boolean): void;
     }
     interface WavePushPullBlockConstructor extends ImpactClass<WavePushPullBlock> {
       new (
