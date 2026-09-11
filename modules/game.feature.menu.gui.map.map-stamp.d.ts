@@ -49,5 +49,37 @@ declare global {
       ): StampGui;
     }
     var StampGui: StampGuiConstructor;
+
+    interface StampEditMenu extends ig.BoxGui {
+      ninepatch: ig.NinePatch;
+      delete: sc.ButtonGui;
+      anchor: sc.StampGui;
+      stamps: sc.StampMenuButton[];
+      buttongroup: sc.ButtonGroup;
+      _active: boolean;
+
+      show(this: this, stampGui: sc.StampGui): void;
+      hide(this: this, popBackCallback?: boolean): void;
+      createStamps(this: this): void;
+      limitPosition(this: this, x: number, y: number): void;
+      unPressAllButtons(this: this): void;
+      pressCurrentStamp(this: this, key: keyof typeof sc.MAP_STAMPS): void;
+      onBackPressed(this: this): void;
+    }
+    interface StampEditMenuConstructor extends ImpactClass<StampEditMenu> {
+      new (): StampEditMenu;
+    }
+    var StampEditMenu: StampEditMenuConstructor;
+
+    interface StampMenuButton extends sc.ButtonGui {
+      icons: ig.Image;
+      key: string;
+      icon: Vec2;
+      iconGui: ig.ImageGui;
+    }
+    interface StampMenuButtonConstructor extends ImpactClass<StampMenuButton> {
+      new (key: string): StampMenuButton;
+    }
+    var StampMenuButton: StampMenuButtonConstructor;
   }
 }

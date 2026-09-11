@@ -167,7 +167,18 @@ declare global {
     interface PercentCharConstructor extends ImpactClass<PercentChar> {}
     var PercentChar: PercentCharConstructor;
 
-    interface MenuPanel extends ig.BoxGui {}
+    interface MenuPanel extends ig.BoxGui {
+      sizeTransition: ig.GuiHook.SizeTransition;
+
+      doSizeTransition(
+        this: this,
+        width: Nullable<number>,
+        height: Nullable<number>,
+        time: number,
+        timeFunction?: KeySpline,
+        delay?: Nullable<number>,
+      ): void;
+    }
     interface MenuPanelConstructor extends ImpactClass<MenuPanel> {
       new (panelType?: sc.MenuPanelType): sc.MenuPanel;
     }

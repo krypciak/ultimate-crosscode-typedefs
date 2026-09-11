@@ -90,6 +90,17 @@ declare global {
     }
     var MapChestDisplay: MapChestDisplayConstructor;
 
+    interface MapStampDisplay extends ig.GuiElementBase {
+      gfx: ig.Image;
+      current: sc.NumberGui;
+      max: sc.NumberGui;
+      _oldCount: number;
+    }
+    interface MapStampDisplayConstructor extends ImpactClass<MapStampDisplay> {
+      new (): MapStampDisplay;
+    }
+    var MapStampDisplay: MapStampDisplayConstructor;
+
     interface MapFloorButton extends ig.FocusGui {
       gfx: ig.Image;
       textGui: sc.TextGui;
@@ -134,5 +145,18 @@ declare global {
       new (): MapFloorButtonContainer;
     }
     var MapFloorButtonContainer: MapFloorButtonContainerConstructor;
+
+    interface CurrentAreaDisplay extends sc.MenuPanel, sc.Model.Observer {
+      text: sc.TextGui;
+
+      addObservers(this: this): void;
+      removeObservers(this: this): void;
+      showMenu(this: this): void;
+      exitMenu(this: this): void;
+    }
+    interface CurrentAreaDisplayConstructor extends ImpactClass<CurrentAreaDisplay> {
+      new (): CurrentAreaDisplay;
+    }
+    var CurrentAreaDisplay: CurrentAreaDisplayConstructor;
   }
 }

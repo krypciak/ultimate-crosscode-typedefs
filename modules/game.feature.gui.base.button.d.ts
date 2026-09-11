@@ -71,6 +71,8 @@ declare global {
       data?: unknown;
       textChild: sc.TextGui;
 
+      invokeButtonPress(this: this, isFromHotkey?: boolean): void
+      setData(this: this, data: unknown): void
       setWidth(this: this, width: number): void;
       setHeight(this: this, height: number): void;
       setText(this: this, text: sc.TextLike, ignoreWidth?: boolean): void;
