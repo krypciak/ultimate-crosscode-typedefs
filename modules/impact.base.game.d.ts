@@ -169,7 +169,7 @@ declare global {
         this: this,
         entity: ig.Entity,
         player: ig.Entity,
-        dir?: Nullable<Vec2 & { dot: number }>,
+        dir?: Nullable<Vec2>,
       ): boolean;
       isControlBlocked(this: this): boolean;
       getErrorData(this: this, gameInfo: Record<string, unknown>): void;
