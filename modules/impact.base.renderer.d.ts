@@ -41,7 +41,7 @@ declare global {
       spriteSlots: ig.Renderer2d.SpriteDrawSlot[];
       guiSpriteSlots: ig.Renderer2d.SpriteDrawSlot[];
 
-      prepareDraw(this: this, shownEntities: ig.Entity[], forceDraw?: boolean): void;
+      prepareDraw(this: this, shownEntities: Nullable<ig.Entity>[], forceDraw?: boolean): void;
       drawLayers(this: this, force?: boolean, noClear?: boolean): void;
       drawLight(this: this): void;
       drawPostLayerSprites(this: this): void;
