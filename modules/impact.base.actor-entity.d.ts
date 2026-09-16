@@ -184,6 +184,8 @@ declare global {
       FACE4: typeof ActorEntity$FACE4;
       FACE8: typeof ActorEntity$FACE8;
 
+      getFaceVec(face: ig.ActorEntity.FACE8 | ig.ActorEntity.FACE4, dest?: Vec2): Vec2;
+
       new (x: number, y: number, z: number, settings: sc.ActorEntity.Settings): ig.ActorEntity;
     }
     var ActorEntity: ActorEntityConstructor;
