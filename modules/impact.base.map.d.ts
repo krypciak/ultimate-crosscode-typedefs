@@ -88,7 +88,7 @@ declare global {
       drawFromScreenBuffer(this: this, x: number, y: number, width: number, height: number): void;
       drawPreRendered(this: this, x: number, y: number, width: number, height: number): void;
       drawTiled(this: this, x: number, y: number, width: number, height: number): void;
-      drawAnimated(this: this, x: number, y: number, width: number, height: number): void;
+      drawAnimated(this: this, x?: number, y?: number, width?: number, height?: number): void;
     }
     interface ChunkedMapConstructor extends ImpactClass<ChunkedMap> {
       new (data: sc.MapModel.MapLayer, zHeight: number): ChunkedMap;
