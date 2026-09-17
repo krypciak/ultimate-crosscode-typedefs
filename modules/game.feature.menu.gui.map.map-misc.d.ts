@@ -14,15 +14,26 @@ declare global {
       new (activeRoom: ig.GuiHook): MapCurrentRoomWrapper;
     }
     var MapCurrentRoomWrapper: MapCurrentRoomWrapperConstructor;
+
     interface LandmarkGui extends ig.FocusGui {
+      gfx: ig.Image;
+      key: string;
+      activated: boolean;
+      floor: number;
+      landmark: sc.AreaLoadable.Landmark;
       map: sc.AreaLoadable.Map;
+      description: Nullable<string>;
+      name: Nullable<string>;
+
+      isMouseOver(this: this): boolean;
+      getDistanceToCursor(this: this): number;
     }
     interface LandmarkGuiConstructor extends ImpactClass<LandmarkGui> {
       new (
         key: string,
-        landmark: any, // TODO
+        landmark: sc.AreaLoadable.Landmark,
         floor: number,
-        map: any, // TODO
+        map: sc.AreaLoadable.Map,
         area: string,
       ): LandmarkGui;
     }
