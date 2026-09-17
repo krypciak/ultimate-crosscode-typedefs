@@ -132,7 +132,8 @@ declare global {
       }
     }
     interface MapModel
-      extends ig.GameAddon,
+      extends
+        ig.GameAddon,
         sc.Model,
         ig.Vars.Accessor,
         ig.Loadable.LoadListener,
@@ -180,7 +181,7 @@ declare global {
         areaName: string,
         entityToCallEventOn?: ig.Entity,
       ): void;
-      startTeleport(this: this, mapName: string): void;
+      startTeleport(this: this, settings: { path: string }): void;
       getAreaType(this: this, areaName: string): sc.AREA_TYPE;
       isLandmarkValid(this: this, landmarkName: string, areaName: string): boolean;
       getAreaItemId(this: this, areaItemType: sc.AREA_ITEM_TYPE, areaName: string): sc.ItemID;
