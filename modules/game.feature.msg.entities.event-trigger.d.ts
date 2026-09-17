@@ -9,7 +9,7 @@ declare global {
       startCutscene(
         this: this,
         event: ig.Event,
-        input: unknown,
+        input?: unknown,
         callEntity?: ig.Entity,
       ): ig.EventCall;
     }
