@@ -23,9 +23,7 @@ declare global {
       }
     }
     interface MapAreaContainer
-      extends ig.GuiElementBase,
-        sc.Model.Observer,
-        ig.Loadable.LoadListener<sc.AreaLoadable> {
+      extends ig.GuiElementBase, sc.Model.Observer, ig.Loadable.LoadListener<sc.AreaLoadable> {
       gfx: ig.Image;
       background: ig.Image;
       area: sc.MapArea;
@@ -49,7 +47,7 @@ declare global {
       _gamepadActive: boolean;
       _lastDevice: number;
       mapNameGui: sc.MapNameGui;
-      hoverRoom: Nullable<sc.LandmarkGui | sc.StampGui | sc.AreaRoomBounds | false>;
+      hoverRoom: Nullable<sc.LandmarkGui | sc.StampGui | sc.AreaRoomBounds>;
       cursor: sc.MapCursor;
       landmarks: sc.LandmarkGui[];
       stamps: sc.StampGui[];
