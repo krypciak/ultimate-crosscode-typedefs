@@ -47,6 +47,14 @@ declare global {
       interface PostPlacementAction {
         onPostPlacementAction(this: this, player: ig.ENTITY.Player): void;
       }
+
+      interface Level {
+        height?: number;
+        maps?: ig.ChunkedMap[];
+        collision?: ig.MAP.Collision;
+        navigation?: ig.MAP.Navigation;
+        heightMap?: ig.MAP.HeightMap
+      }
     }
     interface Game extends ig.Class, ig.Vars.Accessor {
       clearColor: string;
@@ -76,14 +84,7 @@ declare global {
         entity: ig.Entity;
       }[];
       maps: ig.MAP.AllUnion[];
-      levels: Record<
-        string,
-        {
-          height?: number;
-          collision?: ig.MAP.Collision;
-          maps?: ig.ChunkedMap[];
-        }
-      >;
+      levels: Record<string, ig.Game.Level>;
       maxLevel: number;
       minLevelZ: number;
       masterLevel: number;
