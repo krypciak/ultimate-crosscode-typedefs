@@ -4,6 +4,81 @@
 
 export {};
 
+/** RENAME: drawEdge */
+declare function b(
+  color: string,
+  edge: ig.PathNode.Edge,
+  node: ig.PathNode,
+  height: number,
+  tilesize: number,
+  offPixel: number,
+  withCenterConnection: boolean,
+  lineWidth: number,
+): void;
+/** RENAME: parseMap */
+declare function a(
+  navMap: ig.MAP.Navigation,
+  collision: ig.MAP.Collision,
+  zHeight: number,
+  bounds?: ig.PathNode.Bounds,
+): void;
+/** RENAME: initTmp */
+declare function d(node: ig.PathNode, searchId: number): void;
+/** RENAME: removeNodeNeighbour */
+declare function c(node: ig.PathNode, neighbourToRemove: ig.PathNode): void;
+/** RENAME: clearNode */
+declare function e(
+  navMap: ig.MAP.Navigation,
+  node: ig.PathNode,
+  x: number,
+  y: number,
+  bounds: ig.PathNode.Bounds,
+): void;
+/** RENAME: getSrcId */
+declare function f(
+  navMap: ig.MAP.Navigation,
+  collision: ig.MAP.Collision,
+  x: number,
+  y: number,
+): number;
+/** RENAME: getAirFlaggedSrcId */
+declare function g(
+  navMap: ig.MAP.Navigation,
+  collision: ig.MAP.Collision,
+  x: number,
+  y: number,
+): number;
+/** RENAME: updateEdgeBlockFlags */
+declare function h(edge: ig.PathNode.Edge, navMap: ig.MAP.Navigation, node?: ig.PathNode): void;
+/** RENAME: resolveLevelEdges */
+declare function i(
+  navMap: ig.MAP.Navigation,
+  node: ig.PathNode,
+  edges: ig.PathNode.Edge[],
+  maps: ig.MAP.Navigation[],
+  yDeltas: number[],
+  type: ig.NAV_CONNECTION_TYPE,
+  reverseType?: ig.NAV_CONNECTION_TYPE,
+  noAirConnected?: boolean,
+): void;
+/** RENAME: addAirConnection */
+declare function j(
+  navMap: ig.MAP.Navigation,
+  node: ig.PathNode,
+  lastNode: ig.PathNode,
+  edge: ig.PathNode.Edge,
+  type: ig.NAV_CONNECTION_TYPE,
+  reverseType: ig.NAV_CONNECTION_TYPE,
+  noAirConnected?: boolean,
+): void;
+/** RENAME: getReverseEdge */
+declare function k(
+  navMap: ig.MAP.Navigation,
+  node: ig.PathNode,
+  neighbourNode: ig.PathNode,
+  edge: ig.PathNode.Edge,
+): ig.PathNode.Edge;
+
 declare global {
   namespace ig {
     interface NavEntityFlag {
@@ -82,7 +157,7 @@ declare global {
         ): void;
         getGridAreaFlag(this: this, x: number, y: number): number;
         getGridForceGround(this: this, x: number, y: number): number;
-        getGridNode(this: this, x: number, y: number): number;
+        getGridNode(this: this, x: number, y: number): ig.PathNode;
         getGridNodeId(this: this, x: number, y: number): number;
         setGridNodeId(this: this, x: number, y: number, value: number): number;
         getGridBuildFlags(this: this, x: number, y: number): number;
@@ -105,6 +180,12 @@ declare global {
       interface Edge {
         min: Vec2;
         max: Vec2;
+      }
+      interface Bounds {
+        minX: number;
+        minY: number;
+        maxX: number;
+        maxY: number;
       }
     }
     interface PathNode extends ig.Class {
@@ -134,7 +215,7 @@ declare global {
         navMap: ig.MAP.Navigation,
         x: number,
         y: number,
-        edge: ig.PathNode.Edge,
+        bounds: ig.PathNode.Bounds,
       ): void;
       isClosed(this: this, searchId: number): boolean;
       setClosed(this: this, searchId: number, closed: boolean): void;
