@@ -43,6 +43,10 @@ declare global {
       }
 
       type TeleportLoadHint = Nullable<'NEW' | 'LOAD'>;
+
+      interface PostPlacementAction {
+        onPostPlacementAction(this: this, player: ig.ENTITY.Player): void;
+      }
     }
     interface Game extends ig.Class, ig.Vars.Accessor {
       clearColor: string;
@@ -93,7 +97,7 @@ declare global {
       _levelToLoad: null /* unused */;
       playerEntity: ig.ENTITY.Player;
       marker?: Nullable<string>;
-      postPlacementAction?: { onPostPlacementAction(player: ig.ENTITY.Player): void };
+      postPlacementAction?: ig.Game.PostPlacementAction;
       teleporting: {
         active: boolean;
         timer: number;

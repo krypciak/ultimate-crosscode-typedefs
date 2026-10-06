@@ -20,7 +20,8 @@ declare global {
         }
       }
       interface TeleportStairs
-        extends ig.Entity,
+        extends
+          ig.Entity,
           ig.ENTITY.Marker.MarkerLike,
           sc.NpcRunnerSpawner.RunnerDestinationEntity,
           sc.NPCRunnerEntity.EnterableEntity {
@@ -36,7 +37,7 @@ declare global {
         centerWalkThrough: boolean;
         objMaps: unknown;
 
-        getEnterActionData(this: this, entity: ig.Entity): ig.EventStepBase.Settings[];
+        getEnterActionData(this: this, actor: ig.ActorEntity): ig.ActionStepBase.Settings[];
         getStartPoint(this: this, entity: ig.Entity): Vec2;
       }
       interface TeleportStairsConstructor extends ImpactClass<TeleportStairs> {

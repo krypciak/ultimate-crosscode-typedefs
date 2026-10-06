@@ -11,7 +11,7 @@ declare global {
         }
 
         interface MarkerLike {
-          applyMarkerPosition(this: this, entity: ig.Entity): void;
+          applyMarkerPosition(this: this, entity: ig.Entity & { face: Vec2 }): void;
         }
       }
       interface Marker extends ig.Entity, ig.ENTITY.Marker.MarkerLike {

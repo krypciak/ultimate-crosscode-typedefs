@@ -94,7 +94,8 @@ declare global {
           height: number;
         };
       }
-      interface Elevator extends ig.Entity, ig.ENTITY.Marker.MarkerLike {
+      interface Elevator
+        extends ig.Entity, ig.ENTITY.Marker.MarkerLike, ig.Game.PostPlacementAction {
         markerDir?: keyof typeof ig.ActorEntity.FACE8;
         markerFaceDir: Vec2;
         elevatorData: sc.ElevatorType;
@@ -134,7 +135,6 @@ declare global {
         setArrived(this: this): void;
         deferredUpdate(this: this): void;
         varsChanged(this: this): void;
-        onPostPlacementAction(this: this): void;
         placeEntity(this: this, entity: ig.Entity, offset?: Vec2, getLevelByStartZ?: boolean): void;
       }
       interface ElevatorConstructor extends ImpactClass<Elevator> {

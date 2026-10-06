@@ -24,7 +24,8 @@ declare global {
         }
       }
       interface TeleportGround
-        extends ig.Entity,
+        extends
+          ig.Entity,
           sc.NpcRunnerSpawner.WPConnectEntity,
           sc.NpcRunnerSpawner.RunnerDestinationEntity,
           ig.ENTITY.Marker.MarkerLike,
@@ -40,7 +41,7 @@ declare global {
         centerWalkThrough: boolean;
         wpConnection: sc.WPConnection;
 
-        getEnterActionData(this: this): ig.EventStepBase.Settings[];
+        getEnterActionData(this: this, actor: ig.ActorEntity): ig.ActionStepBase.Settings[];
       }
       interface TeleportGroundConstructor extends ImpactClass<TeleportGround> {
         new (
