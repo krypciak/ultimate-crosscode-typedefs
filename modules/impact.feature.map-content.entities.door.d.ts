@@ -46,6 +46,10 @@ declare global {
 
         close(this: this): void;
         open(this: this, globalSound?: boolean, openTimer?: number): void;
+        getEnterActionData(this: this, actor: ig.ActorEntity): ig.ActionStepBase.Settings[];
+        getEnterEventData(this: this, actor: ig.ActorEntity): ig.EventStepBase.Settings[];
+        getStartPoint(this: this, actor: ig.ActorEntity): Vec2;
+        getEndPoint(this: this, actor: ig.ActorEntity): Vec2;
       }
       interface DoorConstructor extends ImpactClass<Door> {
         new (x: number, y: number, z: number, settings: ig.ENTITY.Door.Settings): Door;
