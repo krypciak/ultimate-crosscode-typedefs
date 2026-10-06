@@ -28,7 +28,8 @@ declare global {
       }
     }
     interface TeleportCentral
-      extends ig.Entity,
+      extends
+        ig.Entity,
         sc.NpcRunnerSpawner.WPConnectEntity,
         sc.NpcRunnerSpawner.RunnerDestinationEntity,
         ig.ENTITY.Marker.MarkerLike,
@@ -87,9 +88,12 @@ declare global {
       }
     }
     interface TeleportField
-      extends ig.AnimatedEntity,
+      extends
+        ig.AnimatedEntity,
         ig.ENTITY.Marker.MarkerLike,
-        sc.NPCRunnerEntity.EnterableEntity {
+        sc.NPCRunnerEntity.EnterableEntity,
+        ig.EffectSheet.EventCallback,
+        ig.Game.PostPlacementAction {
       centralName: string;
       map: string;
       marker: string;
@@ -106,7 +110,27 @@ declare global {
       blockEventCondition?: ig.VarCondition;
       gfxType: unknown;
 
-      onInteraction(this: this): void;
+      onHideRequest(this: this): void;
+      hasInteract(this: this): boolean;
+      recheckGlowStart(this: this): void;
+      startGlow(this: this): void;
+      getEnterActionData(this: this, actor: ig.ActorEntity, showEffect?: boolean): unknown;
+      _addMoveEvent(
+        this: this,
+        actionSteps: ig.ActionStepBase.Settings[],
+        actor: ig.ActorEntity,
+        teleportFields: Nullable<ig.ENTITY.TeleportField[]>,
+        wait: boolean,
+      ): void;
+      onInteraction(this: this): boolean;
+      varsChanged(this: this): void;
+      _addPartyEnterSteps(
+        this: this,
+        actor: ig.ActorEntity,
+        teleportFields: Nullable<ig.ENTITY.TeleportField[]>,
+      ): void;
+      _addEnterSteps(this: this, actor: ig.ActorEntity): void;
+      isRunnerDestBlocked(this: this): boolean;
     }
     interface TeleportFieldConstructor extends ImpactClass<TeleportField> {
       new (
