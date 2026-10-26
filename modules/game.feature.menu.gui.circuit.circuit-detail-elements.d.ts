@@ -98,12 +98,10 @@ declare global {
       lastPos: Vec2;
       lastPosTimer: number;
       _scrollHook: ig.GuiHook;
-      sizeTransition: Nullable<ig.GuiHook.SizeTransition>;
       FONT_BOX_OPTIONS: { font: ig.Font; padding: number; offset: number }[];
 
       addObservers(this: this): void;
       removeObservers(this: this): void;
-      doSizeTransition(this: this, skipTransition?: boolean): void;
       _updatePos(this: this, interpolate?: boolean): void;
       _updateSize(this: this): void;
       _setContent(this: this): void;

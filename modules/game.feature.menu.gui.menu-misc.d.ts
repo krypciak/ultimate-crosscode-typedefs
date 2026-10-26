@@ -168,7 +168,7 @@ declare global {
     var PercentChar: PercentCharConstructor;
 
     interface MenuPanel extends ig.BoxGui {
-      sizeTransition: ig.GuiHook.SizeTransition;
+      sizeTransition?: Nullable<ig.GuiHook.SizeTransition>;
 
       doSizeTransition(
         this: this,
