@@ -126,7 +126,7 @@ declare global {
       activeTime?: number;
 
       isOn(this: this): boolean;
-      onPoleHit(pole: ig.ENTITY.ElementPole, ball: ig.ENTITY.Ball, alreadyHit: boolean): boolean;
+      onPoleHit(this: this, pole: ig.ENTITY.ElementPole, ball: ig.ENTITY.Ball, alreadyHit: boolean): boolean;
       onCancel(this: this): void;
       turnOn(this: this): void;
       turnOnGfx(this: this): void;
