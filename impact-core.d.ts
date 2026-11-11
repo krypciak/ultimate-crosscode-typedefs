@@ -291,6 +291,8 @@ declare global {
   var IG_GAME_SCALE: number;
   var IG_WIDTH: number;
   var IG_HEIGHT: number;
+  var IG_HIDE_DEBUG: boolean;
+  var IG_SCREEN_MODE_OVERRIDE: number;
   var MENU_ON_GAME_START: string;
   var IG_LOAD_SLOT: string;
   var IG_GAME_FPS: number;
