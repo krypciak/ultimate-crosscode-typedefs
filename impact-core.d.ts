@@ -275,7 +275,7 @@ declare global {
   }
 
   var IG_ROOT: string;
-  var IG_GAME_CACHE: number;
+  var IG_GAME_CACHE: string;
   var IG_GAME_DEBUG: boolean;
   var IG_GAME_BETA: boolean;
   var IG_SOUND_VOLUME: number;
