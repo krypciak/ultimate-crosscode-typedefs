@@ -263,8 +263,7 @@ declare global {
       stop(this: this): void;
     }
     interface SoundDefaultConstructor
-      extends ImpactClass<SoundDefault>,
-        SoundConstructorCommon<ig.SoundDefault> {}
+      extends ImpactClass<SoundDefault>, SoundConstructorCommon<ig.SoundDefault> {}
     var SoundDefault: SoundDefaultConstructor;
 
     interface SoundWebAudio extends ig.Class, SoundCommon {
@@ -278,8 +277,7 @@ declare global {
       stop(this: this): void;
     }
     interface SoundWebAudioConstructor
-      extends ImpactClass<SoundWebAudio>,
-        SoundConstructorCommon<ig.SoundWebAudio> {
+      extends ImpactClass<SoundWebAudio>, SoundConstructorCommon<ig.SoundWebAudio> {
       new (path: string, volume?: number, variance?: number, group?: string): SoundWebAudio;
     }
     var SoundWebAudio: SoundWebAudioConstructor;
@@ -370,7 +368,7 @@ declare global {
         type?: ig.SOUND_RANGE_TYPE,
       ): ig.SoundHandle;
     }
-    type SoundHandle = ig.SoundHandleWebAudio /* | ig.SoundHandleDefault */;
+    type SoundHandle = ig.SoundHandleWebAudio; /* | ig.SoundHandleDefault */
 
     namespace Sound {
       interface FORMAT {
@@ -409,7 +407,9 @@ declare global {
     type SoundConstructor = /* SoundDefaultConstructor | */ SoundWebAudioConstructor;
     type Track = /* TrackDefault | */ TrackWebAudio;
     type TrackConstructor = /* TrackDefaultConstructor | */ TrackWebAudioConstructor;
-    var Sound: SoundConstructor;
+    var Sound: SoundConstructor & {
+      enabled: boolean;
+    };
   }
 
   var webAudioActive: boolean;
