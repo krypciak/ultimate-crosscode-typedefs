@@ -82,6 +82,10 @@ declare global {
               arrow: boolean;
             };
           };
+
+      interface Data {
+        items: sc.Inventory.Item[];
+      }
     }
     interface Inventory extends ig.SingleLoadable {
       items: Inventory.Item[];
@@ -113,7 +117,15 @@ declare global {
       getItemRarity(this: this, id: sc.ItemID): sc.ITEMS_RARITY;
       getItemSubType(this: this, id: sc.ItemID): Nullable<sc.ITEMS_EQUIP_TYPES>;
       isConsumable(this: this, id: sc.ItemID): boolean;
-      getTotalItemsUnlocked(this: this, percent: boolean, type?: sc.ITEMS_TYPES, equipType?: sc.ITEMS_EQUIP_TYPES, printErrorWhenItemMissing?: boolean): number;
+      getTotalItemsUnlocked(
+        this: this,
+        percent: boolean,
+        type?: sc.ITEMS_TYPES,
+        equipType?: sc.ITEMS_EQUIP_TYPES,
+        printErrorWhenItemMissing?: boolean,
+      ): number;
+      onerror(this: this, error?: any): void;
+      onload(this: this, data: sc.Inventory.Data): void;
       _isBuff(this: this, item: sc.Inventory.Item): boolean;
     }
     interface InventoryConstructor extends ImpactClass<Inventory> {
