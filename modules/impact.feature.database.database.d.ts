@@ -127,8 +127,16 @@ declare global {
     interface Database extends ig.SingleLoadable {
       data: ig.Database.Data;
 
+      register(
+        this: this,
+        key: string,
+        editor: string,
+        displayName?: string,
+        external?: { path: string; data: unknown },
+      ): void;
       get<K extends keyof ig.Database['data']>(this: this, key: K): ig.Database['data'][K];
       get(this: this, key: string): unknown;
+      onerror(this: this, error: any): void;
       onload(this: this, data: ig.Database.Data): void;
     }
     interface DatabaseConstructor extends ImpactClass<Database> {
