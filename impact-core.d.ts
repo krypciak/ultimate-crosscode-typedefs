@@ -147,6 +147,7 @@ declare global {
     var _loadQueue: ig.Module[];
     var _waitForOnload: number;
 
+    function $(selector: string): Nullable<HTMLElement | HTMLCollectionOf<Element>>;
     function $new<K extends keyof HTMLElementTagNameMap>(tagName: K): HTMLElementTagNameMap[K];
     function $new(tagName: string): HTMLElement;
 
