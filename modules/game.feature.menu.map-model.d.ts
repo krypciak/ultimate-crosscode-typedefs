@@ -86,9 +86,14 @@ declare global {
         : any;
 
       type EntityNames = keyof typeof ig.ENTITY;
+
+      type SettingsOfIgEntity<T extends EntityNames> = ConstructorParameters<
+        (typeof ig.ENTITY)[T]
+      >[3];
+
       type MapEntitySpecific<T extends EntityNames> = {
         type: T;
-        settings: ConstructorParameters<(typeof ig.ENTITY)[T]>[3];
+        settings: SettingsOfIgEntity<T>;
       };
 
       type MapEntity<T extends EntityNames = EntityNames> = {
