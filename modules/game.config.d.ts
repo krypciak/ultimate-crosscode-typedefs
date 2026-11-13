@@ -30,6 +30,17 @@ declare global {
 
     var SYSTEM_FONT_METRICS: { size: number[]; baseLine: number[] };
 
+    var FORCE_LANG: Nullable<ig.LANGUAGE_UNION>;
+    var CONFIG: {
+      DEFAULT_TILE_SIZE: number;
+      DISABLE_LAYER_SIZE: boolean;
+      DISABLE_LAYER_DISTANCE: boolean;
+      DISABLE_LAYER_REPEAT: boolean;
+      COLLISION_TILESET: string;
+    };
+    var JSON_LOG: boolean;
+    var TILEINFO_FILE: string;
+
     enum TERRAIN {
       NORMAL = 1,
       METAL = 2,
@@ -56,6 +67,18 @@ declare global {
       BEACH_WATER = 23,
       BEACH_SAND = 24,
     }
+
+    var DANGER_TERRAIN: Record<keyof typeof ig.TERRAIN, keyof typeof ig.TERRAIN>;
+    var TERRAIN_FILE: string;
+
     var TERRAIN_DEFAULT: ig.TERRAIN.NORMAL;
+
+    var DATABASE: { ACHIEVEMENTS: number };
+    var DATABASE_FILE: string;
+    var NPC_NAMES: string;
+    var ITEM_DATABASE: string;
+    var SKILL_TREE: string;
+    var CHANGE_LOG: string;
+    var ACHIEVEMENTS: string;
   }
 }
