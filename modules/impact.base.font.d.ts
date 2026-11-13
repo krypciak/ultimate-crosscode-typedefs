@@ -18,7 +18,6 @@ declare global {
     namespace Font {
       type ALIGN = Font$ALIGN;
     }
-    // @ts-expect-error onload
     interface Font extends ig.Image {
       widthMap: number[];
       indicesX: number[];
@@ -28,7 +27,6 @@ declare global {
       sizeIndex: number;
       color: string;
 
-      onload(this: this, event: Event): void;
       widthForString(this: this, text: string): number;
       getSystemFont(this: this, additionalSize?: number): string;
       _drawChar(

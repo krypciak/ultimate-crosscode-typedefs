@@ -36,8 +36,15 @@ declare global {
       additionalCallbacks: Image.Callback[];
 
       addCallback(this: this, callback: Image.Callback): void;
-      onload(this: this): void;
-      onerror(this: this): void;
+      onload(this: this, event?: Parameters<OnErrorEventHandlerNonNull>[0]): void;
+      onerror(
+        this: this,
+        event?: Parameters<OnErrorEventHandlerNonNull>[0],
+        source?: string,
+        lineno?: number,
+        colno?: number,
+        error?: Error,
+      ): void;
       resize(this: this, scale: number): void;
       createPattern(
         this: this,
