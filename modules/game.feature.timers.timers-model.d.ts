@@ -12,7 +12,8 @@ declare global {
     }
 
     interface TimersModel
-      extends ig.GameAddon,
+      extends
+        ig.GameAddon,
         sc.Model,
         ig.Vars.Accessor,
         ig.Storage.ListenerSave,
@@ -28,7 +29,7 @@ declare global {
         temp?: Nullable<boolean>,
         showGui?: Nullable<boolean>,
         millis?: Nullable<boolean>,
-        quest?: Nullable<string>,
+        quest?: Nullable<sc.QuestData>,
         label?: Nullable<string>,
         k?: Nullable<boolean>,
       ): void;
@@ -51,7 +52,7 @@ declare global {
         mode: sc.TIMER_TYPES;
         timer: number;
         duration: number;
-        millis: number;
+        millis?: boolean;
         temp: boolean;
         stopped: boolean;
         area?: string;
@@ -66,7 +67,7 @@ declare global {
       temp: boolean;
       millis: boolean;
       area?: Nullable<string>;
-      quest?: Nullable<string>;
+      quest?: Nullable<sc.QuestData>;
       stopped: boolean;
 
       tick(this: this): void;
@@ -86,7 +87,7 @@ declare global {
         area?: string,
         temp?: boolean,
         millis?: boolean,
-        quest?: string,
+        quest?: sc.QuestData,
       ): TimerEntry;
     }
     var TimerEntry: TimerEntryContstructor;

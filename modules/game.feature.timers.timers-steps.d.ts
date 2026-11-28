@@ -17,7 +17,7 @@ declare global {
           duration?: ig.Event.NumberExpression;
           area?: string;
           temp?: boolean;
-          quest?: string;
+          quest?: sc.QuestData;
           assist?: boolean;
         }
       }
@@ -29,7 +29,7 @@ declare global {
         temp: Nullable<boolean>;
         showGui: boolean;
         millis: boolean;
-        quest: Nullable<string>;
+        quest: Nullable<sc.QuestData>;
         _wm: ig.Config;
         assist: boolean;
       }
